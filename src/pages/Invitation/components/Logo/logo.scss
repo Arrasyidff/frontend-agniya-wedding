@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Alike&display=swap');
+
+.ai-logo__container {
+    font-family: "Alike", serif;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        font-size: 90px;
+        font-weight: normal;
+        text-transform: uppercase;
+        letter-spacing: 15px;
+    }
+    span {
+        margin: 5px 0;
+        font-size: 40px;
+    }
+}

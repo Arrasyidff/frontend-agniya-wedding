@@ -1,4 +1,4 @@
-import { Home, Detail } from "@pages"
+import { Home, Invitation } from "@pages"
 import ProtectedRoute from "components/ProtectedRoute"
 
 const routes = [
@@ -11,8 +11,8 @@ const routes = [
         )
     },
     {
-        path: '/',
-        element: <Detail />
+        path: '/invitation/:id/:name',
+        element: <Invitation />
     }
 ]
 
