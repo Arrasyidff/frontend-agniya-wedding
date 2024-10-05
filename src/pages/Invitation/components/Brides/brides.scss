@@ -16,9 +16,12 @@
             justify-content: center;
             align-items: center;
             background: #D9D9D9;
-            height: 200px;
+            height: 300px;
             width: 200px;
-            border-radius: 50%;
+            border-top-left-radius: 230px;
+            border-top-right-radius: 230px;
+            border-radius: 230px;
+            // border-radius: 50%;
         }
         h1 {
             margin-top: 15px;
@@ -32,7 +35,7 @@
         }
     }
     .ai-brides--and {
-        margin: 25px 0;
+        margin: 15px 0;
         font-size: 40px;
     }
 }
