@@ -1,17 +1,28 @@
 .ai-logo__container {
-    font-family: "Alike", serif;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
     h1 {
+        font-family: "Alike", serif;
         font-size: 90px;
         font-weight: normal;
         text-transform: uppercase;
         letter-spacing: 15px;
     }
     span {
-        margin: 5px 0;
-        font-size: 40px;
+        font-family: "Alike", serif;
+        margin: 1px 0;
+        font-size: 35px;
+    }
+
+    &.ai-logo__medium {
+        h1 {
+            font-size: 50px;
+        }
+        span {
+            font-size: 30px;
+            margin: 10px 0;
+        }
     }
 }
