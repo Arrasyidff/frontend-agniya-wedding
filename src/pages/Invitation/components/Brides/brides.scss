@@ -1,0 +1,38 @@
+.ai-brides__container {
+    min-height: 100vh;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .ai-brides__person {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        .ai-brides__person-img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #D9D9D9;
+            height: 200px;
+            width: 200px;
+            border-radius: 50%;
+        }
+        h1 {
+            margin-top: 15px;
+            font-size: 20px;
+            font-family: "Alike", serif;
+        }
+        p {
+            margin-top: 5px;
+            width: 250px;
+            font-size: 14px;
+        }
+    }
+    .ai-brides--and {
+        margin: 25px 0;
+        font-size: 40px;
+    }
+}
