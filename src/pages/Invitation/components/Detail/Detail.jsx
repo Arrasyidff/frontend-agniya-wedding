@@ -15,7 +15,7 @@ function Detail() {
                 <h1>Wedding</h1>
                 <p>of</p>
             </div>
-            <Logo />
+            <Logo size={'medium'} />
             <div className='ai-detail__date'>
                 <img src={date} alt="" />
                 <p>selasa</p>
