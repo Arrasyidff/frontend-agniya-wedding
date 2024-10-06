@@ -1,7 +1,7 @@
 import './cover.scss'
 import { Logo } from '../'
 
-function Cover() {
+function Cover({ name }) {
     return (
         <section className="ai-cover__container">
             <div className="ai-cover__title">
@@ -12,7 +12,7 @@ function Cover() {
             <div className='ai-cover__for'>
                 <p>KEPADA YTH.</p>
                 <p>BAPAK/IBU/SAUDARA/I</p>
-                <h1>BPK. ANDRE</h1>
+                <h1>{ name }</h1>
                 <p>DI TEMPAT</p>
             </div>
             <button className='ai-cover--open-btn'>
