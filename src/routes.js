@@ -11,7 +11,7 @@ const routes = [
         )
     },
     {
-        path: '/invitation/:id/:name',
+        path: '/invitation/:id',
         element: <Invitation />
     }
 ]
