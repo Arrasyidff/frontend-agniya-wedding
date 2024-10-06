@@ -1,5 +1,5 @@
 import './invitation.scss'
-import { Cover, Quote, Brides, Detail, Gallery } from './components'
+import { Cover, Quote, Brides, Detail, Gallery, Rsvp } from './components'
 
 function Invitation() {
     return (
@@ -9,6 +9,7 @@ function Invitation() {
             <Brides />
             <Detail />
             <Gallery />
+            <Rsvp />
         </div>
     )
 }

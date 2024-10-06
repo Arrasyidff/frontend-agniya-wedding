@@ -3,7 +3,7 @@ import { Logo } from '../'
 
 function Cover() {
     return (
-        <section class="ai-cover__container">
+        <section className="ai-cover__container">
             <div className="ai-cover__title">
                 <h1>Save The Date</h1>
                 <h2>FOR THE WEDDING OF</h2>
