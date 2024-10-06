@@ -5,7 +5,7 @@ import { Cover, Quote, Brides, Detail, Gallery, Rsvp, Wish } from './components'
 import { getInvitation } from '@store/actions/invitation'
 
 function Invitation() {
-    const { invitation, loading, error } = useSelector(state => state.invitation)
+    const { invitation, loading } = useSelector(state => state.invitation)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -19,7 +19,7 @@ function Invitation() {
             <Cover name={invitation?.guest?.name} />
             <Quote />
             <Brides />
-            <Detail />
+            <Detail invitation={invitation}/>
             <Gallery />
             <Rsvp />
             <Wish />
