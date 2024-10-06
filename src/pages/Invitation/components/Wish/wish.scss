@@ -1,0 +1,38 @@
+.ai-wish__container {
+    padding: 40px;
+    background: #80948C;
+    h1 {
+        font-size: 16px;
+        letter-spacing: 4px;
+        text-align: center;
+        color: white;
+    }
+    form {
+        margin-top: 30px;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        textarea {
+            width: 100%;
+            margin-bottom: 15px;
+            border: 1px solid #DADADA;
+            font-size: 15px;
+            border-radius: 7px;
+            min-height: 150px;
+            padding: 10px;
+            &::placeholder {
+                color: #AEAEAE;
+            }
+        }
+
+        button {
+            border-radius: 7px;
+            height: 40px;
+            width: 100%;
+            background: #C59949;
+            color: white;
+        }
+    }
+}
