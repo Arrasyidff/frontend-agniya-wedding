@@ -38,8 +38,8 @@ function Detail({ invitation }) {
                     <p>JOIN US FOR THE</p>
                 </div>
                 <div className='ai-detail__title'>
-                    <h1>Wedding</h1>
-                    <p>of</p>
+                    <h1>{ invitation?.invitation.event_name }</h1>
+                    <p>dari</p>
                 </div>
                 <Logo size={'medium'} />
                 <div className='ai-detail__date'>
