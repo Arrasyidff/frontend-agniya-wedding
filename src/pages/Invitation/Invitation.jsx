@@ -24,7 +24,7 @@ function Invitation() {
             <Detail invitation={ invitation }/>
             <Gallery />
             <Rsvp invitation={ invitation } />
-            <Wish />
+            <Wish invitation={ invitation } />
         </div>
     )
 }

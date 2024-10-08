@@ -1,31 +1,79 @@
 import './wish.scss'
+import { useSelector, useDispatch } from 'react-redux'
+import { getWishes, createWish } from '@store/actions/wish'
+import { useEffect, useState } from 'react'
 
-function Wish() {
+function Wish({ invitation }) {
+    const dispatch = useDispatch()
+    const { wishes, loading } = useSelector(state => state.wish)
+    const [wish, setWish] = useState('')
+
+    useEffect(() => {
+        dispatch(getWishes())
+    }, [dispatch])
+
     const handleOnSubmit = (e) => {
         e.preventDefault()
-        console.log('check')
+        dispatch(createWish({ guest_id: invitation.guest_id, wish }))
+        setWish('')
     }
+
+    const getInitial = (data) => data?.guest?.name ? data.guest.name[0] : 'A'
+
+    function timeAgo(timestamp) {
+        const now = new Date()
+        const givenDate = new Date(timestamp)
+    
+        const diffInMs = now - givenDate
+        const diffInMinutes = Math.floor(diffInMs / 60000)
+        const diffInHours = Math.floor(diffInMinutes / 60)
+        const diffInDays = Math.floor(diffInHours / 24)
+        const diffInWeeks = Math.floor(diffInDays / 7)
+    
+        let timeAgoString = `${diffInWeeks} minggu yang lalu`
+    
+        if (diffInMinutes < 60) {
+            timeAgoString = `${diffInMinutes} menit yang lalu`
+        } else if (diffInHours < 24) {
+            timeAgoString = `${diffInHours} jam yang lalu`
+        } else if (diffInDays < 7) {
+            timeAgoString = `${diffInDays} hari yang lalu`
+        }
+    
+        const hours = givenDate.getHours().toString().padStart(2, '0')
+        const minutes = givenDate.getMinutes().toString().padStart(2, '0')
+    
+        return `${timeAgoString} di ${hours}:${minutes}`
+    }
+
+    if (loading) return 'loading...'
+
     return (
         <section className='ai-wish__container'>
             <div className='ai-wish__form'>
                 <h1>DOA DAN UCAPAN</h1>
                 <form onSubmit={handleOnSubmit}>
-                    <textarea placeholder='Tulis Harapan Kamu' name="wish"></textarea>
+                    <textarea
+                        placeholder='Tulis Harapan Kamu'
+                        name="wish"
+                        value={wish}
+                        onChange={(e) => setWish(e.target.value)}
+                    ></textarea>
                     <button type='submit'>Kirim</button>
                 </form>
             </div>
 
             <div className='ai-wish__wishes'>
                 {
-                    ([1,2,3,4,5]).map(item => (
-                        <div key={item} className='ai-wish__wishes-item'>
+                    wishes.map(item => (
+                        <div key={item.id} className='ai-wish__wishes-item'>
                             <div className='ai-wish__wishes-item__initial'>
-                                <h1>E</h1>
+                                <h1>{ getInitial(item) }</h1>
                             </div>
                             <div className='ai-wish__wishes-item__detail'>
-                                <p>Eddy Radja</p>
-                                <p>Selamat menjalani kehidupan baru yang penuh bahagia. Semoga Tuhan selalu melindungi dan memberikan berkah. Amin.</p>
-                                <p>1 minggu yang lalu at 18:26</p>
+                                <p>{ item?.guest?.name }</p>
+                                <p>{ item?.wish }</p>
+                                <p>{ timeAgo(item.updatedAt) }</p>
                             </div>
                         </div>
                     ))
