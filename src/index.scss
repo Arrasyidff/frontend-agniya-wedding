@@ -1,25 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Alike&family=Playball&display=swap');
-
-:root {
-    --font-size: 1rem;
-    --font-color: #56565A;
-    --main-color: #EFEEE8;
-    --secondary-color: #80948C;
-    --third-color: #BA9400;
-    --border-radius: 230px;
-    --letter-spacing: 4px;
-    --button-font-size: 0.938rem;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Abhaya Libre", serif;
-}
-
-body {
-    background: #EFEEE8;
+    font-family: "Inter", sans-serif;
 }
 
 button {
