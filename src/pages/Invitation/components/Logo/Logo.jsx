@@ -1,11 +1,17 @@
 import './logo.scss'
+import topFlower from '@assets/top_flower_cover.png'
+import bottomFlower from '@assets/bottom_flower_cover.png'
 
 function Logo({ size=null }) {
   return (
     <div className={`ai-logo__container ${size === 'medium' ? 'ai-logo__medium' : ''}`}>
-        <h1>IRA</h1>
-        <span>&</span>
-        <h1>Izul</h1>
+		<img src={topFlower} alt="" srcset="" />
+        <div className='ai-logo__text'>
+			<h1>AGHNIYA</h1>
+			<span>and</span>
+			<h1>Izzul</h1>
+		</div>
+		<img src={bottomFlower} alt="" srcset="" />
     </div>
   )
 }

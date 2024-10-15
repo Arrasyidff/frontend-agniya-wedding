@@ -2,7 +2,7 @@
 
 :root {
     --font-size: 1rem;
-    --font-color: #56565A;
+    --font-color: black;
     --main-color: #EFEEE8;
     --secondary-color: #80948C;
     --third-color: #BA9400;
@@ -15,9 +15,9 @@
     margin: 0 auto;
     font-family: "Abhaya Libre", serif;
     color: var(--font-color);
-    background: #EFEEE8;
+    background: white;
     section {
-        // border: 1px solid red;
+        border: 1px solid red;
     }
 }
 

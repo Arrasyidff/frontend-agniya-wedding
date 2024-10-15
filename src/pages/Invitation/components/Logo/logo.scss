@@ -1,28 +1,35 @@
 .ai-logo__container {
+    height: 28.413rem;
     flex-direction: column;
     display: flex;
     justify-content: center;
     align-items: center;
-    h1 {
-        font-family: "Alike", serif;
-        font-size: 5.625rem;
-        font-weight: normal;
-        text-transform: uppercase;
-        letter-spacing: 15px;
-    }
-    span {
-        font-family: "Alike", serif;
-        margin: 0.063rem 0;
-        font-size: 2.188rem;
-    }
-
-    &.ai-logo__medium {
+    .ai-logo__text {
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         h1 {
-            font-size: 3.125rem;
+            font-family: "Noto Serif", serif;
+            font-size: 5rem;
+            font-weight: 400;
+            text-transform: uppercase;
         }
         span {
-            font-size: 1.875;
-            margin: 0.625rem 0;
+            font-family: "Alex Brush", cursive;
+            font-size: 2.5rem;
+            margin-top: -1.813rem;
+            margin-bottom: -2.188rem;
         }
     }
+
+    // &.ai-logo__medium {
+    //     h1 {
+    //         font-size: 3.125rem;
+    //     }
+    //     span {
+    //         font-size: 1.875;
+    //         margin: 0.625rem 0;
+    //     }
+    // }
 }
