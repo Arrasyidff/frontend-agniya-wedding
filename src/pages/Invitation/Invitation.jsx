@@ -20,7 +20,7 @@ function Invitation() {
         <div className='ai__container'>
             <Cover name={ invitation?.guest?.name } />
             <Quote />
-            {/* <Brides /> */}
+            <Brides />
             {/* <Detail invitation={ invitation }/> */}
             {/* <Gallery /> */}
             {/* <Rsvp invitation={ invitation } /> */}
