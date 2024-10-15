@@ -1,5 +1,6 @@
 import './quote.scss'
-import quoteSymbol from '@assets/quote.png'
+import quoteSymbol from '@assets/quote_symbol.png'
+import quoteRose from '@assets/quote_rose.png'
 
 function Quote() {
   return (
@@ -24,6 +25,7 @@ function Quote() {
                     kaum yang berpikir.
                 </p>
                 <p className='ai-quote--surah'>(Ar-Rum · Ayat 21)</p>
+                <img className='ai-quote--rose' src={quoteRose} alt="" srcset="" />
             </div>
         </div>
     </section>

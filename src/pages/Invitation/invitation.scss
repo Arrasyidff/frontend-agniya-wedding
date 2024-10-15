@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@400;500;600;700;800&family=Alike&family=Playball&display=swap');
 
 :root {
-    --font-size: 1rem;
+    --font-size: 0.875rem;
     --font-color: black;
-    --main-color: #EFEEE8;
+    --main-color: #46399D;
     --secondary-color: #80948C;
     --third-color: #BA9400;
     --border-radius: 230px;
@@ -22,7 +22,7 @@
 }
 
 @media (min-width: 768px) {
-    .ai__container {
-        width: 400px;
-    }
+    // .ai__container {
+    //     width: 400px;
+    // }
 }
