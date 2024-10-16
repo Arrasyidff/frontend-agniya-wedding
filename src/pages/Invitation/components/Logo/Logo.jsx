@@ -11,7 +11,7 @@ function Logo({ size=null }) {
 			<span>and</span>
 			<h1>Izzul</h1>
 		</div>
-		{size !== 'medium' && <img src={topFlower} alt="" srcset="" />}
+		{size !== 'medium' && <img src={bottomFlower} alt="" srcset="" />}
     </div>
   )
 }

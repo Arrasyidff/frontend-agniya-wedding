@@ -5,8 +5,16 @@
     justify-content: center;
     align-items: center;
     position: relative;
+    
+    .ai-brides--background-gradient {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        z-index: 1;
+    }
 
     .ai-brides__bride-container {
+        z-index: 2;
         width: 100%;
         display: flex;
         justify-content: flex-start;
@@ -81,5 +89,6 @@
     .ai-brides--bride-flower {
         position: absolute;
         height: 12rem;
+        z-index: 5;
     }
 }

@@ -4,8 +4,17 @@
     justify-content: center;
     align-items: flex-end;
     padding-top: 2.813rem;
+    position: relative;
+
+    .ai-detail--background-gradient {
+        position: absolute;
+        bottom: 0;
+        z-index: 1;
+        width: 100%;
+    }
 
     .ai-detail__content {
+        z-index: 2;
         box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
         -webkit-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
         -moz-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;

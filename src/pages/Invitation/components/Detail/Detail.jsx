@@ -2,6 +2,7 @@ import './detail.scss'
 import { Logo } from '../'
 import date from '@assets/date_icon.png'
 import point from '@assets/location_icon.png'
+import backgroundGradient from '@assets/background_gradient.png'
 
 function Detail({ invitation }) {
     const getDayFromTimestamp = (timestamp) => {
@@ -32,6 +33,7 @@ function Detail({ invitation }) {
 
     return (
         <section className='ai-detail__container'>
+            <img className='ai-detail--background-gradient' src={backgroundGradient} alt="" srcset="" />
             <div className='ai-detail__content'>
                 <div className='ai-detail__invitation'>
                     <p>Please</p>

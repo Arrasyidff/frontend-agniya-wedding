@@ -1,9 +1,11 @@
 import './brides.scss'
 import brideFlower from '@assets/brides_flower.png'
+import backgroundGradient from '@assets/background_gradient.png'
 
 function Brides() {
   return (
     <section className='ai-brides__container'>
+        <img className='ai-brides--background-gradient' src={backgroundGradient} alt="" srcset="" />
         <div className='ai-brides__bride-container'>
             <div className='ai-brides__bride-image'>
             </div>

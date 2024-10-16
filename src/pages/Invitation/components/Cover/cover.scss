@@ -4,6 +4,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    padding: 23rem 0;
+
+    .ai-cover--background-gradient {
+        position: absolute;
+        z-index: 1;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .ai-cover__title,
+    .ai-cover__for,
+    .ai-cover--open-btn
+    {
+        z-index: 2;
+    }
 
     .ai-cover__title {
         text-align: center;
@@ -15,9 +31,11 @@
         h2 {
             font-size: 0.688rem;
         }
+        margin-bottom: 2.5rem;
     }
 
     .ai-cover__for {
+        margin-top: 2.5rem;
         text-transform: uppercase;
         text-align: center;
         letter-spacing: var(--letter-spacing);
