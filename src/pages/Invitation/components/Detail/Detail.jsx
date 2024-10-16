@@ -1,7 +1,7 @@
 import './detail.scss'
 import { Logo } from '../'
-import date from '@assets/date.png'
-import point from '@assets/point.png'
+import date from '@assets/date_icon.png'
+import point from '@assets/location_icon.png'
 
 function Detail({ invitation }) {
     const getDayFromTimestamp = (timestamp) => {
@@ -37,17 +37,22 @@ function Detail({ invitation }) {
                     <p>Please</p>
                     <p>JOIN US FOR THE</p>
                 </div>
+
                 <div className='ai-detail__title'>
                     <h1>{ invitation?.invitation.event_name }</h1>
-                    <p>dari</p>
                 </div>
+
+                <span className='ai-detail--title-separator'>Of</span>
+
                 <Logo size={'medium'} />
+
                 <div className='ai-detail__date'>
                     <img src={date} alt="" />
                     <p>{ getDayFromTimestamp(invitation?.invitation.event_date) }</p>
                     <p>{ getFullDate(invitation?.invitation.event_date) }</p>
                     <p>PUKUL { getTimeFromTimestamp(invitation?.invitation.event_date) } - SELESAI</p>
                 </div>
+
                 <div className='ai-detail__location'>
                     <img src={point} alt="" />
                     <p>MI KARAKTER</p>

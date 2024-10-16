@@ -4,6 +4,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-transform: none;
     .ai-logo__text {
         flex-direction: column;
         display: flex;
@@ -23,13 +24,15 @@
         }
     }
 
-    // &.ai-logo__medium {
-    //     h1 {
-    //         font-size: 3.125rem;
-    //     }
-    //     span {
-    //         font-size: 1.875;
-    //         margin: 0.625rem 0;
-    //     }
-    // }
+    &.ai-logo__medium {
+        height: auto;
+        h1 {
+            font-size: 3.5rem;
+        }
+        span {
+            font-size: 2rem;
+            margin-top: -1.313rem;
+            margin-bottom: -1.588rem;
+        }
+    }
 }

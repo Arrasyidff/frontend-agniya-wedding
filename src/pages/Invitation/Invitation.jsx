@@ -21,7 +21,7 @@ function Invitation() {
             <Cover name={ invitation?.guest?.name } />
             <Quote />
             <Brides />
-            {/* <Detail invitation={ invitation }/> */}
+            <Detail invitation={ invitation }/>
             {/* <Gallery /> */}
             {/* <Rsvp invitation={ invitation } /> */}
             {/* <Wish invitation={ invitation } /> */}
