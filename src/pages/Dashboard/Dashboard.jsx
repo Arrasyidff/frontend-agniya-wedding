@@ -1,9 +1,5 @@
-import React from 'react'
-
 function Dashboard() {
-    return (
-        <div>Dashboard</div>
-    )
+  return ('asc')
 }
 
 export default Dashboard

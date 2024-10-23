@@ -1,14 +1,14 @@
 import React from 'react'
-// import { Outlet } from 'react-router-dom'
-import { Sidebar } from '@components'
+import { Outlet } from 'react-router-dom'
+// import { Sidebar } from '@components'
 
 function Home() {
     return (
         <div className='ai-layout__container'>
-            <Sidebar />
+            {/* <Sidebar /> */}
+            <Outlet />
         </div>
         // <div className='ai'>
-        //     <Outlet />
         // </div>
     )
 }
