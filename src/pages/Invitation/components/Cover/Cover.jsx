@@ -3,23 +3,37 @@ import { Logo } from '../'
 import backgroundGradient from '@assets/background_gradient.png'
 
 function Cover({ name }) {
+    const handleOpenCover = () => {
+        const coverSection = document.querySelector('.ai-cover__container')
+        if (coverSection) {
+            coverSection.style.opacity = '0'
+        }
+
+        const aiContainer = document.querySelector('.ai__container')
+        if (aiContainer) {
+            aiContainer.style.overflowY = 'scroll'
+        }
+    }
+
     return (
         <section className="ai-cover__container">
-            <img className='ai-cover--background-gradient' src={backgroundGradient} alt="" srcSet="" />
-            <div className="ai-cover__title">
-                <h1>Save The Date</h1>
-                <h2>FOR THE WEDDING OF</h2>
+            <div className='ai-cover__sub-container'>
+                <img className='ai-cover--background-gradient' src={backgroundGradient} alt="" srcSet="" />
+                <div className="ai-cover__title">
+                    <h1>Save The Date</h1>
+                    <h2>FOR THE WEDDING OF</h2>
+                </div>
+                <Logo />
+                <div className='ai-cover__for'>
+                    <p>KEPADA YTH.</p>
+                    <p>BAPAK/IBU/SAUDARA/I</p>
+                    <h1>{ name }</h1>
+                    <p>DI TEMPAT</p>
+                </div>
+                <button className='ai-cover--open-btn' onClick={handleOpenCover}>
+                    BUKA undangan
+                </button>
             </div>
-            <Logo />
-            <div className='ai-cover__for'>
-                <p>KEPADA YTH.</p>
-                <p>BAPAK/IBU/SAUDARA/I</p>
-                <h1>{ name }</h1>
-                <p>DI TEMPAT</p>
-            </div>
-            <button className='ai-cover--open-btn'>
-                BUKA undangan
-            </button>
         </section>
     )
 }

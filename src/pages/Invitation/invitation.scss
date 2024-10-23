@@ -12,17 +12,19 @@
 }
 
 .ai__container {
+    position: relative;
     margin: 0 auto;
     font-family: "Abhaya Libre", serif;
     color: var(--font-color);
     background: white;
-    section {
-        // border: 1px solid red;
-    }
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100%;
 }
 
 @media (min-width: 768px) {
-    // .ai__container {
-    //     width: 400px;
-    // }
+    .ai__container {
+        width: 430px;
+    }
 }

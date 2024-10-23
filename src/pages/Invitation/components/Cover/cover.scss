@@ -1,61 +1,70 @@
 .ai-cover__container {
+    position: absolute;
+    background: white;
+    z-index: 1000;
     height: 100vh;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    padding: 23rem 0;
+    width: 100%;
+    transition: .8s ease-out;
+    
+    .ai-cover__sub-container {
+        height: 100%;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 23rem 0;
+        position: relative;
 
-    .ai-cover--background-gradient {
-        position: absolute;
-        z-index: 1;
-        bottom: 0;
-        width: 100%;
-    }
-
-    .ai-cover__title,
-    .ai-cover__for,
-    .ai-cover--open-btn
-    {
-        z-index: 2;
-    }
-
-    .ai-cover__title {
-        text-align: center;
-        text-transform: uppercase;
-        letter-spacing: var(--letter-spacing);
-        h1 {
-            font-size: 1.5rem;
+        .ai-cover--background-gradient {
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            width: 100%;
         }
-        h2 {
-            font-size: 0.688rem;
+    
+        .ai-cover__title,
+        .ai-cover__for,
+        .ai-cover--open-btn
+        {
+            z-index: 2;
         }
-        margin-bottom: 2.5rem;
-    }
-
-    .ai-cover__for {
-        margin-top: 2.5rem;
-        text-transform: uppercase;
-        text-align: center;
-        letter-spacing: var(--letter-spacing);
-        p {
-            font-size: 0.688rem;
+    
+        .ai-cover__title {
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: var(--letter-spacing);
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 0.688rem;
+            }
+            margin-bottom: 2.5rem;
         }
-        h1 {
-            font-size: 1.25rem;
-            margin: 0.813rem 0;
-            width: 14.625rem;
+    
+        .ai-cover__for {
+            margin-top: 2.5rem;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: var(--letter-spacing);
+            p {
+                font-size: 0.688rem;
+            }
+            h1 {
+                font-size: 1.25rem;
+                margin: 0.813rem 0;
+                width: 14.625rem;
+            }
         }
-    }
-
-    .ai-cover--open-btn {
-        margin-top: 2.438rem;
-        text-transform: uppercase;
-        font-size: var(--button-font-size);
-        padding: 0.313rem 0.625rem;
-        color: white;
-        background: rgb(69,56,156);
-        background: linear-gradient(148deg, rgba(69,56,156,1) 0%, rgba(76,61,164,1) 100%);
+    
+        .ai-cover--open-btn {
+            margin-top: 2.438rem;
+            text-transform: uppercase;
+            font-size: var(--button-font-size);
+            padding: 0.313rem 0.625rem;
+            color: white;
+            background: rgb(69,56,156);
+            background: linear-gradient(148deg, rgba(69,56,156,1) 0%, rgba(76,61,164,1) 100%);
+        }
     }
 }
