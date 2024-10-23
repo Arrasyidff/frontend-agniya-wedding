@@ -1,0 +1,76 @@
+.ai-gift__container {
+    padding-top: 40px;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+
+    align-items: center;
+    .ai-gift--title {
+        font-size: 1rem;
+        letter-spacing: 4px;
+    }
+    .ai-gift--description {
+        margin-top: 1.5rem;
+        width: 21.188rem;
+        font-size: 0.875rem;
+    }
+    img {
+        margin: 0.688rem 0 1.313rem 0;
+    }
+    .ai-gift--person {
+        font-size: 1rem;
+        margin-bottom: 1.813rem;
+    }
+    button {
+        width: 20.25rem;
+        height: 2.125rem;
+        color: white;
+        background: rgb(69,56,156);
+        background: linear-gradient(148deg, rgba(69,56,156,1) 0%, rgba(76,61,164,1) 100%);
+        border-radius: 7px;
+        font-size: 0.938rem;
+        cursor: pointer;
+    }
+
+    .ai-gift__cover {
+        margin-top: 2.625rem;
+        background: url('../../../../assets/background_wish.png');
+        height: 27.313rem;
+        width: 100%;
+    }
+
+    .ai-gift__thanks {
+        margin-top: 2.938rem;
+
+        h1 {
+            letter-spacing: 4px;
+            font-size: 1rem;
+        }
+        p {
+            margin-top: 0.688rem;
+            font-size: 0.875rem;
+            width: 21.188rem;
+        }
+
+        .ai-gift__thanks--seeyou {
+            margin-top: 2.063rem;
+            font-size: 0.9rem;
+            font-weight: 800;
+            margin-bottom: 5.563rem;
+        }
+
+    }
+
+    .ai-gift__footer {
+        height: 5.313rem;
+        width: 100%;
+        background: #847D65;
+        p {
+            font-size: 0.5rem;
+            color: white;
+            text-align: center;
+            margin-top: 1.625rem;
+        }
+    }
+}

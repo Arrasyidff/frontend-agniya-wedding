@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 
 function Wish({ invitation }) {
     const dispatch = useDispatch()
-    const { wishes, loading } = useSelector(state => state.wish)
+    const {wishes, loading} = useSelector(state => state.wish)
     const [wish, setWish] = useState('')
 
     useEffect(() => {
@@ -64,20 +64,24 @@ function Wish({ invitation }) {
             </div>
 
             <div className='ai-wish__wishes'>
-                {
-                    wishes.map(item => (
-                        <div key={item.id} className='ai-wish__wishes-item'>
-                            <div className='ai-wish__wishes-item__initial'>
-                                <h1>{ getInitial(item) }</h1>
+                <div className='ai-wish__wishes-items'>
+                    {
+                        wishes.map(item => (
+                            <div key={item.id} className='ai-wish__wishes-item'>
+                                <div className='ai-wish__wishes-item__initial'>
+                                    <h1>{ getInitial(item) }</h1>
+                                </div>
+                                <div className='ai-wish__wishes-item__detail'>
+                                    <div className='ai-wish__wishes-item__detail-header'>
+                                        <p>{ item?.guest?.name }</p>
+                                        <p>{ item?.wish }</p>
+                                    </div>
+                                    <p className='ai-wish__wishes-item__detail--footer'>{ timeAgo(item.updatedAt) }</p>
+                                </div>
                             </div>
-                            <div className='ai-wish__wishes-item__detail'>
-                                <p>{ item?.guest?.name }</p>
-                                <p>{ item?.wish }</p>
-                                <p>{ timeAgo(item.updatedAt) }</p>
-                            </div>
-                        </div>
-                    ))
-                }
+                        ))
+                    }
+                </div>
             </div>
         </section>
     )

@@ -3,8 +3,10 @@ import './gallery.scss'
 function Gallery() {
     return (
         <section className='ai-gallery__container'>
-            <h1>GALLERY</h1>
-            <h2>OUR MEMORIES</h2>
+            <div className='ai-gallery__title'>
+                <h1>GALLERY</h1>
+                <h2>OUR MEMORIES</h2>
+            </div>
             <div className='ai-gallery__photos'>
                 <div className='ai-gallery__photos--single'>
                 </div>

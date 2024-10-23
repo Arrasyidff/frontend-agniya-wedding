@@ -7,7 +7,7 @@ function Quote() {
   return (
     <section className='ai-quote__container'>
         <div className='ai-quote__content'>
-            <img className='ai-quote__content--background-gradient' src={backgroundGradient} alt="" srcset="" />
+            <img className='ai-quote__content--background-gradient' src={backgroundGradient} alt="" srcSet="" />
             <div className='ai-quote__sub-content'>
                 <img className='ai-quote--symbol' src={quoteSymbol} alt='symbol' />
                 <p className='ai-quote--dua'>
@@ -27,7 +27,7 @@ function Quote() {
                     kaum yang berpikir.
                 </p>
                 <p className='ai-quote--surah'>(Ar-Rum · Ayat 21)</p>
-                <img className='ai-quote--rose' src={quoteRose} alt="" srcset="" />
+                <img className='ai-quote--rose' src={quoteRose} alt="" srcSet="" />
             </div>
         </div>
     </section>
