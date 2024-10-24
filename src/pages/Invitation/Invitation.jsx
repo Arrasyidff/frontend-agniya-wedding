@@ -1,7 +1,7 @@
 import './invitation.scss'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Cover, Quote, Brides, Detail, Gallery, Rsvp, Wish, Gift } from './components'
+import { Cover, Quote, Brides, Detail, Gallery, Rsvp, Wish, Gift, Navigation } from './components'
 import { getInvitation } from '@store/actions/invitation'
 import { useParams } from 'react-router-dom'
 
@@ -26,6 +26,7 @@ function Invitation() {
             <Rsvp invitation={ invitation } />
             <Wish invitation={ invitation } />
             <Gift />
+            <Navigation />
         </div>
     )
 }
