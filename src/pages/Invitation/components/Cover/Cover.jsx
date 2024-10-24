@@ -7,6 +7,9 @@ function Cover({ name }) {
         const coverSection = document.querySelector('.ai-cover__container')
         if (coverSection) {
             coverSection.style.opacity = '0'
+            setTimeout(() => {
+                coverSection.style.display = 'none'
+            }, 900);
         }
 
         const aiContainer = document.querySelector('.ai__container')
