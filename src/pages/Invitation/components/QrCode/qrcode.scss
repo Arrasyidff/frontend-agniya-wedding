@@ -4,6 +4,7 @@
     z-index: 999;
     height: 100px;
     bottom: -100vh;
+    // bottom: 0;
     width: 430px;
     height: 100vh;
     transition: .5s ease;
@@ -58,7 +59,8 @@
 
                 .ai-qrcode__content-detail__guest--name {
                     width: 19.25rem;
-                    margin: 0.438rem 0;
+                    margin: 0.6rem 0;
+                    text-transform: uppercase;
                 }
             }
 
@@ -67,7 +69,7 @@
                 h1 {
                     letter-spacing: 4px;
                     font-size: 1.25rem;
-                    margin-bottom: 0.188rem;
+                    margin-bottom: 0.6rem;
                 }
                 p {
                     letter-spacing: 4px;
@@ -76,6 +78,7 @@
             }
 
             .ai_qrcode__code {
+                border-radius: 5px;
                 margin-top: 2.625rem;
                 height: 19rem;
                 width: 19rem;
@@ -84,11 +87,7 @@
                 justify-content: center;
                 align-items: center;
                 overflow: hidden;
-
-                img {
-                    height: 30%;
-                    width: 30%;
-                }
+                background: white;
             }
         }
     }

@@ -42,7 +42,7 @@ function Navigation() {
                 </div>
                 <div className='ai-navigation__qr-code' onClick={handleShowQrQode}>
                     <div className='ai-navigation__qr-code__sub'>
-                        <img src={qrQode} alt="" srcset="" />
+                        <img src={qrQode} alt="" srcSet="" />
                     </div>
                 </div>
             </div>

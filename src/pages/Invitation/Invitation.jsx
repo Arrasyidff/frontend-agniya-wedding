@@ -27,7 +27,7 @@ function Invitation() {
             <Wish invitation={ invitation } />
             <Gift />
             <Navigation />
-            <QrCode />
+            <QrCode invitation={ invitation } />
         </div>
     )
 }

@@ -21,7 +21,8 @@ function Detail({ invitation }) {
     const getYearFromTimestamp = (timestamp) => new Date(+timestamp).getFullYear();
 
     const getFullDate = (timestamp) => {
-        return `${getDayFromTimestamp(timestamp)} ${getMonthFromTimestamp(timestamp)} ${getYearFromTimestamp(timestamp)}`
+        const date = new Date(+timestamp)
+        return `${date.getDate()} ${getMonthFromTimestamp(timestamp)} ${getYearFromTimestamp(timestamp)}`
     }
 
     const getTimeFromTimestamp = (timestamp) => {

@@ -44,7 +44,7 @@ function QrScanner() {
       }
   
       // Hentikan kamera saat component di-unmount
-      return () => stopCamera();
+      return () => stopCamera(); // eslint-disable-next-line
     }, [cameraOn]);
   
     return (
