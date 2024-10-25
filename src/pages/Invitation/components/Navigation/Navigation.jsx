@@ -31,7 +31,30 @@ function Navigation() {
     }
 
     const handleNavigation = (nav) => {
-        console.log(nav)
+        let sectionIntoView = null
+        switch (nav) {
+            case 'quote':
+                sectionIntoView = document.querySelector('.ai-quote__container')
+                break;
+            case 'bride':
+                sectionIntoView = document.querySelector('.ai-brides__container')
+                break;
+            case 'date':
+                sectionIntoView = document.querySelector('.ai-detail__container')
+                break;
+            case 'gallery':
+                sectionIntoView = document.querySelector('.ai-gallery__container')
+                break;
+            case 'wish':
+                sectionIntoView = document.querySelector('.ai-wish__container')
+                break;
+            case 'gift':
+                sectionIntoView = document.querySelector('.ai-gift__container')
+                break;
+            default:
+                break;
+        }
+        if (sectionIntoView) sectionIntoView.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
 
     const leftNavigations = [
