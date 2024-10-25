@@ -5,7 +5,7 @@ import backgroundGradient from '@assets/background_gradient.png'
 
 function Quote() {
   return (
-    <section className='ai-quote__container'>
+    <section id='ai-quote' className='ai-quote__container'>
         <div className='ai-quote__content'>
             <img className='ai-quote__content--background-gradient' src={backgroundGradient} alt="" srcSet="" />
             <div className='ai-quote__sub-content'>

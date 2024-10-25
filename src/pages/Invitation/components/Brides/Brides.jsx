@@ -4,7 +4,7 @@ import backgroundGradient from '@assets/background_gradient.png'
 
 function Brides() {
   return (
-    <section className='ai-brides__container'>
+    <section id='ai-brides' className='ai-brides__container'>
         <img className='ai-brides--background-gradient' src={backgroundGradient} alt="" srcSet="" />
         <div className='ai-brides__bride-container'>
             <div className='ai-brides__bride-image'>

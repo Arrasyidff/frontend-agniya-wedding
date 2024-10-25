@@ -1,5 +1,5 @@
 .ai-navigation__container {
-    background: rgba(255, 255, 255, 0.504);
+    background: rgba(255, 255, 255, 0.965);
     position: fixed;
     z-index: 999;
     bottom: 0;
@@ -17,7 +17,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 7.188rem;
+            width: 8.188rem;
         }
         
         .ai-navigation__left-side {
@@ -28,12 +28,30 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 1.125rem;
-            width: 1.6rem;
+            height: 2.688rem;
+            width: 2.688rem;
+            border-radius: 50%;
             overflow: hidden;
 
             img {
-                height: 100%;
+                height: 40%;
+            }
+            .ai-navigation__icon--default {
+                display: block;
+            }
+            .ai-navigation__icon--active {
+                display: none;
+            }
+            transition: .3s ease;
+
+            &.active {
+                background: #EBE6FF;
+                .ai-navigation__icon--default {
+                    display: none;
+                }
+                .ai-navigation__icon--active {
+                    display: block;
+                }
             }
         }
 

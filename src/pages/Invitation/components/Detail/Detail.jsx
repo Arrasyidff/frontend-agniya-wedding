@@ -33,7 +33,7 @@ function Detail({ invitation }) {
     }
 
     return (
-        <section className='ai-detail__container'>
+        <section id='ai-detail' className='ai-detail__container'>
             <img className='ai-detail--background-gradient' src={backgroundGradient} alt="" srcSet="" />
             <div className='ai-detail__content'>
                 <div className='ai-detail__invitation'>

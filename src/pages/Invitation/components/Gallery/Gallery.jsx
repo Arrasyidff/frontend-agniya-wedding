@@ -2,7 +2,7 @@ import './gallery.scss'
 
 function Gallery() {
     return (
-        <section className='ai-gallery__container'>
+        <section id='ai-gallery' className='ai-gallery__container'>
             <div className='ai-gallery__title'>
                 <h1>GALLERY</h1>
                 <h2>OUR MEMORIES</h2>

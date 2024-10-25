@@ -3,7 +3,7 @@ import bca from '@assets/bca.png'
 
 function Gift() {
     return (
-        <div className='ai-gift__container'>
+        <section id='ai-gift' className='ai-gift__container'>
             <h1 className='ai-gift--title'>TANDA KASIH (E-GIFT)</h1>
             <p className='ai-gift--description'>Doa dan Restu keluarga, sahabat, serta rekan-rekan adalah anugerah yang sangat berharga bagi kami. Sebagai bentuk kasih, juga tanpa mengurangi rasa hormat, Anda dapat memberikan kado secara melalui</p>
             <img src={bca} alt="" />
@@ -21,7 +21,7 @@ function Gift() {
             <div className='ai-gift__footer'>
                 <p>Copyright ©2024-Arkhadesignfeed. All Right Reserved.</p>
             </div>
-        </div>
+        </section>
     )
 }
 

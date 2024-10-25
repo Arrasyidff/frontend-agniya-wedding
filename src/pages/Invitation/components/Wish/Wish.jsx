@@ -49,7 +49,7 @@ function Wish({ invitation }) {
     if (loading) return 'loading...'
 
     return (
-        <section className='ai-wish__container'>
+        <section id='ai-wish' className='ai-wish__container'>
             <div className='ai-wish__form'>
                 <h1>DOA DAN UCAPAN</h1>
                 <form onSubmit={handleOnSubmit}>

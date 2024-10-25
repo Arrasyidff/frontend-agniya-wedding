@@ -36,7 +36,7 @@ function Rsvp({ invitation }) {
     }
 
     return (
-        <section className='ai-rsvp__container'>
+        <section id='ai-rsvp' className='ai-rsvp__container'>
             <h1 className='ai-rsvp--title'>KONFIRMASI KEHADIRAN</h1>
             <div className='ai-rsvp--description'>
                 <p>JIKA ANDA AKAN HADIR PADA ACARA,</p>
