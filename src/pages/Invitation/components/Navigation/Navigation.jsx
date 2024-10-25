@@ -8,6 +8,13 @@ import wishNav from '@assets/nav_wish.png'
 import giftNav from '@assets/nav_gift.png'
 
 function Navigation() {
+    const handleShowQrQode = () => {
+        const qrCodeSection = document.querySelector('.ai-qrcode__container')
+        if (qrCodeSection) {
+            qrCodeSection.style.bottom = 0;
+        }
+    }
+
     return (
         <div className='ai-navigation__container'>
             <div className='ai-navigation__sub-container'>
@@ -33,7 +40,7 @@ function Navigation() {
                         <img src={giftNav} alt="" />
                     </div>
                 </div>
-                <div className='ai-navigation__qr-code'>
+                <div className='ai-navigation__qr-code' onClick={handleShowQrQode}>
                     <div className='ai-navigation__qr-code__sub'>
                         <img src={qrQode} alt="" srcset="" />
                     </div>

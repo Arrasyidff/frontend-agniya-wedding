@@ -1,0 +1,106 @@
+.ai-qrcode__container {
+    position: absolute;
+    position: fixed;
+    z-index: 999;
+    height: 100px;
+    bottom: -100vh;
+    width: 430px;
+    height: 100vh;
+    transition: .5s ease;
+
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    .ai-qrcode__cover {
+        width: 100%;
+        height: 25vh;
+        background: green;
+        overflow: hidden;
+        img {
+            width: 100%;
+            transform: translate(0, -100px);
+        }
+    }
+
+    .ai-qrcode__content {
+        width: 100%;
+        height: 70vh;
+        background: #0A0D55;
+        position: relative;
+        img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1000;
+        }
+        .ai-qrcode__content-detail {
+            z-index: 1001;
+            text-align: center;
+            padding-top: 3rem;
+            color: white;
+
+            flex-direction: column;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+            .ai-qrcode__content-detail__guest {
+                h1 {
+                    letter-spacing: 4px;
+                    font-size: 1.25rem;
+                }
+                p {
+                    letter-spacing: 4px;
+                    font-size: 0.688rem;
+                }
+
+                .ai-qrcode__content-detail__guest--name {
+                    width: 19.25rem;
+                    margin: 0.438rem 0;
+                }
+            }
+
+            .ai-qrcode__content-detail__event {
+                margin-top: 2.375rem;
+                h1 {
+                    letter-spacing: 4px;
+                    font-size: 1.25rem;
+                    margin-bottom: 0.188rem;
+                }
+                p {
+                    letter-spacing: 4px;
+                    font-size: 0.938rem;
+                }
+            }
+
+            .ai_qrcode__code {
+                margin-top: 2.625rem;
+                height: 19rem;
+                width: 19rem;
+                border: 1px solid white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+
+                img {
+                    height: 30%;
+                    width: 30%;
+                }
+            }
+        }
+    }
+
+    .ai-qrcode__footer {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background: #847D65;
+        font-size: 0.625rem;
+        height: 5vh;
+    }
+}
