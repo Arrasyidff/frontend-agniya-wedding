@@ -13,32 +13,55 @@ function Navigation() {
         if (qrCodeSection) {
             qrCodeSection.style.bottom = 0;
         }
+
+        const qrCodeContent = document.querySelector('.ai-qrcode__content')
+        if (qrCodeContent) {
+            qrCodeContent.scrollTop = 0
+        }
+
+        const qrCodeOverlay = document.querySelector('.ai-qrcode--overlay')
+        if (qrCodeOverlay) {
+            qrCodeOverlay.style.display = 'block'
+        }
+
+        const aiContainer = document.querySelector('.ai__container')
+        if (aiContainer) {
+            aiContainer.style.overflowY = 'hidden'
+        }
     }
+
+    const handleNavigation = (nav) => {
+        console.log(nav)
+    }
+
+    const leftNavigations = [
+        { key: 'quote', icon: quoteNav },
+        { key: 'bride', icon: brideNav },
+        { key: 'date', icon: dateNav },
+    ]
+
+    const rightNavigations = [
+        { key: 'gallery', icon: galleryNav },
+        { key: 'wish', icon: wishNav },
+        { key: 'gift', icon: giftNav },
+    ]
 
     return (
         <div className='ai-navigation__container'>
             <div className='ai-navigation__sub-container'>
                 <div className='ai-navigation__left-side'>
-                    <div className='ai-navigation__icon'>
-                        <img src={quoteNav} alt="" />
-                    </div>
-                    <div className='ai-navigation__icon'>
-                        <img src={brideNav} alt="" />
-                    </div>
-                    <div className='ai-navigation__icon'>
-                        <img src={dateNav} alt="" />
-                    </div>
+                    {leftNavigations.map(nav => (
+                        <div key={nav.key} onClick={() => handleNavigation(nav.key)} className='ai-navigation__icon'>
+                            <img src={nav.icon} alt="" />
+                        </div>
+                    ))}
                 </div>
                 <div className='ai-navigation__right-side'>
-                    <div className='ai-navigation__icon'>
-                        <img src={galleryNav} alt="" />
-                    </div>
-                    <div className='ai-navigation__icon'>
-                        <img src={wishNav} alt="" />
-                    </div>
-                    <div className='ai-navigation__icon'>
-                        <img src={giftNav} alt="" />
-                    </div>
+                    {rightNavigations.map(nav => (
+                        <div key={nav.key} onClick={() => handleNavigation(nav.key)} className='ai-navigation__icon'>
+                            <img src={nav.icon} alt="" />
+                        </div>
+                    ))}
                 </div>
                 <div className='ai-navigation__qr-code' onClick={handleShowQrQode}>
                     <div className='ai-navigation__qr-code__sub'>

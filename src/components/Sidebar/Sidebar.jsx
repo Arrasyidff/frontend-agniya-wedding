@@ -10,7 +10,7 @@ function Sidebar() {
                 <div className='ai-sidebar__item'>
                     <div className='ai-sidebar__item-text'>
                         {/* asc */}
-                        <span class="material-symbols-outlined">groups</span>
+                        <span className="material-symbols-outlined">groups</span>
                     </div>
                     <div className='ai-sidebar__item-text text'>
                         <span>Tamu Undangan</span>
