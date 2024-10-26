@@ -69,3 +69,23 @@
         }
     }
 }
+
+@media (max-height: 670px) {
+    .ai-cover__container {
+        overflow-y: scroll;
+    }
+}
+
+@media (max-height: 750px) {
+    .ai-cover__container {
+        overflow-y: scroll;
+        .ai-cover__sub-container {
+            .ai-cover__title {
+                margin-bottom: 2rem;
+            }
+            .ai-cover__for {
+                margin-top: 2rem;
+            }
+        }
+    }
+}
