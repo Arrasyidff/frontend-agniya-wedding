@@ -16,7 +16,7 @@
     .ai-quote__content {
         border-top-right-radius: var(--border-radius);
         border-top-left-radius: var(--border-radius);
-        height: 90%;
+        height: 93%;
         padding: 2.375rem;
         padding-top: 3.375rem;
         border-top: 4px solid white;
@@ -26,7 +26,7 @@
             z-index: 1;
             position: absolute;
             bottom: 0;
-            width: 90%;
+            width: 100%;
         }
         
         .ai-quote__sub-content {
@@ -70,22 +70,18 @@
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 375px) {
     .ai-quote__container {
         .ai-quote__content {
-            height: 93%;
+            padding-top: 2.6rem;
+            padding-right: 1.6rem;
+            padding-left: 1.6rem;
         }
     }
 }
 
-@media (max-height: 885px) {
+@media (min-height: 885px) {
     .ai-quote__container {
         height: 830px;
-
-        .ai-quote__content {
-            padding-top: 2.375rem;
-            padding-right: 1.375rem;
-            padding-left: 1.375rem;
-        }
     }
 }
