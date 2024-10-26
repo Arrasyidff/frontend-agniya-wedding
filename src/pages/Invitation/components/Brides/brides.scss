@@ -26,19 +26,20 @@
             -webkit-box-shadow: 3px 5px 2px 0px rgba(0,0,0,0.25) inset;
             -moz-box-shadow: 3px 5px 2px 0px rgba(0,0,0,0.25) inset;
 
-            width: 12.938rem;
+            width: 50%;
             height: 24.063rem;
             border-top-left-radius: var(--border-radius);
             border-top-right-radius: var(--border-radius);
         }
 
         .ai-brides__bride-detail {
-            margin-left: 1.563rem;
+            width: 50%;
             text-align: center;
             flex-direction: column;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 0 0.625rem;
 
             .ai-brides__bride-detail--nickname {
                 font-family: "Noto Serif", serif;
@@ -77,11 +78,6 @@
                 border-radius: 0;
                 border-bottom-left-radius: var(--border-radius);
                 border-bottom-right-radius: var(--border-radius);
-            }
-
-            .ai-brides__bride-detail {
-                margin-left: auto;
-                margin-right: 1.563rem;
             }
         }
     }

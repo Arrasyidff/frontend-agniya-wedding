@@ -45,7 +45,7 @@ function Cover({ name }) {
     return (
         <section className="ai-cover__container">
             <div className='ai-cover__sub-container'>
-                <img className='ai-cover--background-gradient' src={backgroundGradient} alt="" srcSet="" />
+                {/* <img className='ai-cover--background-gradient' src={backgroundGradient} alt="" srcSet="" /> */}
                 <div className="ai-cover__title">
                     <h1>Save The Date</h1>
                     <h2>FOR THE WEDDING OF</h2>
