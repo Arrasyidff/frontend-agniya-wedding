@@ -70,12 +70,6 @@
     }
 }
 
-@media (max-height: 670px) {
-    .ai-cover__container {
-        overflow-y: scroll;
-    }
-}
-
 @media (max-height: 750px) {
     .ai-cover__container {
         overflow-y: scroll;
@@ -87,5 +81,12 @@
                 margin-top: 2rem;
             }
         }
+    }
+}
+
+
+@media (max-height: 670px) {
+    .ai-cover__container {
+        overflow-y: scroll;
     }
 }
