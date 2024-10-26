@@ -90,10 +90,6 @@ function QrCode({ invitation }) {
                             />
                         </div>
 
-                        <div className='ai_qrcode__download'>
-                            <p>Download</p>
-                        </div>
-
                         <p className='ai-qrcode__content-description'>
                             Silakan tunjukkan QR Code ini kepada 
                             penerima tamu undangan di lokasi acara. 
