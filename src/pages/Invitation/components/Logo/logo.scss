@@ -37,6 +37,16 @@
     }
 }
 
+@media (max-width: 350px) {
+    .ai-logo__container {
+        .ai-logo__text {
+            h1 {
+                font-size: 4rem;
+            }
+        }
+    }
+}
+
 @media (max-height: 799px) {
     .ai-logo__container {
         .ai-logo__text {
