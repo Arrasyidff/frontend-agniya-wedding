@@ -18,7 +18,7 @@
         z-index: 2;
         width: 100%;
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
 
         .ai-brides__bride-image {
@@ -36,7 +36,7 @@
             flex-direction: column;
             display: flex;
             justify-content: center;
-            align-items: flex-end;
+            align-items: center;
             padding: 0 0.625rem;
             padding-right: 1rem;
             text-align: center;
@@ -45,9 +45,9 @@
                 flex-direction: column;
                 display: flex;
                 justify-content: center;
-                align-items: flex-end;
+                align-items: center;
                 h1 {
-                    font-size: 3.75rem;
+                    font-size: 3rem;
                     font-family: "Arizonia", cursive;
                 }
                 span {
@@ -85,6 +85,7 @@
 
                 .ai-brides__bride-detail__nickname {
                     align-items: center;
+                    font-size: 3.75rem;
                 }
             }
 

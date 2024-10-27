@@ -3,9 +3,7 @@
     background: rgba(0, 0, 0, 0.256);
     position: fixed;
     top: 0;
-    left: 0;
     bottom: 0;
-    right: 0;
     height: 100%;
     display: none;
 }
@@ -140,5 +138,11 @@
             height: 3rem;
         }
     }
+}
 
+@media (min-width: 768px) {
+    .ai-qrcode--overlay,
+    .ai-qrcode__container {
+        width: 430px;
+    }
 }
