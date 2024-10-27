@@ -1,9 +1,7 @@
 .ai-detail__container {
-    min-height: 932px;
     display: flex;
     justify-content: center;
     align-items: flex-end;
-    padding: 0 2.5rem;
     padding-top: 2.813rem;
     position: relative;
 
@@ -21,7 +19,6 @@
         -moz-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
         border-top-left-radius: var(--border-radius);
         border-top-right-radius: var(--border-radius);
-        min-height: 854px;
         width: 100%;
         background: white;
         border: 4px solid white;
@@ -40,6 +37,7 @@
                 letter-spacing: 4px;
                 font-weight: bold;
                 font-size: 0.688rem;
+                line-height: 20px;
             }
         }
 
@@ -55,6 +53,7 @@
                 line-height: 4.375rem;
             }
         }
+
         .ai-detail--title-separator {
             color: var(--third-color);
             font-family: "Qwigley", cursive;
@@ -74,8 +73,9 @@
             justify-content: center;
             align-items: center;
             text-transform: uppercase;
-            font-size: 0.75rem;
+            font-size: 0.813rem;
             letter-spacing: 4px;
+            line-height: 20px;
             font-weight: bold;
             margin-top: 2.125rem;
         }
@@ -85,9 +85,13 @@
                 text-transform: none;
                 font-size: 0.625rem;
                 font-weight: normal;
-                letter-spacing: normal;
+                letter-spacing: -0.23px;
+                line-height: normal;
             }
+
             .ai-detail__location--btn {
+                letter-spacing: 4px;
+                line-height: 20px;
                 margin-top: 1.313rem;
                 margin-bottom: 4.188rem;
                 color: white;
@@ -98,19 +102,5 @@
                 padding: 0.313rem 0.625rem;
             }
         }
-    }
-}
-
-@media (max-width: 375px) {
-    .ai-detail__container {
-        padding-left: 1.3rem;
-        padding-right: 1.3rem;
-    }
-}
-
-@media (max-width: 344px) {
-    .ai-detail__container {
-        padding-left: 0;
-        padding-right: 0;
     }
 }
