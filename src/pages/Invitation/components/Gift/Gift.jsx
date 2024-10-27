@@ -1,16 +1,18 @@
 import './gift.scss'
-import bca from '@assets/bca.png'
+import giftBackground from '@assets/gift_background.png'
 
 function Gift() {
     return (
         <section id='ai-gift' className='ai-gift__container'>
-            <h1 className='ai-gift--title'>TANDA KASIH (E-GIFT)</h1>
-            <p className='ai-gift--description'>Doa dan Restu keluarga, sahabat, serta rekan-rekan adalah anugerah yang sangat berharga bagi kami. Sebagai bentuk kasih, juga tanpa mengurangi rasa hormat, Anda dapat memberikan kado secara melalui</p>
-            <img src={bca} alt="" />
-            <p className='ai-gift--person'>Aghniyarrizqi Iara Fadhilla</p>
-            <button>Copy No. Rekening</button>
+            <div className='ai-gift__thanks'>
+                <h1>TANDA KASIH (E-GIFT)</h1>
+                <p>Doa dan Restu keluarga, sahabat, serta rekan-rekan adalah anugerah yang sangat berharga bagi kami. Sebagai bentuk kasih, juga tanpa mengurangi rasa hormat, Anda dapat memberikan kado secara melalui</p>
+                <button className='ai-gift--btn'>AMPLOP DIGITAL</button>
+            </div>
 
-            <div className='ai-gift__cover'></div>
+            <div className='ai-gift__cover'>
+                <img src={giftBackground} alt="" />
+            </div>
 
             <div className='ai-gift__thanks'>
                 <h1>THANK YOU</h1>

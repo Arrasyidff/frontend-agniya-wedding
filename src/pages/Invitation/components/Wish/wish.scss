@@ -42,14 +42,14 @@
     }
 
     .ai-wish__wishes {
-        overflow-y: scroll;
         background: url('../../../../assets/wish_background.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
 
         .ai-wish__wishes-items {
-            max-height: 74.563rem;
+            overflow-y: scroll;
+            height: 30.5rem;
             padding: 40px 0;
             .ai-wish__wishes-item {
                 display: flex;
