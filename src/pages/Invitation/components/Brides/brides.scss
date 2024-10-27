@@ -1,5 +1,4 @@
 .ai-brides__container {
-    height: 932px;
     flex-direction: column;
     display: flex;
     justify-content: center;
@@ -21,13 +20,11 @@
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        text-transform: uppercase;
 
         .ai-brides__bride-image {
             box-shadow: 3px 5px 2px 0px rgba(0,0,0,0.25) inset;
             -webkit-box-shadow: 3px 5px 2px 0px rgba(0,0,0,0.25) inset;
             -moz-box-shadow: 3px 5px 2px 0px rgba(0,0,0,0.25) inset;
-
             width: 50%;
             height: 24.063rem;
             border-top-left-radius: var(--border-radius);
@@ -36,48 +33,64 @@
 
         .ai-brides__bride-detail {
             width: 50%;
-            text-align: center;
             flex-direction: column;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-end;
             padding: 0 0.625rem;
+            padding-right: 1rem;
+            text-align: center;
 
-            .ai-brides__bride-detail--nickname {
-                font-family: "Noto Serif", serif;
-                font-size: 1.875rem;
-            }
-            .ai-brides__bride-detail--separator {
-                width: 7.813rem;
-                border-bottom: 1px solid black;
-            }
-
-            .ai-brides__bride-detail--fullname,
-            .ai-brides__bride-detail--from,
-            .ai-brides__bride-detail--parent-name,
-            .ai-brides__bride-detail--parent-separator {
-                font-size: 0.8rem;
-                letter-spacing: 2px;
-            }
-
-            .ai-brides__bride-detail--fullname {
-                margin-top: 1rem;
-                width: 100%;
-            }
-            .ai-brides__bride-detail--from {
-                margin-top: 0.5rem;
-            }
-            .ai-brides__bride-detail--parent-name {
-                &:first-child {
-                    margin-top: 0.313rem;
+            .ai-brides__bride-detail__nickname {
+                flex-direction: column;
+                display: flex;
+                justify-content: center;
+                align-items: flex-end;
+                h1 {
+                    font-size: 3.75rem;
+                    font-family: "Arizonia", cursive;
+                }
+                span {
+                    width: 7.813rem;
+                    border-bottom: 2px solid black;
                 }
             }
+
+            .ai-brides__bride-detail__info {
+                line-height: 20px;
+                letter-spacing: 2px;
+                margin-top: 0.688rem;
+                flex-direction: column;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 95%;
+                
+                .ai-brides__bride-detail__info--name {
+                    font-family: "Aclonica", sans-serif;
+                    font-size: 0.875rem;
+                }
+
+                p {
+                    margin: 0.688rem 0;
+                }
+            }
+
         }
         &:last-child {
-            justify-content: flex-end;
+            .ai-brides__bride-detail {
+                align-items: center;
+                padding-right: 0rem;
+                padding-left: 1rem;
+
+                .ai-brides__bride-detail__nickname {
+                    align-items: center;
+                }
+            }
 
             .ai-brides__bride-image {
-                border-radius: 0;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
                 border-bottom-left-radius: var(--border-radius);
                 border-bottom-right-radius: var(--border-radius);
             }
@@ -86,7 +99,9 @@
 
     .ai-brides--bride-flower {
         position: absolute;
-        height: 12rem;
+        height: 8rem;
+        -webkit-transform: scaleY(-1);
+        transform: scaleY(-1);
         z-index: 5;
     }
 }
