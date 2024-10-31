@@ -3,6 +3,7 @@ import './gift.scss'
 import giftBackground from '@assets/gift_background.png'
 import atm from '@assets/atm.png'
 import microchip from '@assets/microchip.png'
+import backgroundPopup from '@assets/background_overlay.png'
 
 function Gift() {
     const [openGift, setOpenGift] = useState(false)
@@ -55,30 +56,34 @@ function Gift() {
                 </div>
 
                 <div className='ai-gift__popup'>
-                    <div className="ai-gift__popup-header">
-                        <div className='ai-gift__popup-header__text'>
-                            <h1>Wedding Gift.</h1>
-                            <p>Silahkan transfer hadiah melalui nomor rekening maupun dompet digital berikut :</p>
-                        </div>
-                        <i className="far fa-times-circle" onClick={() => handleShowGiftCard()}></i>
-                    </div>
+                    <div className='ai-gift__popup-sub'>
+                        <img className='ai-gift__popup--background' src={backgroundPopup} alt="" />
 
-                    <div className='ai-gift__popup-cards'>
-                        {accounts.map(account => (
-                            <div key={account.id} className='ai-gift__popup-card'>
-                                <img className='ai-gift__popup-card--background' src={atm} alt="" />
-
-                                <div className='ai-gift__popup-card__content'>
-                                    <p className='ai-gift__popup-card__content--id'>{account.id}</p>
-                                    <div className='ai-gift__popup-card__content-detail'>
-                                        <img src={microchip} alt="" />
-                                        <p>{account.no}</p>
-                                        <p>{account.name}</p>
-                                    </div>
-                                    <button className='ai-gift__popup-card__content--copy'>Copy</button>
-                                </div>
+                        <div className="ai-gift__popup-header">
+                            <div className='ai-gift__popup-header__text'>
+                                <h1>Wedding Gift.</h1>
+                                <p>Silahkan transfer hadiah melalui nomor rekening maupun dompet digital berikut :</p>
                             </div>
-                        ))}
+                            <i className="far fa-times-circle" onClick={() => handleShowGiftCard()}></i>
+                        </div>
+
+                        <div className='ai-gift__popup-cards'>
+                            {accounts.map(account => (
+                                <div key={account.id} className='ai-gift__popup-card'>
+                                    <img className='ai-gift__popup-card--background' src={atm} alt="" />
+
+                                    <div className='ai-gift__popup-card__content'>
+                                        <p className='ai-gift__popup-card__content--id'>{account.id}</p>
+                                        <div className='ai-gift__popup-card__content-detail'>
+                                            <img src={microchip} alt="" />
+                                            <p>{account.no}</p>
+                                            <p>{account.name}</p>
+                                        </div>
+                                        <button className='ai-gift__popup-card__content--copy'>Copy</button>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
