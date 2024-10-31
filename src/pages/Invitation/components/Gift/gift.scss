@@ -56,4 +56,150 @@
             margin-top: 1.625rem;
         }
     }
+
+    .ai-gift__popup {
+        bottom: -120vh;
+        height: 43rem;
+        width: 100%;
+        border-top-right-radius: 30px;
+        border-top-left-radius: 30px;
+        background: rgb(20,22,104);
+        background: linear-gradient(180deg, rgba(20,22,104,1) 0%, rgba(75,60,163,1) 100%);
+        padding: 1.813rem 0;
+        color: white;
+        transition: .5s ease;
+        z-index: 999;
+        position: fixed;
+
+        .ai-gift__popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0 1.25rem;
+
+            .ai-gift__popup-header__text {
+                text-align: left;
+                width: 19.063rem;
+                
+                h1, p {
+                    font-family: "Inter", serif;
+                }
+
+                h1 {
+                    font-size: 1.125rem;
+                }
+
+                p {
+                    margin-top: 0.25rem;
+                    font-size: 0.8rem;
+                    font-weight: 300;
+                }
+            }
+
+            .fa-times-circle {
+                font-size: 1.563rem;
+            }
+        }
+
+        .ai-gift__popup-cards {
+            padding: 0 1.25rem;
+            width: 100%;
+            margin-top: 1.625rem;
+            flex-direction: column;
+            height: 35rem;
+            overflow-y: auto;
+
+            .ai-gift__popup-card {
+                margin: 0 auto;
+                width: 100%;
+                height: 12.875rem;
+                border-radius: 20px;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                padding: 1.438rem;
+
+                .ai-gift__popup-card__content {
+                    flex-direction: column;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    height: 100%;
+                    width: 100%;
+                    
+                    .ai-gift__popup-card__content--id {
+                        font-family: "Inter", serif;
+                        align-self: flex-end;
+                        font-size: 1.563rem;
+                        font-weight: 700;
+                        font-style: italic;
+                        text-transform: uppercase;
+                    }
+
+                    .ai-gift__popup-card__content-detail {
+                        flex-direction: column;
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: flex-start;
+                        width: 100%;
+
+                        img {
+                            width: 3.375rem;
+                        }
+
+                        p {
+                            font-family: "Inter", serif;
+                            font-size: 1.063rem;
+                            margin-top: 0.563rem;
+                            font-weight: 600;
+                            &:last-child {
+                                font-weight: 300;
+                                margin-top: 0;
+                            }
+                        }
+                    }
+
+                    .ai-gift__popup-card__content--copy {
+                        font-family: "Inter", serif;
+                        align-self: flex-end;
+                        background: #3B52B9;
+                        font-weight: 800;
+                        color: white;
+                        font-size: 0.938rem;
+                        font-style: italic;
+                        padding: 0.188rem 0.875rem;
+                        border-radius: 8px;
+                    }
+                }
+
+                .ai-gift__popup-card--background {
+                    position: absolute;
+                    width: 100%;
+                }
+
+                &:not(:first-child) {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }
+
+}
+
+.ai-gift__popup-overlay {
+    z-index: 998;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.713);
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .ai-gift__popup {
+        width: 430px;
+    }
 }
