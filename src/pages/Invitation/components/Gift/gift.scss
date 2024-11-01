@@ -81,7 +81,7 @@
                 top: 0;
                 bottom: 0;
                 width: 110%;
-                height: 43rem;
+                height: 110%;
                 z-index: 999;
             }
             
@@ -123,6 +123,7 @@
                 position: inherit;
                 z-index: 1000;
                 padding: 0 1.25rem;
+                padding-top: 10px;
                 width: 100%;
                 margin-top: 1.625rem;
                 flex-direction: column;
@@ -130,6 +131,7 @@
                 overflow-y: auto;
     
                 .ai-gift__popup-card {
+                    border: 1px solid white;
                     margin: 0 auto;
                     width: 100%;
                     height: 12.875rem;
@@ -221,7 +223,13 @@
 }
 
 @media (min-width: 768px) {
-    .ai-gift__popup {
+    .ai-gift__container {
+        .ai-gift__popup {
+            width: 430px;
+        }
+    }
+    .ai-gift__popup-overlay {
         width: 430px;
+
     }
 }

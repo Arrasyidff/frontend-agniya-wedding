@@ -10,8 +10,8 @@ function Gift() {
 
     const accounts = [
         {id: 'bca', no: '12345678910123', name: 'AGHNIYARRIZQI IARA FADHILLA'},
-        {id: 'mandiri', no: '12345678910123', name: 'AGHNIYARRIZQI IARA FADHILLA'},
-        {id: 'dana', no: '12345678910123', name: 'AGHNIYARRIZQI IARA FADHILLA'},
+        // {id: 'mandiri', no: '12345678910123', name: 'AGHNIYARRIZQI IARA FADHILLA'},
+        // {id: 'dana', no: '12345678910123', name: 'AGHNIYARRIZQI IARA FADHILLA'},
     ]
     const handleShowGiftCard = () => {
         setOpenGift(!openGift)
