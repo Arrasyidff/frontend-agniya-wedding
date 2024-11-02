@@ -5,11 +5,15 @@
     justify-content: center;
     align-items: flex-start;
 
-    .ai-qrcode--image {
-        height: 9rem;
+    .ai-qrcode__image {
         width: 100%;
-        background: blue;
         border-radius: 20px;
+        height: 8rem;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
     }
 
     .ai-qrcode--separator {

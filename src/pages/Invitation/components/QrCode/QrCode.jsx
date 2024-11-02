@@ -1,6 +1,7 @@
 import './qrcode.scss'
 import { Popup } from '@components/'
 import qrCodeSeparator from '@assets/qr_code_separator.png'
+import backgroundQrCode from '@assets/background_qr-code.png'
 import { QRCodeSVG } from 'qrcode.react';
 
 function QrCode({ invitation, openPopup, setOpenPopup }) {
@@ -58,7 +59,9 @@ function QrCode({ invitation, openPopup, setOpenPopup }) {
             paddingSide={'1.25rem'}
         >
             <div className='ai-qrcode__container' style={{ padding: '0 1.25rem' }}>
-                <div className='ai-qrcode--image' />
+                <div className='ai-qrcode__image'>
+                    <img src={backgroundQrCode} alt='' />
+                </div>
                 <img className='ai-qrcode--separator' src={qrCodeSeparator} alt="" srcset="" />
                 <div className='ai-qrcode__qr-code'>
                     <QRCodeSVG
