@@ -26,8 +26,7 @@ function Invitation() {
             <Rsvp invitation={ invitation } />
             <Wish invitation={ invitation } />
             <Gift />
-            <Navigation />
-            <QrCode invitation={ invitation } />
+            <Navigation invitation={ invitation } />
         </div>
     )
 }

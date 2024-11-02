@@ -1,4 +1,7 @@
 import './navigation.scss'
+import { QrCode } from '../index'
+import { useState } from 'react'
+
 import qrQode from '@assets/qr_code.png'
 import quoteNav from '@assets/nav_quote.png'
 import quoteActiveNav from '@assets/nav_quote_active.png'
@@ -13,28 +16,8 @@ import wishActiveNav from '@assets/nav_wish_active.png'
 import giftNav from '@assets/nav_gift.png'
 import giftActiveNav from '@assets/nav_gift_active.png'
 
-function Navigation() {
-    const handleShowQrQode = () => {
-        const qrCodeSection = document.querySelector('.ai-qrcode__container')
-        if (qrCodeSection) {
-            qrCodeSection.style.bottom = 0;
-        }
-
-        const qrCodeContent = document.querySelector('.ai-qrcode__content')
-        if (qrCodeContent) {
-            qrCodeContent.scrollTop = 0
-        }
-
-        const qrCodeOverlay = document.querySelector('.ai-qrcode--overlay')
-        if (qrCodeOverlay) {
-            qrCodeOverlay.style.display = 'block'
-        }
-
-        const aiContainer = document.querySelector('.ai__container')
-        if (aiContainer) {
-            aiContainer.style.overflowY = 'hidden'
-        }
-    }
+function Navigation({ invitation }) {
+    const [openQrCode, setOpenQrCode] = useState(false)
 
     const handleNavigation = (nav) => {
         let sectionIntoView = null
@@ -76,31 +59,39 @@ function Navigation() {
     ]
 
     return (
-        <div className='ai-navigation__container'>
-            <div className='ai-navigation__sub-container'>
-                <div className='ai-navigation__left-side'>
-                    {leftNavigations.map(nav => (
-                        <div key={nav.key} id={nav.key} onClick={() => handleNavigation(nav.key)} className='ai-navigation__icon'>
-                            <img className='ai-navigation__icon--default' src={nav.icon} alt="" />
-                            <img className='ai-navigation__icon--active' src={nav.iconActive} alt="" />
+        <>
+            <div className='ai-navigation__container'>
+                <div className='ai-navigation__sub-container'>
+                    <div className='ai-navigation__left-side'>
+                        {leftNavigations.map(nav => (
+                            <div key={nav.key} id={nav.key} onClick={() => handleNavigation(nav.key)} className='ai-navigation__icon'>
+                                <img className='ai-navigation__icon--default' src={nav.icon} alt="" />
+                                <img className='ai-navigation__icon--active' src={nav.iconActive} alt="" />
+                            </div>
+                        ))}
+                    </div>
+                    <div className='ai-navigation__right-side'>
+                        {rightNavigations.map(nav => (
+                            <div key={nav.key} id={nav.key} onClick={() => handleNavigation(nav.key)} className='ai-navigation__icon'>
+                                <img className='ai-navigation__icon--default' src={nav.icon} alt="" />
+                                <img className='ai-navigation__icon--active' src={nav.iconActive} alt="" />
+                            </div>
+                        ))}
+                    </div>
+                    <div className='ai-navigation__qr-code' onClick={() => setOpenQrCode(!openQrCode)}>
+                        <div className='ai-navigation__qr-code__sub'>
+                            <img src={qrQode} alt="" srcSet="" />
                         </div>
-                    ))}
-                </div>
-                <div className='ai-navigation__right-side'>
-                    {rightNavigations.map(nav => (
-                        <div key={nav.key} id={nav.key} onClick={() => handleNavigation(nav.key)} className='ai-navigation__icon'>
-                            <img className='ai-navigation__icon--default' src={nav.icon} alt="" />
-                            <img className='ai-navigation__icon--active' src={nav.iconActive} alt="" />
-                        </div>
-                    ))}
-                </div>
-                <div className='ai-navigation__qr-code' onClick={handleShowQrQode}>
-                    <div className='ai-navigation__qr-code__sub'>
-                        <img src={qrQode} alt="" srcSet="" />
                     </div>
                 </div>
             </div>
-        </div>
+
+            <QrCode
+                invitation={invitation}
+                openPopup={openQrCode}
+                setOpenPopup={setOpenQrCode}
+            />
+        </>
     )
 }
 
