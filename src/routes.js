@@ -1,4 +1,4 @@
-import { Home, Dashboard, Invitation } from "@pages"
+import { Home, Guest, Invitation } from "@pages"
 import ProtectedRoute from "components/ProtectedRoute"
 
 const routes = [
@@ -11,8 +11,8 @@ const routes = [
         ),
         children: [
             {
-                path: "/",
-                element: <Dashboard />,
+                path: "/guests",
+                element: <Guest />,
             }
         ]
     },

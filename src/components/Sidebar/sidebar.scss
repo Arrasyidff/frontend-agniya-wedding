@@ -1,57 +1,66 @@
 .ai-sidebar__container {
-    width: 330px;
+    width: 16%;
     height: 100vh;
     position: fixed;
-    background: rgb(20,22,104);
-    background: linear-gradient(148deg, rgba(20,22,104,1) 0%, rgba(75,60,163,1) 100%);
-    color: white;
+    padding: 1.5rem 2rem;
+    background: white;
 
-    .ai-sidebar__title-container {
-        padding: 50px 0;
-        width: 100%;
-        color: black;
-        text-align: center;
-        text-transform: uppercase;
-        color: white;
-        
+    .ai-sidebar__header {
+        height: 50px;
+        width: 50px;
+        background: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        margin-left: 20px;
         h1 {
-            font-size: 30px;
+            font-family: "Poppins", sans-serif;
             font-weight: 500;
-            text-decoration: underline;
+            color: white;
+            font-size: 20px;
         }
     }
 
+    .ai-sidebar--menu {
+        font-family: "Poppins", sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        margin: 20px 0 10px 20px;
+    }
+
     .ai-sidebar__items {
-        padding: 0 1.5rem;
+        width: 100%;
+        height: 100px;
+
         .ai-sidebar__item {
-            border-radius: 7px;
-            height: 50px;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            padding: 0 15px;
-            transition: .1s;
+            padding: 10px 0;
             cursor: pointer;
-            font-weight: 300;
-            text-transform: capitalize;
-            .ai-sidebar__item-text {
-                height: 50px;
+
+            .ai-sidebar__logo {
                 display: flex;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
-                span {
-                    font-size: 30px;
-                }
-                &.text {
-                    width: auto;
-                    margin-left: 10px;
-                    span {
-                        font-size: 20px;
-                    }
-                }
+                height: 30px;
+                width: 30px;
+                margin: 0 15px 0 20px;
             }
-            &:hover {
-                background: rgba(255, 255, 255, 0.49);
+
+            p {
+                font-family: "Poppins", sans-serif;
+                font-size: 15px;
+            }
+
+            border: 1px solid white;
+            transition: .3s;
+            border-radius: 5px;
+            &:hover, &.active {
+                background: #141568ca;
+                color: white;
+                border: 1px solid black;
             }
         }
     }

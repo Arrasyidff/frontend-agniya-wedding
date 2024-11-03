@@ -1,21 +1,35 @@
 import './sidebar.scss'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 function Sidebar() {
+    const navigate = useNavigate()
+    const { pathname } = useLocation()
+    console.log(pathname)
+
+    const navigations = [
+        {id: 'guests', title: 'Para Tamu', icon: (<i className="fas fa-user-friends"></i>)},
+        {id: 'invited-guests', title: 'Tamu Undangan', icon: (<i className="fas fa-users"></i>)},
+    ]
+
     return (
         <div className='ai-sidebar__container'>
-            <div className='ai-sidebar__title-container'>
-                <h1>Agniya & IZZUL.</h1>
+            <div className="ai-sidebar__header">
+                <h1>AI</h1>
             </div>
+
+            <h1 className='ai-sidebar--menu'>Menu.</h1>
+
             <div className='ai-sidebar__items'>
-                <div className='ai-sidebar__item'>
-                    <div className='ai-sidebar__item-text'>
-                        {/* asc */}
-                        <span className="material-symbols-outlined">groups</span>
+                {navigations.map(nav => (
+                    <div
+                        key={nav.id}
+                        className={`ai-sidebar__item ${('/'+nav.id) === pathname ? 'active' : ''}`}
+                        onClick={() => navigate('/'+nav.id)}
+                    >
+                        <div className='ai-sidebar__logo'>{nav.icon}</div>
+                        <p>{nav.title}</p>
                     </div>
-                    <div className='ai-sidebar__item-text text'>
-                        <span>Tamu Undangan</span>
-                    </div>
-                </div>
+                ))}
             </div>
         </div>
     )
