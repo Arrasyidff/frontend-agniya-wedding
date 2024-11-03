@@ -40,16 +40,17 @@ function Rsvp({ invitation }) {
         setOpenPopup(!openPopup)
     }
 
-    if (loadingForm) return <Loading />
-
+    
     return (
         <>
-            <ThankPopup
-                open={openPopup}
-                setOpen={setOpenPopup}
-                isConfirmRsvp={form?.attendance_status == true}
-                isRejectRsvp={form?.attendance_status == false}
-            />
+            {loadingForm ? (<Loading />) : (
+                <ThankPopup
+                    open={openPopup}
+                    setOpen={setOpenPopup}
+                    isConfirmRsvp={form?.attendance_status === true}
+                    isRejectRsvp={form?.attendance_status === false}
+                />
+            )}
 
             <section id='ai-rsvp' className='ai-rsvp__container'>
                 <h1 className='ai-rsvp--title'>KONFIRMASI KEHADIRAN</h1>

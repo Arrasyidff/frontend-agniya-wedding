@@ -14,3 +14,9 @@
         color: white;
     }
 }
+
+@media (min-width: 768px) {
+    .ai-loading__container {
+        width: 430px;
+    }
+}

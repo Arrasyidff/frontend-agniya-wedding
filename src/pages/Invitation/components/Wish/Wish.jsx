@@ -49,11 +49,15 @@ function Wish({ invitation }) {
         return `${timeAgoString} di ${hours}:${minutes}`
     }
 
-    if (loading) return <Loading />
-
     return (
         <>
-            <ThankPopup open={openThankPopup} setOpen={setOpenThankPopup} isWish={true}/>
+            {loading ? (<Loading />) : (
+                <ThankPopup
+                    open={openThankPopup}
+                    setOpen={setOpenThankPopup}
+                    isWish={true}
+                />
+            )}
             <section id='ai-wish' className='ai-wish__container'>
                 <div className='ai-wish__form'>
                     <h1>DOA DAN UCAPAN</h1>
@@ -70,22 +74,20 @@ function Wish({ invitation }) {
 
                 <div className='ai-wish__wishes'>
                     <div className='ai-wish__wishes-items'>
-                        {
-                            wishes.map(item => (
-                                <div key={item.id} className='ai-wish__wishes-item'>
-                                    <div className='ai-wish__wishes-item__initial'>
-                                        <h1>{ getInitial(item) }</h1>
-                                    </div>
-                                    <div className='ai-wish__wishes-item__detail'>
-                                        <div className='ai-wish__wishes-item__detail-header'>
-                                            <p>{ item?.guest?.name }</p>
-                                            <p>{ item?.wish }</p>
-                                        </div>
-                                        <p className='ai-wish__wishes-item__detail--footer'>{ timeAgo(item.updatedAt) }</p>
-                                    </div>
+                        {wishes.map(item => (
+                            <div key={item.id} className='ai-wish__wishes-item'>
+                                <div className='ai-wish__wishes-item__initial'>
+                                    <h1>{ getInitial(item) }</h1>
                                 </div>
-                            ))
-                        }
+                                <div className='ai-wish__wishes-item__detail'>
+                                    <div className='ai-wish__wishes-item__detail-header'>
+                                        <p>{ item?.guest?.name }</p>
+                                        <p>{ item?.wish }</p>
+                                    </div>
+                                    <p className='ai-wish__wishes-item__detail--footer'>{ timeAgo(item.updatedAt) }</p>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>

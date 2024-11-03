@@ -4,7 +4,6 @@ import { Popup } from '@components'
 import giftBackground from '@assets/gift_background.png'
 import atm from '@assets/atm.png'
 import microchip from '@assets/microchip.png'
-import backgroundPopup from '@assets/background_overlay.png'
 
 function Gift() {
     const [openGift, setOpenGift] = useState(false)
