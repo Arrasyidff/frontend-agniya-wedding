@@ -37,6 +37,12 @@
                 background: #C59949;
                 color: white;
                 height: 3.125rem;
+                transition: .3s;
+
+                &:disabled {
+                    color: grey;
+                    background: rgb(113, 95, 63);
+                }
             }
         }
     }

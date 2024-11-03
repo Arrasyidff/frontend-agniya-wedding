@@ -1,0 +1,16 @@
+.ai-loading__container {
+    position: fixed;
+    bottom: 0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.713);
+    z-index: 1001;
+
+    i {
+        font-size: 2.5rem;
+        color: white;
+    }
+}

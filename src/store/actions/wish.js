@@ -21,12 +21,16 @@ export const getWishes = (id) => {
 export const createWish = ({ guest_id, wish }) => {
     return async (dispatch, getState) => {
         try {
-            await api.post('/wishes', { guest_id, wish })
-            const response = await api.get('/wishes')
-            dispatch({
-                type: 'GET_WISHES_SUCCESS',
-                payload: response.data.data
-            })
+            dispatch({type: 'GET_WISHES_REQUEST'})
+
+            setTimeout(async () => {
+                await api.post('/wishes', { guest_id, wish })
+                const response = await api.get('/wishes')
+                dispatch({
+                    type: 'GET_WISHES_SUCCESS',
+                    payload: response.data.data
+                })
+            }, 1000);
         } catch (error) {
             dispatch({
                 type: 'GET_INVITATIONS_FAILURE',

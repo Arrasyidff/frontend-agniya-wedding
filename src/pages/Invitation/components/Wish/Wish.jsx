@@ -2,11 +2,13 @@ import './wish.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWishes, createWish } from '@store/actions/wish'
 import { useEffect, useState } from 'react'
+import { ThankPopup, Loading } from '@components'
 
 function Wish({ invitation }) {
     const dispatch = useDispatch()
     const {wishes, loading} = useSelector(state => state.wish)
     const [wish, setWish] = useState('')
+    const [openThankPopup, setOpenThankPopup] = useState(false)
 
     useEffect(() => {
         dispatch(getWishes())
@@ -14,6 +16,7 @@ function Wish({ invitation }) {
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
+        setOpenThankPopup(!openThankPopup)
         dispatch(createWish({ guest_id: invitation.guest_id, wish }))
         setWish('')
     }
@@ -46,44 +49,47 @@ function Wish({ invitation }) {
         return `${timeAgoString} di ${hours}:${minutes}`
     }
 
-    if (loading) return 'loading...'
+    if (loading) return <Loading />
 
     return (
-        <section id='ai-wish' className='ai-wish__container'>
-            <div className='ai-wish__form'>
-                <h1>DOA DAN UCAPAN</h1>
-                <form onSubmit={handleOnSubmit}>
-                    <textarea
-                        placeholder='Tulis Harapan Kamu'
-                        name="wish"
-                        value={wish}
-                        onChange={(e) => setWish(e.target.value)}
-                    ></textarea>
-                    <button type='submit'>Kirim</button>
-                </form>
-            </div>
-
-            <div className='ai-wish__wishes'>
-                <div className='ai-wish__wishes-items'>
-                    {
-                        wishes.map(item => (
-                            <div key={item.id} className='ai-wish__wishes-item'>
-                                <div className='ai-wish__wishes-item__initial'>
-                                    <h1>{ getInitial(item) }</h1>
-                                </div>
-                                <div className='ai-wish__wishes-item__detail'>
-                                    <div className='ai-wish__wishes-item__detail-header'>
-                                        <p>{ item?.guest?.name }</p>
-                                        <p>{ item?.wish }</p>
-                                    </div>
-                                    <p className='ai-wish__wishes-item__detail--footer'>{ timeAgo(item.updatedAt) }</p>
-                                </div>
-                            </div>
-                        ))
-                    }
+        <>
+            <ThankPopup open={openThankPopup} setOpen={setOpenThankPopup} isWish={true}/>
+            <section id='ai-wish' className='ai-wish__container'>
+                <div className='ai-wish__form'>
+                    <h1>DOA DAN UCAPAN</h1>
+                    <form onSubmit={handleOnSubmit}>
+                        <textarea
+                            placeholder='Tulis Harapan Kamu'
+                            name="wish"
+                            value={wish}
+                            onChange={(e) => setWish(e.target.value)}
+                        ></textarea>
+                        <button disabled={!wish} type='submit'>Kirim</button>
+                    </form>
                 </div>
-            </div>
-        </section>
+
+                <div className='ai-wish__wishes'>
+                    <div className='ai-wish__wishes-items'>
+                        {
+                            wishes.map(item => (
+                                <div key={item.id} className='ai-wish__wishes-item'>
+                                    <div className='ai-wish__wishes-item__initial'>
+                                        <h1>{ getInitial(item) }</h1>
+                                    </div>
+                                    <div className='ai-wish__wishes-item__detail'>
+                                        <div className='ai-wish__wishes-item__detail-header'>
+                                            <p>{ item?.guest?.name }</p>
+                                            <p>{ item?.wish }</p>
+                                        </div>
+                                        <p className='ai-wish__wishes-item__detail--footer'>{ timeAgo(item.updatedAt) }</p>
+                                    </div>
+                                </div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </section>
+        </>
     )
 }
 

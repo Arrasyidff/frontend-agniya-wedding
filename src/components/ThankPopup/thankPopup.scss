@@ -1,0 +1,81 @@
+.ai-thank-popup__container {
+    position: fixed;
+    bottom: 0;
+    height: 100vh;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, 0.713);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .ai-thank-popup__content,
+    .ai-thank-popup__content-reject {
+        width: 21rem;
+        height: 17.438rem;
+        background: rgb(20,22,104);
+        background: linear-gradient(180deg, rgba(20,22,104,1) 0%, rgba(75,60,163,1) 100%);
+        border-radius: 13px;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+        .ai-thank-popup__content-close {
+            position: absolute;
+            z-index: 1001;
+            top: -0.625rem;
+            right: -0.625rem;
+            width: 1.875rem;
+            height: 1.875rem;
+            background: #F94C4C;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        img {
+            width: 50%;
+        }
+        h1, p {
+            text-align: center;
+            font-family: "Righteous", sans-serif;
+            color: white;
+        }
+        h1 {
+            font-size: 1.875rem;
+            margin-top: 1.188rem;
+            margin-bottom: 0.813rem;
+        }
+        p {
+            font-size: 0.625rem;
+            width: 18rem;
+        }
+    }
+
+    .ai-thank-popup__content-reject {
+        background: white;
+        border: 5px solid #141668;
+
+        h1, p {
+            color: #141668;
+        }
+    }
+}
+
+@media (min-width: 344px) {
+    .ai-thank-popup__container {
+        .ai-thank-popup__content {
+            width: 90%;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .ai-thank-popup__container {
+        width: 430px;
+    }
+}
