@@ -1,0 +1,84 @@
+.ai-popup-delete__container {
+    position: fixed;
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.713);
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .ai-popup-delete__content {
+        position: relative;
+        width: 500px;
+        background: white;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+
+        .ai-popup-delete__content-logo {
+            height: 110px;
+            width: 110px;
+            background: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            background: #fa344a;
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translate(-50%, 0);
+
+            i {
+                color: white;
+                font-size: 50px;
+            }
+        }
+
+        h1, p {
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+        }
+
+        .ai-popup-delete__content--title {
+            margin-top: 50px;
+            font-weight: 600;
+        }
+
+        .ai-popup-delete__content--description {
+            width: 90%;
+        }
+
+        .ai-popup-delete__content-actions {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+
+            button {
+                cursor: pointer;
+                padding: 15px 0;
+                width: 50%;
+                border-radius: 8px;
+                font-size: 18px;
+                font-family: "Poppins", sans-serif;
+                background: #F94C4C;
+                border: 1px solid #F94C4C;
+                color: white;
+                &.cancel {
+                    background: white;
+                    border: 1px solid black;
+                    color: black;
+                }
+                &:first-child {
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+}

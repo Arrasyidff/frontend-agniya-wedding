@@ -1,18 +1,19 @@
 import { useEffect, useState } from 'react'
 import './guest.scss'
-import { PopupGuestForm, Loading } from '@components'
+import { PopupDelete, PopupGuestForm, Loading } from '@components'
 import { useSelector, useDispatch } from 'react-redux'
-import { getGuests } from '@store/actions/guest'
+import { getGuests, deleteGuest } from '@store/actions/guest'
 
 function Guest() {
     const dispatch = useDispatch()
-    const { guests, loading } = useSelector(state => state.guest)
+    const {guests, loading} = useSelector(state => state.guest)
     const [openForm, setOpenForm] = useState(false)
+    const [openPopupDelete, setOpenPopupDelete] = useState(false)
     const [guestEdit, setGuestEdit] = useState(null)
 
     useEffect(() => {
         dispatch(getGuests());
-    }, [])
+    }, [dispatch])
 
     const handleOpenForm = () => {
         setGuestEdit(null)
@@ -24,9 +25,20 @@ function Guest() {
         setOpenForm(true)
     }
 
+    const handleOpenDeletePopup = (payload) => {
+        setGuestEdit(payload)
+        setOpenPopupDelete(true)
+    }
+
+    const handleDeleteGuest = (payload) => {
+        setOpenPopupDelete(false)
+        if (payload === true) dispatch(deleteGuest(guestEdit.id))
+    }
+
     return (
         <>
             {loading && <Loading is_fullscreen={true} />}
+            
             <div className='ai-guest__container'>
                 <div className='ai-guest__actions'>
                     <button
@@ -62,7 +74,7 @@ function Guest() {
                                 <td>
                                     <div className='ai-guest__td-actions'>
                                         <i onClick={() => handleOpenEditForm(guest)} className="fas fa-pencil-alt"></i>
-                                        <i className="fas fa-trash-alt"></i>
+                                        <i onClick={() => handleOpenDeletePopup(guest)} className="fas fa-trash-alt"></i>
                                     </div>
                                 </td>
                             </tr>
@@ -76,6 +88,13 @@ function Guest() {
                     guestEdit={guestEdit}
                     open={openForm}
                     setOpen={setOpenForm}
+                />
+            )}
+
+            {openPopupDelete && (
+                <PopupDelete
+                    onEvent={handleDeleteGuest}
+                    detailName={guestEdit.name}
                 />
             )}
         </>
