@@ -1,0 +1,60 @@
+.ai-select-input__container {
+    width: 100%;
+    position: relative;
+    
+    .ai-select-input__btn {
+        display: flex;
+        background: white;
+        padding: 15px 20px;
+        font-size: 18px;
+        font-weight: 400;
+        border-radius: 8px;
+        align-items: center;
+        justify-content: space-between;
+        cursor: pointer;
+        border: 1px solid black;
+
+        span {
+            font-family: "Poppins", sans-serif;
+            color: #757575;
+            -webkit-user-select: none; /* Safari */
+            -ms-user-select: none; /* IE 10 and IE 11 */
+            user-select: none; /* Standard syntax */
+        }
+
+        i {
+            font-size: 25px;
+        }
+    }
+
+    .ai-select-input__options {
+        position: absolute;
+        z-index: 10001;
+        bottom: -60px;
+        height: 55px;
+        width: 100%;
+        background: white;
+        border-radius: 8px;
+
+        .ai-select-input__option {
+            display: flex;
+            align-items: center;
+            height: 55px;
+            width: 100%;
+            cursor: pointer;
+            padding: 0 16px;
+            border-radius: 8px;
+            background: white;
+            transition: .3s;
+            border: 1px solid black;
+
+            span {
+                font-family: "Poppins", sans-serif;
+            }
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.128);
+            }
+        }
+    }
+}

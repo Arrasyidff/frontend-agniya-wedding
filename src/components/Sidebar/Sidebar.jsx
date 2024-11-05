@@ -4,7 +4,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 function Sidebar() {
     const navigate = useNavigate()
     const { pathname } = useLocation()
-    console.log(pathname)
 
     const navigations = [
         {id: 'guests', title: 'Para Tamu', icon: (<i className="fas fa-user-friends"></i>)},

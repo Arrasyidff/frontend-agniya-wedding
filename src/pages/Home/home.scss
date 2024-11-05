@@ -1,10 +1,9 @@
 .ai-layout__container {
     font-family: "Poppins", sans-serif;
-    
+
     .ai-layout__content {
         position: relative;
-        width: 84%;
-        margin-left: 16%;
+        width: 100%;
 
         .ai-layout__content-header {
             height: 13vh;
@@ -12,6 +11,7 @@
             justify-content: flex-start;
             align-items: flex-end;
             padding-bottom: 5px;
+            padding-left: 16%;
             h1 {
                 font-family: "Poppins", sans-serif;
                 font-weight: 500;

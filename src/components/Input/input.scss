@@ -1,0 +1,31 @@
+.ai-input__container {
+    position: relative;
+    width: 100%;
+    background: white;
+    font-weight: 400;
+    cursor: pointer;
+    
+    input {
+        border: 1px solid black;
+        border-radius: 8px;
+        width: 100%;
+        padding: 15px 20px;
+        font-size: 18px;
+        font-family: "Poppins", sans-serif;
+        border: 1px solid black;
+
+        &:focus {
+            outline: none;
+        }
+        &::placeholder {
+            color: #757575;
+        }
+        &.isError {   
+            &::placeholder {
+                color: #F94C4C;
+            }
+            border: 1px solid #F94C4C;
+            color: #F94C4C;
+        }
+    }
+}
