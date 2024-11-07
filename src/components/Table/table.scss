@@ -1,0 +1,29 @@
+table {
+    border-collapse: collapse; 
+    thead tr th {
+        border-bottom: 1px solid black;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        padding: 10px 0;
+    }
+    tbody tr {
+        &:nth-child(odd) {
+            background-color: #f9fafd;
+        }
+        tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+
+        td {
+            border-bottom: 1px solid black;
+            font-family: "Poppins", sans-serif;
+            padding-left: 10px;
+            padding: 10px 0 10px 10px;
+            vertical-align: middle;
+            &:first-child {
+                padding-left: 0;
+                text-align: center;
+            }
+       }
+    }
+}

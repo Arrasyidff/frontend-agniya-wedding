@@ -11,12 +11,19 @@ function Home() {
         if (pathname === '/') navigate('/guests')
     }, [pathname, navigate])
 
+    const handleTitle = () => {
+        if ((pathname).includes('invited-guests')) {
+            return 'Para Tamu Undangan'
+        }
+        return 'Para Tamu'
+    }
+
     return (
         <div className='ai-layout__container'>
             <Sidebar />
             <div className='ai-layout__content'>
                 <div className='ai-layout__content-header'>
-                    <h1>Para Tamu</h1>
+                    <h1>{handleTitle()}</h1>
                 </div>
                 <div className='ai-layout__content-content'>
                     <Outlet />

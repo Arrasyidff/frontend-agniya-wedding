@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import './guest.scss'
-import { PopupDelete, PopupGuestForm, Loading } from '@components'
+import { PopupDelete, PopupGuestForm, Loading, Table } from '@components'
 import { useSelector, useDispatch } from 'react-redux'
 import { getGuests, deleteGuest } from '@store/actions/guest'
 
@@ -35,6 +35,44 @@ function Guest() {
         if (payload === true) dispatch(deleteGuest(guestEdit.id))
     }
 
+    const headerColumns = [
+        {id: 'no', name: 'No.', width: '3%'},
+        {id: 'name', name: 'Nama', width: '10%'},
+        {id: 'email', name: 'Email', width: '10%'},
+        {id: 'phone_number', name: 'HP', width: '10%'},
+        {id: 'acquaintance_from', name: 'Kenalan dari pihak', width: '10%'},
+        {id: 'address', name: 'Alamat', width: '10%'},
+        {id: 'additional_notes', name: 'Informarsi Tambahan', width: '10%'},
+        {id: 'action', name: '', width: '1.5%', isCustomTd: true}
+    ];
+
+    const handleTdClick = (type, guestEdit) => {
+        if (type === 'open-edit-popup') {
+            handleOpenEditForm(guestEdit)
+        } else if (type === 'open-delete-popup') {
+            handleOpenDeletePopup(guestEdit)
+        }
+    };
+
+    const renderCustomTd = (guestEdit, onTdClick) => {
+        return (
+            <div className='ai-guest__td-actions'>
+                <div className='ai-guest__td-actions__icon'>
+                    <i
+                        className="fas fa-pencil-alt"
+                        onClick={() => onTdClick('open-edit-popup', guestEdit)}
+                    />
+                </div>
+                <div className='ai-guest__td-actions__icon'>
+                    <i
+                        className="fas fa-trash-alt"
+                        onClick={() => onTdClick('open-delete-popup', guestEdit)}
+                    />
+                </div>
+            </div>
+        );
+    };
+
     return (
         <>
             {loading && <Loading is_fullscreen={true} />}
@@ -48,39 +86,12 @@ function Guest() {
                     </button>
                 </div>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>No.</th>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>HP</th>
-                            <th>Kenalan dari pihak</th>
-                            <th>Alamat</th>
-                            <th>Informasi Tambahan</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {guests.map((guest, i) => (
-                            <tr key={guest.id}>
-                                <td>{ i+1 }</td>
-                                <td>{ guest.name }</td>
-                                <td>{ guest.email }</td>
-                                <td>{ guest.phone_number }</td>
-                                <td>{ guest.acquaintance_from }</td>
-                                <td>{ guest.address }</td>
-                                <td>{ guest.additional_notes }</td>
-                                <td>
-                                    <div className='ai-guest__td-actions'>
-                                        <i onClick={() => handleOpenEditForm(guest)} className="fas fa-pencil-alt"></i>
-                                        <i onClick={() => handleOpenDeletePopup(guest)} className="fas fa-trash-alt"></i>
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
+                <Table
+                    headerColumns={headerColumns}
+                    bodyData={guests}
+                    renderCustomTd={renderCustomTd}
+                    onTdClick={handleTdClick}
+                />
             </div>
 
             {openForm && (

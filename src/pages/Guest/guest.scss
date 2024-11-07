@@ -10,67 +10,41 @@
         .ai-guest--btn-create {
             font-family: "Poppins", sans-serif;
             text-transform: uppercase;
-            font-size: 15px;
+            font-size: 14px;
+            font-weight: 600;
             height: 45px;
             width: 160px;
             border-radius: 5px;
-            background: #141668;
-            color: white;
+            border: 1px solid #141668;
+            color: #141668;
             cursor: pointer;
-            transition: .3s;
+            transition: .1s;
 
             &:hover {
-                background: #441ca9;
+                background: #141668;
+                color: white;
             }
         }
     }
 
-    table {
-        thead tr th {
-            border-bottom: 1px solid black;
-            font-family: "Poppins", sans-serif;
-            font-weight: 500;
-            width: 10%;
-            padding: 10px 0;
+    .ai-guest__td-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
 
-            &:first-child {
-                width: 3%;
+        .ai-guest__td-actions__icon {
+            background: #e5edf2;
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            i {
+                cursor: pointer;
+                font-size: 14px;
             }
-            &:last-child {
-                width: 7%;
-            }
-        }
-        tbody tr {
-            &:nth-child(odd) {
-                background-color: #1415682b;
-            }
-            tr:nth-child(even) {
-                background-color: #ffffff;
-            }
-
-            td {
-                font-family: "Poppins", sans-serif;
-                padding-left: 10px;
-                padding: 10px 0 10px 10px;
-                vertical-align: top;
-                &:first-child {
-                    padding-left: 0;
-                    text-align: center;
-                }
-                .ai-guest__td-actions {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    height: 100%;
-
-                    i {
-                        cursor: pointer;
-                        &:first-child {
-                            margin-right: 20px;
-                        }
-                    }
-                }
-           }
         }
     }
 }
