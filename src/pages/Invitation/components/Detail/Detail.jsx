@@ -2,35 +2,9 @@ import './detail.scss'
 import { Logo } from '../'
 import date from '@assets/date_icon.png'
 import point from '@assets/location_icon.png'
-import backgroundGradient from '@assets/background_gradient.png'
+import { getDayFromTimestamp, getFullDate, getTimeFromTimestamp } from '@helpers/dateHelper'
 
 function Detail({ invitation }) {
-    const getDayFromTimestamp = (timestamp) => {
-        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
-        return days[new Date(+timestamp).getDay()]
-    }
-
-    const getMonthFromTimestamp = (timestamp) => {
-        const months = [
-            'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
-            'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-        ];
-        return months[new Date(+timestamp).getMonth()];
-    }
-
-    const getYearFromTimestamp = (timestamp) => new Date(+timestamp).getFullYear();
-
-    const getFullDate = (timestamp) => {
-        const date = new Date(+timestamp)
-        return `${date.getDate()} ${getMonthFromTimestamp(timestamp)} ${getYearFromTimestamp(timestamp)}`
-    }
-
-    const getTimeFromTimestamp = (timestamp) => {
-        const date = new Date(+timestamp)
-        const hours = date.getHours().toString().padStart(2, '0');
-        const minutes = date.getMinutes().toString().padStart(2, '0');
-        return `${hours}.${minutes} WITA`
-    }
 
     return (
         <section id='ai-detail' className='ai-detail__container'>

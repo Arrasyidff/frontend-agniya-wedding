@@ -12,8 +12,8 @@ function Home() {
     }, [pathname, navigate])
 
     const handleTitle = () => {
-        if ((pathname).includes('invited-guests')) {
-            return 'Para Tamu Undangan'
+        if ((pathname).includes('events')) {
+            return 'Acara'
         }
         return 'Para Tamu'
     }

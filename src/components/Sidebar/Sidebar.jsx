@@ -7,7 +7,7 @@ function Sidebar() {
 
     const navigations = [
         {id: 'guests', title: 'Para Tamu', icon: (<i className="fas fa-user-friends"></i>)},
-        {id: 'invited-guests', title: 'Tamu Undangan', icon: (<i className="fas fa-users"></i>)},
+        {id: 'events', title: 'Acara', icon: (<i className="far fa-calendar-alt"></i>)}
     ]
 
     return (

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import './popupGuestForm.scss'
-import { Input } from '@components'
+import { Input, PopupFormWrapper } from '@components'
 import { useDispatch } from 'react-redux'
 import { createGuest, updateGuest } from '@store/actions/guest'
 
@@ -40,35 +40,26 @@ function PopupGuestForm({ guestEdit, open, setOpen }) {
         setIsOnSubmit(false)
     }
 
-    if (!open) return
     return (
-        <div className='ai-popup-guest-form__container'>
-            <div className='ai-popup-guest-form__form slide-top'>
-                <button className='ai-popup-guest-form--close' onClick={() => setOpen(false)}>
-                    <i className="fas fa-times"></i>
-                </button>
-
-                <h1 className='ai-popup-guest-form--title'>Form Tambah Tamu</h1>
-
-                {inputs.map((input, index) => (
-                    <div key={index} className='ai-popup-guest-form__input-wrapper'>
-                        <Input
-                            placeholder={input.placeholder}
-                            value={input.value}
-                            type={input.type}
-                            name={input.name}
-                            isError={!input.value && isSubmit}
-                            setValue={handleOnChange}
-                        />
-                    </div>
-                ))}
-
-                <div className='ai-popup-guest-form__actions'>
-                    <button className='cancel' onClick={() => setOpen(false)}>Batal</button>
-                    <button onClick={() => handleOnSubmit()}>Submit</button>
+        <PopupFormWrapper
+            open={open}
+            setOpen={setOpen}
+            titleForm={'Form Tambah Tamu'}
+            handleOnSubmit={handleOnSubmit}
+        >
+            {inputs.map((input, index) => (
+                <div key={index} className='ai-popup-guest-form__input-wrapper'>
+                    <Input
+                        placeholder={input.placeholder}
+                        value={input.value}
+                        type={input.type}
+                        name={input.name}
+                        isError={!input.value && isSubmit}
+                        setValue={handleOnChange}
+                    />
                 </div>
-            </div>
-        </div>
+            ))}
+        </PopupFormWrapper>
     )
 }
 

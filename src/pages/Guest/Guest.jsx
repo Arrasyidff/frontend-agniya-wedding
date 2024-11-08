@@ -105,6 +105,7 @@ function Guest() {
             {openPopupDelete && (
                 <PopupDelete
                     onEvent={handleDeleteGuest}
+                    title={'Hapus Tamu?'}
                     detailName={guestEdit.name}
                 />
             )}

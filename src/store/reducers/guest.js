@@ -10,7 +10,7 @@ function guest (state = initialState, action) {
             return {
                 ...state,
                 loading: true,
-                error: null
+                error: null,
             }
         case 'GET_GUESTS_SUCCESS':
             return {

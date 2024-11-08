@@ -8,7 +8,8 @@
             "@assets": ["./assets"],
             "@images": ["./assets/img"],
             "@icons": ["./assets/icons"],
-            "@store": ["./store"]
+            "@store": ["./store"],
+            "@helpers": ["./helpers"]
         }
     },
     "exclude": ["node_modules"]

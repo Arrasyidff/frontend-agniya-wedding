@@ -1,6 +1,6 @@
 import './popupdelete.scss'
 
-function PopupDelete({ detailName, onEvent }) {
+function PopupDelete({ title, detailName, onEvent }) {
     return (
         <div className='ai-popup-delete__container'>
             <div className='ai-popup-delete__content'>
@@ -9,10 +9,10 @@ function PopupDelete({ detailName, onEvent }) {
                 </div>
 
                 <h1 className='ai-popup-delete__content--title'>
-                    Hapus Tamu?
+                    {title}
                 </h1>
                 <p className='ai-popup-delete__content--description'>
-                    Anda akan menghapus tamu '{detailName}'. Tindakan ini tidak dapat dibatalkan.
+                    Anda akan menghapus '{detailName}'. Tindakan ini tidak dapat dibatalkan.
                 </p>
                 <div className='ai-popup-delete__content-actions'>
                     <button className='cancel' onClick={() => onEvent(false)}>Batalkan</button>

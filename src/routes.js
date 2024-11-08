@@ -1,4 +1,4 @@
-import { Home, Guest, Invitation, InvitedGuests } from "@pages"
+import { Home, Guest, Invitation, Event } from "@pages"
 import ProtectedRoute from "components/ProtectedRoute"
 
 const routes = [
@@ -12,13 +12,11 @@ const routes = [
         children: [
             {
                 path: "/guests",
-                title: "Para Tamu",
                 element: <Guest />,
             },
             {
-                path: "/invited-guests",
-                title: "Para Tamu Undangan",
-                element: <InvitedGuests />,
+                path: "/events",
+                element: <Event />,
             }
         ]
     },

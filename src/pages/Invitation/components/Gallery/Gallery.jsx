@@ -1,5 +1,4 @@
 import './gallery.scss'
-import backgroundGradient from '@assets/background_gradient.png'
 
 function Gallery() {
     return (
