@@ -1,4 +1,11 @@
-.ai-popup-guest-form__input-wrapper {
-    width: 100%;
-    margin-bottom: 5px !important;
+.ai-popup-guest-form__inputs {
+    display: flex;
+    justify-content: space-between;
+    .ai-popup-guest-form__input {
+        width: 49%;
+    }
+
+    &:not(:first-child) {
+        margin-top: 11px;
+    }
 }

@@ -8,17 +8,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
     .ai-popup-form-wrapper__content {
         font-family: "Poppins", sans-serif;
-        background: white;
         position: relative;
-        padding: 2rem;
-        flex-direction: column;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-
+        padding: 1rem;
+        background: white;
+        
         .ai-popup-form-wrapper--close {
             position: absolute;
             z-index: 1001;
@@ -37,32 +34,34 @@
 
         .ai-popup-form-wrapper--title {
             font-family: "Poppins", sans-serif;
-            text-align: center;
             font-weight: 500;
-            font-size: 25px;
-            margin-bottom: 15px;
+            font-size: 20px;
+            margin-bottom: -5px;
         }
 
         .ai-popup-form-wrapper__actions {
-            margin-top: 10px;
+            margin-top: 11px;
             width: 100%;
             display: flex;
             justify-content: flex-end;
             align-items: center;
             button {
                 cursor: pointer;
-                padding: 8px 0;
-                width: 100px;
+                height: 47px;
+                width: 202px;
                 border-radius: 4px;
-                font-size: 13px;
+                font-size: 15px;
                 font-family: "Poppins", sans-serif;
-                background: #141568ca;
+                background: #1C2B56;
+                border: 1px solid #1C2B56;
                 color: white;
                 &.cancel {
-                    background: #F94C4C;
+                    background: white;
+                    border: 1px solid #F14645;
+                    color: #F14645;
                 }
                 &:first-child {
-                    margin-right: 3px;
+                    margin-right: 14px;
                 }
             }
         }

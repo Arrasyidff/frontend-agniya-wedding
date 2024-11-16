@@ -10,6 +10,7 @@ function Guest() {
     const [openForm, setOpenForm] = useState(false)
     const [openPopupDelete, setOpenPopupDelete] = useState(false)
     const [guestEdit, setGuestEdit] = useState(null)
+    const [isDetailMode, setIsDetailMode] = useState(null)
 
     useEffect(() => {
         dispatch(getGuests());
@@ -45,8 +46,12 @@ function Guest() {
     ];
 
     const handleTdClick = (type, guestEdit) => {
-        if (type === 'open-edit-popup') {
+        setIsDetailMode(false)
+        if ((type === 'open-edit-popup') || (type === 'open-detail-popup')) {
             handleOpenEditForm(guestEdit)
+            if (type === 'open-detail-popup') {
+                setIsDetailMode(true)
+            }
         } else if (type === 'open-delete-popup') {
             handleOpenDeletePopup(guestEdit)
         }
@@ -57,7 +62,7 @@ function Guest() {
             <div className='ai-guest__td-actions'>
                 <div
                     className='ai-guest__td-actions__icon view'
-                    onClick={() => onTdClick('open-edit-popup', guestEdit)}
+                    onClick={() => onTdClick('open-detail-popup', guestEdit)}
                 >
                     <i className="far fa-eye" />
                 </div>
@@ -98,6 +103,7 @@ function Guest() {
                     guestEdit={guestEdit}
                     open={openForm}
                     setOpen={setOpenForm}
+                    isDetailMode={isDetailMode}
                 />
             )}
 

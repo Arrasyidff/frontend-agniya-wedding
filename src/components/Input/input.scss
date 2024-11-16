@@ -4,20 +4,32 @@
     background: white;
     font-weight: 400;
     cursor: pointer;
-    
-    input {
-        border: 1px solid rgba(0, 0, 0, 0.341);
+
+    label, input, textarea {
+        font-family: "Poppins", sans-serif;
+    }
+
+    label, p {
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.672);
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    input, textarea {
+        border: 1px solid rgba(0, 0, 0, 0.672);
         border-radius: 4px;
         width: 100%;
         padding: 8px;
         font-size: 13px;
-        font-family: "Poppins", sans-serif;
 
         &:focus {
             outline: none;
         }
         &::placeholder {
-            color: #757575;
+            color: rgba(0, 0, 0, 0.672);
         }
         &.isError {   
             &::placeholder {

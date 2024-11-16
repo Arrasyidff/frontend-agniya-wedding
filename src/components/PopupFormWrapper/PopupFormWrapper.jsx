@@ -1,6 +1,14 @@
 import './popupFormWrapper.scss'
 
-function PopupFormWrapper({ open, setOpen, titleForm, handleOnSubmit, children, width='500px' }) {
+function PopupFormWrapper({
+    open,
+    setOpen,
+    titleForm,
+    handleOnSubmit,
+    children,
+    width='500px',
+    isDetailMode=false
+}) {
     if (!open) return;
     
     return (
@@ -14,10 +22,12 @@ function PopupFormWrapper({ open, setOpen, titleForm, handleOnSubmit, children, 
 
                 {children}
 
-                <div className='ai-popup-form-wrapper__actions'>
-                    <button className='cancel' onClick={() => setOpen(false)}>Batal</button>
-                    <button onClick={() => handleOnSubmit()}>Submit</button>
-                </div>
+                {!isDetailMode && (
+                    <div className='ai-popup-form-wrapper__actions'>
+                        <button className='cancel' onClick={() => setOpen(false)}>Batal</button>
+                        <button onClick={() => handleOnSubmit()}>Simpan</button>
+                    </div>
+                )}
             </div>
         </div>
     )
