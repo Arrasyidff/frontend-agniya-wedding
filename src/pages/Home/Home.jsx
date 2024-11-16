@@ -36,12 +36,9 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                {/* <div className='ai-layout__content-header'>
-                    <h1>{handleTitle()}</h1>
-                </div> */}
-                {/* <div className='ai-layout__content-content'>
+                <div className='ai-layout__content-content'>
                     <Outlet />
-                </div> */}
+                </div>
             </div>
         </div>
     )
