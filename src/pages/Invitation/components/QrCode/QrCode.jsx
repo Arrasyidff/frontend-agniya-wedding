@@ -62,7 +62,7 @@ function QrCode({ invitation, openPopup, setOpenPopup }) {
                 <div className='ai-qrcode__image'>
                     <img src={backgroundQrCode} alt='' />
                 </div>
-                <img className='ai-qrcode--separator' src={qrCodeSeparator} alt="" srcset="" />
+                <img className='ai-qrcode--separator' src={qrCodeSeparator} alt="" srcSet="" />
                 <div className='ai-qrcode__qr-code'>
                     <QRCodeSVG
                         value={'http://localhost:3000/invitation/1'}

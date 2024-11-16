@@ -14,7 +14,7 @@ function Popup({ openPopup, setOpenPopup, title, description, paddingSide, child
                 className='ai-popup__popup'
                 style={{ bottom: openPopup ? '0' : '-120vh' }}
             >
-                <div className='ai-popup__popup-sub'>
+                <div className='ai-popup__popup-sub slide-top'>
                     <img className='ai-popup__popup--background' src={backgroundPopup} alt="" />
 
                     <div className="ai-popup__popup-header" style={{ paddingLeft: paddingSide, paddingRight: paddingSide }}>

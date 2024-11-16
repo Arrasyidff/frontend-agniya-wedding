@@ -42,7 +42,7 @@ function PopupEventForm({ eventEdit, open, setOpen }) {
         <PopupFormWrapper
             open={open}
             setOpen={setOpen}
-            titleForm={'Form Tambah Tamu'}
+            titleForm={'Form Tambah Acara'}
             handleOnSubmit={handleOnSubmit}
         >
             {inputs.map((input, index) => (

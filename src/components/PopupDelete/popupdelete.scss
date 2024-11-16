@@ -11,7 +11,7 @@
 
     .ai-popup-delete__content {
         position: relative;
-        width: 500px;
+        width: 400px;
         background: white;
         flex-direction: column;
         display: flex;
@@ -20,8 +20,8 @@
         padding: 20px;
 
         .ai-popup-delete__content-logo {
-            height: 110px;
-            width: 110px;
+            height: 70px;
+            width: 70px;
             background: black;
             display: flex;
             justify-content: center;
@@ -29,13 +29,13 @@
             border-radius: 50%;
             background: #fa344a;
             position: absolute;
-            top: -55px;
+            top: -35px;
             left: 50%;
             transform: translate(-50%, 0);
 
             i {
                 color: white;
-                font-size: 50px;
+                font-size: 30px;
             }
         }
 
@@ -45,16 +45,18 @@
         }
 
         .ai-popup-delete__content--title {
-            margin-top: 50px;
+            margin-top: 25px;
             font-weight: 600;
+            font-size: 20px;
         }
 
         .ai-popup-delete__content--description {
             width: 90%;
+            font-size: 14px;
         }
 
         .ai-popup-delete__content-actions {
-            margin-top: 30px;
+            margin-top: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -62,10 +64,10 @@
 
             button {
                 cursor: pointer;
-                padding: 15px 0;
-                width: 50%;
-                border-radius: 8px;
-                font-size: 18px;
+                padding: 8px 0;
+                width: 30%;
+                border-radius: 4px;
+                font-size: 14px;
                 font-family: "Poppins", sans-serif;
                 background: #F94C4C;
                 border: 1px solid #F94C4C;

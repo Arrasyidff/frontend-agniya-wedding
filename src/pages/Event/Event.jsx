@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './event.scss'
+import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { getInvitations, deleteInvitation } from '@store/actions/invitation'
 import { getFullDate } from '@helpers/dateHelper'
@@ -7,6 +8,7 @@ import { Loading, PopupDelete, PopupEventForm } from '@components'
 
 function Event() {
     const dispatch = useDispatch()
+    const navigate = useNavigate()
     const {invitations, loading} = useSelector(state => state.invitation)
     const [openPopupDelete, setOpenPopupDelete] = useState(false)
     const [openForm, setOpenForm] = useState(false)
@@ -49,7 +51,9 @@ function Event() {
                             <p>{item.total_invitations} Undangan</p>
                         </div>
                         <div className='ai-events__item-actions'>
-                            <div className="ai-events__item-actions__icon-wrapper">
+                            <div className="ai-events__item-actions__icon-wrapper"
+                                onClick={() => navigate('/event/'+item.id)}
+                            >
                                 <i className="fas fa-calendar-week"></i>
                             </div>
                             <div className="ai-events__item-actions__icon-wrapper"

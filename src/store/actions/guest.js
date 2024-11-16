@@ -5,6 +5,7 @@ export const getGuests = (id) => {
         dispatch({ type: 'GET_GUESTS_REQUEST' })
         setTimeout(async () => {
             try {
+                console.log('check')
                 const response = await api.get('/guests')
                 dispatch({
                     type: 'GET_GUESTS_SUCCESS',

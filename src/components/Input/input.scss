@@ -6,13 +6,12 @@
     cursor: pointer;
     
     input {
-        border: 1px solid black;
-        border-radius: 8px;
+        border: 1px solid rgba(0, 0, 0, 0.341);
+        border-radius: 4px;
         width: 100%;
-        padding: 15px 20px;
-        font-size: 18px;
+        padding: 8px;
+        font-size: 13px;
         font-family: "Poppins", sans-serif;
-        border: 1px solid black;
 
         &:focus {
             outline: none;

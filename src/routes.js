@@ -1,4 +1,4 @@
-import { Home, Guest, Invitation, Event } from "@pages"
+import { Home, Guest, Invitation, Event, EventDetail } from "@pages"
 import ProtectedRoute from "components/ProtectedRoute"
 
 const routes = [
@@ -17,6 +17,10 @@ const routes = [
             {
                 path: "/events",
                 element: <Event />,
+            },
+            {
+                path: "/event/:id",
+                element: <EventDetail />,
             }
         ]
     },

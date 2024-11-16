@@ -9,7 +9,7 @@ function ThankPopup({open, setOpen, isConfirmRsvp, isRejectRsvp, isWish}) {
         <div className='ai-thank-popup__container'>
             {isWish && (
                 <div className='ai-thank-popup__content slide-top'>
-                    <img src={thankIcon} alt="" srcset="" />
+                    <img src={thankIcon} alt="" srcSet="" />
                     <h1>THANK YOU!</h1>
                     <p>Terima kasih telah mengisi form wish. Kami menghargai harapan dan dukungan Anda!</p>
                     <div className='ai-thank-popup__content-close' onClick={() => setOpen(!open)}>
@@ -20,7 +20,7 @@ function ThankPopup({open, setOpen, isConfirmRsvp, isRejectRsvp, isWish}) {
 
             {(isConfirmRsvp || isRejectRsvp) && (
                 <div className='ai-thank-popup__content-reject slide-top'>
-                    <img src={noteIcon} alt="" srcset="" />
+                    <img src={noteIcon} alt="" srcSet="" />
                     <h1>THANK YOU!</h1>
                     {
                         isConfirmRsvp ? (

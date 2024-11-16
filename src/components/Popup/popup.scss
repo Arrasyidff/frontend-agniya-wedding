@@ -59,6 +59,10 @@
             z-index: 1000;
             height:60vh;
             overflow-y: auto;
+            scrollbar-width: none; /* Firefox */
+            &::-webkit-scrollbar {
+                display: none; /* Sembunyikan scrollbar */
+            }
         }
     }
 }

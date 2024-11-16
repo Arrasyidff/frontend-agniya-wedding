@@ -14,20 +14,34 @@ function Home() {
     const handleTitle = () => {
         if ((pathname).includes('events')) {
             return 'Acara'
+        } else if ((pathname).includes('event/')) {
+            return 'Detail Acara'
         }
-        return 'Para Tamu'
+        return 'TAMU'
     }
 
     return (
         <div className='ai-layout__container'>
             <Sidebar />
             <div className='ai-layout__content'>
-                <div className='ai-layout__content-header'>
+                <div className='ai-layout__content-navbar'>
+                    <h1 className='ai-layout__content-navbar--title'>{handleTitle()}</h1>
+                    <div className='ai-layout__content-navbar__account'>
+                        <p className='ai-layout__content-navbar__account--name'>
+                            ARRASYID FADEL FATONSYAH
+                        </p>
+
+                        <div className='ai-layout__content-navbar__account-initial'>
+                            <p>A</p>
+                        </div>
+                    </div>
+                </div>
+                {/* <div className='ai-layout__content-header'>
                     <h1>{handleTitle()}</h1>
-                </div>
-                <div className='ai-layout__content-content'>
+                </div> */}
+                {/* <div className='ai-layout__content-content'>
                     <Outlet />
-                </div>
+                </div> */}
             </div>
         </div>
     )

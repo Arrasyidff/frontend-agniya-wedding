@@ -1,26 +1,57 @@
 .ai-layout__container {
-    font-family: "Poppins", sans-serif;
+    h1, p, button {
+        font-family: "Poppins", sans-serif;
+    }
 
     .ai-layout__content {
         position: relative;
         width: 100%;
 
-        .ai-layout__content-header {
-            height: 13vh;
+        .ai-layout__content-navbar {
+            position: fixed;
+            top: 0;
+            width: 85%;
+            height: 85px;
+            margin-left: 15%;
+            background: #1C2B56;
             display: flex;
-            justify-content: flex-start;
-            align-items: flex-end;
-            padding-bottom: 5px;
-            padding-left: 16%;
-            h1 {
-                font-family: "Poppins", sans-serif;
-                font-weight: 500;
-                font-size: 30px;
-            }
-        }
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 31px;
 
-        .ai-layout__content-content {
-            min-height: 87vh;
+            .ai-layout__content-navbar--title {
+                color: white;
+                font-weight: 400;
+                font-size: 20px;
+            }
+
+            .ai-layout__content-navbar__account {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .ai-layout__content-navbar__account--name {
+                    color: white;
+                    font-size: 20px;
+                    font-weight: 100;
+                    margin-right: 20px;
+                }
+
+                .ai-layout__content-navbar__account-initial {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: #7DDAD8;
+                    border-radius: 50%;
+                    height: 47px;
+                    width: 47px;
+
+                    p {
+                        font-size: 25px;
+                        font-weight: 500;
+                    }
+                }
+            }
         }
     }
 }

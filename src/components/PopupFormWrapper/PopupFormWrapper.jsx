@@ -1,11 +1,11 @@
 import './popupFormWrapper.scss'
 
-function PopupFormWrapper({ open, setOpen, titleForm, handleOnSubmit, children }) {
+function PopupFormWrapper({ open, setOpen, titleForm, handleOnSubmit, children, width='500px' }) {
     if (!open) return;
     
     return (
         <div className='ai-popup-form-wrapper__container'>
-            <div className='ai-popup-form-wrapper__content'>
+            <div className='ai-popup-form-wrapper__content' style={{ width }}>
                 <button className='ai-popup-form-wrapper--close' onClick={() => setOpen(false)}>
                     <i className="fas fa-times"></i>
                 </button>
