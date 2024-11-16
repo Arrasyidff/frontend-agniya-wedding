@@ -11,7 +11,7 @@
             position: fixed;
             top: 0;
             width: 85%;
-            height: 85px;
+            height: 70px;
             margin-left: 15%;
             background: #1C2B56;
             display: flex;
@@ -22,7 +22,7 @@
             .ai-layout__content-navbar--title {
                 color: white;
                 font-weight: 400;
-                font-size: 20px;
+                font-size: 17px;
             }
 
             .ai-layout__content-navbar__account {
@@ -32,9 +32,10 @@
 
                 .ai-layout__content-navbar__account--name {
                     color: white;
-                    font-size: 20px;
+                    font-size: 17px;
                     font-weight: 100;
-                    margin-right: 20px;
+                    margin-right: 10px;
+                    text-transform: uppercase;
                 }
 
                 .ai-layout__content-navbar__account-initial {
@@ -43,11 +44,11 @@
                     align-items: center;
                     background: #7DDAD8;
                     border-radius: 50%;
-                    height: 47px;
-                    width: 47px;
+                    height: 35px;
+                    width: 35px;
 
                     p {
-                        font-size: 25px;
+                        font-size: 18px;
                         font-weight: 500;
                     }
                 }
@@ -56,6 +57,8 @@
     }
 
     .ai-layout__content-content {
-        padding-top: 107px;
+        padding-top: 92px;
+        background: #F6F7F9;
+        min-height: 100vh;
     }
 }

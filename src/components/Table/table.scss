@@ -1,33 +1,78 @@
-table {
-    width: 100%;
-    border-collapse: collapse; 
-    thead tr th {
-        border-bottom: .5px solid black;
+.ai-table__container {
+    h1, p, button, input {
         font-family: "Poppins", sans-serif;
-        font-weight: 500;
-        padding: 10px 0;
-        font-size: 13px;
     }
-    tbody tr {
-        &:nth-child(odd) {
-            background-color: #f9fafd;
-        }
-        tr:nth-child(even) {
-            background-color: #ffffff;
+
+    .ai-table__header {
+        width: 100%;
+        height: 50px;
+        margin-bottom: 22px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .ai-table__header-input,
+        .ai-table__header-add {
+            border-radius: 40px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100%;
+            padding: 0 22px;
         }
 
-        td {
-            font-size: 13px;
-            font-weight: 300;
-            border-bottom: .5px solid black;
-            font-family: "Poppins", sans-serif;
-            padding-left: 10px;
-            padding: 5px 0 5px 10px;
-            vertical-align: middle;
-            &:first-child {
-                padding-left: 0;
-                text-align: center;
+        .ai-table__header-input {
+            background: white;
+            width: 88%;
+            input {
+                font-size: 15px;
+                margin-left: 17px;
+                outline: none;
+                border: none;
+                width: 100%;
             }
-       }
+        }
+
+        .ai-table__header-add {
+            justify-content: center;
+            background: #F9BA6C;
+            width: 11%;
+            font-size: 15px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse; 
+        thead tr th {
+            text-align: left;
+            border-bottom: .5px solid rgba(0, 0, 0, 0.134);
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            padding: 10px 0;
+            padding-left: 10px;
+            font-size: 13px;
+        }
+
+        tbody tr {
+            background-color: #ffffff;
+    
+            td {
+                font-size: 13px;
+                font-weight: 300;
+                border-bottom: .5px solid rgba(0, 0, 0, 0.134);
+                font-family: "Poppins", sans-serif;
+                padding-left: 10px;
+                padding: 12px 0 12px 10px;
+                vertical-align: middle;
+
+                &:first-child {
+                    padding-left: 0;
+                    text-align: center;
+                }
+           }
+        }
     }
 }

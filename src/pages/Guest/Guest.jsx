@@ -36,14 +36,12 @@ function Guest() {
     }
 
     const headerColumns = [
-        {id: 'no', name: 'No.', width: '3%'},
-        {id: 'name', name: 'Nama', width: '10%'},
-        {id: 'email', name: 'Email', width: '10%'},
-        {id: 'phone_number', name: 'HP', width: '10%'},
-        {id: 'acquaintance_from', name: 'Kenalan dari pihak', width: '10%'},
-        {id: 'address', name: 'Alamat', width: '10%'},
-        {id: 'additional_notes', name: 'Informarsi Tambahan', width: '10%'},
-        {id: 'action', name: '', width: '1.5%', isCustomTd: true}
+        {id: 'no', name: '', width: '2%'},
+        {id: 'name', name: 'Nama', width: '25%'},
+        {id: 'phone_number', name: 'HP', width: '15%'},
+        {id: 'acquaintance_from', name: 'Kenalan dari pihak?', width: '15%'},
+        {id: 'address', name: 'Alamat', width: '30%'},
+        {id: 'action', name: '', width: '10%', isCustomTd: true}
     ];
 
     const handleTdClick = (type, guestEdit) => {
@@ -57,13 +55,19 @@ function Guest() {
     const renderCustomTd = (guestEdit, onTdClick) => {
         return (
             <div className='ai-guest__td-actions'>
-                <div className='ai-guest__td-actions__icon'>
-                    <i
-                        className="fas fa-pencil-alt"
-                        onClick={() => onTdClick('open-edit-popup', guestEdit)}
-                    />
+                <div
+                    className='ai-guest__td-actions__icon view'
+                    onClick={() => onTdClick('open-edit-popup', guestEdit)}
+                >
+                    <i className="far fa-eye" />
                 </div>
-                <div className='ai-guest__td-actions__icon'>
+                <div
+                    className='ai-guest__td-actions__icon edit'
+                    onClick={() => onTdClick('open-edit-popup', guestEdit)}
+                >
+                    <i className="fas fa-pencil-alt" />
+                </div>
+                <div className='ai-guest__td-actions__icon delete'>
                     <i
                         className="fas fa-trash-alt"
                         onClick={() => onTdClick('open-delete-popup', guestEdit)}
@@ -78,20 +82,15 @@ function Guest() {
             {loading && <Loading is_fullscreen={true} />}
             
             <div className='ai-guest__container'>
-                <div className='ai-guest__actions'>
-                    <button
-                        className='ai-guest--btn-create'
-                        onClick={() => handleOpenForm(true)}
-                    >Tambah Tamu
-                    </button>
+                <div className='ai-guest__container-content'>
+                    <Table
+                        headerColumns={headerColumns}
+                        bodyData={guests}
+                        renderCustomTd={renderCustomTd}
+                        onTdClick={handleTdClick}
+                        handleOpenForm={handleOpenForm}
+                    />
                 </div>
-
-                <Table
-                    headerColumns={headerColumns}
-                    bodyData={guests}
-                    renderCustomTd={renderCustomTd}
-                    onTdClick={handleTdClick}
-                />
             </div>
 
             {openForm && (

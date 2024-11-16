@@ -5,7 +5,7 @@ function PopupFormWrapper({ open, setOpen, titleForm, handleOnSubmit, children, 
     
     return (
         <div className='ai-popup-form-wrapper__container'>
-            <div className='ai-popup-form-wrapper__content' style={{ width }}>
+            <div className='ai-popup-form-wrapper__content slide-top' style={{ width }}>
                 <button className='ai-popup-form-wrapper--close' onClick={() => setOpen(false)}>
                     <i className="fas fa-times"></i>
                 </button>
