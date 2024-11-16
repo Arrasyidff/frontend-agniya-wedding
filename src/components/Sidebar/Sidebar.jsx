@@ -1,4 +1,5 @@
 import './sidebar.scss'
+import aiLogo from '@assets/ai-logo.png'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 function Sidebar() {
@@ -6,26 +7,21 @@ function Sidebar() {
     const { pathname } = useLocation()
 
     const navigations = [
-        {id: 'guests', title: 'Para Tamu', icon: (<i className="fas fa-user-friends"></i>)},
-        {id: 'events', title: 'Acara', icon: (<i className="far fa-calendar-alt"></i>)}
+        {id: 'guests', title: 'Tamu', icon: (<i className="fas fa-users" />)},
+        {id: 'events', title: 'Acara', icon: (<i className="far fa-calendar-alt" />)}
     ]
 
     return (
         <div className='ai-sidebar__container'>
-            <div className="ai-sidebar__header">
-                <h1>AI</h1>
+            <div className='ai-sidebar__logo'>
+                <img src={aiLogo} alt="" srcSet="" />
             </div>
-
-            <h1 className='ai-sidebar--menu'>Menu.</h1>
-
-            <div className='ai-sidebar__items'>
+            <div className='ai-sidebar__menu'>
                 {navigations.map(nav => (
-                    <div
-                        key={nav.id}
-                        className={`ai-sidebar__item ${('/'+nav.id) === pathname ? 'active' : ''}`}
-                        onClick={() => navigate('/'+nav.id)}
-                    >
-                        <div className='ai-sidebar__logo'>{nav.icon}</div>
+                    <div key={nav.id} className={`ai-sidebar__item ${(pathname).includes(nav.id) ? 'active' : ''}`} onClick={() => navigate('/'+nav.id)}>
+                        <div className='ai-sidebar__item-logo'>
+                            {nav.icon}
+                        </div>
                         <p>{nav.title}</p>
                     </div>
                 ))}
