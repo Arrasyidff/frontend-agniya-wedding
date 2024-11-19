@@ -6,6 +6,7 @@ export { default as PopupFormWrapper } from './PopupFormWrapper/PopupFormWrapper
 export { default as PopupGuestForm } from './PopupGuestForm/PopupGuestForm'
 export { default as PopupEventForm } from './PopupEventForm/PopupEventForm'
 export { default as PopupDelete } from './PopupDelete/PopupDelete'
+export { default as PopupSuccess } from './PopupSuccess/PopupSuccess'
 export { default as PopupGuestTable } from './PopupGuestTable/PopupGuestTable'
 export { default as SelectInput } from './SelectInput/SelectInput'
 export { default as Input } from './Input/Input'

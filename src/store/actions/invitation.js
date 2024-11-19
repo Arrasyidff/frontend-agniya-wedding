@@ -28,7 +28,6 @@ export const getInvitations = () => {
         setTimeout(async () => {
             try {
                 const response = await api.get('/invitations')
-                console.log(response)
                 dispatch({
                     type: 'GET_INVITATIONS_SUCCESS',
                     payload: response.data.data

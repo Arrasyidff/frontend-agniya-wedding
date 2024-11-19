@@ -15,9 +15,9 @@ function PopupEventForm({ eventEdit, open, setOpen }) {
     const [isSubmit, setIsOnSubmit] = useState(false)
 
     const inputs = [
-        {value: form.event_name, name: 'event_name', type: 'text', placeholder: 'Masukkan nama acara'},
-        {value: form.event_date, name: 'event_date', type: 'date', placeholder: 'Masukkan tanggal acara'},
-        {value: form.event_time, name: 'event_time', type: 'time', placeholder: 'Masukkan waktu acara'},
+        {title: 'Nama Acara', value: form.event_name, name: 'event_name', type: 'text', placeholder: 'Masukkan nama acara'},
+        {title: 'Tanggal', value: form.event_date, name: 'event_date', type: 'date', placeholder: 'Masukkan tanggal acara'},
+        {title: 'Jam', value: form.event_time, name: 'event_time', type: 'time', placeholder: 'Masukkan waktu acara'},
     ]
 
     const handleOnChange = (e) => {
@@ -42,8 +42,9 @@ function PopupEventForm({ eventEdit, open, setOpen }) {
         <PopupFormWrapper
             open={open}
             setOpen={setOpen}
-            titleForm={'Form Tambah Acara'}
+            titleForm={'Form Acara'}
             handleOnSubmit={handleOnSubmit}
+            width='auto'
         >
             {inputs.map((input, index) => (
                 <div
@@ -51,6 +52,7 @@ function PopupEventForm({ eventEdit, open, setOpen }) {
                     className='ai-popup-guest-form__input-wrapper'
                 >
                     <Input
+                        title={input.title}
                         placeholder={input.placeholder}
                         value={input.value}
                         type={input.type}

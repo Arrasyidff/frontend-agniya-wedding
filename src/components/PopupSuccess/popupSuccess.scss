@@ -1,0 +1,75 @@
+.ai-popup-success__container {
+    position: fixed;
+    z-index: 1001;
+    background: rgba(0, 0, 0, 0.713);
+    top: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    .ai-popup-success__content {
+        position: relative;
+        width: 319px;
+        background: white;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 1.5rem;
+
+        h1, p, button, span {
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+        }
+
+        .ai-popup-success__logo,
+        .ai-popup-success__logo-second {
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ai-popup-success__logo {
+            height: 52px;
+            width: 52px;
+            background: #21AE6E;
+            margin-bottom: 10px;
+            i {
+                color: white;
+                font-size: 20px;
+            }
+        }
+
+        .ai-popup-success--title {
+            margin-bottom: 3px;
+            font-size: 20px;
+            font-weight: 500;
+            color: #464646;
+        }
+
+        .ai-popup-success--description {
+            font-size: 13px;
+            color: #616161;
+            font-weight: 300;
+
+            span {
+                font-weight: 500;
+                text-transform: capitalize;
+            }
+        }
+
+        button {
+            margin-top: 20px;
+            width: 150px;
+            padding: 8px;
+            color: white;
+            background: #21AE6E;
+            border: 1px solid #21AE6E;
+            cursor: pointer;
+        }
+    }
+}

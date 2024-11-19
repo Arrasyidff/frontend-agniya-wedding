@@ -1,18 +1,25 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './popupGuestForm.scss'
-import { Input, PopupFormWrapper } from '@components'
-import { useDispatch } from 'react-redux'
+import { Input, PopupFormWrapper, PopupSuccess } from '@components'
+import { useDispatch, useSelector } from 'react-redux'
 import { createGuest, updateGuest } from '@store/actions/guest'
 
-function PopupGuestForm({ guestEdit, open, setOpen, isDetailMode }) {
+function PopupGuestForm({
+    open,
+    guestEdit,
+    isDetailMode,
+    setOpen
+}) {
+    const {isSuccess} = useSelector(state => state.guest)
     const dispatch = useDispatch()
     const initialForm = {
         name: guestEdit?.name ?? '', email: guestEdit?.email ?? '', phone_number: guestEdit?.phone_number ?? '', acquaintance_from: guestEdit?.acquaintance_from ?? '',
         address: guestEdit?.address ?? '', additional_notes: guestEdit?.additional_notes ?? ''
     }
+
     const [form, setForm] = useState(initialForm)
     const [isSubmit, setIsOnSubmit] = useState(false)
-
+    const [openPopupSuccess, setOpenPopupSuccess] = useState(false)
     const inputs = [
         [
             {
@@ -32,7 +39,7 @@ function PopupGuestForm({ guestEdit, open, setOpen, isDetailMode }) {
         ],
         [
             {
-                title: 'HP',
+                title: 'Hp',
                 value: form.phone_number,
                 name: 'phone_number',
                 type: 'text',
@@ -64,52 +71,83 @@ function PopupGuestForm({ guestEdit, open, setOpen, isDetailMode }) {
         ]
     ]
 
+    useEffect(() => {
+        var x = document.getElementsByTagName("BODY")[0];
+        if (open) {
+            x.style.overflow = 'hidden'
+        }
+
+        return () => x.style.overflow = 'auto'
+    }, [open])
+
     const handleOnChange = (e) => {
         const {name, value} = e.target
         setForm({...form, [name]: value})
         setIsOnSubmit(false)
     }
 
-    const handleOnSubmit = () => {
-        setIsOnSubmit(true)
+    const handleOnSubmit = async () => {
+        let isSuccess = false
         if (guestEdit) {
-            dispatch(updateGuest({...form, id: guestEdit.id}))
+            isSuccess = await dispatch(updateGuest({...form, id: guestEdit.id}))
         } else {
-            dispatch(createGuest(form))
+            isSuccess = await dispatch(createGuest(form))
         }
-        setForm(initialForm)
-        setOpen(false)
+        if (isSuccess) setOpenPopupSuccess(true)
+
+        setIsOnSubmit(true)
         setIsOnSubmit(false)
     }
 
+    const handleCloseSuccessPopup = () => {
+        setOpen(false)
+        setOpenPopupSuccess(false)
+        setForm(initialForm)
+    }
+
     return (
-        <PopupFormWrapper
-            open={open}
-            setOpen={setOpen}
-            titleForm={'Form Tambah Tamu'}
-            handleOnSubmit={handleOnSubmit}
-            width='800px'
-            isDetailMode={isDetailMode}
-        >
-            {inputs.map(inputItems => (
-                <div className='ai-popup-guest-form__inputs'>
-                    {inputItems.map(input => (
-                        <div className='ai-popup-guest-form__input'>
-                            <Input
-                                readOnly={isDetailMode ?? false}
-                                title={input.title}
-                                placeholder={input.placeholder}
-                                value={input.value}
-                                type={input.type}
-                                name={input.name}
-                                isError={false}
-                                setValue={handleOnChange}
-                            />
+        <>
+            {!openPopupSuccess && (
+                <PopupFormWrapper
+                    open={open}
+                    setOpen={setOpen}
+                    titleForm={isDetailMode ? 'Detail Tamu' : (guestEdit ? 'perbaharui Informasi' : 'Tambah Tamu')}
+                    handleOnSubmit={handleOnSubmit}
+                    width='800px'
+                    isDetailMode={isDetailMode}
+                >
+                    {inputs.map((inputItems, idx) => (
+                        <div key={idx} className='ai-popup-guest-form__inputs'>
+                            {inputItems.map((input, kdx) => (
+                                <div
+                                    key={kdx}
+                                    className='ai-popup-guest-form__input'
+                                >
+                                    <Input
+                                        readOnly={isDetailMode ?? false}
+                                        title={input.title}
+                                        placeholder={input.placeholder}
+                                        value={input.value}
+                                        type={input.type}
+                                        name={input.name}
+                                        isError={false}
+                                        setValue={handleOnChange}
+                                    />
+                                </div>
+                            ))}
                         </div>
                     ))}
-                </div>
-            ))}
-        </PopupFormWrapper>
+                </PopupFormWrapper>
+            )}
+
+            {(openPopupSuccess && isSuccess) && (
+                <PopupSuccess
+                    detailName={guestEdit ? guestEdit.name : form.name}
+                    description={guestEdit ? 'berhasil diperbaharui' : 'berhasil ditambahkan'}
+                    onEvent={handleCloseSuccessPopup}
+                />
+            )}
+        </>
     )
 }
 

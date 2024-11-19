@@ -4,7 +4,7 @@ function Input({ title, placeholder, value, type, name, isError, setValue, readO
     return (
         <div className='ai-input__container'>
             {
-                type == 'text' ? (
+                (['text', 'date', 'time']).includes(type) ? (
                     <>
                         <label htmlFor={name}>{title}</label>
                         <input

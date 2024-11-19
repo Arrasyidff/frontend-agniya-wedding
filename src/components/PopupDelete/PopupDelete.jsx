@@ -3,20 +3,23 @@ import './popupdelete.scss'
 function PopupDelete({ title, detailName, onEvent }) {
     return (
         <div className='ai-popup-delete__container'>
-            <div className='ai-popup-delete__content'>
-                <div className='ai-popup-delete__content-logo'>
-                    <i className="fas fa-trash-alt"></i>
+            <div className='ai-popup-delete__content slide-top'>
+                <div className='ai-popup-delete__logo'>
+                    <div className='ai-popup-delete__logo-second'>
+                        <i className="fas fa-exclamation-circle" />
+                    </div>
                 </div>
-
-                <h1 className='ai-popup-delete__content--title'>
-                    {title}
-                </h1>
-                <p className='ai-popup-delete__content--description'>
-                    Anda akan menghapus '{detailName}'. Tindakan ini tidak dapat dibatalkan.
+                <p className='ai-popup-delete--title'>{title}</p>
+                <p className='ai-popup-delete--description'>
+                    Apakah anda yakin ingin menghapus <span>"{detailName}"</span>?
                 </p>
-                <div className='ai-popup-delete__content-actions'>
-                    <button className='cancel' onClick={() => onEvent(false)}>Batalkan</button>
-                    <button onClick={() => onEvent(true)}>Hapus Tamu</button>
+                <p className='ai-popup-delete--description'>
+                    Tindakan ini tidak dapat dibatalkan
+                </p>
+
+                <div className='ai-popup-delete__actions'>
+                    <button onClick={() => onEvent(false)}>Kembali</button>
+                    <button onClick={() => onEvent(true)}>Hapus</button>
                 </div>
             </div>
         </div>

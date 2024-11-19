@@ -2,10 +2,13 @@
     display: flex;
     justify-content: space-between;
     .ai-popup-guest-form__input {
-        width: 49%;
+        width: 50%;
+        &:first-child {
+            margin-right: 10px;
+        }
     }
 
     &:not(:first-child) {
-        margin-top: 11px;
+        margin-top: 10px;
     }
 }

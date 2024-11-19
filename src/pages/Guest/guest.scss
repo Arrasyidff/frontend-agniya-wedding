@@ -3,37 +3,5 @@
     
     .ai-guest__container-content {
         padding: 0 31px;
-
-        .ai-guest__td-actions {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            
-            .ai-guest__td-actions__icon {
-                height: 30px;
-                width: 30px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50%;
-                cursor: pointer;
-                color: white;
-
-                &.view {
-                    background-color: #7DDAD8;
-                }
-                &.edit {
-                    background-color: #1C2B56;
-                }
-                &.delete {
-                    background-color: #F14645;
-                }
-
-                &:not(:first-child) {
-                    margin-left: 5px;
-                }
-            }
-        }
     }
 }

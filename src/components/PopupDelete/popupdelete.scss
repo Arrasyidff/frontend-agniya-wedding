@@ -9,76 +9,78 @@
     justify-content: center;
     align-items: center;
 
+    h1, p, button, span {
+        font-family: "Poppins", sans-serif;
+        text-align: center;
+    }
+
     .ai-popup-delete__content {
         position: relative;
-        width: 400px;
+        width: 438px;
         background: white;
         flex-direction: column;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 20px;
+        padding: 1.5rem;
 
-        .ai-popup-delete__content-logo {
-            height: 70px;
-            width: 70px;
-            background: black;
+        .ai-popup-delete__logo,
+        .ai-popup-delete__logo-second {
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 50%;
-            background: #fa344a;
-            position: absolute;
-            top: -35px;
-            left: 50%;
-            transform: translate(-50%, 0);
+        }
 
-            i {
-                color: white;
-                font-size: 30px;
+        .ai-popup-delete__logo {
+            height: 52px;
+            width: 52px;
+            border-radius: 50%;
+            background: #FFECEB;
+            margin-bottom: 10px;
+            .ai-popup-delete__logo-second {
+                height: 42.16px;
+                width: 42.16px;
+                background: #F8D7D0;
+
+                i {
+                    color: #CD4D59;
+                    font-size: 20px;
+                }
             }
         }
 
-        h1, p {
-            font-family: "Poppins", sans-serif;
-            text-align: center;
-        }
-
-        .ai-popup-delete__content--title {
-            margin-top: 25px;
-            font-weight: 600;
+        .ai-popup-delete--title {
+            margin-bottom: 3px;
             font-size: 20px;
+            font-weight: 500;
+            color: #464646;
         }
 
-        .ai-popup-delete__content--description {
-            width: 90%;
-            font-size: 14px;
+        .ai-popup-delete--description {
+            font-size: 13px;
+            color: #616161;
+            font-weight: 300;
+            span {
+                font-weight: 500;
+                text-transform: capitalize;
+            }
         }
 
-        .ai-popup-delete__content-actions {
+        .ai-popup-delete__actions {
             margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-
             button {
-                cursor: pointer;
-                padding: 8px 0;
-                width: 30%;
-                border-radius: 4px;
-                font-size: 14px;
-                font-family: "Poppins", sans-serif;
-                background: #F94C4C;
-                border: 1px solid #F94C4C;
+                width: 150px;
+                padding: 8px;
                 color: white;
-                &.cancel {
-                    background: white;
-                    border: 1px solid black;
-                    color: black;
-                }
+                background: #F14645;
+                border: 1px solid #F14645;
+                cursor: pointer;
+                
                 &:first-child {
-                    margin-right: 10px;
+                    background: white;
+                    color: #F14645;
+                    margin-right: 8px;
                 }
             }
         }

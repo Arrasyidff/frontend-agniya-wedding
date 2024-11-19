@@ -20,7 +20,9 @@ function PopupFormWrapper({
 
                 <h1 className='ai-popup-form-wrapper--title'>{titleForm}</h1>
 
-                {children}
+                <div className='ai-popup-form-wrapper__children'>
+                    {children}
+                </div>
 
                 {!isDetailMode && (
                     <div className='ai-popup-form-wrapper__actions'>

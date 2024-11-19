@@ -23,6 +23,7 @@
                 color: white;
                 font-weight: 400;
                 font-size: 17px;
+                text-transform: uppercase;
             }
 
             .ai-layout__content-navbar__account {
@@ -59,6 +60,7 @@
     .ai-layout__content-content {
         padding-top: 92px;
         background: #F6F7F9;
+        background: white;
         min-height: 100vh;
     }
 }

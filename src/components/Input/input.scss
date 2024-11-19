@@ -2,34 +2,42 @@
     position: relative;
     width: 100%;
     background: white;
-    font-weight: 400;
-    cursor: pointer;
 
     label, input, textarea {
         font-family: "Poppins", sans-serif;
     }
 
     label, p {
-        font-size: 15px;
-        color: rgba(0, 0, 0, 0.672);
+        font-size: 13px;
+    }
+
+    label, input, textarea, p {
+        color: #464646;
+    }
+    
+    label, p {
+        font-weight: 500;
     }
 
     textarea {
         resize: none;
+        height: 100px;
     }
 
     input, textarea {
-        border: 1px solid rgba(0, 0, 0, 0.672);
-        border-radius: 4px;
+        margin-top: 2px;
+        border: .5px solid rgba(0, 0, 0, 0.444);
         width: 100%;
         padding: 8px;
         font-size: 13px;
+        font-weight: 300;
+        color: #252525;
 
         &:focus {
             outline: none;
         }
         &::placeholder {
-            color: rgba(0, 0, 0, 0.672);
+            color: rgba(0, 0, 0, 0.444);
         }
         &.isError {   
             &::placeholder {

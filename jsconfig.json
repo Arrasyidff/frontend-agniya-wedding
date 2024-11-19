@@ -9,7 +9,8 @@
             "@images": ["./assets/img"],
             "@icons": ["./assets/icons"],
             "@store": ["./store"],
-            "@helpers": ["./helpers"]
+            "@helpers": ["./helpers"],
+            "@utils": ["./utils"]
         }
     },
     "exclude": ["node_modules"]

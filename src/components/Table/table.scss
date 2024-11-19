@@ -24,9 +24,12 @@
         .ai-table__header-input {
             background: white;
             width: 88%;
+            border: .5px solid rgba(0, 0, 0, 0.134);
+            font-size: 13px;
+            color: #464646;
             input {
-                font-size: 15px;
-                margin-left: 17px;
+                font-weight: 300;
+                margin-left: 10px;
                 outline: none;
                 border: none;
                 width: 100%;
@@ -35,25 +38,59 @@
 
         .ai-table__header-add {
             justify-content: center;
-            background: #F9BA6C;
+            background: #1c2b56;
+            color: white;
             width: 11%;
-            font-size: 15px;
+            font-size: 13px;
+            text-transform: capitalize;
             cursor: pointer;
-            font-weight: 500;
+            font-weight: 400;
+            i {
+                font-size: 9px;
+                margin-right: 5px;
+            }
         }
     }
 
     table {
         width: 100%;
         border-collapse: collapse; 
-        thead tr th {
-            text-align: left;
-            border-bottom: .5px solid rgba(0, 0, 0, 0.134);
-            font-family: "Poppins", sans-serif;
-            font-weight: 500;
-            padding: 10px 0;
-            padding-left: 10px;
-            font-size: 13px;
+        thead tr {
+            th {
+                background-color: #ffffff;
+                text-align: left;
+                border-bottom: .5px solid rgba(0, 0, 0, 0.134);
+                font-family: "Poppins", sans-serif;
+                font-weight: 500;
+                padding: 10px 0;
+                padding-left: 10px;
+                font-size: 13px;
+
+                .ai-table__th-container {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    p {
+                        cursor: pointer;
+                    }
+                    .ai-table__th-sort {
+                        margin-left: 10px;
+                        color: black;
+                        flex-direction: column;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        height: 10px;
+                        cursor: pointer;
+                        img {
+                            width: 8px;
+                            &:first-child {
+                                margin-bottom: 3px;
+                            }
+                        }
+                    }
+                }
+            }
         }
 
         tbody tr {
@@ -73,6 +110,38 @@
                     text-align: center;
                 }
            }
+        }
+    }
+}
+
+.ai-table__td-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+    .ai-table__td-actions__icon {
+        height: 30px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        color: white;
+
+        &.view {
+            background-color: #7DDAD8;
+        }
+        &.edit {
+            background-color: #1C2B56;
+        }
+        &.delete {
+            background-color: #F14645;
+        }
+
+        &:not(:first-child) {
+            margin-left: 5px;
         }
     }
 }
