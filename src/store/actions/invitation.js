@@ -5,13 +5,24 @@ export const createInvitation = ({ event_name, event_date, event_time }) => {
         dispatch({type: 'GET_INVITATION_REQUEST'})
         setTimeout(async () => {
             try {
-                await api.post('/invitations', { event_name, event_date, event_time })
-    
-                const response = await api.get('/invitations')
+                const oldEvents = getState().invitation.invitations
+                const newEvent = {
+                    id: Date.now(),
+                    event_name,
+                    event_date: Date.now(),
+                    event_time
+                }
+                const newEvents = [...oldEvents, newEvent]
                 dispatch({
                     type: 'GET_INVITATIONS_SUCCESS',
-                    payload: response.data.data
+                    payload: newEvents
                 })
+                // await api.post('/invitations', { event_name, event_date, event_time })
+                // const response = await api.get('/invitations')
+                // dispatch({
+                //     type: 'GET_INVITATIONS_SUCCESS',
+                //     payload: response.data.data
+                // })
             } catch (error) {
                 dispatch({
                     type: 'GET_INVITATIONS_FAILURE',
@@ -27,11 +38,45 @@ export const getInvitations = () => {
         dispatch({type: 'GET_INVITATION_REQUEST'})
         setTimeout(async () => {
             try {
-                const response = await api.get('/invitations')
+                const response = [
+                    {
+                        "id": Date.now()+Math.random(),
+                        "event_name": 'Akad Nikah',
+                        "event_date": Date.now(),
+                        'event_time': [
+                            {start: '14:50', end: '15:00'}
+                        ],
+                        'total_invitations': 100,
+                    },
+                    {
+                        "id": Date.now()+Math.random(),
+                        "event_name": 'Akad Nikah',
+                        "event_date": Date.now(),
+                        'event_time': [
+                            {start: '14:50', end: '15:00'},
+                            {start: '14:50', end: '15:00'},
+                        ],
+                        'total_invitations': 100,
+                    },
+                    {
+                        "id": Date.now()+Math.random(),
+                        "event_name": 'Akad Nikah',
+                        "event_date": Date.now(),
+                        'event_time': [
+                            {start: '14:50', end: '15:00'}
+                        ],
+                        'total_invitations': 100,
+                    },
+                ]
                 dispatch({
                     type: 'GET_INVITATIONS_SUCCESS',
-                    payload: response.data.data
+                    payload: response
                 })
+                // const response = await api.get('/invitations')
+                // dispatch({
+                //     type: 'GET_INVITATIONS_SUCCESS',
+                //     payload: response.data.data
+                // })
             } catch (error) {
                 dispatch({
                     type: 'GET_INVITATIONS_FAILURE',
@@ -89,13 +134,18 @@ export const deleteInvitation = (id) => {
         dispatch({type: 'GET_INVITATION_REQUEST'})
         setTimeout(async () => {
             try {
-                await api.delete('/invitations/'+id)
-
-                const response = await api.get('/invitations')
+                let newInvitations = [...getState().invitation.invitations]
+                newInvitations = newInvitations.filter(invitation => invitation.id !== id)
                 dispatch({
                     type: 'GET_INVITATIONS_SUCCESS',
-                    payload: response.data.data
+                    payload: newInvitations
                 })
+                // await api.delete('/invitations/'+id)
+                // const response = await api.get('/invitations')
+                // dispatch({
+                //     type: 'GET_INVITATIONS_SUCCESS',
+                //     payload: response.data.data
+                // })
             } catch (error) {
                 dispatch({
                     type: 'GET_INVITATIONS_FAILURE',

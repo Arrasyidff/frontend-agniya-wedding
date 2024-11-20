@@ -64,7 +64,7 @@ function Table({
                             {headerColumns.map(col => (
                                 <td key={col.id}>
                                     {col?.isCustomTd && renderCustomTd && renderCustomTd(item, onTdClick) !== undefined
-                                        ? renderCustomTd(item, onTdClick)
+                                        ? renderCustomTd(item, onTdClick, col.id)
                                         : col.id.toLowerCase() === 'no'
                                         ? `${i + 1}.`
                                         : item[col.id] || null}

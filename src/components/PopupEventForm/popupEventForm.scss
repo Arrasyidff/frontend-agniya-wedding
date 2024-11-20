@@ -2,6 +2,52 @@
     width: 100%;
     
     &:not(:first-child) {
-        margin-top: 11px;
+        margin-top: 10px;
+    }
+
+    &.multiple {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+
+        .ai-popup-guest-form__input-wrapper__time {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+
+            .ai-input__container {
+                &:first-child {
+                    margin-right: 5px;
+                }
+            }
+        }
+
+        .ai-popup-guest-form__actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 40px;
+            width: 70px;
+            button {
+                cursor: pointer;
+                height: 25px;
+                width: 25px;
+                border-radius: 50px;
+                background: #1c2b56;
+                &.delete {
+                    background: #f94c4b;
+                }
+                i {
+                    color: white;
+                    font-size: 11px;
+                }
+                &:first-child {
+                    margin-right: 3px;
+                }
+                &:disabled {
+                    cursor: not-allowed;
+                }
+            }
+        }
     }
 }

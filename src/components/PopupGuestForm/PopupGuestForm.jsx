@@ -10,15 +10,15 @@ function PopupGuestForm({
     isDetailMode,
     setOpen
 }) {
-    const {isSuccess} = useSelector(state => state.guest)
     const dispatch = useDispatch()
+    const { isSuccess } = useSelector(state => state.guest)
     const initialForm = {
         name: guestEdit?.name ?? '', email: guestEdit?.email ?? '', phone_number: guestEdit?.phone_number ?? '', acquaintance_from: guestEdit?.acquaintance_from ?? '',
         address: guestEdit?.address ?? '', additional_notes: guestEdit?.additional_notes ?? ''
     }
 
     const [form, setForm] = useState(initialForm)
-    const [isSubmit, setIsOnSubmit] = useState(false)
+    // const [isSubmit, setIsOnSubmit] = useState(false)
     const [openPopupSuccess, setOpenPopupSuccess] = useState(false)
     const inputs = [
         [
@@ -83,7 +83,7 @@ function PopupGuestForm({
     const handleOnChange = (e) => {
         const {name, value} = e.target
         setForm({...form, [name]: value})
-        setIsOnSubmit(false)
+        // setIsOnSubmit(false)
     }
 
     const handleOnSubmit = async () => {
@@ -95,8 +95,8 @@ function PopupGuestForm({
         }
         if (isSuccess) setOpenPopupSuccess(true)
 
-        setIsOnSubmit(true)
-        setIsOnSubmit(false)
+        // setIsOnSubmit(true)
+        // setIsOnSubmit(false)
     }
 
     const handleCloseSuccessPopup = () => {

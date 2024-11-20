@@ -3,5 +3,19 @@
 
     .ai-events__container-content {
         padding: 0 31px;
+
+        .ai-events__event-times {
+            .ai-events__event-time {
+                text-align: center;
+                background: #f8ba6c;
+                padding: 2px 8px;
+                font-size: 13px;
+                border-radius: 20px;
+                font-weight: 500;
+                &:not(:first-child) {
+                    margin-top: 5px;
+                }
+            }
+        }
     }
 }

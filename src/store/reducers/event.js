@@ -1,37 +1,46 @@
 let initialState = {
-    guests: [],
+    events: [],
+    event: null,
     loading: false,
     isSuccess: false,
     error: null
 }
 
-function guest (state = initialState, action) {
+function invitation (state = initialState, action) {
     switch (action.type) {
-        case 'GET_GUESTS_REQUEST':
+        case 'GET_EVENT_REQUEST':
             return {
                 ...state,
                 loading: true,
                 error: null,
-                isSuccess: false,
+                isSuccess: false
             }
-        case 'GET_GUESTS_SUCCESS':
+        case 'GET_EVENTS_SUCCESS':
             return {
                 ...state,
                 loading: false,
                 error: null,
-                guests: action.payload,
+                events: action.payload,
                 isSuccess: true
             }
-        case 'GET_GUESTS_FAILURE':
+        case 'GET_DETAIL_EVENT_SUCCESS':
+            return {
+                ...state,
+                loading: false,
+                error: null,
+                event: action.payload,
+                isSuccess: true
+            }
+        case 'GET_EVENT_FAILURE':
             return {
                 ...state,
                 loading: false,
                 error: action.payload,
-                isSuccess: false,
+                isSuccess: false
             }
         default:
             return state
     }
 }
 
-export default guest
+export default invitation

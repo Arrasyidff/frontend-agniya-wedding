@@ -1,4 +1,4 @@
-import api from '../../api'
+// import api from '../../api'
 
 export const getGuests = (search) => {
     return async (dispatch, getState) => {
@@ -194,12 +194,11 @@ export const deleteGuest = (id) => {
         try {
             setTimeout(async () => {
                 let oldGuests = JSON.parse(JSON.stringify(getState().guest.guests))
-                oldGuests = oldGuests.filter(guest => guest.id != id)
+                oldGuests = oldGuests.filter(guest => guest.id !== id)
                 dispatch({
                     type: 'GET_GUESTS_SUCCESS',
                     payload: oldGuests
                 })
-
                 // await api.delete('/guests/'+id)
                 // const response = await api.get('/guests')
                 // dispatch({

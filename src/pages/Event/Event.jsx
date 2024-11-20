@@ -2,37 +2,39 @@ import { useEffect, useState } from 'react'
 import './event.scss'
 import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
-import { getInvitations, deleteInvitation } from '@store/actions/invitation'
+import { getEvents, deleteEvent } from '@store/actions/event'
 import { getFullDate } from '@helpers/dateHelper'
-import { Loading, PopupDelete, PopupEventForm, Table } from '@components'
-import { getTimeFromTimestamp } from 'helpers/dateHelper'
+import { Loading, PopupDelete, PopupEventForm, PopupSuccess, Table } from '@components'
+import { useDebounce } from 'utils/hooks'
 
 function Event() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const {invitations, loading} = useSelector(state => state.invitation)
+    const {events, loading, isSuccess} = useSelector(state => state.event)
     const [openPopupDelete, setOpenPopupDelete] = useState(false)
+    const [openPopupSuccess, setOpenPopupSuccess] = useState(false)
+    const [openMessage, setOpenMessage] = useState(true)
     const [openForm, setOpenForm] = useState(false)
     const [event, setEvent] = useState(null)
-
-    const headerColumns = [
+    const [search, setSearch] = useState('')
+    const dobouncedSearch = useDebounce(search)
+    const [headerColumns, setHeaderColumns] = useState([
         {id: 'no', name: '', width: '2%'},
         {id: 'event_name', name: 'Nama Acara', width: '20%'},
         {id: 'event_date_format', name: 'Tanggal', width: '20%'},
-        {id: 'event_time_format', name: 'Jam', width: '20%'},
+        {id: 'event_time', name: 'Jam', width: '8%', isCustomTd: true},
         {id: 'total_invitations', name: 'Total tamu', width: '25%'},
         {id: 'action', name: '', width: '10%', isCustomTd: true}
-    ];
+    ])
 
-    const bodyData = (JSON.parse(JSON.stringify(invitations))).map(invitation => {
+    const bodyData = ([...events]).map(invitation => {
         invitation.event_date_format = getFullDate(invitation.event_date)
-        invitation.event_time_format = getTimeFromTimestamp(invitation.event_date)
         return invitation
     })
 
     useEffect(() => {
-        dispatch(getInvitations())
-    }, [dispatch])
+        dispatch(getEvents(dobouncedSearch))
+    }, [dispatch, dobouncedSearch])
 
     const handleOpenForm = () => {
         setOpenForm(true)
@@ -45,8 +47,24 @@ function Event() {
 
     const handleDeleteEvent = (payload) => {
         setOpenPopupDelete(false)
-        if (payload) dispatch(deleteInvitation(event.id))
-        setEvent(null)
+        if (payload) dispatch(deleteEvent(event.id))
+        setOpenMessage('berhasil di hapus')
+        setOpenPopupSuccess(true)
+    }
+
+    const handleSortOrder = (id) => {
+        let newHeaderColumns = JSON.parse(JSON.stringify(headerColumns))
+        newHeaderColumns = newHeaderColumns.map(col => {
+            if (col.id === id) {
+                if (!col?.sort) col.sort = 'asc'
+                else if (col.sort === 'asc') col.sort = 'desc'
+                else if (col.sort === 'desc') col.sort = 'asc'
+            } else {
+                col.sort = null
+            }
+            return col
+        })
+        setHeaderColumns(newHeaderColumns)
     }
 
     const handleTdClick = (type, data) => {
@@ -57,7 +75,16 @@ function Event() {
         }
     };
 
-    const renderCustomTd = (data, onTdClick) => {
+    const renderCustomTd = (data, onTdClick, colId) => {
+        if (colId === 'event_time') {
+            return (
+                <div className='ai-events__event-times'>
+                    {data.event_time.map((time, i) => (
+                        <p key={i} className='ai-events__event-time'>{time.start} - {time.end}</p>
+                    ))}
+                </div>
+            )
+        }
         return (
             <div className='ai-table__td-actions'>
                 <div
@@ -66,11 +93,11 @@ function Event() {
                 >
                     <i className="far fa-eye" />
                 </div>
-                <div className='ai-table__td-actions__icon delete'>
-                    <i
-                        className="fas fa-trash-alt"
-                        onClick={() => onTdClick('open-delete-popup', data)}
-                    />
+                <div
+                    className='ai-table__td-actions__icon delete'
+                    onClick={() => onTdClick('open-delete-popup', data)}
+                >
+                    <i className="fas fa-trash-alt" />
                 </div>
             </div>
         );
@@ -83,19 +110,21 @@ function Event() {
             <div className='ai-events__container'>
                 <div className='ai-events__container-content'>
                     <Table
+                        search={search}
                         placeholderFind={'Cari Acara...'}
                         headerColumns={headerColumns}
                         bodyData={bodyData}
                         renderCustomTd={renderCustomTd}
+                        onChangeSearch={setSearch}
                         onTdClick={handleTdClick}
                         handleOpenForm={handleOpenForm}
+                        handleSortOrder={handleSortOrder}
                     />
                 </div>
             </div>
 
             {openForm && (
                 <PopupEventForm
-                    eventEdit={event}
                     open={openForm}
                     setOpen={setOpenForm}
                 />
@@ -106,6 +135,14 @@ function Event() {
                     onEvent={handleDeleteEvent}
                     title={'Hapus Acara?'}
                     detailName={event.event_name}
+                />
+            )}
+
+            {(isSuccess && openPopupSuccess) && (
+                <PopupSuccess
+                    detailName={event.event_name}
+                    description={openMessage}
+                    onEvent={setOpenPopupSuccess}
                 />
             )}
         </>
