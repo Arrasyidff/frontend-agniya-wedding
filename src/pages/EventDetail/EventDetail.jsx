@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './eventDetail.scss'
 import { useDebounce } from 'utils/hooks'
-import { PopupCheckInForm, Table } from '@components'
+import { PopupDetailInvitation, PopupCheckInForm, Table } from '@components'
 import { useDispatch, useSelector } from 'react-redux'
 import { getInvitations } from 'store/actions/invitation'
 
@@ -12,6 +12,7 @@ function EventDetail() {
     const [search, setSearch] = useState('')
     const dobouncedSearch = useDebounce(search)
     const [openForm, setOpenForm] = useState(false)
+    const [openDetailInvitation, setOpenDetailInvitation] = useState(false)
     const [data, setData] = useState(null)
     const [activeTab, setActiveTab] = useState(1)
     const [headerColumns, setHeaderColumns] = useState([
@@ -59,9 +60,13 @@ function EventDetail() {
     }
 
     const handleTdClick = (type, data) => {
+        console.log(type)
         if (type === 'open-confirm-popup') {
             setData(data)
             setOpenForm(true)
+        } else if (type === 'open-detail-popup') {
+            setOpenDetailInvitation(true)
+            setData(data)
         }
     };
     /** end methods */
@@ -99,6 +104,7 @@ function EventDetail() {
             <div className='ai-table__td-actions' style={{ justifyContent: 'flex-end' }}>
                 {icons.map((icon) => (
                     <div
+                        key={icon.id}
                         className={`ai-table__td-actions__icon ${icon.id}`}
                         onClick={() => onTdClick(icon.type, item)}
                     >
@@ -180,6 +186,14 @@ function EventDetail() {
                     />
                 </div>
             </div>
+
+            {openDetailInvitation && (
+                <PopupDetailInvitation
+                    open={openDetailInvitation}
+                    setOpen={setOpenDetailInvitation}
+                    detailData={data}
+                />
+            )}
 
             {openForm && (
                 <PopupCheckInForm

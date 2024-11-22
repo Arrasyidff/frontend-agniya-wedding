@@ -1,0 +1,31 @@
+h1, p, button, input {
+    font-family: "Poppins", sans-serif;
+}
+
+.ai-detail-invitation__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+
+    .ai-detail-invitation__field {
+        flex-direction: column;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+
+        p {
+            &:first-child {
+                font-size: 13px;
+                font-weight: 300;
+                background: #F9BA6C;
+                padding: 1px 10px;
+                margin-bottom: 1px;
+                border-radius: 20px;
+            }
+            &:last-child {
+                max-height: 100px;
+                overflow-y: auto;
+            }
+        }
+    }
+}
