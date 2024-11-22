@@ -21,9 +21,9 @@
 
             .ai-layout__content-navbar--title {
                 color: white;
-                font-weight: 400;
-                font-size: 17px;
-                text-transform: uppercase;
+                font-weight: 500;
+                font-size: 15px;
+                text-transform: capitalize;
             }
 
             .ai-layout__content-navbar__account {
@@ -33,7 +33,7 @@
 
                 .ai-layout__content-navbar__account--name {
                     color: white;
-                    font-size: 17px;
+                    font-size: 15px;
                     font-weight: 100;
                     margin-right: 10px;
                     text-transform: uppercase;
@@ -45,11 +45,11 @@
                     align-items: center;
                     background: #7DDAD8;
                     border-radius: 50%;
-                    height: 35px;
-                    width: 35px;
+                    height: 25px;
+                    width: 25px;
 
                     p {
-                        font-size: 18px;
+                        font-size: 15px;
                         font-weight: 500;
                     }
                 }

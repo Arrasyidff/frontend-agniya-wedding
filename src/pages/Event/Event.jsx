@@ -21,10 +21,10 @@ function Event() {
     const [headerColumns, setHeaderColumns] = useState([
         {id: 'no', name: '', width: '2%'},
         {id: 'event_name', name: 'Nama Acara', width: '20%'},
-        {id: 'event_date_format', name: 'Tanggal', width: '20%'},
-        {id: 'event_time', name: 'Jam', width: '8%', isCustomTd: true},
-        {id: 'total_invitations', name: 'Total tamu', width: '25%'},
-        {id: 'action', name: '', width: '10%', isCustomTd: true}
+        {id: 'event_date_format', name: 'Tanggal', width: '15%', justifyContent: 'center'},
+        {id: 'event_time', name: 'Jam', width: '15%', isCustomTd: true, justifyContent: 'center'},
+        {id: 'total_invitations', name: 'Total tamu', width: '15%', justifyContent: 'center'},
+        {id: 'action', name: '', width: '48%', isCustomTd: true}
     ])
 
     const bodyData = ([...events]).map(invitation => {
@@ -45,11 +45,16 @@ function Event() {
         setEvent(payload)
     }
 
-    const handleDeleteEvent = (payload) => {
+    const handleDeleteEvent = async (payload) => {
+        let isDeleted = false
         setOpenPopupDelete(false)
-        if (payload) dispatch(deleteEvent(event.id))
-        setOpenMessage('berhasil di hapus')
-        setOpenPopupSuccess(true)
+        if (payload) {
+            isDeleted = await dispatch(deleteEvent(event.id))
+            if (isDeleted) {
+                setOpenMessage('berhasil di hapus')
+                setOpenPopupSuccess(true)
+            }
+        }
     }
 
     const handleSortOrder = (id) => {

@@ -139,6 +139,12 @@
         &.delete {
             background-color: #F14645;
         }
+        &.success {
+            background-color: #21AE6E;
+        }
+        &.flat {
+            background-color: #939393;
+        }
 
         &:not(:first-child) {
             margin-left: 5px;

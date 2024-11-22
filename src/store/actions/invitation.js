@@ -40,33 +40,37 @@ export const getInvitations = () => {
             try {
                 const response = [
                     {
-                        "id": Date.now()+Math.random(),
-                        "event_name": 'Akad Nikah',
-                        "event_date": Date.now(),
-                        'event_time': [
-                            {start: '14:50', end: '15:00'}
-                        ],
-                        'total_invitations': 100,
+                        id: Date.now()+Math.random(),
+                        name: 'Arrasyid Fadel Fatonsyah',
+                        attendance_status: null,
+                        guest_count: 2,
+                        attendance: null,
+                        check_in_time: ''
                     },
                     {
-                        "id": Date.now()+Math.random(),
-                        "event_name": 'Akad Nikah',
-                        "event_date": Date.now(),
-                        'event_time': [
-                            {start: '14:50', end: '15:00'},
-                            {start: '14:50', end: '15:00'},
-                        ],
-                        'total_invitations': 100,
+                        id: Date.now()+Math.random(),
+                        name: 'Arrasyid Fadel Fatonsyah',
+                        attendance_status: null,
+                        guest_count: 2,
+                        attendance: null,
+                        check_in_time: ''
                     },
                     {
-                        "id": Date.now()+Math.random(),
-                        "event_name": 'Akad Nikah',
-                        "event_date": Date.now(),
-                        'event_time': [
-                            {start: '14:50', end: '15:00'}
-                        ],
-                        'total_invitations': 100,
+                        id: Date.now()+Math.random(),
+                        name: 'Arrasyid Fadel Fatonsyah',
+                        attendance_status: true,
+                        guest_count: 2,
+                        attendance: null,
+                        check_in_time: ''
                     },
+                    {
+                        id: Date.now()+Math.random(),
+                        name: 'Arrasyid Fadel Fatonsyah',
+                        attendance_status: false,
+                        guest_count: 2,
+                        attendance: null,
+                        check_in_time: ''
+                    }
                 ]
                 dispatch({
                     type: 'GET_INVITATIONS_SUCCESS',
@@ -105,27 +109,37 @@ export const getInvitation = (id) => {
     }
 }
 
-export const updateInvitation = ({ id, attendance_status, guest_count, phone_number }) => {
+export const updateInvitation = (payload) => {
     return async (dispatch, getState) => {
         dispatch({type: 'GET_FORM_INVITATION_REQUEST'})
-        setTimeout(async () => {
-            try {
-                await api.patch('/guest_invitations/attendance', {
-                    id, attendance_status, guest_count, phone_number
+        try {
+            setTimeout(async () => {
+                let oldInvitations = getState().invitation.invitations
+                oldInvitations.forEach((invitation, i) => {
+                    if (invitation.id === payload.id) {
+                        oldInvitations[i] = payload
+                    }
                 })
-    
-                const response = await api.get('/guest_invitations/'+id)
                 dispatch({
                     type: 'GET_INVITATION_SUCCESS',
-                    payload: response.data.data
+                    payload: oldInvitations
                 })
-            } catch (error) {
-                dispatch({
-                    type: 'GET_INVITATIONS_FAILURE',
-                    payload: error.message
-                });
-            }
-        }, 1000);
+
+                // await api.patch('/guest_invitations/attendance', {
+                //     id, attendance_status, guest_count, phone_number
+                // })
+                // const response = await api.get('/guest_invitations/'+id)
+                // dispatch({
+                //     type: 'GET_INVITATION_SUCCESS',
+                //     payload: response.data.data
+                // })
+            }, 1000);
+        } catch (error) {
+            dispatch({
+                type: 'GET_INVITATIONS_FAILURE',
+                payload: error.message
+            });
+        }
     }
 }
 

@@ -26,12 +26,12 @@ function Guest() {
     ])
 
     useEffect(() => {
-        dispatch(getGuests(search))
+        dispatch(getGuests(dobouncedSearch))
     }, [dispatch, dobouncedSearch])
 
     useEffect(() => {
         const body = document.getElementsByTagName('body')[0]
-        if ((openForm || openPopupDelete || openForm) && body) {
+        if ((openPopupDelete || openForm) && body) {
             body.style.overflow = 'hidden'
         }
 
@@ -41,6 +41,7 @@ function Guest() {
     }, [openPopupSuccess, openPopupDelete, openForm])
 
     const handleOpenForm = () => {
+        setIsDetailMode(false)
         setGuestEdit(null)
         setOpenForm(true)
     }

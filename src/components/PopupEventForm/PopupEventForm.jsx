@@ -97,7 +97,7 @@ function PopupEventForm({ eventEdit, open, setOpen }) {
                 >
                     {inputs.map((input, index) =>
                         !Array.isArray(input.sessions) ? (
-                            <div key={index} className="ai-popup-guest-form__input-wrapper">
+                            <div key={index} className="ai-popup-event-form__input-wrapper">
                                 <Input
                                     title={input.title}
                                     placeholder={input.placeholder}
@@ -110,8 +110,8 @@ function PopupEventForm({ eventEdit, open, setOpen }) {
                             </div>
                         ) : (
                             input.sessions.map((sessionInput, jdx) => (
-                                <div key={jdx} className="ai-popup-guest-form__input-wrapper multiple">
-                                    <div className='ai-popup-guest-form__input-wrapper__time'>
+                                <div key={jdx} className="ai-popup-event-form__input-wrapper multiple">
+                                    <div className='ai-popup-event-form__input-wrapper__time'>
                                         <Input
                                             title={`Sesi ${jdx + 1} mulai`}
                                             placeholder={sessionInput.placeholder}
@@ -131,7 +131,7 @@ function PopupEventForm({ eventEdit, open, setOpen }) {
                                             setValue={(e) => handleOnChangeTime('end', e)}
                                         />
                                     </div>
-                                    <div className="ai-popup-guest-form__actions">
+                                    <div className="ai-popup-event-form__actions">
                                         {((jdx === (input.sessions.length - 1)) && (input.sessions.length !== 3)) && (
                                             <button
                                                 disabled={input.sessions.length === 3}

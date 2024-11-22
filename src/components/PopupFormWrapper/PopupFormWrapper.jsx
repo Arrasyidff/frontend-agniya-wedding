@@ -26,8 +26,15 @@ function PopupFormWrapper({
 
                 {!isDetailMode && (
                     <div className='ai-popup-form-wrapper__actions'>
-                        <button className='cancel' onClick={() => setOpen(false)}>Batal</button>
-                        <button onClick={() => handleOnSubmit()}>Simpan</button>
+                        <button
+                            style={{ width: width === 'auto' ? '50%' : '200px' }}
+                            className='cancel'
+                            onClick={() => setOpen(false)}
+                        >Batal</button>
+                        <button
+                            style={{ width: width === 'auto' ? '50%' : '200px' }}
+                            onClick={() => handleOnSubmit()}
+                        >Simpan</button>
                     </div>
                 )}
             </div>

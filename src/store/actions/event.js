@@ -102,9 +102,10 @@ export const getEvents = (search) => {
 
 export const deleteEvent = (id) => {
     return async (dispatch, getState) => {
+        let isSuccess = false
         dispatch({type: 'GET_EVENT_REQUEST'})
-        setTimeout(async () => {
-            try {
+        try {
+            setTimeout(async () => {
                 let newEvents = [...getState().event.events]
                 newEvents = newEvents.filter(event => event.id !== id)
                 dispatch({
@@ -117,12 +118,15 @@ export const deleteEvent = (id) => {
                 //     type: 'GET_INVITATIONS_SUCCESS',
                 //     payload: response.data.data
                 // })
-            } catch (error) {
-                dispatch({
-                    type: 'GET_EVENT_FAILURE',
-                    payload: error.message
-                });
-            }
-        }, 1000);
+            }, 1000);
+            isSuccess = true
+        } catch (error) {
+            dispatch({
+                type: 'GET_EVENT_FAILURE',
+                payload: error.message
+            });
+            isSuccess = false
+        }
+        return isSuccess
     }
 }
