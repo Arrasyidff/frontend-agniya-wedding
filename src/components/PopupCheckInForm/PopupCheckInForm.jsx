@@ -5,12 +5,15 @@ import { useDispatch } from 'react-redux'
 import { updateInvitation } from '@store/actions/invitation'
 
 function PopupCheckInForm({ eventEdit, open, setOpen }) {
+    /** data */
     const dispatch = useDispatch()
     // const { isSuccess } = useSelector(state => state.invitation)
     const [form, setForm] = useState(eventEdit);
     // const [isSubmit, setIsSubmit] = useState(false);
     // const [openPopupSuccess, setOpenPopupSuccess] = useState(false)
+    /** end data */
 
+    /** methods */
     const handleOnChange = (e) => {
         const { name, value } = e.target;
         setForm((prev) => ({ ...prev, [name]: +value }));
@@ -24,15 +27,16 @@ function PopupCheckInForm({ eventEdit, open, setOpen }) {
         dispatch(updateInvitation(payload))
         setOpen(false)
     }
+    /** end methods */
 
     return (
         <>
             <PopupFormWrapper
                 open={open}
                 setOpen={setOpen}
-                titleForm="Tambah Acara"
+                titleForm="Check In"
                 handleOnSubmit={handleOnSubmit}
-                width="auto"
+                width="400px"
             >
                 <div className="ai-popup-guest-form__input-wrapper">
                     <Input

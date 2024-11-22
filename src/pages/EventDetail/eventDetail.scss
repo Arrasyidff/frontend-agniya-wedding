@@ -53,9 +53,9 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: 1px solid #1C2B56;
+                border: .5px solid rgba(0, 0, 0, 0.574);
                 cursor: pointer;
-                transition: .3s;
+                transition: .1s;
                 font-size: 20px;
                 font-weight: 500;
                 color: #333333;
@@ -76,7 +76,7 @@
             div {
                 border-radius: 60px;
                 flex-direction: column;
-                border: 1px solid #1C2B56;
+                border: .5px solid rgba(0, 0, 0, 0.574);
                 height: 100px;
                 display: flex;
                 justify-content: center;

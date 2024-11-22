@@ -21,7 +21,7 @@ function EventDetail() {
         {id: 'guest_count', name: 'Total Tamu', width: '10%', justifyContent: 'center'},
         {id: 'attendance', name: 'Kehadiran Di Tempat', width: '10%', justifyContent: 'center', isCustomTd: true},
         {id: 'check_in_time', name: 'Check In Time', width: '10%', justifyContent: 'center'},
-        {id: 'action', name: '', width: '10%', isCustomTd: true}
+        {id: 'action', name: '', width: '5%', isCustomTd: true}
     ])
     /** end data */
 
@@ -72,10 +72,7 @@ function EventDetail() {
             <div className='ai-table__td-actions'>
                 <div
                     className={`ai-table__td-actions__icon ${item[colId] === true ? 'success' : (item[colId] === false ? 'delete' : 'flat')}`}
-                    onClick={() => onTdClick(
-                        (colId === 'attendance') && (item[colId] === null) ? 'open-confirm-popup' : '',
-                        item
-                    )}
+                    onClick={() => onTdClick((colId === 'attendance') && (item[colId] === null) ? 'open-confirm-popup' : '', item)}
                     style={{ cursor: (colId === 'attendance') && (item[colId] === null) ? 'pointer' : 'default' }}
                 >
                     {(item[colId] === true) ? (
@@ -89,34 +86,35 @@ function EventDetail() {
             </div>
         )
     }
-    const renderCustomTd = (item, onTdClick, colId) => {
+
+    function actionsIcon(item, onTdClick) {
+        let icons = [
+            {id: 'view', type: 'open-detail-popup', icon: (<i className="far fa-eye" />)},
+            {id: 'edit', type: 'open-confirm-popup', icon: (<i className="fas fa-pencil-alt" />)},
+            {id: 'delete', type: 'open-delete-popup', icon: (<i className="fas fa-trash-alt" />)},
+        ]
+        if (item.attendance === null) icons = icons.filter(icon => icon.id !== 'edit')
+
+        return (
+            <div className='ai-table__td-actions' style={{ justifyContent: 'flex-end' }}>
+                {icons.map((icon) => (
+                    <div
+                        className={`ai-table__td-actions__icon ${icon.id}`}
+                        onClick={() => onTdClick(icon.type, item)}
+                    >
+                        {icon.icon}
+                    </div>
+                ))}
+            </div>
+        )
+    }
+
+    function renderCustomTd(item, onTdClick, colId) {
         if (colId && (colId).includes('attendance')) {
             return attendanceIcon(item, onTdClick, colId)
         }
-        return (
-            <div className='ai-table__td-actions'>
-                <div
-                    className='ai-table__td-actions__icon view'
-                    onClick={() => onTdClick('open-detail-popup', item)}
-                >
-                    <i className="far fa-eye" />
-                </div>
-                <div
-                    className='ai-table__td-actions__icon edit'
-                    onClick={() => onTdClick('open-edit-popup', item)}
-                >
-                    <i className="fas fa-pencil-alt" />
-                </div>
-                <div
-                    className='ai-table__td-actions__icon delete'
-                    onClick={() => onTdClick('open-delete-popup', item)}
-                >
-                    <i className="fas fa-trash-alt" />
-                </div>
-            </div>
-        );
+        return actionsIcon(item, onTdClick)
     };
-
     /** end component */
 
     return (
