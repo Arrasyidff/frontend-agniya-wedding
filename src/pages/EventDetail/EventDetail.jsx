@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './eventDetail.scss'
 import { useDebounce } from 'utils/hooks'
-import { PopupDetailInvitation, PopupCheckInForm, Table } from '@components'
+import { PopupDelete, PopupDetailInvitation, PopupCheckInForm, Table } from '@components'
 import { useDispatch, useSelector } from 'react-redux'
 import { getInvitations } from 'store/actions/invitation'
 
@@ -13,6 +13,7 @@ function EventDetail() {
     const dobouncedSearch = useDebounce(search)
     const [openForm, setOpenForm] = useState(false)
     const [openDetailInvitation, setOpenDetailInvitation] = useState(false)
+    const [openDelete, setOpenDelete] = useState(false)
     const [data, setData] = useState(null)
     const [activeTab, setActiveTab] = useState(1)
     const [headerColumns, setHeaderColumns] = useState([
@@ -59,14 +60,18 @@ function EventDetail() {
         setHeaderColumns(newHeaderColumns)
     }
 
+    const handleDeleteInvitation = () => {
+        setOpenDelete(false)
+    }
+
     const handleTdClick = (type, data) => {
-        console.log(type)
+        setData(data)
         if (type === 'open-confirm-popup') {
-            setData(data)
             setOpenForm(true)
         } else if (type === 'open-detail-popup') {
             setOpenDetailInvitation(true)
-            setData(data)
+        } else if (type === 'open-delete-popup') {
+            setOpenDelete(true)
         }
     };
     /** end methods */
@@ -200,6 +205,14 @@ function EventDetail() {
                     open={openForm}
                     setOpen={setOpenForm}
                     eventEdit={data}
+                />
+            )}
+
+            {openDelete && (
+                <PopupDelete
+                    title={'Hapus Undangan?'}
+                    detailName={data.name}
+                    onEvent={handleDeleteInvitation}
                 />
             )}
         </>
