@@ -1,21 +1,6 @@
 .ai-quote__container {
     position: relative;
-
-    .ai-quote__content--background-gradient {
-        z-index: 2;
-        position: absolute;
-        bottom: -30%;
-        width: 100%;
-    }
-
-    .ai-quote__content--background-flower {
-        z-index: 1;
-        position: absolute;
-        bottom: -20%;
-        right: -50%;
-        width: 120%;
-        opacity: 0.13;
-    }
+    background: white;
 
     .ai-quote__sub-container {
         padding-top: 2.25rem;
@@ -75,7 +60,7 @@
 
         .ai-quote__content,
         .ai-quote__sub-content {
-            box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
+            box-shadow: 0px 18px 19.3px 1px rgba(142, 142, 142, 0.298) inset;
             -webkit-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
             -moz-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
             width: 100%;
@@ -84,40 +69,46 @@
 
 }
 
-@media (max-width: 390px) {
-    .ai-quote__container {
-        .ai-quote__sub-container {
-            .ai-quote__content {
-                padding-top: 2.6rem;
-                padding-right: 1.6rem;
-                padding-left: 1.6rem;
-            }
-        }
-    }
-}
+// @media (max-width: 390px) {
+//     .ai-quote__container {
+//         .ai-quote__sub-container {
+//             .ai-quote__content {
+//                 padding-top: 2.6rem;
+//                 padding-right: 1.6rem;
+//                 padding-left: 1.6rem;
+//             }
+//         }
+//     }
+// }
 
-@media (max-height: 896px) {
-    .ai-quote__container {
-        .ai-quote__sub-container {
-            .ai-quote__content {
-                .ai-quote__sub-content {
-                    .ai-quote--rose {
-                        margin-bottom: -3.5625rem;
-                        width: 7.125rem;
-                    }
-                }
-            }
-        }
-    }
-}
+// @media (max-height: 896px) {
+//     .ai-quote__container {
+//         .ai-quote__sub-container {
+//             .ai-quote__content {
+//                 .ai-quote__sub-content {
+//                     .ai-quote--rose {
+//                         margin-bottom: -3.5625rem;
+//                         width: 7.125rem;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
 
-@media (min-height: 900px) {
+// @media (min-height: 900px) {
+//     .ai-quote__container {
+//         .ai-quote__sub-container {
+//             padding-top: 4.25rem;
+//             .ai-quote__content {
+//                 padding-bottom: 8.313rem;
+//             }
+//         }
+//     }
+// }
+
+@media (min-width: 768px) {
     .ai-quote__container {
-        .ai-quote__sub-container {
-            padding-top: 4.25rem;
-            .ai-quote__content {
-                padding-bottom: 8.313rem;
-            }
-        }
+        width: 100%;
     }
 }

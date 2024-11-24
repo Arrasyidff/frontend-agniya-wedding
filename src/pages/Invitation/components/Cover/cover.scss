@@ -17,7 +17,7 @@
 
         .ai-cover--background-gradient {
             position: absolute;
-            z-index: 1;
+            z-index: inherit;
             bottom: 0;
             width: 100%;
         }
@@ -26,7 +26,7 @@
         .ai-cover__for,
         .ai-cover--open-btn
         {
-            z-index: 2;
+            z-index: 1001;
         }
     
         .ai-cover__title {
@@ -69,9 +69,18 @@
     }
 }
 
+@media (min-width: 768px) {
+    .ai-cover__container {
+        width: 25%;
+        .ai-cover__sub-container {
+            padding: 0;
+        }
+    }
+}
+
 @media (max-height: 750px) {
     .ai-cover__container {
-        overflow-y: scroll;
+        // overflow-y: auto;
         .ai-cover__sub-container {
             .ai-cover__title {
                 margin-bottom: 2rem;
@@ -80,12 +89,5 @@
                 margin-top: 2rem;
             }
         }
-    }
-}
-
-
-@media (max-height: 670px) {
-    .ai-cover__container {
-        overflow-y: scroll;
     }
 }

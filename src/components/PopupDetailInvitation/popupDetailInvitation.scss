@@ -1,8 +1,8 @@
-h1, p, button, input {
-    font-family: "Poppins", sans-serif;
-}
-
 .ai-popup-detail-invitation__container {
+    h1, p, button, input {
+        font-family: "Poppins", sans-serif;
+    }
+    
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;

@@ -18,15 +18,25 @@ function Invitation() {
 
     return (
         <div className='ai__container'>
-            <Cover name={ invitation?.guest?.name } />
-            <Quote />
-            <Brides />
-            <Detail invitation={ invitation }/>
-            <Gallery />
-            <Rsvp invitation={ invitation } />
-            <Wish invitation={ invitation } />
-            <Gift />
-            <Navigation invitation={ invitation } />
+            <div className='ai__container__content-left'>
+
+            </div>
+            <div className='ai__container__content'>
+                <div className='ai__container__content-main'>
+                    <Cover name={ invitation?.guest?.name } />
+                    <Quote />
+                    <Brides />
+                    <Detail invitation={ invitation }/>
+                    <Gallery />
+                    <Rsvp invitation={ invitation } />
+                    <Wish invitation={ invitation } />
+                    <Gift />
+                    <Navigation invitation={ invitation } />
+                </div>
+            </div>
+            <div className='ai__container__content-right'>
+
+            </div>
         </div>
     )
 }

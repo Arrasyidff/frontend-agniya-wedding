@@ -2,13 +2,11 @@ import './quote.scss'
 import quoteSymbol from '@assets/quote_symbol.png'
 import quoteRose from '@assets/quote_rose.png'
 // import backgroundGradient from '@assets/background_gradient.png'
-// import backgroundFlower from '@assets/flower_background.png'
 
 function Quote() {
   return (
     <section id='ai-quote' className='ai-quote__container'>
         {/* <img className='ai-quote__content--background-gradient' src={backgroundGradient} alt="" srcSet="" /> */}
-        {/* <img className='ai-quote__content--background-flower' src={backgroundFlower} alt="" srcSet="" /> */}
         <div className='ai-quote__sub-container'>
             <div className='ai-quote__content'>
                 <div className='ai-quote__sub-content'>
