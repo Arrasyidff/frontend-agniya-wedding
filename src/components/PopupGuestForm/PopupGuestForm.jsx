@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import './popupGuestForm.scss'
 import { Input, PopupFormWrapper, PopupSuccess } from '@components'
 import { useDispatch, useSelector } from 'react-redux'
 import { createGuest, updateGuest } from '@store/actions/guest'
+import { createInvitations } from '@store/actions/invitation'
 
 function PopupGuestForm({
     open,
     guestEdit,
     isDetailMode,
-    setOpen
+    isForInvitation,
+    setOpen,
 }) {
     const dispatch = useDispatch()
     const { isSuccess } = useSelector(state => state.guest)
@@ -20,56 +22,78 @@ function PopupGuestForm({
     const [form, setForm] = useState(initialForm)
     // const [isSubmit, setIsOnSubmit] = useState(false)
     const [openPopupSuccess, setOpenPopupSuccess] = useState(false)
-    const inputs = [
-        [
-            {
-                title: 'Nama',
-                value: form.name,
-                name: 'name',
-                type: 'text',
-                placeholder: 'Masukkan nama lengkap Tamu Anda',
-            },
-            {
-                title: 'Email',
-                value: form.email,
-                name: 'email',
-                type: 'text',
-                placeholder: 'Masukkan email lengkap Tamu Anda'
-            },
-        ],
-        [
-            {
-                title: 'Hp',
-                value: form.phone_number,
-                name: 'phone_number',
-                type: 'text',
-                placeholder: 'Format: +62 812 3456 7890'
-            },
-            {
-                title: 'Kenalan dari pihak?',
-                value: form.acquaintance_from,
-                name: 'acquaintance_from',
-                type: 'text',
-                placeholder: 'Kenalan dari pihak? Abid?'
-            },
-        ],
-        [
-            {
-                title: 'Alamat',
-                value: form.address,
-                name: 'address',
-                type: 'textarea',
-                placeholder: 'Masukkan alamat lengkap Tamu Anda'
-            },
-            {
-                title: 'Tambahan Informasi',
-                value: form.additional_notes,
-                name: 'additional_notes',
-                type: 'textarea',
-                placeholder: 'Masukkan informasi tambahan Tamu Anda'
-            },
-        ]
-    ]
+    const inputs = (useCallback(() => {
+        let inputs = [
+            [
+                {
+                    title: 'Nama',
+                    value: form.name,
+                    name: 'name',
+                    type: 'text',
+                    placeholder: 'Masukkan nama lengkap Tamu Anda',
+                },
+                {
+                    title: 'Email',
+                    value: form.email,
+                    name: 'email',
+                    type: 'text',
+                    placeholder: 'Masukkan email lengkap Tamu Anda'
+                },
+            ],
+            [
+                {
+                    title: 'Hp',
+                    value: form.phone_number,
+                    name: 'phone_number',
+                    type: 'text',
+                    placeholder: 'Format: +62 812 3456 7890'
+                },
+                {
+                    title: 'Kenalan dari pihak?',
+                    value: form.acquaintance_from,
+                    name: 'acquaintance_from',
+                    type: 'text',
+                    placeholder: 'Kenalan dari pihak? Abid?'
+                },
+            ],
+            [
+                {
+                    title: 'Alamat',
+                    value: form.address,
+                    name: 'address',
+                    type: 'textarea',
+                    placeholder: 'Masukkan alamat lengkap Tamu Anda'
+                },
+                {
+                    title: 'Tambahan Informasi',
+                    value: form.additional_notes,
+                    name: 'additional_notes',
+                    type: 'textarea',
+                    placeholder: 'Masukkan informasi tambahan Tamu Anda'
+                },
+            ]
+        ];
+        if (isForInvitation) {
+            inputs.push([
+                {
+                    title: 'Sesi',
+                    value: form?.session,
+                    name: 'session',
+                    type: 'text',
+                    placeholder: 'Masukkan Sesi'
+                },
+                {
+                    title: 'Total Tamu',
+                    value: form.guest_count,
+                    name: 'guest_count',
+                    type: 'text',
+                    placeholder: 'Masukkan Total Tamu'
+                },
+            ])
+        }
+
+        return inputs;
+    }, [isForInvitation, form]))()
 
     useEffect(() => {
         var x = document.getElementsByTagName("BODY")[0];
@@ -87,6 +111,11 @@ function PopupGuestForm({
     }
 
     const handleOnSubmit = async () => {
+        if (isForInvitation) {
+            await dispatch(createInvitations([form]))
+            setOpen(false)
+            return
+        }
         let isSuccess = false
         if (guestEdit) {
             isSuccess = await dispatch(updateGuest({...form, id: guestEdit.id}))
@@ -94,9 +123,6 @@ function PopupGuestForm({
             isSuccess = await dispatch(createGuest(form))
         }
         if (isSuccess) setOpenPopupSuccess(true)
-
-        // setIsOnSubmit(true)
-        // setIsOnSubmit(false)
     }
 
     const handleCloseSuccessPopup = () => {

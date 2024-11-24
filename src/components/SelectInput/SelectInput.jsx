@@ -1,13 +1,32 @@
 import './selectInput.scss'
 import { useState } from 'react'
 
-function SelectInput() {
+function SelectInput({
+    placehoder='',
+    options,
+    value='',
+    onChange
+}) {
+    /** data */
     const [isOpenSelect, setIsOpenSelect] = useState(false)
+    /** end data */
+
+    /** methods */
+    const handleOnChange = (payload) => {
+        if (payload?.id === value?.id) payload = null
+        onChange(payload)
+        setIsOpenSelect(false)
+    }
+    /** end methods */
 
     return (
         <div className='ai-select-input__container'>
             <div className='ai-select-input__btn' onClick={() => setIsOpenSelect(!isOpenSelect)}>
-                <span>Select your option</span>
+                {value?.name ? (
+                    <span className='value'>{value?.name}</span>
+                ): (
+                    <span className='placeholder'>{placehoder}</span>
+                )}
                 {isOpenSelect ? (
                     <i className="fas fa-sort-down"></i>
                 ) : (
@@ -16,11 +35,19 @@ function SelectInput() {
             </div>
 
             {isOpenSelect && (
-                <ul className="ai-select-input__options">
-                    <li className='ai-select-input__option'>
-                        <span>Text</span>
-                    </li>
-                </ul>
+                <>
+                    <div className="ai-select-input__options">
+                        {options.map(option => (
+                            <div
+                                key={option.id}
+                                className={`ai-select-input__option ${option?.id === value?.id ? 'active' : ''}`}
+                                onClick={() => handleOnChange(option)}
+                            >
+                                <span>{option.name}</span>
+                            </div>
+                        ))}
+                    </div>
+                </>
             )}
         </div>
     )

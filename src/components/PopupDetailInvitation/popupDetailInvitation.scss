@@ -2,12 +2,12 @@ h1, p, button, input {
     font-family: "Poppins", sans-serif;
 }
 
-.ai-detail-invitation__container {
+.ai-popup-detail-invitation__container {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
 
-    .ai-detail-invitation__field {
+    .ai-popup-detail-invitation__field {
         flex-direction: column;
         display: flex;
         justify-content: flex-start;
@@ -15,7 +15,7 @@ h1, p, button, input {
 
         p {
             &:first-child {
-                width: 180px;
+                width: 250px;
                 font-size: 13px;
                 font-weight: 300;
                 background: #F9BA6C;

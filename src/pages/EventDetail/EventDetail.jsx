@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './eventDetail.scss'
 import { useDebounce } from 'utils/hooks'
-import { PopupDelete, PopupDetailInvitation, PopupCheckInForm, Table } from '@components'
+import { PopupDelete, PopupDetailInvitation, PopupCheckInForm, Table, PopupGuestList, PopupGuestForm } from '@components'
 import { useDispatch, useSelector } from 'react-redux'
 import { getInvitations } from 'store/actions/invitation'
 
@@ -12,8 +12,10 @@ function EventDetail() {
     const [search, setSearch] = useState('')
     const dobouncedSearch = useDebounce(search)
     const [openForm, setOpenForm] = useState(false)
+    const [openGuestForm, setOpenGuestForm] = useState(false)
     const [openDetailInvitation, setOpenDetailInvitation] = useState(false)
     const [openDelete, setOpenDelete] = useState(false)
+    const [openGuestList, setOpenGuestList] = useState(false)
     const [data, setData] = useState(null)
     const [activeTab, setActiveTab] = useState(1)
     const [headerColumns, setHeaderColumns] = useState([
@@ -27,24 +29,36 @@ function EventDetail() {
     ])
     /** end data */
 
-    /** lifecycle */
+    /** lifecycles */
     useEffect(() => {
         dispatch(getInvitations(dobouncedSearch))
     }, [dispatch, dobouncedSearch])
 
     useEffect(() => {
         const body = document.getElementsByTagName('body')[0]
-        if (openForm && body) {
+        if ((openGuestList || openForm) && body) {
             body.style.overflow = 'hidden'
         }
 
         return () => {
             if (body) body.style.overflow = 'visible'
         }
-    }, [openForm])
-    /** end lifecycle */
+    }, [openForm, openGuestList])
+    /** end lifecycles */
 
     /** methods */
+    const handleDeleteInvitation = () => {
+        setOpenDelete(false)
+    }
+
+    const handleOpenGuestList = () => {
+        setOpenGuestList(true)
+    }
+
+    const handleOpenGuestForm = () => {
+        setOpenGuestForm(prev => prev = true)
+    }
+
     const handleSortOrder = (id) => {
         let newHeaderColumns = [...headerColumns]
         newHeaderColumns = newHeaderColumns.map(col => {
@@ -60,10 +74,6 @@ function EventDetail() {
         setHeaderColumns(newHeaderColumns)
     }
 
-    const handleDeleteInvitation = () => {
-        setOpenDelete(false)
-    }
-
     const handleTdClick = (type, data) => {
         setData(data)
         if (type === 'open-confirm-popup') {
@@ -76,14 +86,14 @@ function EventDetail() {
     };
     /** end methods */
 
-    /** component */
+    /** components */
     function attendanceIcon(item, onTdClick, colId) {
         return (
             <div className='ai-table__td-actions'>
                 <div
                     className={`ai-table__td-actions__icon ${item[colId] === true ? 'success' : (item[colId] === false ? 'delete' : 'flat')}`}
-                    onClick={() => onTdClick((colId === 'attendance') && (item[colId] === null) ? 'open-confirm-popup' : '', item)}
-                    style={{ cursor: (colId === 'attendance') && (item[colId] === null) ? 'pointer' : 'default' }}
+                    onClick={() => onTdClick((colId === 'attendance') && ([null, undefined]).includes(item?.[colId]) ? 'open-confirm-popup' : '', item)}
+                    style={{ cursor: (colId === 'attendance') && ([null, undefined]).includes(item?.[colId]) ? 'pointer' : 'default' }}
                 >
                     {(item[colId] === true) ? (
                         <i className="far fa-check-circle" />
@@ -103,7 +113,7 @@ function EventDetail() {
             {id: 'edit', type: 'open-confirm-popup', icon: (<i className="fas fa-pencil-alt" />)},
             {id: 'delete', type: 'open-delete-popup', icon: (<i className="fas fa-trash-alt" />)},
         ]
-        if (item.attendance === null) icons = icons.filter(icon => icon.id !== 'edit')
+        if (([null, undefined]).includes(item?.attendance)) icons = icons.filter(icon => icon.id !== 'edit')
 
         return (
             <div className='ai-table__td-actions' style={{ justifyContent: 'flex-end' }}>
@@ -126,7 +136,7 @@ function EventDetail() {
         }
         return actionsIcon(item, onTdClick)
     };
-    /** end component */
+    /** end components */
 
     return (
         <>
@@ -186,11 +196,18 @@ function EventDetail() {
                         renderCustomTd={renderCustomTd}
                         onChangeSearch={setSearch}
                         onTdClick={handleTdClick}
-                        // handleOpenForm={handleOpenForm}
+                        handleOpenForm={activeTab === 1 ? handleOpenGuestList : handleOpenGuestForm}
                         handleSortOrder={handleSortOrder}
                     />
                 </div>
             </div>
+
+            {openGuestList && (
+                <PopupGuestList
+                    open={openGuestList}
+                    setOpen={setOpenGuestList}
+                />
+            )}
 
             {openDetailInvitation && (
                 <PopupDetailInvitation
@@ -205,6 +222,14 @@ function EventDetail() {
                     open={openForm}
                     setOpen={setOpenForm}
                     eventEdit={data}
+                />
+            )}
+
+            {openGuestForm && (
+                <PopupGuestForm
+                    open={openGuestForm}
+                    setOpen={setOpenGuestForm}
+                    isForInvitation={true}
                 />
             )}
 

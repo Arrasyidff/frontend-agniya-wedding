@@ -1,0 +1,16 @@
+h1, p, button, input {
+    font-family: "Poppins", sans-serif;
+}
+
+.ai-popup-guest-list__container {
+    .ai-table__container {
+        .ai-table__header {
+            margin-top: 10px;
+        }
+        .ai-table__content {
+            padding-right: 20px;
+            overflow-y: auto;
+            height: 400px;
+        }
+    }
+}

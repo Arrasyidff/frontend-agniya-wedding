@@ -3,115 +3,115 @@
 export const getGuests = (search) => {
     return async (dispatch, getState) => {
         dispatch({ type: 'GET_GUESTS_REQUEST' })
-        setTimeout(async () => {
-            try {
-                let response = [
-                    {
-                        "id": Date.now(),
-                        "name": 'ARRASYID FADEL FATONSYAH',
-                        'email': 'arfafa@mail.com',
-                        'phone_number': '089635164141',
-                        'acquaintance_from': 'Keluarga Pak Haji Udin',
-                        'address': 'JL. MERTA AGUNG NO. 55',
-                        'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                    },
-                    {
-                        'id': Date.now()+Math.random(),
-                        "name": 'ARRASYID FADEL FATONSYAH',
-                        'email': 'arfafa@mail.com',
-                        'phone_number': '089635164141',
-                        'acquaintance_from': 'Keluarga Pak Haji Udin',
-                        'address': 'JL. MERTA AGUNG NO. 55',
-                        'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                    },
-                    {
-                        'id': Date.now()+Math.random(),
-                        "name": 'ARRASYID FADEL FATONSYAH',
-                        'email': 'arfafa@mail.com',
-                        'phone_number': '089635164141',
-                        'acquaintance_from': 'Keluarga Pak Haji Udin',
-                        'address': 'JL. MERTA AGUNG NO. 55',
-                        'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                    },
-                    {
-                        'id': Date.now()+Math.random(),
-                        "name": 'ARRASYID FADEL FATONSYAH',
-                        'email': 'arfafa@mail.com',
-                        'phone_number': '089635164141',
-                        'acquaintance_from': 'Keluarga Pak Haji Udin',
-                        'address': 'JL. MERTA AGUNG NO. 55',
-                        'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                    },
-                    {
-                        'id': Date.now()+Math.random(),
-                        "name": 'ARRASYID FADEL FATONSYAH',
-                        'email': 'arfafa@mail.com',
-                        'phone_number': '089635164141',
-                        'acquaintance_from': 'Keluarga Pak Haji Udin',
-                        'address': 'JL. MERTA AGUNG NO. 55',
-                        'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                    },
-                    {
-                        'id': Date.now()+Math.random(),
-                        "name": 'ARRASYID FADEL FATONSYAH',
-                        'email': 'arfafa@mail.com',
-                        'phone_number': '089635164141',
-                        'acquaintance_from': 'Keluarga Pak Haji Udin',
-                        'address': 'JL. MERTA AGUNG NO. 55',
-                        'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                    },
-                    {
-                        'id': Date.now()+Math.random(),
-                        "name": 'ARRASYID FADEL FATONSYAH',
-                        'email': 'arfafa@mail.com',
-                        'phone_number': '089635164141',
-                        'acquaintance_from': 'Keluarga Pak Haji Udin',
-                        'address': 'JL. MERTA AGUNG NO. 55',
-                        'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                    },
-                    {
-                        'id': Date.now()+Math.random(),
-                        "name": 'ARRASYID FADEL FATONSYAH',
-                        'email': 'arfafa@mail.com',
-                        'phone_number': '089635164141',
-                        'acquaintance_from': 'Keluarga Pak Haji Udin',
-                        'address': 'JL. MERTA AGUNG NO. 55',
-                        'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                    },
-                    {
-                        'id': Date.now()+Math.random(),
-                        "name": 'ARRASYID FADEL FATONSYAH',
-                        'email': 'arfafa@mail.com',
-                        'phone_number': '089635164141',
-                        'acquaintance_from': 'Keluarga Pak Haji Udin',
-                        'address': 'JL. MERTA AGUNG NO. 55',
-                        'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                    },
-                ]
-                if (search) {
-                    search = search.toLowerCase()
-                    response = response.filter(item => {
-                        return (
-                            (item.name.toLowerCase()).includes(search)
-                        )
-                    })
-                }
-                dispatch({
-                    type: 'GET_GUESTS_SUCCESS',
-                    payload: response
+        try {
+            let response = [
+                {
+                    "id": Date.now(),
+                    "name": 'ARRASYID FADEL FATONSYAH',
+                    'email': 'arfafa@mail.com',
+                    'phone_number': '089635164141',
+                    'acquaintance_from': 'Keluarga Pak Haji Udin',
+                    'address': 'JL. MERTA AGUNG NO. 55',
+                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
+                },
+                {
+                    'id': Date.now()+Math.random(),
+                    "name": 'ARDHIAN KHAIRUL HAKIM',
+                    'email': 'arfafa@mail.com',
+                    'phone_number': '089635164141',
+                    'acquaintance_from': 'Keluarga Pak Haji Udin',
+                    'address': 'JL. MERTA AGUNG NO. 55',
+                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
+                },
+                {
+                    'id': Date.now()+Math.random(),
+                    "name": 'AHMAD HABIBUR RIDLO',
+                    'email': 'arfafa@mail.com',
+                    'phone_number': '089635164141',
+                    'acquaintance_from': 'Keluarga Pak Haji Udin',
+                    'address': 'JL. MERTA AGUNG NO. 55',
+                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
+                },
+                {
+                    'id': Date.now()+Math.random(),
+                    "name": 'ADHA KUSUMA HIDAYAT',
+                    'email': 'arfafa@mail.com',
+                    'phone_number': '089635164141',
+                    'acquaintance_from': 'Keluarga Pak Haji Udin',
+                    'address': 'JL. MERTA AGUNG NO. 55',
+                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
+                },
+                {
+                    'id': Date.now()+Math.random(),
+                    "name": 'ARRASYID FADEL FATONSYAH',
+                    'email': 'arfafa@mail.com',
+                    'phone_number': '089635164141',
+                    'acquaintance_from': 'Keluarga Pak Haji Udin',
+                    'address': 'JL. MERTA AGUNG NO. 55',
+                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
+                },
+                {
+                    'id': Date.now()+Math.random(),
+                    "name": 'ARRASYID FADEL FATONSYAH',
+                    'email': 'arfafa@mail.com',
+                    'phone_number': '089635164141',
+                    'acquaintance_from': 'Keluarga Pak Haji Udin',
+                    'address': 'JL. MERTA AGUNG NO. 55',
+                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
+                },
+                {
+                    'id': Date.now()+Math.random(),
+                    "name": 'ARRASYID FADEL FATONSYAH',
+                    'email': 'arfafa@mail.com',
+                    'phone_number': '089635164141',
+                    'acquaintance_from': 'Keluarga Pak Haji Udin',
+                    'address': 'JL. MERTA AGUNG NO. 55',
+                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
+                },
+                {
+                    'id': Date.now()+Math.random(),
+                    "name": 'ARRASYID FADEL FATONSYAH',
+                    'email': 'arfafa@mail.com',
+                    'phone_number': '089635164141',
+                    'acquaintance_from': 'Keluarga Pak Haji Udin',
+                    'address': 'JL. MERTA AGUNG NO. 55',
+                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
+                },
+                {
+                    'id': Date.now()+Math.random(),
+                    "name": 'ARRASYID FADEL FATONSYAH',
+                    'email': 'arfafa@mail.com',
+                    'phone_number': '089635164141',
+                    'acquaintance_from': 'Keluarga Pak Haji Udin',
+                    'address': 'JL. MERTA AGUNG NO. 55',
+                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
+                },
+            ]
+            if (search) {
+                search = search.toLowerCase()
+                response = response.filter(item => {
+                    return (
+                        (item.name.toLowerCase()).includes(search)
+                    )
                 })
-                // const response = await api.get('/guests')
-                // dispatch({
-                //     type: 'GET_GUESTS_SUCCESS',
-                //     payload: response.data.data
-                // })
-            } catch (error) {
-                dispatch({
-                    type: 'GET_GUESTS_FAILURE',
-                    payload: error.message
-                });
             }
-        }, 1000);
+            dispatch({
+                type: 'GET_GUESTS_SUCCESS',
+                payload: response
+            })
+            setTimeout(async () => {
+            }, 1000);
+            // const response = await api.get('/guests')
+            // dispatch({
+            //     type: 'GET_GUESTS_SUCCESS',
+            //     payload: response.data.data
+            // })
+        } catch (error) {
+            dispatch({
+                type: 'GET_GUESTS_FAILURE',
+                payload: error.message
+            });
+        }
     }
 }
 

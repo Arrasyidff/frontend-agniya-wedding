@@ -1,21 +1,15 @@
 import api from '../../api'
 
-export const createInvitation = ({ event_name, event_date, event_time }) => {
+export const createInvitations = (payload) => {
     return async (dispatch, getState) => {
         dispatch({type: 'GET_INVITATION_REQUEST'})
-        setTimeout(async () => {
-            try {
-                const oldEvents = getState().invitation.invitations
-                const newEvent = {
-                    id: Date.now(),
-                    event_name,
-                    event_date: Date.now(),
-                    event_time
-                }
-                const newEvents = [...oldEvents, newEvent]
+        try {
+            setTimeout(async () => {
+                let oldInvitations = getState().invitation.invitations
+                const newInvitations = [...oldInvitations, ...payload]
                 dispatch({
                     type: 'GET_INVITATIONS_SUCCESS',
-                    payload: newEvents
+                    payload: newInvitations
                 })
                 // await api.post('/invitations', { event_name, event_date, event_time })
                 // const response = await api.get('/invitations')
@@ -23,13 +17,13 @@ export const createInvitation = ({ event_name, event_date, event_time }) => {
                 //     type: 'GET_INVITATIONS_SUCCESS',
                 //     payload: response.data.data
                 // })
-            } catch (error) {
-                dispatch({
-                    type: 'GET_INVITATIONS_FAILURE',
-                    payload: error.message
-                });
-            }
-        }, 1000);
+            }, 1000);
+        } catch (error) {
+            dispatch({
+                type: 'GET_INVITATIONS_FAILURE',
+                payload: error.message
+            });
+        }
     }
 }
 
