@@ -10,19 +10,18 @@
 }
 
 .ai__container {
-    // position: relative;
-    // font-family: "Abhaya Libre", serif;
-    // color: var(--font-color);
-    // background: white;
-    // overflow-y: hidden;
-    // overflow-x: hidden;
-    // height: 100vh;
-    // width: 100%;
+    font-family: "Abhaya Libre", serif;
+    position: relative;
+    color: var(--font-color);
+    background: white;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    height: 100vh;
+    width: 100%;
     // padding-bottom: 5rem;
 
     section {
         margin: 0 auto;
-        // width: 430px;
     }
 }
 
@@ -34,6 +33,7 @@
             width: 35%;
             height: 100vh;
             position: fixed;
+            display: none;
         }
         .ai__container__content {
             width: 100%;
@@ -41,11 +41,12 @@
             .ai__container__content-main {
                 margin: 0 auto;
                 width: 414px;
-                height: 100vh;
+                min-height: 100vh;
                 background: red;
             }
         }
         .ai__container__content-right {
+            display: none;
             right: 0;
             position: fixed;
             background: rgba(0, 0, 255, 0.241);

@@ -1,111 +1,28 @@
 .ai-quote__container {
     position: relative;
     background: white;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+    font-size: var(--font-size);
 
-    .ai-quote__sub-container {
-        padding-top: 2.25rem;
-        height: 100%;
-        flex-direction: column;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        
-        .ai-quote__content {
-            z-index: 3;
-            border-top-right-radius: var(--border-radius);
-            border-top-left-radius: var(--border-radius);
-            height: 100%;
-            padding: 2.375rem;
-            padding-top: 3.375rem;
-            padding-bottom: 6.313rem;
-            border-top: 4px solid white;
-    
-            .ai-quote__sub-content {
-                position: relative;
-                border: 4px solid white;
-                border-radius: var(--border-radius);
-                min-height: 37.313rem;
-                flex-direction: column;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                font-size: var(--font-size);
-                line-height: 20px;
-                padding: 0 2.063rem;
-        
-                .ai-quote--dua {
-                    margin-top: 1.75rem;
-                    font-weight: bold;
-                }
-        
-                .ai-quote--dua-translate {
-                    margin-top: 0.688rem;
-                }
-        
-                .ai-quote--surah {
-                    margin-top: 1.75rem;
-                    font-weight: bold;
-                    color: var(--main-color);
-                }
-    
-                .ai-quote--rose {
-                    position: absolute;
-                    bottom: 0;
-                    margin-bottom: -4.563rem;
-                    width: 9.125rem;
-                }
-            }
-        }
-
-        .ai-quote__content,
-        .ai-quote__sub-content {
-            box-shadow: 0px 18px 19.3px 1px rgba(142, 142, 142, 0.298) inset;
-            -webkit-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
-            -moz-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
-            width: 100%;
-        }
+    .ai-quote--dua {
+        margin-top: 1.75rem;
+        font-weight: bold;
     }
 
+    .ai-quote--dua-translate {
+        margin-top: 2rem;
+    }
+
+    .ai-quote--surah {
+        margin-top: 2rem;
+        font-weight: bold;
+    }
 }
-
-// @media (max-width: 390px) {
-//     .ai-quote__container {
-//         .ai-quote__sub-container {
-//             .ai-quote__content {
-//                 padding-top: 2.6rem;
-//                 padding-right: 1.6rem;
-//                 padding-left: 1.6rem;
-//             }
-//         }
-//     }
-// }
-
-// @media (max-height: 896px) {
-//     .ai-quote__container {
-//         .ai-quote__sub-container {
-//             .ai-quote__content {
-//                 .ai-quote__sub-content {
-//                     .ai-quote--rose {
-//                         margin-bottom: -3.5625rem;
-//                         width: 7.125rem;
-//                     }
-//                 }
-//             }
-//         }
-//     }
-// }
-
-// @media (min-height: 900px) {
-//     .ai-quote__container {
-//         .ai-quote__sub-container {
-//             padding-top: 4.25rem;
-//             .ai-quote__content {
-//                 padding-bottom: 8.313rem;
-//             }
-//         }
-//     }
-// }
 
 @media (min-width: 768px) {
     .ai-quote__container {

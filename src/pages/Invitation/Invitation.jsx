@@ -24,8 +24,8 @@ function Invitation() {
             <div className='ai__container__content'>
                 <div className='ai__container__content-main'>
                     <Cover name={ invitation?.guest?.name } />
-                    {/* <Quote /> */}
-                    {/* <Brides /> */}
+                    <Quote />
+                    <Brides />
                     {/* <Detail invitation={ invitation }/> */}
                     {/* <Gallery /> */}
                     {/* <Rsvp invitation={ invitation } /> */}
