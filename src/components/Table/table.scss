@@ -12,7 +12,8 @@
         align-items: center;
 
         .ai-table__header-input,
-        .ai-table__header-add {
+        .ai-table__header-add,
+        .ai-table__header--qrcode {
             border-radius: 40px;
             display: flex;
             justify-content: flex-start;
@@ -45,7 +46,8 @@
             }
         }
 
-        .ai-table__header-add {
+        .ai-table__header-add,
+        .ai-table__header--qrcode {
             margin-left: 10px;
             justify-content: center;
             background: #1c2b56;
@@ -58,6 +60,16 @@
             i {
                 font-size: 9px;
                 margin-right: 5px;
+            }
+        }
+
+        .ai-table__header--qrcode {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            i {
+                font-size: 20px;
+                margin-right: 0;
             }
         }
     }

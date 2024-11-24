@@ -1,0 +1,13 @@
+.ai-qr-scanner__container {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    background: #1C2B56;
+    color: white;
+    padding: 10px 15px;
+    margin: 10px 0;
+  }
+}

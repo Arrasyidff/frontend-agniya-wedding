@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './eventDetail.scss'
 import { useDebounce } from 'utils/hooks'
-import { PopupDelete, PopupDetailInvitation, PopupCheckInForm, Table, PopupGuestList, PopupGuestForm } from '@components'
+import { QrScanner, PopupDelete, PopupDetailInvitation, PopupCheckInForm, Table, PopupGuestList, PopupGuestForm } from '@components'
 import { useDispatch, useSelector } from 'react-redux'
 import { getInvitations } from 'store/actions/invitation'
 
@@ -16,6 +16,7 @@ function EventDetail() {
     const [openDetailInvitation, setOpenDetailInvitation] = useState(false)
     const [openDelete, setOpenDelete] = useState(false)
     const [openGuestList, setOpenGuestList] = useState(false)
+    const [openQrScanner, setOpenQrScanner] = useState(false)
     const [data, setData] = useState(null)
     const [activeTab, setActiveTab] = useState(1)
     const [headerColumns, setHeaderColumns] = useState([
@@ -23,6 +24,7 @@ function EventDetail() {
         {id: 'name', name: 'Nama', width: '15%'},
         {id: 'attendance_status', name: 'Konfirmasi Kehadiran', width: '10%', justifyContent: 'center', isCustomTd: true},
         {id: 'guest_count', name: 'Total Tamu', width: '10%', justifyContent: 'center'},
+        {id: 'session', name: 'Sesi', width: '10%', justifyContent: 'center'},
         {id: 'attendance', name: 'Kehadiran Di Tempat', width: '10%', justifyContent: 'center', isCustomTd: true},
         {id: 'check_in_time', name: 'Check In Time', width: '10%', justifyContent: 'center'},
         {id: 'action', name: '', width: '5%', isCustomTd: true}
@@ -57,6 +59,17 @@ function EventDetail() {
 
     const handleOpenGuestForm = () => {
         setOpenGuestForm(prev => prev = true)
+    }
+
+    const handleOpenQrCode = () => {
+        setOpenQrScanner(true)
+    }
+
+    const handleScanQrCode = (payload) => {
+        const invitation = invitations[0]
+        setData(invitation)
+        setOpenQrScanner(false)
+        setOpenForm(true)
     }
 
     const handleSortOrder = (id) => {
@@ -158,21 +171,6 @@ function EventDetail() {
                         </div>
                     </div>
 
-                    <div className='ai-event-detail__tabs'>
-                        <button
-                            onClick={() => setActiveTab(prev => prev = 1)}
-                            className={`ai-event-detail__tab ${activeTab === 1 ? 'active' : ''}`}
-                        >
-                            <p>Undangan</p>
-                        </button>
-                        <button
-                            onClick={() => setActiveTab(prev => prev = 2)}
-                            className={`ai-event-detail__tab ${activeTab === 2 ? 'active' : ''}`}
-                        >
-                            <p>Non Undangan (Onsite)</p>
-                        </button>
-                    </div>
-
                     <div className='ai-event-detail__guests-info'>
                         <div>
                             <p>Total Undangan/Tamu Hadir</p>
@@ -188,6 +186,21 @@ function EventDetail() {
                         </div>
                     </div>
 
+                    <div className='ai-event-detail__tabs'>
+                        <button
+                            onClick={() => setActiveTab(prev => prev = 1)}
+                            className={`ai-event-detail__tab ${activeTab === 1 ? 'active' : ''}`}
+                        >
+                            <p>Undangan</p>
+                        </button>
+                        <button
+                            onClick={() => setActiveTab(prev => prev = 2)}
+                            className={`ai-event-detail__tab ${activeTab === 2 ? 'active' : ''}`}
+                        >
+                            <p>Non Undangan (Onsite)</p>
+                        </button>
+                    </div>
+
                     <Table
                         search={search}
                         placeholderFind={'Cari Tamu...'}
@@ -198,6 +211,7 @@ function EventDetail() {
                         onTdClick={handleTdClick}
                         handleOpenForm={activeTab === 1 ? handleOpenGuestList : handleOpenGuestForm}
                         handleSortOrder={handleSortOrder}
+                        handleOpenQrCode={handleOpenQrCode}
                     />
                 </div>
             </div>
@@ -238,6 +252,14 @@ function EventDetail() {
                     title={'Hapus Undangan?'}
                     detailName={data.name}
                     onEvent={handleDeleteInvitation}
+                />
+            )}
+
+            {openQrScanner && (
+                <QrScanner
+                    open={openQrScanner}
+                    setOpen={setOpenQrScanner}
+                    eventEdit={handleScanQrCode}
                 />
             )}
         </>

@@ -13,9 +13,11 @@ function Table({
     onTdClick=null,
     handleOpenForm=null,
     handleSortOrder,
-    handleSelect=null
-}) {
-    const {placehoder, value, options, onChange: onChangeSelect} = handleSelect || {}
+    handleSelect=null,
+    handleOpenQrCode=null
+}) 
+    {
+                const {placehoder, value, options, onChange: onChangeSelect} = handleSelect || {}
     return (
         <div className='ai-table__container'>
             <div className='ai-table__header'>
@@ -44,6 +46,15 @@ function Table({
                     <button className='ai-table__header-add' onClick={() => handleOpenForm()}>
                         <i className='fas fa-plus' />
                         Tambah
+                    </button>
+                )}
+
+                {handleOpenQrCode && (
+                    <button
+                        onClick={() => handleOpenQrCode(true)}
+                        className='ai-table__header--qrcode'
+                    >
+                        <i className="fas fa-qrcode" />
                     </button>
                 )}
             </div>

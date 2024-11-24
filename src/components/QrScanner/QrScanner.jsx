@@ -1,7 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
+import './qrScanner.scss'
 import Scanner from 'qr-scanner';
+import { PopupFormWrapper } from '@components';
 
-function QrScanner() {
+function QrScanner({ eventEdit, open, setOpen }) {
     const [cameraOn, setCameraOn] = useState(false);
     const [data, setData] = useState('');
     const videoRef = useRef(null); // Reference untuk <video> element
@@ -33,6 +35,7 @@ function QrScanner() {
         stream.getTracks().forEach((track) => track.stop()); // Hentikan semua track
         setStream(null); // Hapus stream
       }
+      setData('')
     };
   
     // Efek samping untuk menghidupkan/mematikan kamera berdasarkan state
@@ -46,22 +49,36 @@ function QrScanner() {
       // Hentikan kamera saat component di-unmount
       return () => stopCamera(); // eslint-disable-next-line
     }, [cameraOn]);
-  
+
+    useEffect(() => {
+        if (data) {
+            setCameraOn(false)
+            eventEdit(data)
+        }
+    }, [data])
+
+    const handleOnSubmit = () => {
+        setOpen(false)
+    }
+
     return (
-      <div>
-        <h1>QR Code Scanner Manual</h1>
-  
-        {/* Tombol untuk menghidupkan dan mematikan kamera */}
-        <button onClick={() => setCameraOn(!cameraOn)}>
-          {cameraOn ? 'Matikan Kamera' : 'Hidupkan Kamera'}
-        </button>
-  
-        {/* Video feed kamera */}
-        {cameraOn && <video ref={videoRef} style={{ width: '300px' }} />}
-  
-        {/* Tampilkan hasil scan */}
-        <p>Hasil Scan: {data}</p>
-      </div>
+      <PopupFormWrapper
+        open={open}
+        setOpen={setOpen}
+        titleForm="QR Code Scanner"
+        isDetailMode={true}
+        handleOnSubmit={handleOnSubmit}
+      >
+        <div className='ai-qr-scanner__container'>
+            {/* Video feed kamera */}
+            {cameraOn && <video ref={videoRef} style={{ width: '300px' }} />}
+
+            {/* Tombol untuk menghidupkan dan mematikan kamera */}
+            <button onClick={() => setCameraOn(!cameraOn)}>
+              {cameraOn ? 'Matikan Kamera' : 'Hidupkan Kamera'}
+            </button>
+        </div>
+      </PopupFormWrapper>
     );
 }
 

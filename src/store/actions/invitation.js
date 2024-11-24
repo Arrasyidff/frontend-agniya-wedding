@@ -37,9 +37,10 @@ export const getInvitations = () => {
                         id: Date.now()+1,
                         name: 'Arrasyid Fadel Fatonsyah',
                         attendance_status: null,
-                        guest_count: 2,
+                        guest_count: 10,
                         attendance: null,
-                        check_in_time: ''
+                        check_in_time: '',
+                        session: '12:34'
                     },
                     {
                         id: Date.now()+2,
@@ -47,7 +48,8 @@ export const getInvitations = () => {
                         attendance_status: null,
                         guest_count: 2,
                         attendance: null,
-                        check_in_time: ''
+                        check_in_time: '',
+                        session: '12:34'
                     },
                     {
                         id: Date.now()+3,
@@ -55,7 +57,8 @@ export const getInvitations = () => {
                         attendance_status: true,
                         guest_count: 2,
                         attendance: null,
-                        check_in_time: ''
+                        check_in_time: '',
+                        session: '12:34'
                     },
                     {
                         id: Date.now()+4,
@@ -63,7 +66,8 @@ export const getInvitations = () => {
                         attendance_status: false,
                         guest_count: 2,
                         attendance: null,
-                        check_in_time: ''
+                        check_in_time: '',
+                        session: '12:34'
                     }
                 ]
                 dispatch({
