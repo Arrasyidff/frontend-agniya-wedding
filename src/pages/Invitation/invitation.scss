@@ -31,7 +31,7 @@
         display: flex;
         .ai__container__content-left {
             background: rgba(255, 0, 0, 0.188);
-            width: 37.5%;
+            width: 35%;
             height: 100vh;
             position: fixed;
         }
@@ -39,17 +39,18 @@
             width: 100%;
             overflow-y: auto;
             .ai__container__content-main {
-                margin-left: 37.5%;
-                width: 25%;
+                margin: 0 auto;
+                width: 414px;
                 height: 100vh;
+                background: red;
             }
         }
         .ai__container__content-right {
-            margin-left: 62.5%;
+            right: 0;
             position: fixed;
             background: rgba(0, 0, 255, 0.241);
             background: rgb(0, 0, 255);
-            width: 37.5%;
+            width: 35%;
             height: 100vh;
         }
     }

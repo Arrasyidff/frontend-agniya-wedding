@@ -1,3 +1,10 @@
+.ai-cover__container,
+.ai-cover__sub-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .ai-cover__container {
     position: absolute;
     background: white;
@@ -5,31 +12,21 @@
     height: 100vh;
     width: 100%;
     transition: .8s ease-out;
-    
+    background: url('../../../../assets/cover.png');
+    background-position: center, center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
     .ai-cover__sub-container {
         height: 100%;
-        flex-direction: column;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 23rem 0;
+        width: 100%;
         position: relative;
-
-        .ai-cover--background-gradient {
-            position: absolute;
-            z-index: inherit;
-            bottom: 0;
-            width: 100%;
-        }
-    
-        .ai-cover__title,
-        .ai-cover__for,
-        .ai-cover--open-btn
-        {
-            z-index: 1001;
-        }
+        z-index: 1000;
+        flex-direction: column;
+        justify-content: flex-start;
     
         .ai-cover__title {
+            margin-top: 4.75rem;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: var(--letter-spacing);
@@ -39,7 +36,11 @@
             h2 {
                 font-size: 0.688rem;
             }
-            margin-bottom: 2.5rem;
+        }
+
+        .ai-cover--logo {
+            width: 70%;
+            margin: 2rem 0;
         }
     
         .ai-cover__for {
@@ -50,44 +51,33 @@
             p {
                 font-size: 0.688rem;
             }
-            h1 {
+            h1, span {
                 font-size: 1.25rem;
-                margin: 0.813rem 0;
                 width: 14.625rem;
+            }
+            .ai-cover__for-name {
+                margin: 0.813rem 0;
             }
         }
     
         .ai-cover--open-btn {
-            margin-top: 2.438rem;
+            margin-top: 1.5rem;
             text-transform: uppercase;
             font-size: var(--button-font-size);
             padding: 0.313rem 0.625rem;
             color: white;
             background: rgb(69,56,156);
             background: linear-gradient(148deg, rgba(69,56,156,1) 0%, rgba(76,61,164,1) 100%);
+            letter-spacing: 4px;
         }
     }
 }
 
 @media (min-width: 768px) {
     .ai-cover__container {
-        width: 25%;
+        width: 414px;
         .ai-cover__sub-container {
             padding: 0;
-        }
-    }
-}
-
-@media (max-height: 750px) {
-    .ai-cover__container {
-        // overflow-y: auto;
-        .ai-cover__sub-container {
-            .ai-cover__title {
-                margin-bottom: 2rem;
-            }
-            .ai-cover__for {
-                margin-top: 2rem;
-            }
         }
     }
 }

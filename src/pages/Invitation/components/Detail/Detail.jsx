@@ -1,5 +1,4 @@
 import './detail.scss'
-import { Logo } from '../'
 import date from '@assets/date_icon.png'
 import point from '@assets/location_icon.png'
 import { getDayFromTimestamp, getFullDate, getTimeFromTimestamp } from '@helpers/dateHelper'
@@ -20,8 +19,6 @@ function Detail({ invitation }) {
                 </div>
 
                 <span className='ai-detail--title-separator'>Of</span>
-
-                <Logo size={'medium'} />
 
                 <div className='ai-detail__date'>
                     <img src={date} alt="" />
