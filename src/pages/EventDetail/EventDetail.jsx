@@ -95,6 +95,8 @@ function EventDetail() {
             setOpenDetailInvitation(true)
         } else if (type === 'open-delete-popup') {
             setOpenDelete(true)
+        } else if (type === 'open-invitation') {
+            window.open('http://localhost:3000/invitation/10')
         }
     };
     /** end methods */
@@ -122,6 +124,7 @@ function EventDetail() {
 
     function actionsIcon(item, onTdClick) {
         let icons = [
+            {id: 'mail', type: 'open-invitation', icon: (<i className="fas fa-envelope-open-text" />)},
             {id: 'view', type: 'open-detail-popup', icon: (<i className="far fa-eye" />)},
             {id: 'edit', type: 'open-confirm-popup', icon: (<i className="fas fa-pencil-alt" />)},
             {id: 'delete', type: 'open-delete-popup', icon: (<i className="fas fa-trash-alt" />)},

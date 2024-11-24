@@ -152,6 +152,9 @@
         cursor: pointer;
         color: white;
 
+        &.mail {
+            background-color: #f8ba6c;
+        }
         &.view {
             background-color: #7DDAD8;
         }
