@@ -1,18 +1,21 @@
 import './invitation.scss'
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Cover, Quote, Brides, Detail, Gallery, Rsvp, Wish, Gift, Navigation } from './components'
+import { Header, Cover, Quote, Brides, Detail, Gallery, Rsvp, Wish, Gift, Navigation } from './components'
 import { getInvitation } from '@store/actions/invitation'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 
 function Invitation() {
+    const [searchParams] = useSearchParams()
     const { id } = useParams()
     const { invitation } = useSelector(state => state.invitation)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(getInvitation(id));
+        dispatch(getInvitation(btoa(id)));
     }, [dispatch, id]);
+
+    console.log(atob(btoa(id)))
 
     return (
         <div className='ai__container'>
@@ -22,8 +25,9 @@ function Invitation() {
             <div className='ai__container__content'>
                 <div className='ai__container__content-main'>
                     <Cover
-                        name={invitation?.guest?.name}
+                        name={invitation?.guest?.name ?? searchParams.get('to')}
                     />
+                    <Header />
                     <Quote />
                     <Brides />
                     <Detail

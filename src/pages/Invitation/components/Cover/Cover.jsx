@@ -57,9 +57,7 @@ function Cover({ name }) {
                     <p>Kepada Yth.</p>
                     <p>Bapak/Ibu/Saudara/I</p>
                     <div className='ai-cover__for-name'>
-                        <h1>Arrasyid F F</h1>
-                        <span>&</span>
-                        <h1>Ardhian K H</h1>
+                        <h1>{name ?? 'Tamu Undangan'}</h1>
                     </div>
                     <p>Di Tempat</p>
                 </div>

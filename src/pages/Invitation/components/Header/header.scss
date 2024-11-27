@@ -1,0 +1,54 @@
+.ai-header__container,
+.ai-header__container .ai-header__content,
+.ai-header__container .ai-header__content .ai-header__logo-container,
+.ai-header__container .ai-header__content .ai-header__counter-container, .ai-header__counter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ai-header__container {
+    height: 100vh;
+    background: url('../../../../assets/header-cover.png');
+    background-position: center, center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    flex-direction: column;
+    .ai-header__content {
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 90vh;
+        .ai-header__logo-container {
+            height: 300px;
+            width: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.539);
+            border: 1px solid #BA9400;
+            img {
+                width: 80%;
+            }
+        }
+        .ai-header__counter-container {
+            margin-top: 25px;
+            .ai-header__counter {
+                background: rgba(255, 255, 255, 0.539);
+                flex-direction: column;
+                height: 75px;
+                width: 75px;
+                color: rgb(34, 34, 34);
+                font-weight: 400;
+                p {
+                    font-size: 20px;
+                    text-transform: capitalize;
+                    font-family: "Inter", serif;
+                    &:last-child {
+                        margin-top: -3px;
+                    }
+                }
+                &:not(:first-child) {
+                    margin-left: 10px;
+                }
+            }
+        }
+    }
+}

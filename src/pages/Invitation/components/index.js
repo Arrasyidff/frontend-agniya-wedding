@@ -1,4 +1,5 @@
 export { default as Cover } from "./Cover/Cover"
+export { default as Header } from "./Header/Header"
 export { default as Quote } from "./Quote/Quote"
 export { default as Brides } from "./Brides/Brides"
 export { default as Detail } from "./Detail/Detail"

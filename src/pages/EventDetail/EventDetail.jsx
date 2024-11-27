@@ -96,7 +96,7 @@ function EventDetail() {
         } else if (type === 'open-delete-popup') {
             setOpenDelete(true)
         } else if (type === 'open-invitation') {
-            window.open('http://localhost:3000/invitation/10')
+            window.open('http://localhost:3000/invitation/'+btoa(10)+'?to=Arrasyid F F&Ardhian K H')
         }
     };
     /** end methods */
