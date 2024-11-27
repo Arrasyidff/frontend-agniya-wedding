@@ -10,11 +10,11 @@
 .ai-brides__container {
     background: rgb(65,68,94);
     background: linear-gradient(141deg, rgba(65,68,94,1) 0%, rgba(0,0,0,1) 100%);
-    padding: 300px 2rem;
+    padding: 18.75rem 2rem;
     justify-content: center;
 
     .ai-brides--content {
-        height: 906px;
+        height: 56.625rem;
         width: 100%;
         border: 3px solid white;
         border-radius: 120px;
@@ -26,8 +26,8 @@
             color: white;
             .ai-brides__detail-photo {
                 flex-direction: column;
-                width: 207px;
-                height: 385px;
+                width: 12.938rem;
+                height: 24.063rem;
                 border-radius: 203px;
                 overflow: hidden;
                 img {
@@ -38,7 +38,7 @@
             .ai-brides__detail--name {
                 font-family: "Noto Serif", serif;
                 text-transform: uppercase;
-                font-size: 30px;
+                font-size: 1.875rem;
                 position: relative;
                 &::after {
                     content: '';
@@ -50,34 +50,34 @@
             }
             .ai-brides__detail--fullname,
             .ai-brides__detail-family p {
-                font-size: 12px;
+                font-size: 0.75rem;
                 text-transform: uppercase;
                 letter-spacing: 2px;
             }
             .ai-brides__detail--fullname {
-                margin-top: 16px;
+                margin-top: 1rem;
             }
             .ai-brides__detail-family {
-                margin-top: 8px;
+                margin-top: 0.5rem;
                 .ai-brides__detail-family--from {
-                    margin-bottom: 5px;
+                    margin-bottom: 0.313rem;
                 }
             }
             &.bride {
                 .ai-brides__detail--name {
-                    margin-top: 30px;
+                    margin-top: 1.875rem;
                 }
             }
             &.groom {
                 .ai-brides__detail-photo {
-                    margin-top: 30px;
+                    margin-top: 1.875rem;
                 }
             }
         }
 
         .ai-brides--flower-separator {
             width: 30%;
-            margin: 40px 0;
+            margin: 2.5rem 0;
         }
     }
 }

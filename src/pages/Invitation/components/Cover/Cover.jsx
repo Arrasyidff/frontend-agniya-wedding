@@ -1,8 +1,9 @@
 import './cover.scss'
 import logoImg from '@assets/logo.png'
 
-function Cover({ name }) {
-    const handleOpenCover = () => {
+function Cover({ name, setIsPlayMusic }) {
+    const handleOpenCover = () => {        
+        setIsPlayMusic(true)
         const coverSection = document.querySelector('.ai-cover__container')
         if (coverSection) {
             coverSection.style.opacity = '0'

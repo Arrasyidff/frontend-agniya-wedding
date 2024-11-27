@@ -1,13 +1,10 @@
-import { useState } from 'react'
 import './gift.scss'
 import { Popup } from '@components'
 import giftBackground from '@assets/gift_background.png'
 import atm from '@assets/atm.png'
 import microchip from '@assets/microchip.png'
 
-function Gift() {
-    const [openGift, setOpenGift] = useState(false)
-
+function Gift({ openGift, setOpenGift }) {
     const accounts = [
         {id: 'bca', no: '12345678910123', name: 'AGHNIYARRIZQI IARA FADHILLA'},
         {id: 'mandiri', no: '12345678910123', name: 'AGHNIYARRIZQI IARA FADHILLA'},

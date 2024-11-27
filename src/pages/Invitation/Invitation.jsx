@@ -1,21 +1,21 @@
 import './invitation.scss'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Header, Cover, Quote, Brides, Detail, Gallery, Rsvp, Wish, Gift, Navigation } from './components'
 import { getInvitation } from '@store/actions/invitation'
 import { useParams, useSearchParams } from 'react-router-dom'
 
 function Invitation() {
+    const dispatch = useDispatch()
     const [searchParams] = useSearchParams()
     const { id } = useParams()
     const { invitation } = useSelector(state => state.invitation)
-    const dispatch = useDispatch()
+    const [openGift, setOpenGift] = useState(false)
+    const [isPlayMusic, setIsPlayMusic] = useState(false)
 
     useEffect(() => {
         dispatch(getInvitation(btoa(id)));
     }, [dispatch, id]);
-
-    console.log(atob(btoa(id)))
 
     return (
         <div className='ai__container'>
@@ -25,6 +25,7 @@ function Invitation() {
             <div className='ai__container__content'>
                 <div className='ai__container__content-main'>
                     <Cover
+                        setIsPlayMusic={setIsPlayMusic}
                         name={invitation?.guest?.name ?? searchParams.get('to')}
                     />
                     <Header />
@@ -40,9 +41,15 @@ function Invitation() {
                     <Wish
                         invitation={invitation}
                     />
-                    <Gift />
+                    <Gift
+                        openGift={openGift}
+                        setOpenGift={setOpenGift}
+                    />
                     <Navigation
                         invitation={invitation}
+                        setOpenGift={setOpenGift}
+                        isPlayMusic={isPlayMusic}
+                        setIsPlayMusic={setIsPlayMusic}
                     />
                 </div>
             </div>

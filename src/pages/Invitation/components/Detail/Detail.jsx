@@ -25,7 +25,8 @@ function Detail() {
                     <img src={date} alt="" />
                     <p>{ getDayFromTimestamp(Date.now()) }</p>
                     <p>{ getFullDate(Date.now()) }</p>
-                    <p>PUKUL { getTimeFromTimestamp(Date.now()) } - SELESAI</p>
+                    <p>Sesi 2</p>
+                    <p>PUKUL { getTimeFromTimestamp(Date.now()) } - {getTimeFromTimestamp(Date.now())}</p>
                 </div>
 
                 <div className='ai-detail__location'>

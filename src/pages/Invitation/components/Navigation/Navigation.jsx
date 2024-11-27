@@ -1,6 +1,6 @@
 import './navigation.scss'
 import { QrCode } from '../index'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import qrQode from '@assets/qr_code.png'
 import quoteNav from '@assets/nav_quote.png'
@@ -15,10 +15,31 @@ import wishNav from '@assets/nav_wish.png'
 import wishActiveNav from '@assets/nav_wish_active.png'
 import giftNav from '@assets/nav_gift.png'
 import giftActiveNav from '@assets/nav_gift_active.png'
+import music from '@assets/kita-usahakan-rumah-itu.mp3'
 
-function Navigation({ invitation }) {
+function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
+    /** data */
+    const leftNavigations = [
+        { key: 'ai-quote', icon: quoteNav, iconActive: quoteActiveNav },
+        { key: 'ai-brides', icon: brideNav, iconActive: brideActiveNav },
+        { key: 'ai-detail', icon: dateNav, iconActive: dateActiveNav },
+    ]
+    const rightNavigations = [
+        { key: 'ai-gallery', icon: galleryNav, iconActive: galleryActiveNav },
+        { key: 'ai-wish', icon: wishNav, iconActive: wishActiveNav },
+        { key: 'ai-gift', icon: giftNav, iconActive: giftActiveNav },
+    ]
     const [openQrCode, setOpenQrCode] = useState(false)
+    const audioRef = useRef(null);
+    /** end data */
 
+    /** lifecycles */
+    useEffect(() => {
+        handleTogglePlay()
+    }, [isPlayMusic])
+    /** end lifecycles */
+
+    /** methods */
     const handleNavigation = (nav) => {
         let sectionIntoView = null
         switch (nav) {
@@ -46,20 +67,22 @@ function Navigation({ invitation }) {
         if (sectionIntoView) sectionIntoView.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
 
-    const leftNavigations = [
-        { key: 'ai-quote', icon: quoteNav, iconActive: quoteActiveNav },
-        { key: 'ai-brides', icon: brideNav, iconActive: brideActiveNav },
-        { key: 'ai-detail', icon: dateNav, iconActive: dateActiveNav },
-    ]
-
-    const rightNavigations = [
-        { key: 'ai-gallery', icon: galleryNav, iconActive: galleryActiveNav },
-        { key: 'ai-wish', icon: wishNav, iconActive: wishActiveNav },
-        { key: 'ai-gift', icon: giftNav, iconActive: giftActiveNav },
-    ]
+    const handleTogglePlay = () => {
+        if (!isPlayMusic) {
+            audioRef.current.pause();
+            setIsPlayMusic(isPlayMusic);
+        } else {
+            audioRef.current.play();
+            audioRef.current.volume = .5
+            setIsPlayMusic(isPlayMusic);
+        }
+    };
+    /** end methods */
 
     return (
         <>
+            <audio ref={audioRef} src={music} preload="auto" />
+
             <div className='ai-navigation__container'>
                 <div className='ai-navigation__sub-container'>
                     <div className='ai-navigation__left-side'>
@@ -83,6 +106,29 @@ function Navigation({ invitation }) {
                             <img src={qrQode} alt="" srcSet="" />
                         </div>
                     </div>
+                    {
+                        isPlayMusic ? (
+                            <button
+                                className='ai-navigation--btn-music'
+                                onClick={() => setIsPlayMusic(false)}
+                            >
+                                <i className="fas fa-compact-disc music-play" />
+                            </button>
+                        ) : (
+                            <button
+                                className='ai-navigation--btn-music-off'
+                                onClick={() => setIsPlayMusic(true)}
+                            >
+                                <i className="fas fa-volume-mute" />
+                            </button>
+                        )
+                    }
+                    <button
+                        className='ai-navigation--btn-gift'
+                        onClick={() => setOpenGift(prev => !prev)}
+                    >
+                        <i className="fas fa-gift" />
+                    </button>
                 </div>
             </div>
 

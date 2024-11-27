@@ -18,8 +18,8 @@
     background-repeat: no-repeat;
 
     .ai-cover__sub-container {
-        height: 630px;
-        width: 300px;
+        height: 39.375rem;
+        width: 18.75rem;
         border-radius: 230px;
         position: relative;
         z-index: 1000;
@@ -70,6 +70,7 @@
             background: rgb(69,56,156);
             background: linear-gradient(148deg, rgba(69,56,156,1) 0%, rgba(76,61,164,1) 100%);
             letter-spacing: 4px;
+            cursor: pointer;
         }
     }
 }
