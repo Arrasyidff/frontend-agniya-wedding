@@ -1,119 +1,4 @@
-// import api from '../../api'
-
-export const getGuests = (search) => {
-    return async (dispatch, getState) => {
-        dispatch({ type: 'GET_GUESTS_REQUEST' })
-        try {
-            let response = [
-                {
-                    "id": Date.now(),
-                    "name": 'ARRASYID FADEL FATONSYAH',
-                    'email': 'arfafa@mail.com',
-                    'phone_number': '089635164141',
-                    'acquaintance_from': 'Keluarga Pak Haji Udin',
-                    'address': 'JL. MERTA AGUNG NO. 55',
-                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                },
-                {
-                    'id': Date.now()+Math.random(),
-                    "name": 'ARDHIAN KHAIRUL HAKIM',
-                    'email': 'arfafa@mail.com',
-                    'phone_number': '089635164141',
-                    'acquaintance_from': 'Keluarga Pak Haji Udin',
-                    'address': 'JL. MERTA AGUNG NO. 55',
-                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                },
-                {
-                    'id': Date.now()+Math.random(),
-                    "name": 'AHMAD HABIBUR RIDLO',
-                    'email': 'arfafa@mail.com',
-                    'phone_number': '089635164141',
-                    'acquaintance_from': 'Keluarga Pak Haji Udin',
-                    'address': 'JL. MERTA AGUNG NO. 55',
-                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                },
-                {
-                    'id': Date.now()+Math.random(),
-                    "name": 'ADHA KUSUMA HIDAYAT',
-                    'email': 'arfafa@mail.com',
-                    'phone_number': '089635164141',
-                    'acquaintance_from': 'Keluarga Pak Haji Udin',
-                    'address': 'JL. MERTA AGUNG NO. 55',
-                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                },
-                {
-                    'id': Date.now()+Math.random(),
-                    "name": 'ARRASYID FADEL FATONSYAH',
-                    'email': 'arfafa@mail.com',
-                    'phone_number': '089635164141',
-                    'acquaintance_from': 'Keluarga Pak Haji Udin',
-                    'address': 'JL. MERTA AGUNG NO. 55',
-                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                },
-                {
-                    'id': Date.now()+Math.random(),
-                    "name": 'ARRASYID FADEL FATONSYAH',
-                    'email': 'arfafa@mail.com',
-                    'phone_number': '089635164141',
-                    'acquaintance_from': 'Keluarga Pak Haji Udin',
-                    'address': 'JL. MERTA AGUNG NO. 55',
-                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                },
-                {
-                    'id': Date.now()+Math.random(),
-                    "name": 'ARRASYID FADEL FATONSYAH',
-                    'email': 'arfafa@mail.com',
-                    'phone_number': '089635164141',
-                    'acquaintance_from': 'Keluarga Pak Haji Udin',
-                    'address': 'JL. MERTA AGUNG NO. 55',
-                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                },
-                {
-                    'id': Date.now()+Math.random(),
-                    "name": 'ARRASYID FADEL FATONSYAH',
-                    'email': 'arfafa@mail.com',
-                    'phone_number': '089635164141',
-                    'acquaintance_from': 'Keluarga Pak Haji Udin',
-                    'address': 'JL. MERTA AGUNG NO. 55',
-                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                },
-                {
-                    'id': Date.now()+Math.random(),
-                    "name": 'ARRASYID FADEL FATONSYAH',
-                    'email': 'arfafa@mail.com',
-                    'phone_number': '089635164141',
-                    'acquaintance_from': 'Keluarga Pak Haji Udin',
-                    'address': 'JL. MERTA AGUNG NO. 55',
-                    'additional_notes': 'JL. MERTA AGUNG NO. 55'
-                },
-            ]
-            if (search) {
-                search = search.toLowerCase()
-                response = response.filter(item => {
-                    return (
-                        (item.name.toLowerCase()).includes(search)
-                    )
-                })
-            }
-            dispatch({
-                type: 'GET_GUESTS_SUCCESS',
-                payload: response
-            })
-            setTimeout(async () => {
-            }, 1000);
-            // const response = await api.get('/guests')
-            // dispatch({
-            //     type: 'GET_GUESTS_SUCCESS',
-            //     payload: response.data.data
-            // })
-        } catch (error) {
-            dispatch({
-                type: 'GET_GUESTS_FAILURE',
-                payload: error.message
-            });
-        }
-    }
-}
+import api from '../../api'
 
 export const createGuest = ({ name, email, phone_number, acquaintance_from, address, additional_notes }) => {
     return async (dispatch, getState) => {
@@ -121,23 +6,12 @@ export const createGuest = ({ name, email, phone_number, acquaintance_from, addr
         dispatch({type: 'GET_GUESTS_REQUEST'})
         try {
             setTimeout(async () => {
-                const oldGuests = getState().guest.guests
-                const newGuest = {
-                    id: Date.now(), name, email, phone_number, acquaintance_from, address, additional_notes
-                }
-                const newGuests = [...oldGuests, newGuest]
+                await api.post('/guests', { name, email, phone_number, acquaintance_from, address, additional_notes })
+                const response = await api.get('/guests')
                 dispatch({
                     type: 'GET_GUESTS_SUCCESS',
-                    payload: newGuests
+                    payload: response.data.data
                 })
-
-                /** api */
-                // await api.post('/guests', { name, email, phone_number, acquaintance_from, address, additional_notes })
-                // const response = await api.get('/guests')
-                // dispatch({
-                //     type: 'GET_GUESTS_SUCCESS',
-                //     payload: response.data.data
-                // })
             }, 1000);
             isSuccess = true
         } catch (error) {
@@ -151,29 +25,52 @@ export const createGuest = ({ name, email, phone_number, acquaintance_from, addr
     }
 }
 
+export const getGuests = (search) => {
+    return async (dispatch, getState) => {
+        dispatch({ type: 'GET_GUESTS_REQUEST' })
+        try {
+            setTimeout(async () => {
+                let reqQuery = {}
+                if (search) reqQuery['search'] = search.toLowerCase()
+                    
+                let apiGet = '/guests'
+                if (Object.keys(reqQuery).length !== 0) {
+                    let i = 0;
+                    for (const key in reqQuery) {
+                        let query = `${key}=${reqQuery[key]}`
+                        if (i === 0) query = '?'+query
+                        apiGet += query
+                        i++
+                    }
+                }
+
+                const response = await api.get(apiGet)
+                dispatch({
+                    type: 'GET_GUESTS_SUCCESS',
+                    payload: response.data.data
+                })
+            }, 1000);
+        } catch (error) {
+            dispatch({
+                type: 'GET_GUESTS_FAILURE',
+                payload: error.message
+            });
+        }
+    }
+}
+
 export const updateGuest = ({ id, name, email, phone_number, acquaintance_from, address, additional_notes }) => {
     return async (dispatch, getState) => {
         let isSuccess = false
         dispatch({type: 'GET_GUESTS_REQUEST'})
         try {
             setTimeout(async () => {
-                const oldGuests = getState().guest.guests
-                oldGuests.forEach((guest, i) => {
-                    if (guest.id === id) {
-                        oldGuests[i] = {...guest, name, email, phone_number, acquaintance_from, address, additional_notes}
-                    }
-                })
+                await api.patch('/guests', { id, name, email, phone_number, acquaintance_from, address, additional_notes })
+                const response = await api.get('/guests')
                 dispatch({
                     type: 'GET_GUESTS_SUCCESS',
-                    payload: oldGuests
+                    payload: response.data.data
                 })
-
-                // await api.patch('/guests', { id, name, email, phone_number, acquaintance_from, address, additional_notes })
-                // const response = await api.get('/guests')
-                // dispatch({
-                //     type: 'GET_GUESTS_SUCCESS',
-                //     payload: response.data.data
-                // })
             }, 1000);
             isSuccess = true
         } catch (error) {
@@ -193,18 +90,12 @@ export const deleteGuest = (id) => {
         dispatch({type: 'GET_GUESTS_REQUEST'})
         try {
             setTimeout(async () => {
-                let oldGuests = JSON.parse(JSON.stringify(getState().guest.guests))
-                oldGuests = oldGuests.filter(guest => guest.id !== id)
+                await api.delete('/guests/'+id)
+                const response = await api.get('/guests')
                 dispatch({
                     type: 'GET_GUESTS_SUCCESS',
-                    payload: oldGuests
+                    payload: response.data.data
                 })
-                // await api.delete('/guests/'+id)
-                // const response = await api.get('/guests')
-                // dispatch({
-                //     type: 'GET_GUESTS_SUCCESS',
-                //     payload: response.data.data
-                // })
             }, 1000);
             isSuccess = true
         } catch (error) {
