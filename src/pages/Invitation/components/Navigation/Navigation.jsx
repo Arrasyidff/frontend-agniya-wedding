@@ -36,6 +36,7 @@ function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
     /** lifecycles */
     useEffect(() => {
         handleTogglePlay()
+        // eslint-disable-next-line
     }, [isPlayMusic])
     /** end lifecycles */
 
