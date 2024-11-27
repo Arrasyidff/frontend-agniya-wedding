@@ -1,67 +1,57 @@
-.ai-detail__container {
+.ai-detail__container,
+.ai-detail__container .ai-detail__content,
+.ai-detail__container .ai-detail__content .ai-detail__date,
+.ai-detail__container .ai-detail__content .ai-detail__location {
     display: flex;
     justify-content: center;
+    align-items: center;
+}
+
+.ai-detail__container {
     align-items: flex-end;
     padding-top: 2.813rem;
     position: relative;
 
-    .ai-detail--background-gradient {
-        position: absolute;
-        bottom: -30%;
-        z-index: 1;
-        width: 100%;
-    }
-
     .ai-detail__content {
-        z-index: 2;
         box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
         -webkit-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
         -moz-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
         border-top-left-radius: var(--border-radius);
         border-top-right-radius: var(--border-radius);
-        width: 100%;
-        background: white;
         border: 4px solid white;
         border-bottom: 0;
+        background: white;
         flex-direction: column;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
         text-align: center;
         text-transform: uppercase;
-        padding: 0 2.1rem;
-        
-        .ai-detail__invitation {
-            margin-top: 5.625rem;
-            p {
-                letter-spacing: 4px;
-                font-weight: bold;
-                font-size: 0.688rem;
-                line-height: 20px;
-            }
+        padding: 7rem 2rem 2rem 2rem;
+        width: 100%;
+        .ai-detail__header {
+            letter-spacing: 4px;
+            font-size: 11px;
         }
-
+        .ai-detail__title h1,
+        .ai-detail--title-separator {
+            font-family: "Qwigley", cursive;
+            color: var(--third-color);
+        }
         .ai-detail__title {
-            text-transform: none;
+            text-transform: capitalize;
             font-style: normal;
             margin: 1.563rem 0;
             h1 {
-                color: var(--third-color);
-                font-family: "Qwigley", cursive;
-                font-size: 5.625rem;
-                margin: 2rem 0;
-                line-height: 4.375rem;
+                font-size: 60px;
+                line-height: 3.5rem;
             }
         }
-
         .ai-detail--title-separator {
-            color: var(--third-color);
-            font-family: "Qwigley", cursive;
             text-transform: capitalize;
-            font-size: 3.125rem;
-            margin-top: -2.188rem;
+            font-size: 40px;
+            letter-spacing: 2px;
         }
-
+        .ai-detail--logo {
+            margin: 50px 0;
+        }
         .ai-detail__date,
         .ai-detail__location {
             img {
@@ -69,19 +59,15 @@
                 margin-bottom: 0.938rem;
             }
             flex-direction: column;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-transform: uppercase;
-            font-size: 0.813rem;
+            font-size: 12px;
             letter-spacing: 4px;
-            line-height: 20px;
+            line-height: 15px;
             font-weight: bold;
-            margin-top: 2.125rem;
         }
-
         .ai-detail__location {
+            margin-top: 34px;
             .ai-detail__location--description {
+                margin-top: 5px;
                 text-transform: none;
                 font-size: 0.625rem;
                 font-weight: normal;
@@ -93,11 +79,9 @@
                 letter-spacing: 4px;
                 line-height: 20px;
                 margin-top: 1.313rem;
-                margin-bottom: 4.188rem;
                 color: white;
                 text-transform: uppercase;
-                background: rgb(69,56,156);
-                background: linear-gradient(148deg, rgba(69,56,156,1) 0%, rgba(76,61,164,1) 100%);
+                background: #2E3092;
                 font-size: var(--button-font-size);
                 padding: 0.313rem 0.625rem;
             }

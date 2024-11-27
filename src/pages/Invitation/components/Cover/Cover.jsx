@@ -11,33 +11,35 @@ function Cover({ name }) {
             }, 900);
         }
 
+        const aiContainer = document.querySelector('.ai__container')
         const aiContainerContent = document.querySelector('.ai__container .ai__container__content')
         if (aiContainerContent) {
+            aiContainer.style.overflowY = 'auto'
             aiContainerContent.style.overflowY = 'auto'
 
-            // const navLinks = document.getElementsByClassName('ai-navigation__icon')
-            // const sections = document.getElementsByTagName('section')
+            const navLinks = document.getElementsByClassName('ai-navigation__icon')
+            const sections = document.getElementsByTagName('section')
 
-            // const observer = new IntersectionObserver(
-            //     (entries) => entries.forEach((entry) => {
-            //         if (entry.isIntersecting) {
-            //             if (navLinks) for (let i = 0; i < navLinks.length; i++) {
-            //                 const navLink = navLinks[i];
-            //                 if (entry.target.id === navLink.id) {
-            //                     navLink.classList.add('active');
-            //                 } else {
-            //                     navLink.classList.remove('active');
-            //                 }
-            //             }
-            //         }
-            //     }),
-            //     { threshold: 0.6 }
-            // );
+            const observer = new IntersectionObserver(
+                (entries) => entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        if (navLinks) for (let i = 0; i < navLinks.length; i++) {
+                            const navLink = navLinks[i];
+                            if (entry.target.id === navLink.id) {
+                                navLink.classList.add('active');
+                            } else {
+                                navLink.classList.remove('active');
+                            }
+                        }
+                    }
+                }),
+                { threshold: 0.6 }
+            );
 
-            // if (sections) for (let i = 0; i < sections.length; i++) {
-            //     const section = sections[i];
-            //     if (section) observer.observe(section)
-            // }
+            if (sections) for (let i = 0; i < sections.length; i++) {
+                const section = sections[i];
+                if (section) observer.observe(section)
+            }
         }
     }
 
@@ -46,24 +48,24 @@ function Cover({ name }) {
             <div className='ai-cover__sub-container'>
                 <div className="ai-cover__title">
                     <h1>Save The Date</h1>
-                    <h2>FOR THE WEDDING OF</h2>
+                    <h2>For The Wedding of</h2>
                 </div>
 
-                <img className='ai-cover--logo' src={logoImg} />
+                <img alt='image-logo' className='ai-cover--logo' src={logoImg} />
                 
                 <div className='ai-cover__for'>
-                    <p>KEPADA YTH.</p>
-                    <p>BAPAK/IBU/SAUDARA/I</p>
+                    <p>Kepada Yth.</p>
+                    <p>Bapak/Ibu/Saudara/I</p>
                     <div className='ai-cover__for-name'>
                         <h1>Arrasyid F F</h1>
                         <span>&</span>
                         <h1>Ardhian K H</h1>
                     </div>
-                    <p>DI TEMPAT</p>
+                    <p>Di Tempat</p>
                 </div>
 
                 <button className='ai-cover--open-btn' onClick={() => handleOpenCover()}>
-                    BUKA undangan
+                    Buka Undangan
                 </button>
             </div>
         </section>

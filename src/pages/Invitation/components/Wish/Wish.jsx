@@ -2,7 +2,7 @@ import './wish.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import { getWishes, createWish } from '@store/actions/wish'
 import { useEffect, useState } from 'react'
-import { ThankPopup, Loading } from '@components'
+import { ThankPopup, Loading, Input } from '@components'
 
 function Wish({ invitation }) {
     const dispatch = useDispatch()
@@ -51,24 +51,23 @@ function Wish({ invitation }) {
 
     return (
         <>
-            {loading ? (<Loading />) : (
-                <ThankPopup
-                    open={openThankPopup}
-                    setOpen={setOpenThankPopup}
-                    isWish={true}
-                />
-            )}
             <section id='ai-wish' className='ai-wish__container'>
                 <div className='ai-wish__form'>
-                    <h1>DOA DAN UCAPAN</h1>
+                    <h1>Doa Dan Ucapan</h1>
                     <form onSubmit={handleOnSubmit}>
-                        <textarea
+                        <Input
                             placeholder='Tulis Harapan Kamu'
-                            name="wish"
                             value={wish}
-                            onChange={(e) => setWish(e.target.value)}
-                        ></textarea>
-                        <button disabled={!wish} type='submit'>Kirim</button>
+                            type={'textarea'}
+                            name="wish"
+                            setValue={() => setWish()}
+                        />
+                        <button
+                            disabled={!wish}
+                            type='submit'
+                        >
+                            Kirim
+                        </button>
                     </form>
                 </div>
 
@@ -91,6 +90,14 @@ function Wish({ invitation }) {
                     </div>
                 </div>
             </section>
+
+            {loading ? (<Loading />) : (
+                <ThankPopup
+                    open={openThankPopup}
+                    setOpen={setOpenThankPopup}
+                    isWish={true}
+                />
+            )}
         </>
     )
 }

@@ -17,7 +17,7 @@ function Table({
     handleOpenQrCode=null
 }) 
     {
-                const {placehoder, value, options, onChange: onChangeSelect} = handleSelect || {}
+                const {placeholder, value, options, onChange: onChangeSelect} = handleSelect || {}
     return (
         <div className='ai-table__container'>
             <div className='ai-table__header'>
@@ -35,7 +35,7 @@ function Table({
 
                 {handleSelect && (
                     <SelectInput
-                        placehoder={placehoder}
+                        placeholder={placeholder}
                         options={options}
                         value={value}
                         onChange={onChangeSelect}

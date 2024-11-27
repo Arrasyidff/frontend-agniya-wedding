@@ -130,7 +130,7 @@ function PopupGuestList({
                     // handleOpenForm={handleOpenForm}
                     handleSortOrder={handleSortOrder}
                     handleSelect={{
-                        placehoder: 'Pilih Sesi',
+                        placeholder: 'Pilih Sesi',
                         value: session,
                         options: [
                             {id: 1, name: '14:00 - 15:00'},

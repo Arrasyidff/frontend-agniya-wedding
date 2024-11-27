@@ -2,7 +2,7 @@ import './selectInput.scss'
 import { useState } from 'react'
 
 function SelectInput({
-    placehoder='',
+    placeholder='',
     options,
     value='',
     onChange
@@ -25,7 +25,7 @@ function SelectInput({
                 {value?.name ? (
                     <span className='value'>{value?.name}</span>
                 ): (
-                    <span className='placeholder'>{placehoder}</span>
+                    <span className='placeholder'>{placeholder}</span>
                 )}
                 {isOpenSelect ? (
                     <i className="fas fa-sort-down"></i>

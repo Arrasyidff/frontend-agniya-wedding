@@ -1,56 +1,72 @@
 import './brides.scss'
 import brideFlower from '@assets/brides_flower.png'
-// import backgroundGradient from '@assets/background_gradient.png'
+import groom from '@assets/groom.png'
+import bride from '@assets/bride.png'
 
 function Brides() {
-  return (
-    <section id='ai-brides' className='ai-brides__container'>
-        {/* <img className='ai-brides--background-gradient' src={backgroundGradient} alt="" srcSet="" /> */}
-        <div className='ai-brides__bride-container'>
-            <div className='ai-brides__bride-image'></div>
-            <div className='ai-brides__bride-detail'>
-                <div className='ai-brides__bride-detail__nickname'>
-                    <h1>Aghniya</h1>
-                    <span></span>
+    const brideDetailInfo = (type='bride') => {
+        return (
+            <>
+                <h1 className='ai-brides__detail--name'>
+                    {type === 'bride' ? 'Agnhniya' : 'IZZUL'}
+                </h1>
+                <p className='ai-brides__detail--fullname'>
+                    {type === 'bride' ? 'Aghniyarrizqi Iara Fadhilla' : 'Muhammad Dzulfiqar Noor'}
+                </p>
+                <div className='ai-brides__detail-family'>
+                    <p className='ai-brides__detail-family--from'>Putri Dari :</p>
+                        {type === 'bride' ? (
+                            <>
+                                <p>Bpk. H. Mukhlis Wahyudin</p>
+                                <p>&</p>
+                                <p>Ibu. Sri Utami</p>
+                            </>
+                        ): (
+                            <>
+                                <p>Bpk. Rudy Widyatmiko</p>
+                                <p>&</p>
+                                <p>Ibu. Siti Nurhayati</p>
+                            </>
+                        )}
+
                 </div>
-                <div className='ai-brides__bride-detail__info'>
-                    <h1 className='ai-brides__bride-detail__info--name'>
-                        Aghniyarrizqi Iara Fadhilla
-                    </h1>
-                    <p>Son of</p>
-                    <h1 className='ai-brides__bride-detail__info--name'>
-                        Bpk. H. Mukhlis Wahyudin
-                    </h1>
-                    <h1 className='ai-brides__bride-detail__info--name'>
-                        Ibu. Sri Utami
-                    </h1>
-                </div>
+            </>
+        )
+    }
+
+    const brideDetail = (type='bride') => {
+        return (
+            <div className={`ai-brides__detail ${type}`}>
+                {type === 'bride' ? (
+                    <>
+                        <div className='ai-brides__detail-photo'>
+                            <img alt='image-bride' src={bride} />
+                        </div>
+                        {brideDetailInfo(type)}
+                    </>
+                ): (
+                    <>
+                        {brideDetailInfo(type)}
+                        <div className='ai-brides__detail-photo'>
+                            <img alt='image-bride' src={groom} />
+                        </div>
+                    </>
+                )}
+                
             </div>
-        </div>
-        <img className='ai-brides--bride-flower' src={brideFlower} alt="" />
-        <div className='ai-brides__bride-container'>
-            <div className='ai-brides__bride-detail'>
-                <div className='ai-brides__bride-detail__nickname'>
-                    <h1>Izzul</h1>
-                    <span></span>
-                </div>
-                <div className='ai-brides__bride-detail__info'>
-                    <h1 className='ai-brides__bride-detail__info--name'>
-                        Muhammad Dzulfiqar Noor
-                    </h1>
-                    <p>Son of</p>
-                    <h1 className='ai-brides__bride-detail__info--name'>
-                        Bpk. Rudy Widyatmiko
-                    </h1>
-                    <h1 className='ai-brides__bride-detail__info--name'>
-                        Ibu. Siti Nurhayati
-                    </h1>
-                </div>
+        )
+    }
+    return (
+        <section id='ai-brides' className='ai-brides__container'>
+            <div className='ai-brides--content'>
+                {brideDetail('bride')}
+
+                <img alt='image-flower-separator' className='ai-brides--flower-separator' src={brideFlower} />
+
+                {brideDetail('groom')}
             </div>
-            <div className='ai-brides__bride-image'></div>
-        </div>
-    </section>
-  )
+        </section>
+    )
 }
 
 export default Brides

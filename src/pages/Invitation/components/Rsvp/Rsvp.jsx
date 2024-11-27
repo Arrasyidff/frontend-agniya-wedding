@@ -2,7 +2,7 @@ import './rsvp.scss'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateInvitation } from '@store/actions/invitation'
-import { ThankPopup } from '@components'
+import { Input, SelectInput, ThankPopup } from '@components'
 import { Loading } from '@components'
 
 function Rsvp({ invitation }) {
@@ -13,10 +13,10 @@ function Rsvp({ invitation }) {
 
     function handleFormatForm() {
         return {
-            name: invitation?.guest?.name ?? "",
-            phone_number: invitation?.phone_number ?? "",
-            guest_count: invitation?.guest_count ?? "",
-            attendance_status: invitation?.attendance_status ?? ""
+            name: invitation?.guest?.name ?? 'Arrasyid Fadel Fatonsyah',
+            phone_number: invitation?.phone_number ?? '089635164141',
+            guest_count: invitation?.guest_count ?? '2',
+            attendance_status: invitation?.attendance_status ?? 'Hadir'
         }
     }
 
@@ -43,6 +43,43 @@ function Rsvp({ invitation }) {
     
     return (
         <>
+            <section id='ai-rsvp' className='ai-rsvp__container'>
+                <h1 className='ai-rsvp--title'>Konfirmasi Kehadiran</h1>
+                <div className='ai-rsvp--description'>
+                    <p>Jika anda akan hadir pada acara,</p>
+                    <p>Harap lakukan reservasi pada form dibawah ini</p>
+                </div>
+                <form onSubmit={handleOnSubmit}>
+                    <Input
+                        placeholder='Nama'
+                        value={form.name ?? 'Arrasyid Fadel Fatonsyah'}
+                        type='text'
+                        name='name'
+                        readOnly={true}
+                    />
+                    <Input
+                        placeholder='Nama'
+                        value={form.phone_number ?? '089635164141'}
+                        type='text'
+                        name='phone_number'
+                        setValue={handleOnChange}
+                    />
+                    <SelectInput
+                        placeholder='Jumlah Tamu'
+                        options={[{id: 1, name: '1'}, {id: 1, name: '2'}]}
+                        value={form.guest_count}
+                        onChange={handleOnChange}
+                    />
+                    <SelectInput
+                        placeholder='Konfirmasi Kehadiran'
+                        options={[{id: 'hadir', name: 'Hadir'}, {id: 'tidak hadir', name: 'Tidak Hadir'}]}
+                        value={form.attendance_status}
+                        onChange={handleOnChange}
+                    />
+                    <button type='submit'>Kirim</button>
+                </form>
+            </section>
+
             {loadingForm ? (<Loading />) : (
                 <ThankPopup
                     open={openPopup}
@@ -51,44 +88,6 @@ function Rsvp({ invitation }) {
                     isRejectRsvp={form?.attendance_status === false}
                 />
             )}
-
-            <section id='ai-rsvp' className='ai-rsvp__container'>
-                <h1 className='ai-rsvp--title'>KONFIRMASI KEHADIRAN</h1>
-                <div className='ai-rsvp--description'>
-                    <p>JIKA ANDA AKAN HADIR PADA ACARA,</p>
-                    <p>HARAP LAKUKAN RESERVASI PADA FORM DIBAWAH INI</p>
-                </div>
-
-                <form onSubmit={handleOnSubmit}>
-                    <input
-                        type="text"
-                        readOnly
-                        name='name'
-                        placeholder='Nama'
-                        value={ form.name }
-                    />
-                    <input
-                        type="text"
-                        onChange={handleOnChange}
-                        name='phone_number'
-                        placeholder='Nomor Handphone'
-                        value={ form.phone_number }
-                    />
-                    <input
-                        type="text"
-                        onChange={handleOnChange}
-                        name='guest_count'
-                        placeholder='Jumlah Tamu'
-                        value={ form.guest_count }
-                    />
-                    <select className={form.attendance_status === '' ? 'select-placehoder' : ''} value={ form.attendance_status } name='attendance_status' onChange={handleOnChange} placeholder="asc">
-                        <option value={""} disabled>Konfirmasi Kehadiran</option>
-                        <option value={true}>Hadir</option>
-                        <option value={false}>Tidak Hadir</option>
-                    </select>
-                    <button type='submit'>Kirim</button>
-                </form>
-            </section>
         </>
     )
 }

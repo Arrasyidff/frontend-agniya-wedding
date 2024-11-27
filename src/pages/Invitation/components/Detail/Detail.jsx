@@ -1,36 +1,36 @@
 import './detail.scss'
+import logoImg from '@assets/logo.png'
 import date from '@assets/date_icon.png'
 import point from '@assets/location_icon.png'
 import { getDayFromTimestamp, getFullDate, getTimeFromTimestamp } from '@helpers/dateHelper'
 
-function Detail({ invitation }) {
-
+function Detail() {
     return (
         <section id='ai-detail' className='ai-detail__container'>
-            {/* <img className='ai-detail--background-gradient' src={backgroundGradient} alt="" srcSet="" /> */}
             <div className='ai-detail__content'>
-                <div className='ai-detail__invitation'>
+                <div className='ai-detail__header'>
                     <p>Please</p>
-                    <p>JOIN US FOR THE</p>
+                    <p>Join us for the</p>
                 </div>
 
                 <div className='ai-detail__title'>
-                    <h1>{ invitation?.invitation.event_name }</h1>
+                    <h1>Wedding Reception</h1>
                 </div>
 
                 <span className='ai-detail--title-separator'>Of</span>
 
+                <img alt='image-logo' className='ai-detail--logo' src={logoImg} />
+
                 <div className='ai-detail__date'>
                     <img src={date} alt="" />
-                    <p>{ getDayFromTimestamp(invitation?.invitation.event_date) }</p>
-                    <p>{ getFullDate(invitation?.invitation.event_date) }</p>
-                    <p>PUKUL { getTimeFromTimestamp(invitation?.invitation.event_date) } - SELESAI</p>
+                    <p>{ getDayFromTimestamp(Date.now()) }</p>
+                    <p>{ getFullDate(Date.now()) }</p>
+                    <p>PUKUL { getTimeFromTimestamp(Date.now()) } - SELESAI</p>
                 </div>
 
                 <div className='ai-detail__location'>
                     <img src={point} alt="" />
-                    <p>MI KARAKTER</p>
-                    <p>MUTIARA BUNDA BALI</p>
+                    <p>Area Out Door Madrasah Karakter Mutiara Bunda Bali</p>
                     <p className='ai-detail__location--description'>
                         Jalan Pura Dalem Penataran 
                         Anyar Gg. Nuri No.99, Pemogan, Denpasar 

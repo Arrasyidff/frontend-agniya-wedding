@@ -1,6 +1,9 @@
 .ai-quote__container {
     position: relative;
-    background: white;
+    background: url('../../../../assets/white_background.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     flex-direction: column;
     display: flex;
     justify-content: center;
