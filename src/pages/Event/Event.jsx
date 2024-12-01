@@ -78,7 +78,7 @@ function Event() {
         } else if (type === 'open-delete-popup') {
             handleOpenDeletePopup(data)
         }
-    };
+    }
 
     const renderCustomTd = (data, onTdClick, colId) => {
         if (colId === 'event_time') {
@@ -91,7 +91,7 @@ function Event() {
             )
         }
         return (
-            <div className='ai-table__td-actions'>
+            <div className='ai-table__td-actions justify-end'>
                 <div
                     className='ai-table__td-actions__icon view'
                     onClick={() => onTdClick('open-detail-popup', data)}
@@ -105,8 +105,8 @@ function Event() {
                     <i className="fas fa-trash-alt" />
                 </div>
             </div>
-        );
-    };
+        )
+    }
 
     return (
         <>

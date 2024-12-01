@@ -9,7 +9,7 @@ function PopupFormWrapper({
     width='500px',
     isDetailMode=false
 }) {
-    if (!open) return;
+    if (!open) return
     
     return (
         <div className='ai-popup-form-wrapper__container'>

@@ -8,16 +8,16 @@ function PopupCheckInForm({ eventEdit, open, setOpen }) {
     /** data */
     const dispatch = useDispatch()
     // const { isSuccess } = useSelector(state => state.invitation)
-    const [form, setForm] = useState(eventEdit);
-    // const [isSubmit, setIsSubmit] = useState(false);
+    const [form, setForm] = useState(eventEdit)
+    // const [isSubmit, setIsSubmit] = useState(false)
     // const [openPopupSuccess, setOpenPopupSuccess] = useState(false)
     /** end data */
 
     /** methods */
     const handleOnChange = (e) => {
-        const { name, value } = e.target;
-        setForm((prev) => ({ ...prev, [name]: +value }));
-        // setIsSubmit(false);
+        const { name, value } = e.target
+        setForm((prev) => ({ ...prev, [name]: +value }))
+        // setIsSubmit(false)
     }
 
     const handleOnSubmit = () => {
@@ -59,7 +59,7 @@ function PopupCheckInForm({ eventEdit, open, setOpen }) {
                 />
             )} */}
         </>
-    );
-};
+    )
+}
 
 export default PopupCheckInForm

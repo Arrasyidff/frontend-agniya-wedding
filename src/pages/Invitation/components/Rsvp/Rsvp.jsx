@@ -29,6 +29,11 @@ function Rsvp({ invitation }) {
         setForm({...form, [name]: value})
     }
 
+    const handleSelectInput = (val) => {
+        setForm({...form, [val.key]: val})
+    }
+    // console.log(form)
+
     const handleOnSubmit = (e) => {
         e.preventDefault()
         dispatch(updateInvitation({
@@ -65,16 +70,18 @@ function Rsvp({ invitation }) {
                         setValue={handleOnChange}
                     />
                     <SelectInput
+                        id='guest_count'
                         placeholder='Jumlah Tamu'
                         options={[{id: 1, name: '1'}, {id: 1, name: '2'}]}
                         value={form.guest_count}
-                        onChange={handleOnChange}
+                        onChange={handleSelectInput}
                     />
                     <SelectInput
+                        id='attendance_status'
                         placeholder='Konfirmasi Kehadiran'
                         options={[{id: 'hadir', name: 'Hadir'}, {id: 'tidak hadir', name: 'Tidak Hadir'}]}
                         value={form.attendance_status}
-                        onChange={handleOnChange}
+                        onChange={handleSelectInput}
                     />
                     <button type='submit'>Kirim</button>
                 </form>

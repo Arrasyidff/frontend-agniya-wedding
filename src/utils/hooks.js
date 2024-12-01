@@ -1,4 +1,4 @@
-const { useEffect, useState } = require("react");
+const { useEffect, useState } = require("react")
 
 export const useDebounce = (value, delay=500) => {
     const [deboucedValue, setDebouncedValue] = useState(value)
@@ -6,7 +6,7 @@ export const useDebounce = (value, delay=500) => {
     useEffect(() => {
         const timeout = setTimeout(() => {
             setDebouncedValue(value)
-        }, delay);
+        }, delay)
 
         return () => clearTimeout(timeout)
     }, [value, delay])

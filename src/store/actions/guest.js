@@ -12,13 +12,13 @@ export const createGuest = ({ name, email, phone_number, acquaintance_from, addr
                     type: 'GET_GUESTS_SUCCESS',
                     payload: response.data.data
                 })
-            }, 1000);
+            }, 1000)
             isSuccess = true
         } catch (error) {
             dispatch({
                 type: 'GET_GUESTS_FAILURE',
                 payload: error.message
-            });
+            })
             isSuccess = false
         }
         return isSuccess
@@ -35,7 +35,7 @@ export const getGuests = (search) => {
                     
                 let apiGet = '/guests'
                 if (Object.keys(reqQuery).length !== 0) {
-                    let i = 0;
+                    let i = 0
                     for (const key in reqQuery) {
                         let query = `${key}=${reqQuery[key]}`
                         if (i === 0) query = '?'+query
@@ -49,12 +49,12 @@ export const getGuests = (search) => {
                     type: 'GET_GUESTS_SUCCESS',
                     payload: response.data.data
                 })
-            }, 1000);
+            }, 1000)
         } catch (error) {
             dispatch({
                 type: 'GET_GUESTS_FAILURE',
                 payload: error.message
-            });
+            })
         }
     }
 }
@@ -71,13 +71,13 @@ export const updateGuest = ({ id, name, email, phone_number, acquaintance_from, 
                     type: 'GET_GUESTS_SUCCESS',
                     payload: response.data.data
                 })
-            }, 1000);
+            }, 1000)
             isSuccess = true
         } catch (error) {
             dispatch({
                 type: 'GET_GUESTS_FAILURE',
                 payload: error.message
-            });
+            })
             isSuccess = false
         }
         return isSuccess
@@ -96,13 +96,13 @@ export const deleteGuest = (id) => {
                     type: 'GET_GUESTS_SUCCESS',
                     payload: response.data.data
                 })
-            }, 1000);
+            }, 1000)
             isSuccess = true
         } catch (error) {
             dispatch({
                 type: 'GET_GUESTS_FAILURE',
                 payload: error.message
-            });
+            })
         }
         return isSuccess
     }

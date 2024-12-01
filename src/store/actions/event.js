@@ -1,4 +1,4 @@
-// import api from '../../api'
+import api from '../../api'
 
 export const createEvent = ({ event_name, event_date, event_time }) => {
     return async (dispatch, getState) => {
@@ -6,31 +6,19 @@ export const createEvent = ({ event_name, event_date, event_time }) => {
         dispatch({type: 'GET_EVENT_REQUEST'})
         try {
             setTimeout(async () => {
-                const oldEvents = [...getState().event.events]
-                const newEvent = {
-                    id: Date.now(),
-                    event_name,
-                    event_date: Date.now(),
-                    event_time
-                }
-                const newEvents = [...oldEvents, newEvent]
+                await api.post('/invitations', { event_name, event_date, event_time })
+                const response = await api.get('/invitations')
                 dispatch({
                     type: 'GET_EVENTS_SUCCESS',
-                    payload: newEvents
+                    payload: response.data.data
                 })
-                // await api.post('/invitations', { event_name, event_date, event_time })
-                // const response = await api.get('/invitations')
-                // dispatch({
-                //     type: 'GET_INVITATIONS_SUCCESS',
-                //     payload: response.data.data
-                // })
-            }, 1000);
+            }, 1000)
             isSuccess = true
         } catch (error) {
             dispatch({
                 type: 'GET_EVENT_FAILURE',
                 payload: error.message
-            });
+            })
             isSuccess = false
         }
         return isSuccess
@@ -42,63 +30,53 @@ export const getEvents = (search) => {
         dispatch({type: 'GET_EVENT_REQUEST'})
         setTimeout(async () => {
             try {
-                let response = [
-                    {
-                        "id": Date.now()+Math.random(),
-                        "event_name": 'Akad Nikah',
-                        "event_date": Date.now(),
-                        'event_time': [
-                            {start: '14:50', end: '15:00'}
-                        ],
-                        'total_invitations': 100,
-                    },
-                    {
-                        "id": Date.now()+Math.random(),
-                        "event_name": 'Akad Nikah',
-                        "event_date": Date.now(),
-                        'event_time': [
-                            {start: '14:50', end: '15:00'},
-                            {start: '14:50', end: '15:00'},
-                        ],
-                        'total_invitations': 100,
-                    },
-                    {
-                        "id": Date.now()+Math.random(),
-                        "event_name": 'Resepsi',
-                        "event_date": Date.now(),
-                        'event_time': [
-                            {start: '14:50', end: '15:00'}
-                        ],
-                        'total_invitations': 100,
-                    },
-                ]
-                if (search) {
-                    search = search.toLowerCase()
-                    response = response.filter(item => {
-                        return (
-                            (item.event_name.toLowerCase()).includes(search)
-                        )
-                    })
+                let reqQuery = {}
+                if (search) reqQuery['search'] = search.toLowerCase()
+                    
+                let apiGet = '/invitations'
+                if (Object.keys(reqQuery).length !== 0) {
+                    let i = 0
+                    for (const key in reqQuery) {
+                        let query = `${key}=${reqQuery[key]}`
+                        if (i === 0) query = '?'+query
+                        apiGet += query
+                        i++
+                    }
                 }
+
+                const response = await api.get(apiGet)
                 dispatch({
                     type: 'GET_EVENTS_SUCCESS',
-                    payload: response
+                    payload: response.data.data
                 })
-                // const response = await api.get('/invitations')
-                // dispatch({
-                //     type: 'GET_INVITATIONS_SUCCESS',
-                //     payload: response.data.data
-                // })
             } catch (error) {
                 dispatch({
                     type: 'GET_EVENT_FAILURE',
                     payload: error.message
-                });
+                })
             }
-        }, 1000);
+        }, 1000)
     }
 }
 
+export const getEvent = (id) => {
+    return (dispatch, getState) => {
+        try {
+            setTimeout(async () => {
+                const response = await api.get('invitations/2')
+                dispatch({
+                    type: 'GET_DETAIL_EVENT_SUCCESS',
+                    payload: response.data.data
+                })
+            }, 1000)
+        } catch (error) {
+            dispatch({
+                type: 'GET_EVENT_FAILURE',
+                payload: error.message
+            })
+        }
+    }
+}
 
 export const deleteEvent = (id) => {
     return async (dispatch, getState) => {
@@ -106,25 +84,19 @@ export const deleteEvent = (id) => {
         dispatch({type: 'GET_EVENT_REQUEST'})
         try {
             setTimeout(async () => {
-                let newEvents = [...getState().event.events]
-                newEvents = newEvents.filter(event => event.id !== id)
+                await api.delete('/invitations/'+id)
+                const response = await api.get('/invitations')
                 dispatch({
                     type: 'GET_EVENTS_SUCCESS',
-                    payload: newEvents
+                    payload: response.data.data
                 })
-                // await api.delete('/invitations/'+id)
-                // const response = await api.get('/invitations')
-                // dispatch({
-                //     type: 'GET_INVITATIONS_SUCCESS',
-                //     payload: response.data.data
-                // })
-            }, 1000);
+            }, 1000)
             isSuccess = true
         } catch (error) {
             dispatch({
                 type: 'GET_EVENT_FAILURE',
                 payload: error.message
-            });
+            })
             isSuccess = false
         }
         return isSuccess

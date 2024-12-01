@@ -11,28 +11,28 @@ function PopupEventForm({ eventEdit, open, setOpen }) {
         event_name: eventEdit?.event_name ?? "",
         event_date: eventEdit?.event_date ?? "",
         event_time: [{start: '', end: ''}],
-    };
-    const [form, setForm] = useState(initialForm);
+    }
+    const [form, setForm] = useState(initialForm)
     const [inputs, setInputs] = useState([
         { title: "Nama Acara", name: "event_name", type: "text", placeholder: "Masukkan nama acara" },
         { title: "Tanggal", name: "event_date", type: "date", placeholder: "Masukkan tanggal acara" },
         { sessions: [{ name: "event_time-0", type: "time", placeholder: "Masukkan waktu acara" }] },
-    ]);
-    const [isSubmit, setIsSubmit] = useState(false);
+    ])
+    const [isSubmit, setIsSubmit] = useState(false)
     const [openPopupSuccess, setOpenPopupSuccess] = useState(false)
 
     const handleOnChange = (e) => {
-        const { name, value } = e.target;
-        setForm((prev) => ({ ...prev, [name]: value }));
-        setIsSubmit(false);
-    };
+        const { name, value } = e.target
+        setForm((prev) => ({ ...prev, [name]: value }))
+        setIsSubmit(false)
+    }
 
     const handleOnChangeTime = (type, e) => {
         const {name, value} = e.target
-        const index = parseInt(name.split("-")[1], 10);
+        const index = parseInt(name.split("-")[1], 10)
         setForm(prev => {
-            const updatedTimes = [...prev.event_time];
-            updatedTimes[index][type] = value;
+            const updatedTimes = [...prev.event_time]
+            updatedTimes[index][type] = value
             return {...prev, event_time: updatedTimes}
         })
     }
@@ -45,32 +45,32 @@ function PopupEventForm({ eventEdit, open, setOpen }) {
                         name: `event_time-${input.sessions.length}`,
                         type: "time",
                         placeholder: "Masukkan waktu acara",
-                    };
-                    return { ...input, sessions: [...input.sessions, newSession] };
+                    }
+                    return { ...input, sessions: [...input.sessions, newSession] }
                 }
-                return input;
+                return input
             })
-        );
+        )
 
-        setForm((prev) => ({ ...prev, event_time: [...prev.event_time, {start: '', end: ''}] }));
-    };
+        setForm((prev) => ({ ...prev, event_time: [...prev.event_time, {start: '', end: ''}] }))
+    }
 
     const handleDeleteSession = (index) => {
         setInputs((prev) =>
             prev.map((input) => {
                 if (Array.isArray(input.sessions) && input.sessions.length > 1) {
-                    const updatedSessions = input.sessions.filter((_, idx) => idx !== index);
-                    return { ...input, sessions: updatedSessions };
+                    const updatedSessions = input.sessions.filter((_, idx) => idx !== index)
+                    return { ...input, sessions: updatedSessions }
                 }
-                return input;
+                return input
             })
-        );
+        )
 
         setForm((prev) => {
-            const updatedTimes = prev.event_time.filter((_, idx) => idx !== index);
-            return { ...prev, event_time: updatedTimes };
-        });
-    };
+            const updatedTimes = prev.event_time.filter((_, idx) => idx !== index)
+            return { ...prev, event_time: updatedTimes }
+        })
+    }
 
     const handleOnSubmit = async () => {
         let isSuccess = await dispatch(createEvent(form))
@@ -163,7 +163,7 @@ function PopupEventForm({ eventEdit, open, setOpen }) {
                 />
             )}
         </>
-    );
-};
+    )
+}
 
 export default PopupEventForm

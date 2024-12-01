@@ -2,11 +2,11 @@ import './qrcode.scss'
 import { Popup } from '@components/'
 import qrCodeSeparator from '@assets/qr_code_separator.png'
 import backgroundQrCode from '@assets/background_qr-code.png'
-import { QRCodeSVG } from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react'
 
 function QrCode({ invitation, openPopup, setOpenPopup }) {
     // const getDayFromTimestamp = (timestamp) => {
-    //     const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+    //     const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu']
     //     return days[new Date(+timestamp).getDay()]
     // }
 
@@ -14,11 +14,11 @@ function QrCode({ invitation, openPopup, setOpenPopup }) {
     //     const months = [
     //         'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 
     //         'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
-    //     ];
-    //     return months[new Date(+timestamp).getMonth()];
+    //     ]
+    //     return months[new Date(+timestamp).getMonth()]
     // }
 
-    // const getYearFromTimestamp = (timestamp) => new Date(+timestamp).getFullYear();
+    // const getYearFromTimestamp = (timestamp) => new Date(+timestamp).getFullYear()
 
     // const getFullDate = (timestamp) => {
     //     const date = new Date(+timestamp)
@@ -28,15 +28,15 @@ function QrCode({ invitation, openPopup, setOpenPopup }) {
 
     // const getTimeFromTimestamp = (timestamp) => {
     //     const date = new Date(+timestamp)
-    //     const hours = date.getHours().toString().padStart(2, '0');
-    //     const minutes = date.getMinutes().toString().padStart(2, '0');
+    //     const hours = date.getHours().toString().padStart(2, '0')
+    //     const minutes = date.getMinutes().toString().padStart(2, '0')
     //     return `${hours}.${minutes} WITA`
     // }
 
     // const handleCloseQrQode = () => {
     //     const qrCodeSection = document.querySelector('.ai-qrcode__container')
     //     if (qrCodeSection) {
-    //         qrCodeSection.style.bottom = '-100vh';
+    //         qrCodeSection.style.bottom = '-100vh'
     //     }
 
     //     const qrCodeOverlay = document.querySelector('.ai-qrcode--overlay')

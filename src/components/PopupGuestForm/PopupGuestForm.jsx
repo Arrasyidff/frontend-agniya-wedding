@@ -72,7 +72,7 @@ function PopupGuestForm({
                     placeholder: 'Masukkan informasi tambahan Tamu Anda'
                 },
             ]
-        ];
+        ]
         if (isForInvitation) {
             inputs.push([
                 {
@@ -92,11 +92,11 @@ function PopupGuestForm({
             ])
         }
 
-        return inputs;
+        return inputs
     }, [isForInvitation, form]))()
 
     useEffect(() => {
-        var x = document.getElementsByTagName("BODY")[0];
+        var x = document.getElementsByTagName("BODY")[0]
         if (open) {
             x.style.overflow = 'hidden'
         }

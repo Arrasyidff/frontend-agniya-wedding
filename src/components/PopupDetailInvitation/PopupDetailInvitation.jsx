@@ -59,6 +59,6 @@ function PopupDetailInvitation({
             </div>
         </PopupFormWrapper>
     )
-};
+}
 
 export default PopupDetailInvitation

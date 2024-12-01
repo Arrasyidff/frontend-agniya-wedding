@@ -6,7 +6,7 @@ function Quote() {
     <section id='ai-quote' className='ai-quote__container'>
         <img className='ai-quote--symbol' src={quoteSymbol} alt='symbol' />
         <p className='ai-quote--dua'>
-            wa min âyâtihî an khalaqa lakum min 
+            Wa min âyâtihî an khalaqa lakum min 
             anfusikum azwâjal litaskunû ilaihâ wa ja‘ala 
             bainakum mawaddataw wa rahmah, inna fî dzâlika 
             la'âyâtil liqaumiy yatafakkarûn

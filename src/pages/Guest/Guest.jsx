@@ -90,7 +90,7 @@ function Guest() {
         } else if (type === 'open-delete-popup') {
             handleOpenDeletePopup(guestEdit)
         }
-    };
+    }
 
     const renderCustomTd = (guestEdit, onTdClick) => {
         return (
@@ -114,8 +114,8 @@ function Guest() {
                     <i className="fas fa-trash-alt" />
                 </div>
             </div>
-        );
-    };
+        )
+    }
 
     return (
         <>

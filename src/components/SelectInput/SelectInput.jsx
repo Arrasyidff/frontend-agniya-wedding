@@ -2,6 +2,7 @@ import './selectInput.scss'
 import { useState } from 'react'
 
 function SelectInput({
+    id='',
     placeholder='',
     options,
     value='',
@@ -13,6 +14,7 @@ function SelectInput({
 
     /** methods */
     const handleOnChange = (payload) => {
+        payload.key = id
         if (payload?.id === value?.id) payload = null
         onChange(payload)
         setIsOpenSelect(false)

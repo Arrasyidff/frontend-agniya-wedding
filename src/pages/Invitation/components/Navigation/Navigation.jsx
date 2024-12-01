@@ -30,7 +30,7 @@ function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
         { key: 'ai-gift', icon: giftNav, iconActive: giftActiveNav },
     ]
     const [openQrCode, setOpenQrCode] = useState(false)
-    const audioRef = useRef(null);
+    const audioRef = useRef(null)
     /** end data */
 
     /** lifecycles */
@@ -46,38 +46,38 @@ function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
         switch (nav) {
             case 'ai-quote':
                 sectionIntoView = document.querySelector('.ai-quote__container')
-                break;
+                break
             case 'ai-brides':
                 sectionIntoView = document.querySelector('.ai-brides__container')
-                break;
+                break
             case 'ai-detail':
                 sectionIntoView = document.querySelector('.ai-detail__container')
-                break;
+                break
             case 'ai-gallery':
                 sectionIntoView = document.querySelector('.ai-gallery__container')
-                break;
+                break
             case 'ai-wish':
                 sectionIntoView = document.querySelector('.ai-wish__container')
-                break;
+                break
             case 'ai-gift':
                 sectionIntoView = document.querySelector('.ai-gift__container')
-                break;
+                break
             default:
-                break;
+                break
         }
         if (sectionIntoView) sectionIntoView.scrollIntoView({ behavior: 'smooth', block: 'start' })
     }
 
     const handleTogglePlay = () => {
         if (!isPlayMusic) {
-            audioRef.current.pause();
-            setIsPlayMusic(isPlayMusic);
+            audioRef.current.pause()
+            setIsPlayMusic(isPlayMusic)
         } else {
-            audioRef.current.play();
+            audioRef.current.play()
             audioRef.current.volume = .5
-            setIsPlayMusic(isPlayMusic);
+            setIsPlayMusic(isPlayMusic)
         }
-    };
+    }
     /** end methods */
 
     return (

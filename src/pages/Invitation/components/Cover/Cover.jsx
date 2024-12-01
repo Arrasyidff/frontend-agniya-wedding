@@ -9,7 +9,7 @@ function Cover({ name, setIsPlayMusic }) {
             coverSection.style.opacity = '0'
             setTimeout(() => {
                 coverSection.style.display = 'none'
-            }, 900);
+            }, 900)
         }
 
         const aiContainer = document.querySelector('.ai__container')
@@ -25,20 +25,20 @@ function Cover({ name, setIsPlayMusic }) {
                 (entries) => entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         if (navLinks) for (let i = 0; i < navLinks.length; i++) {
-                            const navLink = navLinks[i];
+                            const navLink = navLinks[i]
                             if (entry.target.id === navLink.id) {
-                                navLink.classList.add('active');
+                                navLink.classList.add('active')
                             } else {
-                                navLink.classList.remove('active');
+                                navLink.classList.remove('active')
                             }
                         }
                     }
                 }),
                 { threshold: 0.6 }
-            );
+            )
 
             if (sections) for (let i = 0; i < sections.length; i++) {
-                const section = sections[i];
+                const section = sections[i]
                 if (section) observer.observe(section)
             }
         }

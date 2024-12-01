@@ -85,7 +85,7 @@ function PopupGuestList({
                 return guest
             })
         })
-    };
+    }
     /** end methods */
 
     /** components */
@@ -107,7 +107,7 @@ function PopupGuestList({
     }
     const renderCustomTd = (data, onTdClick) => {
         return actionsIcon(data, onTdClick)
-    };
+    }
     /** end components */
 
     return (
@@ -142,6 +142,6 @@ function PopupGuestList({
             </div>
         </PopupFormWrapper>
     )
-};
+}
 
 export default PopupGuestList

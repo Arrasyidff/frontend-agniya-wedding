@@ -14,8 +14,8 @@ function Invitation() {
     const [isPlayMusic, setIsPlayMusic] = useState(false)
 
     useEffect(() => {
-        dispatch(getInvitation(btoa(id)));
-    }, [dispatch, id]);
+        dispatch(getInvitation(btoa(id)))
+    }, [dispatch, id])
 
     return (
         <div className='ai__container'>

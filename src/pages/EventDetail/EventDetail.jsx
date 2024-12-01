@@ -1,14 +1,16 @@
 import { useEffect, useState } from 'react'
 import './eventDetail.scss'
 import { useDebounce } from 'utils/hooks'
-import { QrScanner, PopupDelete, PopupDetailInvitation, PopupCheckInForm, Table, PopupGuestList, PopupGuestForm } from '@components'
+import { QrScanner, PopupDelete, PopupDetailInvitation, PopupCheckInForm, Table, PopupGuestList, PopupGuestForm, Loading } from '@components'
 import { useDispatch, useSelector } from 'react-redux'
-import { getInvitations } from 'store/actions/invitation'
+import { getEvent } from 'store/actions/event'
+import { getFullDate } from 'helpers/dateHelper'
+// import { getInvitations } from 'store/actions/invitation'
 
 function EventDetail() {
     /** data */
     const dispatch = useDispatch()
-    const { invitations } = useSelector(state => state.invitation)
+    const { event, loading } = useSelector(state => state.event)
     const [search, setSearch] = useState('')
     const dobouncedSearch = useDebounce(search)
     const [openForm, setOpenForm] = useState(false)
@@ -33,8 +35,12 @@ function EventDetail() {
 
     /** lifecycles */
     useEffect(() => {
-        dispatch(getInvitations(dobouncedSearch))
+        // dispatch(getInvitations(dobouncedSearch))
     }, [dispatch, dobouncedSearch])
+
+    useEffect(() => {
+        dispatch(getEvent('test123'))
+    }, [dispatch])
 
     useEffect(() => {
         const body = document.getElementsByTagName('body')[0]
@@ -66,8 +72,8 @@ function EventDetail() {
     }
 
     const handleScanQrCode = (payload) => {
-        const invitation = invitations[0]
-        setData(invitation)
+        // const invitation = invitations[0]
+        // setData(invitation)
         setOpenQrScanner(false)
         setOpenForm(true)
     }
@@ -98,7 +104,7 @@ function EventDetail() {
         } else if (type === 'open-invitation') {
             window.open('http://localhost:3000/invitation/'+btoa(10)+'?to=Arrasyid F F&Ardhian K H')
         }
-    };
+    }
     /** end methods */
 
     /** components */
@@ -151,8 +157,10 @@ function EventDetail() {
             return attendanceIcon(item, onTdClick, colId)
         }
         return actionsIcon(item, onTdClick)
-    };
+    }
     /** end components */
+
+    if (loading || !event) return <Loading is_fullscreen={true} />
 
     return (
         <>
@@ -160,16 +168,16 @@ function EventDetail() {
                 <div className='ai-event-detail__container-content'>
                     <div className='ai-event-detail__header'>
                         <h1 className='ai-event-detail__header--title'>
-                            Akad Nikah
+                            {event.invitation.event_name}
                         </h1>
                         <div className='ai-event-detail__header-info'>
                             <p className='ai-event-detail__header--description'>
-                                24 Desember 2024
+                                {getFullDate(event.invitation.event_date)}
                             </p>
                             <div className='ai-event-detail__header-times'>
-                                <span>20:20 - 21:20</span>
-                                <span>20:20 - 21:20</span>
-                                <span>20:20 - 21:20</span>
+                                {event.invitation.event_time.map((time, i) => (
+                                    <span key={i}>{time.start} - {time.end}</span>
+                                ))}
                             </div>
                         </div>
                     </div>
@@ -208,7 +216,7 @@ function EventDetail() {
                         search={search}
                         placeholderFind={'Cari Tamu...'}
                         headerColumns={headerColumns}
-                        bodyData={invitations}
+                        bodyData={event?.guest_invitations ?? []}
                         renderCustomTd={renderCustomTd}
                         onChangeSearch={setSearch}
                         onTdClick={handleTdClick}

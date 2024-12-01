@@ -17,12 +17,12 @@ export const createInvitations = (payload) => {
                 //     type: 'GET_INVITATIONS_SUCCESS',
                 //     payload: response.data.data
                 // })
-            }, 1000);
+            }, 1000)
         } catch (error) {
             dispatch({
                 type: 'GET_INVITATIONS_FAILURE',
                 payload: error.message
-            });
+            })
         }
     }
 }
@@ -74,7 +74,7 @@ export const getInvitations = () => {
                     type: 'GET_INVITATIONS_SUCCESS',
                     payload: response
                 })
-            }, 1000);
+            }, 1000)
             // const response = await api.get('/invitations')
             // dispatch({
             //     type: 'GET_INVITATIONS_SUCCESS',
@@ -84,7 +84,7 @@ export const getInvitations = () => {
             dispatch({
                 type: 'GET_INVITATIONS_FAILURE',
                 payload: error.message
-            });
+            })
         }
     }
 }
@@ -102,7 +102,7 @@ export const getInvitation = (id) => {
             dispatch({
                 type: 'GET_INVITATIONS_FAILURE',
                 payload: error.message
-            });
+            })
         }
     }
 }
@@ -132,12 +132,12 @@ export const updateInvitation = (payload) => {
                 //     type: 'GET_INVITATION_SUCCESS',
                 //     payload: response.data.data
                 // })
-            }, 1000);
+            }, 1000)
         } catch (error) {
             dispatch({
                 type: 'GET_INVITATIONS_FAILURE',
                 payload: error.message
-            });
+            })
         }
     }
 }
@@ -163,9 +163,9 @@ export const deleteInvitation = (id) => {
                 dispatch({
                     type: 'GET_INVITATIONS_FAILURE',
                     payload: error.message
-                });
+                })
             }
-        }, 1000);
+        }, 1000)
     }
 }
 
@@ -183,8 +183,8 @@ export const getDetailInvitation = (id) => {
                 dispatch({
                     type: 'GET_INVITATIONS_FAILURE',
                     payload: error.message
-                });
+                })
             }
-        }, 1000);
+        }, 1000)
     }
 }

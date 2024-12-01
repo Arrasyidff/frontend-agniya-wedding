@@ -13,7 +13,7 @@ export const getWishes = (id) => {
             dispatch({
                 type: 'GET_WISHES_FAILURE',
                 payload: error.message
-            });
+            })
         }
     }
 }
@@ -30,12 +30,12 @@ export const createWish = ({ guest_id, wish }) => {
                     type: 'GET_WISHES_SUCCESS',
                     payload: response.data.data
                 })
-            }, 1000);
+            }, 1000)
         } catch (error) {
             dispatch({
                 type: 'GET_INVITATIONS_FAILURE',
                 payload: error.message
-            });
+            })
         }
     }
 }
