@@ -38,6 +38,30 @@ function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
         handleTogglePlay()
         // eslint-disable-next-line
     }, [isPlayMusic])
+
+    useEffect(() => {
+        const handleVisibilityChange = () => {
+            if ((document.visibilityState === 'hidden') && audioRef?.current) {
+                audioRef?.current.pause();
+            } else if ((document.visibilityState === 'visible') && audioRef?.current) {
+                audioRef?.current.play();
+            }
+        };
+
+    const handleBeforeUnload = () => {
+        if (audioRef?.current) {
+            audioRef?.current.pause();
+        }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+        document.removeEventListener('visibilitychange', handleVisibilityChange);
+        window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+    }, []);    
     /** end lifecycles */
 
     /** methods */
