@@ -44,7 +44,7 @@ function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
             if ((document.visibilityState === 'hidden') && audioRef?.current) {
                 audioRef?.current.pause();
             } else if ((document.visibilityState === 'visible') && audioRef?.current) {
-                audioRef?.current.play();
+                if (isPlayMusic) audioRef?.current.play();
             }
         };
 
@@ -61,7 +61,7 @@ function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
         document.removeEventListener('visibilitychange', handleVisibilityChange);
         window.removeEventListener('beforeunload', handleBeforeUnload);
     };
-    }, []);    
+    }, [isPlayMusic]);    
     /** end lifecycles */
 
     /** methods */
