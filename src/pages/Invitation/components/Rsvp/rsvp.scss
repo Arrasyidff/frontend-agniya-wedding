@@ -9,6 +9,8 @@
     padding: 2rem;
     flex-direction: column;
     text-align: center;
+    transition: .7s ease;
+    opacity: 0;
     .ai-rsvp--title {
         letter-spacing: 4px;
         text-transform: uppercase;
@@ -29,6 +31,9 @@
         .ai-input__container,
         .ai-select-input__container {
             margin-bottom: 10px;
+        }
+        textarea {
+            height: 150px !important;
         }
         button {
             width: 100%;

@@ -12,6 +12,8 @@
     background: linear-gradient(141deg, rgba(65,68,94,1) 0%, rgba(0,0,0,1) 100%);
     padding: 18.75rem 2rem;
     justify-content: center;
+    transition: .7s ease;
+    opacity: 0;
 
     .ai-brides--content {
         height: 56.625rem;

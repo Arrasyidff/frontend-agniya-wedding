@@ -25,7 +25,7 @@ const routes = [
         ]
     },
     {
-        path: '/invitation/:id',
+        path: '/aghniya-izzul/:code',
         element: <Invitation />
     }
 ]

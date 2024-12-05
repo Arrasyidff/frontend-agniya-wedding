@@ -17,7 +17,7 @@ import giftNav from '@assets/nav_gift.png'
 import giftActiveNav from '@assets/nav_gift_active.png'
 import music from '@assets/kita-usahakan-rumah-itu.mp3'
 
-function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
+function Navigation({ setOpenGift, isPlayMusic, setIsPlayMusic }) {
     /** data */
     const leftNavigations = [
         { key: 'ai-quote', icon: quoteNav, iconActive: quoteActiveNav },
@@ -44,7 +44,7 @@ function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
             if ((document.visibilityState === 'hidden') && audioRef?.current) {
                 audioRef?.current.pause();
             } else if ((document.visibilityState === 'visible') && audioRef?.current) {
-                if (isPlayMusic) audioRef?.current.play();
+                // if (isPlayMusic) audioRef?.current.play();
             }
         };
 
@@ -97,7 +97,7 @@ function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
             audioRef.current.pause()
             setIsPlayMusic(isPlayMusic)
         } else {
-            audioRef.current.play()
+            // audioRef.current.play()
             audioRef.current.volume = .5
             setIsPlayMusic(isPlayMusic)
         }
@@ -158,7 +158,6 @@ function Navigation({ invitation, setOpenGift, isPlayMusic, setIsPlayMusic }) {
             </div>
 
             <QrCode
-                invitation={invitation}
                 openPopup={openQrCode}
                 setOpenPopup={setOpenQrCode}
             />

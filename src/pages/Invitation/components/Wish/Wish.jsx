@@ -4,7 +4,7 @@ import { getWishes, createWish } from '@store/actions/wish'
 import { useEffect, useState } from 'react'
 import { ThankPopup, Loading, Input } from '@components'
 
-function Wish({ invitation }) {
+function Wish() {
     const dispatch = useDispatch()
     const {wishes, loading} = useSelector(state => state.wish)
     const [wish, setWish] = useState('')
@@ -17,7 +17,7 @@ function Wish({ invitation }) {
     const handleOnSubmit = (e) => {
         e.preventDefault()
         setOpenThankPopup(!openThankPopup)
-        dispatch(createWish({ guest_id: invitation.guest_id, wish }))
+        dispatch(createWish({ guest_id: '', wish }))
         setWish('')
     }
 
@@ -52,7 +52,7 @@ function Wish({ invitation }) {
     return (
         <>
             <section id='ai-wish' className='ai-wish__container'>
-                <div className='ai-wish__form'>
+                {/* <div className='ai-wish__form'>
                     <h1>Doa Dan Ucapan</h1>
                     <form onSubmit={handleOnSubmit}>
                         <Input
@@ -69,7 +69,7 @@ function Wish({ invitation }) {
                             Kirim
                         </button>
                     </form>
-                </div>
+                </div> */}
 
                 <div className='ai-wish__wishes'>
                     <div className='ai-wish__wishes-items'>

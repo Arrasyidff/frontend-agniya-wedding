@@ -1,60 +1,72 @@
 import './invitation.scss'
 import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 import { Header, Cover, Quote, Brides, Detail, Gallery, Rsvp, Wish, Gift, Navigation } from './components'
-import { getInvitation } from '@store/actions/invitation'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 
 function Invitation() {
-    const dispatch = useDispatch()
     const [searchParams] = useSearchParams()
-    const { id } = useParams()
-    const { invitation } = useSelector(state => state.invitation)
     const [openGift, setOpenGift] = useState(false)
     const [isPlayMusic, setIsPlayMusic] = useState(false)
 
+    /** lifecyle */
     useEffect(() => {
-        dispatch(getInvitation(btoa(id)))
-    }, [dispatch, id])
+        const sections = Array.from(document.getElementsByTagName('section'))
+        
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target
+
+                        if (!element.classList.contains('slide-top')) {
+                            element.classList.add('slide-top')
+                            element.style.opacity = '1'
+                        }
+                    }
+                });
+            },
+            {
+                root: null,
+                rootMargin: "-70% 0px", // Mulai trigger di tengah viewport
+            }
+            // { threshold: 0.1 } // Elemen terlihat 10% di viewport
+        );
+        (sections ?? []).forEach((section) => observer.observe(section));
+
+        return () => {
+            (sections ?? []).forEach((section) => observer.unobserve(section));
+        };
+    }, [])
+    /** end-lifecyle */
 
     return (
         <div className='ai__container'>
-            <div className='ai__container__content-left'>
-
-            </div>
+            <div className='ai__container__content-left' />
             <div className='ai__container__content'>
                 <div className='ai__container__content-main'>
                     <Cover
                         setIsPlayMusic={setIsPlayMusic}
-                        name={invitation?.guest?.name ?? searchParams.get('to')}
+                        name={searchParams.get('to')}
                     />
                     <Header />
                     <Quote />
                     <Brides />
-                    <Detail
-                        invitation={invitation}
-                    />
+                    <Detail />
                     <Gallery />
-                    <Rsvp
-                        invitation={invitation}
-                    />
-                    <Wish
-                        invitation={invitation}
-                    />
+                    <Rsvp />
+                    <Wish />
                     <Gift
                         openGift={openGift}
                         setOpenGift={setOpenGift}
                     />
                     <Navigation
-                        invitation={invitation}
                         setOpenGift={setOpenGift}
                         isPlayMusic={isPlayMusic}
                         setIsPlayMusic={setIsPlayMusic}
                     />
                 </div>
             </div>
-            <div className='ai__container__content-right'>
-            </div>
+            <div className='ai__container__content-right' />
         </div>
     )
 }

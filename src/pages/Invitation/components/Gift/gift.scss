@@ -8,6 +8,8 @@
 .ai-gift__container {
     flex-direction: column;
     text-align: center;
+    transition: .7s ease;
+    opacity: 0;
     .ai-gift__thanks {
         width: 100%;
         background: url('../../../../assets/white_background.png');

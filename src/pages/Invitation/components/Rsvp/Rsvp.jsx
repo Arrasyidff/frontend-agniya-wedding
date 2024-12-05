@@ -5,20 +5,11 @@ import { updateInvitation } from '@store/actions/invitation'
 import { Input, SelectInput, ThankPopup } from '@components'
 import { Loading } from '@components'
 
-function Rsvp({ invitation }) {
+function Rsvp() {
     const {loadingForm} = useSelector(state => state.invitation)
     const dispatch = useDispatch()
-    const [form, setForm] = useState(handleFormatForm())
+    const [form, setForm] = useState({name: '', phone_number: '', guest_count: '', attendance_status: '', wish: ''})
     const [openPopup, setOpenPopup] = useState(false)
-
-    function handleFormatForm() {
-        return {
-            name: invitation?.guest?.name ?? 'Arrasyid Fadel Fatonsyah',
-            phone_number: invitation?.phone_number ?? '089635164141',
-            guest_count: invitation?.guest_count ?? '2',
-            attendance_status: invitation?.attendance_status ?? 'Hadir'
-        }
-    }
 
     const handleOnChange = (e) => {
         let {name, value} = e.target
@@ -32,19 +23,17 @@ function Rsvp({ invitation }) {
     const handleSelectInput = (val) => {
         setForm({...form, [val.key]: val})
     }
-    // console.log(form)
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
-        dispatch(updateInvitation({
-            id: invitation.id,
-            attendance_status: form.attendance_status,
-            guest_count: form.guest_count,
-            phone_number: form.phone_number
-        }))
-        setOpenPopup(!openPopup)
+        // dispatch(updateInvitation({
+        //     id: invitation.id,
+        //     attendance_status: form.attendance_status,
+        //     guest_count: form.guest_count,
+        //     phone_number: form.phone_number
+        // }))
+        // setOpenPopup(!openPopup)
     }
-
     
     return (
         <>
@@ -60,10 +49,10 @@ function Rsvp({ invitation }) {
                         value={form.name ?? 'Arrasyid Fadel Fatonsyah'}
                         type='text'
                         name='name'
-                        readOnly={true}
+                        setValue={handleOnChange}
                     />
                     <Input
-                        placeholder='Nama'
+                        placeholder='No Handphone'
                         value={form.phone_number ?? '089635164141'}
                         type='text'
                         name='phone_number'
@@ -72,7 +61,7 @@ function Rsvp({ invitation }) {
                     <SelectInput
                         id='guest_count'
                         placeholder='Jumlah Tamu'
-                        options={[{id: 1, name: '1'}, {id: 1, name: '2'}]}
+                        options={[{id: 1, name: '1'}, {id: 2, name: '2'}]}
                         value={form.guest_count}
                         onChange={handleSelectInput}
                     />
@@ -82,6 +71,13 @@ function Rsvp({ invitation }) {
                         options={[{id: 'hadir', name: 'Hadir'}, {id: 'tidak hadir', name: 'Tidak Hadir'}]}
                         value={form.attendance_status}
                         onChange={handleSelectInput}
+                    />
+                    <Input
+                        placeholder='Tulis Harapan Kamu'
+                        value={form.wish}
+                        type={'textarea'}
+                        name="wish"
+                        setValue={handleOnChange}
                     />
                     <button type='submit'>Kirim</button>
                 </form>

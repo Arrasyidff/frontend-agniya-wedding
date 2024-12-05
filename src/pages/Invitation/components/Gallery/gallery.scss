@@ -2,6 +2,8 @@
     position: relative;
     padding: 2rem;
     background: #2E3092;
+    transition: .7s ease;
+    opacity: 0;
     .ai-gallery__content {
         .ai-gallery__title {
             text-transform: uppercase;

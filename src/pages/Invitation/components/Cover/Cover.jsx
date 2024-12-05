@@ -45,7 +45,7 @@ function Cover({ name, setIsPlayMusic }) {
     }
 
     return (
-        <section className="ai-cover__container">
+        <div className="ai-cover__container">
             <div className='ai-cover__sub-container'>
                 <div className="ai-cover__title">
                     <h1>Save The Date</h1>
@@ -67,7 +67,7 @@ function Cover({ name, setIsPlayMusic }) {
                     Buka Undangan
                 </button>
             </div>
-        </section>
+        </div>
     )
 }
 

@@ -1,10 +1,55 @@
 import './detail.scss'
 import logoImg from '@assets/logo.png'
-import date from '@assets/date_icon.png'
 import point from '@assets/location_icon.png'
-import { getDayFromTimestamp, getFullDate, getTimeFromTimestamp } from '@helpers/dateHelper'
+import { useParams } from 'react-router-dom'
 
 function Detail() {
+    const { code } = useParams()
+
+    const handleSessionTime = (code) => {
+        if (typeof code !== 'string') return ''
+        code = code.toLowerCase()
+
+        let day = ''
+        let date = ''
+        let session = ''
+        let time = ''
+        if (code === 'sss1') {
+            day = 'Selasa'
+            date = '24 Desember 2024'
+            session = 1
+            time = '14:50 - 15:50'
+        } else if (code === 'sss2') {
+            day = 'Selasa'
+            date = '24 Desember 2024'
+            session = 2
+            time = '15:50 - 16:50'
+        } else if (code === 'rss1') {
+            day = 'Rabu'
+            date = '25 Desember 2024'
+            session = 1
+            time = '14:50 - 15:50'
+        } else if (code === 'rss2') {
+            day = 'Selasa'
+            date = '25 Desember 2024'
+            session = 2
+            time = '15:50 - 16:50'
+        }
+
+        if (!session) return ''
+
+        return (
+            <div className='ai-detail__date'>
+                <img src={date} alt="" />
+                <p>{day}</p>
+                <p>{date}</p>
+                <br />
+                <p>Sesi {session}</p>
+                <p>Pukul {time}</p>
+            </div>
+        )
+    }
+
     return (
         <section id='ai-detail' className='ai-detail__container'>
             <div className='ai-detail__content'>
@@ -21,13 +66,7 @@ function Detail() {
 
                 <img alt='image-logo' className='ai-detail--logo' src={logoImg} />
 
-                <div className='ai-detail__date'>
-                    <img src={date} alt="" />
-                    <p>{ getDayFromTimestamp(Date.now()) }</p>
-                    <p>{ getFullDate(Date.now()) }</p>
-                    <p>Sesi 2</p>
-                    <p>PUKUL { getTimeFromTimestamp(Date.now()) } - {getTimeFromTimestamp(Date.now())}</p>
-                </div>
+                {handleSessionTime(code)}
 
                 <div className='ai-detail__location'>
                     <img src={point} alt="" />
