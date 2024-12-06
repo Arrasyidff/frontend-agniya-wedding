@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import './popupCheckInForm.scss'
 import { Input, PopupFormWrapper } from '@components'
-import { useDispatch } from 'react-redux'
+// import { useDispatch } from 'react-redux'
 // import { updateInvitation } from '@store/actions/invitation'
 
 function PopupCheckInForm({ eventEdit, open, setOpen }) {
     /** data */
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     // const { isSuccess } = useSelector(state => state.invitation)
     const [form, setForm] = useState(eventEdit)
     // const [isSubmit, setIsSubmit] = useState(false)

@@ -17,7 +17,7 @@ function Home() {
         } else if ((pathname).includes('event/')) {
             return 'Detail Acara'
         }
-        return 'Tamu'
+        return 'Tamu Undangan'
     }
 
     return (

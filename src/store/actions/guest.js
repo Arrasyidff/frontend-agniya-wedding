@@ -26,7 +26,7 @@ export const createGuest = ({ name, email, phone_number, acquaintance_from, addr
 }
 
 export const getGuests = (search) => {
-    return async (dispatch, getState) => {
+    return async (dispatch) => {
         dispatch({ type: 'GET_GUESTS_REQUEST' })
         try {
             setTimeout(async () => {

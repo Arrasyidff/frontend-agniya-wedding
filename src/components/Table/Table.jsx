@@ -86,7 +86,7 @@ function Table({
                             <tr key={item.id}>
                                 {headerColumns.map(col => (
                                     <td key={col.id} style={{ textAlign: col?.justifyContent ?? 'left' }}>
-                                        {col?.isCustomTd && renderCustomTd && renderCustomTd(item, onTdClick) !== undefined
+                                        {col?.isCustomTd && renderCustomTd && renderCustomTd(item, onTdClick, col.id) !== undefined
                                             ? renderCustomTd(item, onTdClick, col.id)
                                             : col.id.toLowerCase() === 'no'
                                             ? `${i + 1}.`

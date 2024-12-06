@@ -1,68 +1,45 @@
 import { useEffect, useState } from 'react'
 import './guest.scss'
-import { PopupDelete, PopupSuccess, PopupGuestForm, Loading, Table } from '@components'
+import { Loading, Table } from '@components'
 import { useSelector, useDispatch } from 'react-redux'
-import { getGuests, deleteGuest } from '@store/actions/guest'
+import { getInvitations } from '@store/actions/invitation'
 import { useDebounce } from 'utils/hooks'
 
 function Guest() {
+    /** data */
     const dispatch = useDispatch()
-    const {guests, loading, isSuccess} = useSelector(state => state.guest)
-    const [openForm, setOpenForm] = useState(false)
-    const [openPopupSuccess, setOpenPopupSuccess] = useState(false)
-    const [openMessage, setOpenMessage] = useState(true)
-    const [openPopupDelete, setOpenPopupDelete] = useState(false)
-    const [guestEdit, setGuestEdit] = useState(null)
-    const [isDetailMode, setIsDetailMode] = useState(null)
+    const {invitations, loading} = useSelector(state => state.invitation)
     const [search, setSearch] = useState('')
     const dobouncedSearch = useDebounce(search)
+    const [sort, setSort] = useState(null)
     const [headerColumns, setHeaderColumns] = useState([
         {id: 'no', name: '', width: '2%'},
         {id: 'name', name: 'Nama', width: '25%'},
-        {id: 'phone_number', name: 'HP', width: '15%'},
-        {id: 'acquaintance_from', name: 'Kenalan dari pihak?', width: '15%'},
-        {id: 'address', name: 'Alamat', width: '30%'},
-        {id: 'action', name: '', width: '10%', isCustomTd: true}
+        {id: 'phone_number', name: 'HP', width: '15%', justifyContent: 'center'},
+        {id: 'guest_count', name: 'Jumlah Tamu', width: '15%', justifyContent: 'center'},
+        {id: 'attendance', name: 'Konfirmasi Kehadiran', width: '15%', justifyContent: 'center', isCustomTd: true},
+        {id: 'wish', name: 'Ucapan Harapan', width: '30%'},
     ])
+    /** end data */
 
+    /** lifecycle */
     useEffect(() => {
-        dispatch(getGuests(dobouncedSearch))
-    }, [dispatch, dobouncedSearch])
+        dispatch(getInvitations(dobouncedSearch, sort))
+    }, [dispatch, dobouncedSearch, sort])
+    /** end lifecycle */
 
-    useEffect(() => {
-        const body = document.getElementsByTagName('body')[0]
-        if ((openPopupDelete || openForm) && body) {
-            body.style.overflow = 'hidden'
-        }
-
-        return () => {
-            if (body) body.style.overflow = 'visible'
-        }
-    }, [openPopupSuccess, openPopupDelete, openForm])
-
-    const handleOpenForm = () => {
-        setIsDetailMode(false)
-        setGuestEdit(null)
-        setOpenForm(true)
-    }
-
-    const handleOpenEditForm = (payload) => {
-        setGuestEdit(payload)
-        setOpenForm(true)
-    }
-
-    const handleOpenDeletePopup = (payload) => {
-        setGuestEdit(payload)
-        setOpenPopupDelete(true)
-    }
-
+    /** methods */
     const handleSortOrder = (id) => {
-        let newHeaderColumns = JSON.parse(JSON.stringify(headerColumns))
+        let newHeaderColumns = [...headerColumns]
         newHeaderColumns = newHeaderColumns.map(col => {
             if (col.id === id) {
-                if (!col?.sort) col.sort = 'asc'
-                else if (col.sort === 'asc') col.sort = 'desc'
-                else if (col.sort === 'desc') col.sort = 'asc'
+                let sort = ''
+                if (!col?.sort) sort = 'asc'
+                else if (col.sort === 'asc') sort = 'desc'
+                else if (col.sort === 'desc') sort = 'asc'
+
+                col.sort = sort
+                setSort({key: col.id, order: sort})
             } else {
                 col.sort = null
             }
@@ -71,51 +48,22 @@ function Guest() {
         setHeaderColumns(newHeaderColumns)
     }
 
-    const handleDeleteGuest = (payload) => {
-        setOpenPopupDelete(false)
-        if (payload === true) {
-            setOpenMessage('berhasil di hapus')
-            setOpenPopupSuccess(true)
-            dispatch(deleteGuest(guestEdit.id))
+    const renderCustomTd = (data, onTdClick, colId) => {
+        if (colId === 'attendance') {
+            return (
+                <div className='ai-table__td-actions'>
+                    <div className={`ai-table__td-actions__icon ${data.attendance === true ? 'success' : 'delete'}`}>
+                        {(data.attendance === true) ?
+                            (<i className='far fa-check-circle' />) :
+                            (<i className="fas fa-times" />)
+                        }
+                    </div>
+                </div>
+            )
         }
+        return ''
     }
-
-    const handleTdClick = (type, guestEdit) => {
-        setIsDetailMode(false)
-        if ((type === 'open-edit-popup') || (type === 'open-detail-popup')) {
-            handleOpenEditForm(guestEdit)
-            if (type === 'open-detail-popup') {
-                setIsDetailMode(true)
-            }
-        } else if (type === 'open-delete-popup') {
-            handleOpenDeletePopup(guestEdit)
-        }
-    }
-
-    const renderCustomTd = (guestEdit, onTdClick) => {
-        return (
-            <div className='ai-table__td-actions'>
-                <div
-                    className='ai-table__td-actions__icon view'
-                    onClick={() => onTdClick('open-detail-popup', guestEdit)}
-                >
-                    <i className="far fa-eye" />
-                </div>
-                <div
-                    className='ai-table__td-actions__icon edit'
-                    onClick={() => onTdClick('open-edit-popup', guestEdit)}
-                >
-                    <i className="fas fa-pencil-alt" />
-                </div>
-                <div
-                    className='ai-table__td-actions__icon delete'
-                    onClick={() => onTdClick('open-delete-popup', guestEdit)}
-                >
-                    <i className="fas fa-trash-alt" />
-                </div>
-            </div>
-        )
-    }
+    /** end methods */
 
     return (
         <>
@@ -127,40 +75,13 @@ function Guest() {
                         search={search}
                         placeholderFind={'Cari Tamu...'}
                         headerColumns={headerColumns}
-                        bodyData={guests}
-                        renderCustomTd={renderCustomTd}
+                        bodyData={invitations}
                         onChangeSearch={setSearch}
-                        onTdClick={handleTdClick}
-                        handleOpenForm={handleOpenForm}
                         handleSortOrder={handleSortOrder}
+                        renderCustomTd={renderCustomTd}
                     />
                 </div>
             </div>
-
-            {openForm && (
-                <PopupGuestForm
-                    open={openForm}
-                    guestEdit={guestEdit}
-                    isDetailMode={isDetailMode}
-                    setOpen={setOpenForm}
-                />
-            )}
-
-            {openPopupDelete && (
-                <PopupDelete
-                    title={'Hapus Tamu?'}
-                    detailName={guestEdit?.name}
-                    onEvent={handleDeleteGuest}
-                />
-            )}
-
-            {(isSuccess && openPopupSuccess) && (
-                <PopupSuccess
-                    detailName={guestEdit?.name}
-                    description={openMessage}
-                    onEvent={setOpenPopupSuccess}
-                />
-            )}
         </>
     )
 }

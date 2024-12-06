@@ -21,12 +21,30 @@ export const createInvitations = (payload) => {
     }
 }
 
-export const getInvitations = () => {
+export const getInvitations = (search=null, sort=null) => {
     return async (dispatch) => {
         dispatch({type: 'GET_INVITATION_REQUEST'})
         try {
             setTimeout(async () => {
-                const response = await api.get('/invitations')
+                let reqQuery = {}
+                if (search) reqQuery['search'] = search.toLowerCase()
+                if (sort) {
+                    reqQuery['sort_key'] = sort.key
+                    reqQuery['sort_order'] = sort.order
+                }
+                    
+                let apiGet = '/invitations'
+                if (Object.keys(reqQuery).length !== 0) {
+                    let i = 0
+                    for (const key in reqQuery) {
+                        let query = `${key}=${reqQuery[key]}`
+                        if (i === 0) query = '?'+query
+                        else query = '&'+query
+                        apiGet += query
+                        i++
+                    }
+                }
+                const response = await api.get(apiGet)
                 dispatch({
                     type: 'GET_INVITATIONS_SUCCESS',
                     payload: response.data.data
