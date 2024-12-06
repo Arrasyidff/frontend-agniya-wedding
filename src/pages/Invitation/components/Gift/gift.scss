@@ -8,8 +8,6 @@
 .ai-gift__container {
     flex-direction: column;
     text-align: center;
-    transition: .7s ease;
-    opacity: 0;
     .ai-gift__thanks {
         width: 100%;
         background: url('../../../../assets/white_background.png');
@@ -18,6 +16,8 @@
         background-size: cover;
         flex-direction: column;
         padding: 2rem;
+        transition: .7s ease;
+        opacity: 0;
         h1 {
             font-size: 1rem;
             letter-spacing: 4px;
@@ -45,6 +45,8 @@
     }
     .ai-gift__cover {
         width: 100%;
+        transition: .7s ease;
+        opacity: 0;
         img {
             width: 100%;
         }
@@ -60,6 +62,12 @@
             color: white;
             text-align: center;
         }
+    }
+
+    .ai-gift__footer-section {
+        width: 100%;
+        transition: .7s ease;
+        opacity: 0;
     }
 }
 

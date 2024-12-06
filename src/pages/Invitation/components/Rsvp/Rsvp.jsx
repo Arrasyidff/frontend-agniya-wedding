@@ -1,13 +1,15 @@
 import './rsvp.scss'
 import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateInvitation } from '@store/actions/invitation'
+import { 
+    // useDispatch,
+    useSelector } from 'react-redux'
+// import { updateInvitation } from '@store/actions/invitation'
 import { Input, SelectInput, ThankPopup } from '@components'
 import { Loading } from '@components'
 
 function Rsvp() {
     const {loadingForm} = useSelector(state => state.invitation)
-    const dispatch = useDispatch()
+    // const dispatch = useDispatch()
     const [form, setForm] = useState({name: '', phone_number: '', guest_count: '', attendance_status: '', wish: ''})
     const [openPopup, setOpenPopup] = useState(false)
 
@@ -26,6 +28,7 @@ function Rsvp() {
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
+        console.log(form)
         // dispatch(updateInvitation({
         //     id: invitation.id,
         //     attendance_status: form.attendance_status,

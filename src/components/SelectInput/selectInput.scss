@@ -48,6 +48,9 @@
             cursor: pointer;
             background: white;
             transition: .1s;
+            &:not(:last-child) {
+                border-bottom: .5px solid rgba(0, 0, 0, 0.444);
+            }
             
             span {
                 font-size: 13px;

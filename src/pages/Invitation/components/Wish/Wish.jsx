@@ -1,25 +1,17 @@
 import './wish.scss'
 import { useSelector, useDispatch } from 'react-redux'
-import { getWishes, createWish } from '@store/actions/wish'
+import { getWishes } from '@store/actions/wish'
 import { useEffect, useState } from 'react'
-import { ThankPopup, Loading, Input } from '@components'
+import { ThankPopup, Loading } from '@components'
 
 function Wish() {
     const dispatch = useDispatch()
     const {wishes, loading} = useSelector(state => state.wish)
-    const [wish, setWish] = useState('')
     const [openThankPopup, setOpenThankPopup] = useState(false)
 
     useEffect(() => {
         dispatch(getWishes())
     }, [dispatch])
-
-    const handleOnSubmit = (e) => {
-        e.preventDefault()
-        setOpenThankPopup(!openThankPopup)
-        dispatch(createWish({ guest_id: '', wish }))
-        setWish('')
-    }
 
     const getInitial = (data) => data?.guest?.name ? data.guest.name[0] : 'A'
 

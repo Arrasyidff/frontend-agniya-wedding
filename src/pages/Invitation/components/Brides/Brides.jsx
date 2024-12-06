@@ -36,7 +36,7 @@ function Brides() {
 
     const brideDetail = (type='bride') => {
         return (
-            <div className={`ai-brides__detail ${type}`}>
+            <div className={`ai-brides__detail ${type} animate`}>
                 {type === 'bride' ? (
                     <>
                         <div className='ai-brides__detail-photo'>
@@ -58,10 +58,10 @@ function Brides() {
     }
     return (
         <section id='ai-brides' className='ai-brides__container'>
-            <div className='ai-brides--content'>
+            <div className='ai-brides--content animate'>
                 {brideDetail('bride')}
 
-                <img alt='image-flower-separator' className='ai-brides--flower-separator' src={brideFlower} />
+                <img alt='image-flower-separator' className='ai-brides--flower-separator animate' src={brideFlower} />
 
                 {brideDetail('groom')}
             </div>

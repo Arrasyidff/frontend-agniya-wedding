@@ -26,6 +26,7 @@
             flex-direction: column;
             text-align: center;
             color: white;
+            opacity: 0;
             .ai-brides__detail-photo {
                 flex-direction: column;
                 width: 12.938rem;
@@ -80,6 +81,7 @@
         .ai-brides--flower-separator {
             width: 30%;
             margin: 2.5rem 0;
+            opacity: 0;
         }
     }
 }
