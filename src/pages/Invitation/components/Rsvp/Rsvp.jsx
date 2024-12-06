@@ -1,5 +1,5 @@
 import './rsvp.scss'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createInvitations } from '@store/actions/invitation'
 import { Input, SelectInput, ThankPopup } from '@components'
@@ -7,19 +7,38 @@ import { Loading } from '@components'
 import { useParams } from 'react-router-dom'
 
 function Rsvp() {
+    /** data */
     const { code } = useParams()
     const { loadingForm } = useSelector(state => state.invitation)
     const dispatch = useDispatch()
-    const [form, setForm] = useState({name: '', phone_number: '', guest_count: '', attendance: '', wish: ''})
+    const [form, setForm] = useState({name: '', phone_number: '', guest_count: null, attendance: null, wish: ''})
     const [openPopup, setOpenPopup] = useState(false)
+    /** end data */
 
+    /** watch */
+    const isFormComplete = useMemo(() => {
+        return (
+            form?.name?.trim() !== '' &&
+            form?.phone_number?.trim() !== '' &&
+            form?.guest_count !== null &&
+            form?.attendance !== null &&
+            form?.wish?.trim() !== ''
+        );
+    }, [form]);
+    /** end watch */
+
+    /** methods */
     const handleOnChange = (e) => {
         let {name, value} = e.target
+        console.log(name)
         if (name === 'attendance') {
             if (value === 'true') value = true
             else if (value === 'false') value = false
+        } else if (name === 'phone_number') {
+            if (((/^\d*$/.test(value)) && (value.length <= 15))) setForm({...form, [name]: value})
+        } else {
+            setForm({...form, [name]: value})
         }
-        setForm({...form, [name]: value})
     }
 
     const handleSelectInput = (val) => {
@@ -38,6 +57,7 @@ function Rsvp() {
         }))
         setOpenPopup(!openPopup)
     }
+    /** end methods */
     
     return (
         <>
@@ -83,7 +103,7 @@ function Rsvp() {
                         name="wish"
                         setValue={handleOnChange}
                     />
-                    <button type='submit'>Kirim</button>
+                    <button disabled={!isFormComplete} type='submit'>Kirim</button>
                 </form>
             </section>
 

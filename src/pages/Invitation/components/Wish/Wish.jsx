@@ -50,7 +50,7 @@ function Wish() {
                             </div>
                             <div className='ai-wish__wishes-item__detail'>
                                 <div className='ai-wish__wishes-item__detail-header'>
-                                    <p>{ item?.name }</p>
+                                    <p className='name'>{ item?.name?.toLowerCase() }</p>
                                     <p>{ item?.wish }</p>
                                 </div>
                                 <p className='ai-wish__wishes-item__detail--footer'>{ timeAgo(item.createdAt) }</p>

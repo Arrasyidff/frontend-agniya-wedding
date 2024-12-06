@@ -42,6 +42,13 @@
             background: #2E3092;
             color: white;
             font-size: var(--button-font-size);
+            cursor: pointer;
+            transition: .3s;
+
+            &:disabled {
+                background: #222357;
+                cursor: not-allowed;
+            }
         }
     }
 }
