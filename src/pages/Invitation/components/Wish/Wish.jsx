@@ -1,19 +1,17 @@
 import './wish.scss'
 import { useSelector, useDispatch } from 'react-redux'
-import { getWishes } from '@store/actions/wish'
-import { useEffect, useState } from 'react'
-import { ThankPopup, Loading } from '@components'
+import { getInvitations } from '@store/actions/invitation'
+import { useEffect } from 'react'
 
 function Wish() {
     const dispatch = useDispatch()
-    const {wishes, loading} = useSelector(state => state.wish)
-    const [openThankPopup, setOpenThankPopup] = useState(false)
+    const {invitations} = useSelector(state => state.invitation)
 
     useEffect(() => {
-        dispatch(getWishes())
+        dispatch(getInvitations())
     }, [dispatch])
 
-    const getInitial = (data) => data?.guest?.name ? data.guest.name[0] : 'A'
+    const getInitial = (data) => data?.name ? data.name[0] : 'A'
 
     function timeAgo(timestamp) {
         const now = new Date()
@@ -42,55 +40,26 @@ function Wish() {
     }
 
     return (
-        <>
-            <section id='ai-wish' className='ai-wish__container'>
-                {/* <div className='ai-wish__form'>
-                    <h1>Doa Dan Ucapan</h1>
-                    <form onSubmit={handleOnSubmit}>
-                        <Input
-                            placeholder='Tulis Harapan Kamu'
-                            value={wish}
-                            type={'textarea'}
-                            name="wish"
-                            setValue={() => setWish()}
-                        />
-                        <button
-                            disabled={!wish}
-                            type='submit'
-                        >
-                            Kirim
-                        </button>
-                    </form>
-                </div> */}
-
-                <div className='ai-wish__wishes'>
-                    <div className='ai-wish__wishes-items'>
-                        {wishes.map(item => (
-                            <div key={item.id} className='ai-wish__wishes-item'>
-                                <div className='ai-wish__wishes-item__initial'>
-                                    <h1>{ getInitial(item) }</h1>
-                                </div>
-                                <div className='ai-wish__wishes-item__detail'>
-                                    <div className='ai-wish__wishes-item__detail-header'>
-                                        <p>{ item?.guest?.name }</p>
-                                        <p>{ item?.wish }</p>
-                                    </div>
-                                    <p className='ai-wish__wishes-item__detail--footer'>{ timeAgo(item.updatedAt) }</p>
-                                </div>
+        <section id='ai-wish' className='ai-wish__container'>
+            <div className='ai-wish__wishes'>
+                <div className='ai-wish__wishes-items'>
+                    {invitations.map(item => (
+                        <div key={item.id} className='ai-wish__wishes-item'>
+                            <div className='ai-wish__wishes-item__initial'>
+                                <h1>{ getInitial(item) }</h1>
                             </div>
-                        ))}
-                    </div>
+                            <div className='ai-wish__wishes-item__detail'>
+                                <div className='ai-wish__wishes-item__detail-header'>
+                                    <p>{ item?.name }</p>
+                                    <p>{ item?.wish }</p>
+                                </div>
+                                <p className='ai-wish__wishes-item__detail--footer'>{ timeAgo(item.createdAt) }</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            </section>
-
-            {loading ? (<Loading />) : (
-                <ThankPopup
-                    open={openThankPopup}
-                    setOpen={setOpenThankPopup}
-                    isWish={true}
-                />
-            )}
-        </>
+            </div>
+        </section>
     )
 }
 

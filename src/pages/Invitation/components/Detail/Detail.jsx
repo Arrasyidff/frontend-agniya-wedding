@@ -14,22 +14,22 @@ function Detail() {
         let date = ''
         let session = ''
         let time = ''
-        if (code === 'sss1') {
+        if (code === 'sssf') {
             day = 'Selasa'
             date = '24 Desember 2024'
             session = 1
             time = '14:50 - 15:50'
-        } else if (code === 'sss2') {
+        } else if (code === 'ssss') {
             day = 'Selasa'
             date = '24 Desember 2024'
             session = 2
             time = '15:50 - 16:50'
-        } else if (code === 'rss1') {
+        } else if (code === 'rssf') {
             day = 'Rabu'
             date = '25 Desember 2024'
             session = 1
             time = '14:50 - 15:50'
-        } else if (code === 'rss2') {
+        } else if (code === 'rsss') {
             day = 'Selasa'
             date = '25 Desember 2024'
             session = 2

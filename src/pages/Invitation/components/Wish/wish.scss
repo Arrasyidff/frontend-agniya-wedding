@@ -1,39 +1,6 @@
 .ai-wish__container {
     transition: .7s ease;
     opacity: 0;
-    .ai-wish__form {
-        padding: 2rem;
-        background: #2E3092;
-        text-transform: uppercase;
-        h1 {
-            font-size: 1rem;
-            letter-spacing: 4px;
-            line-height: 20px;
-            text-align: center;
-            color: white;
-        }
-        form {
-            flex-direction: column;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 1.188rem;
-            textarea {
-                border: none;
-                height: 150px !important;
-            }
-            button {
-                margin-top: 10px;
-                width: 100%;
-                padding: 0 8px;
-                height: 40px;
-                font-size: var(--button-font-size);
-                color: white;
-                background: #C59949;
-            }
-        }
-    }
-
     .ai-wish__wishes {
         background: url('../../../../assets/wish_background.png');
         background-repeat: no-repeat;
@@ -43,7 +10,7 @@
         .ai-wish__wishes-items {
             overflow-y: auto;
             height: 479px;
-            padding: 40px 0;
+            padding: 1.5rem 0 2rem 0;
             .ai-wish__wishes-item {
                 display: flex;
                 justify-content: space-between;

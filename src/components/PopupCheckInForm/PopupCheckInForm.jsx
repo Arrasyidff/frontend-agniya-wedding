@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './popupCheckInForm.scss'
 import { Input, PopupFormWrapper } from '@components'
 import { useDispatch } from 'react-redux'
-import { updateInvitation } from '@store/actions/invitation'
+// import { updateInvitation } from '@store/actions/invitation'
 
 function PopupCheckInForm({ eventEdit, open, setOpen }) {
     /** data */
@@ -24,7 +24,7 @@ function PopupCheckInForm({ eventEdit, open, setOpen }) {
         const payload = {...form}
         payload.attendance = true
         payload.check_in_time = '20:51'
-        dispatch(updateInvitation(payload))
+        // dispatch(updateInvitation(payload))
         setOpen(false)
     }
     /** end methods */

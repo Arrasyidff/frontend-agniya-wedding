@@ -1,21 +1,21 @@
 import './rsvp.scss'
 import { useState } from 'react'
-import { 
-    // useDispatch,
-    useSelector } from 'react-redux'
-// import { updateInvitation } from '@store/actions/invitation'
+import { useDispatch, useSelector } from 'react-redux'
+import { createInvitations } from '@store/actions/invitation'
 import { Input, SelectInput, ThankPopup } from '@components'
 import { Loading } from '@components'
+import { useParams } from 'react-router-dom'
 
 function Rsvp() {
-    const {loadingForm} = useSelector(state => state.invitation)
-    // const dispatch = useDispatch()
-    const [form, setForm] = useState({name: '', phone_number: '', guest_count: '', attendance_status: '', wish: ''})
+    const { code } = useParams()
+    const { loadingForm } = useSelector(state => state.invitation)
+    const dispatch = useDispatch()
+    const [form, setForm] = useState({name: '', phone_number: '', guest_count: '', attendance: '', wish: ''})
     const [openPopup, setOpenPopup] = useState(false)
 
     const handleOnChange = (e) => {
         let {name, value} = e.target
-        if (name === 'attendance_status') {
+        if (name === 'attendance') {
             if (value === 'true') value = true
             else if (value === 'false') value = false
         }
@@ -28,14 +28,15 @@ function Rsvp() {
 
     const handleOnSubmit = (e) => {
         e.preventDefault()
-        console.log(form)
-        // dispatch(updateInvitation({
-        //     id: invitation.id,
-        //     attendance_status: form.attendance_status,
-        //     guest_count: form.guest_count,
-        //     phone_number: form.phone_number
-        // }))
-        // setOpenPopup(!openPopup)
+        dispatch(createInvitations({
+            name: form.name,
+            phone_number: form.phone_number,
+            guest_count: form?.guest_count?.id ?? 0,
+            attendance: (form?.attendance?.id ?? '').toLowerCase() === 'hadir' ? true : false,
+            wish: form.wish,
+            code_session: code
+        }))
+        setOpenPopup(!openPopup)
     }
     
     return (
@@ -69,10 +70,10 @@ function Rsvp() {
                         onChange={handleSelectInput}
                     />
                     <SelectInput
-                        id='attendance_status'
+                        id='attendance'
                         placeholder='Konfirmasi Kehadiran'
                         options={[{id: 'hadir', name: 'Hadir'}, {id: 'tidak hadir', name: 'Tidak Hadir'}]}
-                        value={form.attendance_status}
+                        value={form.attendance}
                         onChange={handleSelectInput}
                     />
                     <Input
@@ -86,12 +87,12 @@ function Rsvp() {
                 </form>
             </section>
 
-            {loadingForm ? (<Loading />) : (
+            {loadingForm && openPopup ? (<Loading />) : (
                 <ThankPopup
                     open={openPopup}
                     setOpen={setOpenPopup}
-                    isConfirmRsvp={form?.attendance_status === true}
-                    isRejectRsvp={form?.attendance_status === false}
+                    isConfirmRsvp={(form?.attendance?.id) === 'hadir'}
+                    isRejectRsvp={(form?.attendance?.id) !== 'hadir'}
                 />
             )}
         </>

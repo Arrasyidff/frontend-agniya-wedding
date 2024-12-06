@@ -1,7 +1,5 @@
 let initialState = {
     invitations: [],
-    invitation: null,
-    detailInvitation: null,
     loading: false,
     loadingForm: false,
     error: null
@@ -13,21 +11,16 @@ function invitation (state = initialState, action) {
             return {
                 ...state,
                 loading: true,
+                loadingForm: true,
                 error: null,
             }
         case 'GET_INVITATIONS_SUCCESS':
             return {
                 ...state,
                 loading: false,
+                loadingForm: false,
                 error: null,
                 invitations: action.payload
-            }
-        case 'GET_DETAIL_INVITATION_SUCCESS':
-            return {
-                ...state,
-                loading: false,
-                error: null,
-                detailInvitation: action.payload
             }
         case 'GET_FORM_INVITATION_REQUEST':
             return {
