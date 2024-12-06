@@ -8,7 +8,7 @@ function Sidebar() {
 
     const navigations = [
         {id: 'guests', title: 'Tamu', icon: (<i className="fas fa-users" />)},
-        {id: 'events', title: 'Acara', icon: (<i className="far fa-calendar-alt" />)}
+        {id: 'send_invitation', title: 'Kirim Undangan', icon: (<i className="fas fa-envelope" />)}
     ]
 
     return (

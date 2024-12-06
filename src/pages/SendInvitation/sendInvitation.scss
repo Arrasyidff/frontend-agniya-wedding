@@ -1,0 +1,19 @@
+.ai-send-invitation__container {
+    padding-left: 15%;
+    .ai-send-invitation__container-content {
+        padding: 0 31px;
+        .ai-send-invitation__form-header {
+            width: 100%;
+            .ai-input__container {
+                &:not(first-child) {
+                    margin-top: 10px;
+                }
+                &:last-child {
+                    textarea {
+                        height: 500px !important;
+                    }
+                }
+            }
+        }
+    }
+}

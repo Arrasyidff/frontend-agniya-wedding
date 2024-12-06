@@ -12,10 +12,8 @@ function Home() {
     }, [pathname, navigate])
 
     const handleTitle = () => {
-        if ((pathname).includes('events')) {
-            return 'Acara'
-        } else if ((pathname).includes('event/')) {
-            return 'Detail Acara'
+        if ((pathname).includes('send_invitation')) {
+            return 'Bagikan Undangan Digital'
         }
         return 'Tamu Undangan'
     }

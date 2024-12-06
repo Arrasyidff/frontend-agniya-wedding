@@ -30,7 +30,6 @@ function Rsvp() {
     /** methods */
     const handleOnChange = (e) => {
         let {name, value} = e.target
-        console.log(name)
         if (name === 'attendance') {
             if (value === 'true') value = true
             else if (value === 'false') value = false
