@@ -32,15 +32,15 @@
             font-weight: 700;
         }
         .ai-gift--btn {
-            letter-spacing: 4px;
+            letter-spacing: 2px;
             line-height: 20px;
             margin-top: 1.313rem;
             color: white;
             text-transform: uppercase;
             background: #2E3092;
-            font-size: 0.938rem;
-            padding: 0.313rem 0.625rem;
-            border-radius: 5px;
+            font-size: var(--button-font-size);
+            padding: .4rem 1rem;
+            cursor: pointer;
         }
     }
     .ai-gift__cover {
@@ -83,13 +83,12 @@
             border: 1px solid white;
             margin: 0 auto;
             width: 100%;
-            border-radius: 20px;
             overflow: hidden;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
             position: relative;
-            padding: 1.438rem;
+            padding: 1rem;
     
             .ai-gift__popup-card__content {
                 flex-direction: column;
@@ -104,7 +103,6 @@
                     align-self: flex-end;
                     font-size: 1.563rem;
                     font-weight: 700;
-                    font-style: italic;
                     text-transform: uppercase;
                 }
     
@@ -116,16 +114,15 @@
                     width: 100%;
     
                     img {
-                        width: 3.375rem;
+                        width: 2rem;
                     }
     
                     p {
                         font-family: "Inter", serif;
-                        font-size: 1.063rem;
+                        font-size: 1rem;
                         margin-top: 0.563rem;
-                        font-weight: 600;
+                        font-weight: 400;
                         &:last-child {
-                            font-weight: 300;
                             margin-top: 0;
                         }
                     }
@@ -134,13 +131,11 @@
                 .ai-gift__popup-card__content--copy {
                     font-family: "Inter", serif;
                     align-self: flex-end;
-                    background: #3B52B9;
-                    font-weight: 800;
+                    background: #ffffff51;
                     color: white;
-                    font-size: 0.938rem;
-                    font-style: italic;
-                    padding: 0.188rem 0.875rem;
-                    border-radius: 8px;
+                    font-size: 1rem;
+                    padding: .3rem .5rem;
+                    cursor: pointer;
                 }
             }
     

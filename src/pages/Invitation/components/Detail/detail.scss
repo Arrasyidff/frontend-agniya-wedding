@@ -9,28 +9,30 @@
 
 .ai-detail__container {
     align-items: flex-end;
-    padding-top: 2.813rem;
+    // padding-top: 2.813rem;
     position: relative;
     transition: .7s ease;
     opacity: 0;
+    background: white;
 
     .ai-detail__content {
-        box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
-        -webkit-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
-        -moz-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
-        border-top-left-radius: var(--border-radius);
-        border-top-right-radius: var(--border-radius);
+        // box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
+        // -webkit-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
+        // -moz-box-shadow: 0px 18px 19.3px 1px rgba(142,142,142,0.75) inset;
+        // border-top-left-radius: var(--border-radius);
+        // border-top-right-radius: var(--border-radius);
         border: 4px solid white;
         border-bottom: 0;
         background: white;
         flex-direction: column;
         text-align: center;
         text-transform: uppercase;
-        padding: 7rem 2rem 2rem 2rem;
+        padding: 2rem 2rem 2rem 2rem;
         width: 100%;
         .ai-detail__header {
             letter-spacing: 4px;
             font-size: 11px;
+            margin-bottom: 20px;
         }
         .ai-detail__title h1,
         .ai-detail--title-separator {
@@ -40,52 +42,55 @@
         .ai-detail__title {
             text-transform: capitalize;
             font-style: normal;
-            margin: 1.563rem 0;
+            margin-top: 2rem 0;
             h1 {
                 font-size: 60px;
                 line-height: 3.5rem;
             }
         }
         .ai-detail--title-separator {
+            margin: 10px;
             text-transform: capitalize;
-            font-size: 40px;
+            font-size: 30px;
             letter-spacing: 2px;
         }
         .ai-detail--logo {
-            margin: 50px 0;
+            margin-bottom: 30px;
         }
         .ai-detail__date,
         .ai-detail__location {
-            img {
-                width: 2.233rem;
-                margin-bottom: 0.938rem;
-            }
             flex-direction: column;
-            font-size: 12px;
+            font-size: 15px;
             letter-spacing: 4px;
             line-height: 15px;
             font-weight: bold;
+            margin-bottom: 30px;
         }
         .ai-detail__location {
-            margin-top: 34px;
+            i {
+                font-size: 30px;
+                margin-bottom: 0.938rem;
+                color: #2E3092;
+            }
             .ai-detail__location--description {
                 margin-top: 5px;
                 text-transform: none;
-                font-size: 0.625rem;
+                font-size: .8rem;
                 font-weight: normal;
                 letter-spacing: -0.23px;
                 line-height: normal;
             }
 
             .ai-detail__location--btn {
-                letter-spacing: 4px;
+                letter-spacing: 2px;
                 line-height: 20px;
                 margin-top: 1.313rem;
                 color: white;
                 text-transform: uppercase;
                 background: #2E3092;
                 font-size: var(--button-font-size);
-                padding: 0.313rem 0.625rem;
+                padding: .4rem 1rem;
+                cursor: pointer;
             }
         }
     }

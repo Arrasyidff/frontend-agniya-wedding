@@ -6,8 +6,12 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-
+        
         .ai-wish__wishes-items {
+            scrollbar-width: none; /* Firefox */
+            &::-webkit-scrollbar {
+                display: none; /* Sembunyikan scrollbar */
+            }
             overflow-y: auto;
             height: 479px;
             padding: 1.5rem 0 2rem 0;

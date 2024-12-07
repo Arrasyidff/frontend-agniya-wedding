@@ -17,30 +17,6 @@ function Cover({ name, setIsPlayMusic }) {
         if (aiContainerContent) {
             aiContainer.style.overflowY = 'auto'
             aiContainerContent.style.overflowY = 'auto'
-
-            const navLinks = document.getElementsByClassName('ai-navigation__icon')
-            const sections = document.getElementsByTagName('section')
-
-            const observer = new IntersectionObserver(
-                (entries) => entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        if (navLinks) for (let i = 0; i < navLinks.length; i++) {
-                            const navLink = navLinks[i]
-                            if (entry.target.id === navLink.id) {
-                                navLink.classList.add('active')
-                            } else {
-                                navLink.classList.remove('active')
-                            }
-                        }
-                    }
-                }),
-                { threshold: 0.6 }
-            )
-
-            if (sections) for (let i = 0; i < sections.length; i++) {
-                const section = sections[i]
-                if (section) observer.observe(section)
-            }
         }
     }
 

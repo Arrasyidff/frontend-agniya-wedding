@@ -1,5 +1,4 @@
 import './popup.scss'
-import backgroundPopup from '@assets/background_overlay.png'
 
 function Popup({ openPopup, setOpenPopup, title, description, paddingSide, children }) {
 
@@ -15,8 +14,6 @@ function Popup({ openPopup, setOpenPopup, title, description, paddingSide, child
                 style={{ bottom: openPopup ? '0' : '-120vh' }}
             >
                 <div className='ai-popup__popup-sub slide-top'>
-                    <img className='ai-popup__popup--background' src={backgroundPopup} alt="" />
-
                     <div className="ai-popup__popup-header" style={{ paddingLeft: paddingSide, paddingRight: paddingSide }}>
                         <div className='ai-popup__popup-header__text'>
                             <h1>{title}</h1>

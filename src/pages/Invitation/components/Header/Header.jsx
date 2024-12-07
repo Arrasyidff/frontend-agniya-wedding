@@ -1,13 +1,13 @@
 import './header.scss'
-import logoImg from '@assets/logo.png'
+// import logoImg from '@assets/logo.png'
 
 function Header() {
     return (
         <div className='ai-header__container'>
             <div className='ai-header__content'>
-                <div className='ai-header__logo-container'>
+                {/* <div className='ai-header__logo-container'>
                     <img className='ai-header--logo' src={logoImg} alt="logo" />
-                </div>
+                </div> */}
                 <div className='ai-header__counter-container' style={{ display: 'none' }}>
                     <div className='ai-header__counter'>
                         <p>00</p>

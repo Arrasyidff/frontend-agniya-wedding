@@ -6,6 +6,7 @@
 }
 
 .ai-rsvp__container {
+    background: white;
     padding: 2rem;
     flex-direction: column;
     text-align: center;
@@ -18,9 +19,8 @@
         line-height: 20px;
     }
     .ai-rsvp--description {
-        line-height: 20px;
         text-transform: uppercase;
-        margin-top: 0.563rem;
+        margin-top: .5rem;
         font-size: 0.75rem;
         width: 18.438rem;
         margin-bottom: 0.688rem;
@@ -39,14 +39,17 @@
             width: 100%;
             padding: 0 8px;
             height: 40px;
-            background: #2E3092;
+            background: rgb(35,36,46);
+            background: linear-gradient(141deg, rgba(35,36,46,1) 0%, rgba(5,5,7,1) 100%);
             color: white;
             font-size: var(--button-font-size);
+            text-transform: uppercase;
+            letter-spacing: 5px;
             cursor: pointer;
-            transition: .3s;
+            transition: .2s;
 
             &:disabled {
-                background: #222357;
+                background: rgb(56, 56, 59);
                 cursor: not-allowed;
             }
         }

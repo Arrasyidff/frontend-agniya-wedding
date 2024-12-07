@@ -1,15 +1,28 @@
 import './gift.scss'
 import { Popup } from '@components'
 import giftBackground from '@assets/gift_background.png'
-import atm from '@assets/atm.png'
 import microchip from '@assets/microchip.png'
+import { useState } from 'react'
 
 function Gift({ openGift, setOpenGift }) {
+    const [copyValue, setCopyValue] = useState(null)
     const accounts = [
-        {id: 'bca', no: '12345678910123', name: 'AGHNIYARRIZQI IARA FADHILLA'},
-        {id: 'mandiri', no: '12345678910123', name: 'AGHNIYARRIZQI IARA FADHILLA'},
-        {id: 'dana', no: '12345678910123', name: 'AGHNIYARRIZQI IARA FADHILLA'},
+        {id: 'bsi', no: '7167984937', name: 'Aghniyarrizqi Iara Fadhilla'},
+        {id: 'bca', no: '7167984937-1', name: 'Aghniyarrizqi Iara Fadhilla'},
     ]
+
+    const handleCopy = async (data) => {
+        if (copyValue) return
+        try {
+            await navigator.clipboard.writeText(data.no);
+            setCopyValue(data);
+        } catch (err) {
+            setCopyValue(null);
+        }
+        setTimeout(() => {
+            setCopyValue(null)
+        }, 500)
+    };
 
     return (
         <>
@@ -47,8 +60,6 @@ function Gift({ openGift, setOpenGift }) {
                     <div className='ai-gift__popup-cards'>
                         {accounts.map(account => (
                             <div key={account.id} className='ai-gift__popup-card'>
-                                <img className='ai-gift__popup-card--background' src={atm} alt="" />
-
                                 <div className='ai-gift__popup-card__content'>
                                     <p className='ai-gift__popup-card__content--id'>{account.id}</p>
                                     <div className='ai-gift__popup-card__content-detail'>
@@ -56,7 +67,10 @@ function Gift({ openGift, setOpenGift }) {
                                         <p>{account.no}</p>
                                         <p>{account.name}</p>
                                     </div>
-                                    <button className='ai-gift__popup-card__content--copy'>Copy</button>
+                                    <button
+                                        className='ai-gift__popup-card__content--copy'
+                                        onClick={() => handleCopy(account)}
+                                    >{copyValue?.id === account.id ? 'Copied' : 'Copy'}</button>
                                 </div>
                             </div>
                         ))}

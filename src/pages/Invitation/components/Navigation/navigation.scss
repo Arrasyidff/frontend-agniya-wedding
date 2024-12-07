@@ -10,15 +10,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        .ai-navigation__left-side,
-        .ai-navigation__right-side {
+        .ai-navigation__items {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            width: 8.188rem;
-        }
-        .ai-navigation__left-side {
-            margin-right: 7rem;
         }
         .ai-navigation__icon {
             display: flex;
@@ -28,6 +23,11 @@
             width: 2.688rem;
             border-radius: 50%;
             overflow: hidden;
+            cursor: pointer;
+            i {
+                color: #3c4146;
+                font-size: 17px;
+            }
             img {
                 height: 40%;
             }
@@ -74,25 +74,27 @@
         .ai-navigation--btn-gift {
             position: absolute;
             cursor: pointer;
-            width: 45px;
-            height: 45px;
-            bottom: 5rem;
+            width: 35px;
+            height: 35px;
+            bottom: 4.5rem;
             background: white;
             border-radius: 50%;
             right: 10px;
+            background: rgb(231, 173, 12);
+            background: rgb(0, 0, 0);
             i {
-                color: #2E3092;
+                color: white;
                 font-size: 30px;
             }
         }
         .ai-navigation--btn-music-off,
         .ai-navigation--btn-gift {
             i {
-                font-size: 25px;
+                font-size: 20px;
             }
         }
         .ai-navigation--btn-gift {
-            bottom: 8.438rem;
+            bottom: 7.3rem;
         }
     }
 }
@@ -128,10 +130,6 @@
         .ai-navigation__sub-container {
             height: 4.1rem;
 
-            .ai-navigation__left-side {
-                margin-right: 5rem;
-            }
-
             .ai-navigation__qr-code {
                 top: -2.05rem;
             }
@@ -143,10 +141,6 @@
     .ai-navigation__container {
         .ai-navigation__sub-container {
             height: 4rem;
-
-            .ai-navigation__left-side {
-                margin-right: 4rem;
-            }
 
             .ai-navigation__qr-code {
                 top: -2rem;

@@ -1,0 +1,20 @@
+.ai-love-story__container {
+    background: rgb(35,36,46);
+    background: linear-gradient(141deg, rgba(35,36,46,1) 0%, rgba(5,5,7,1) 100%);
+    .ai-love-story__content {
+        padding: 2rem;
+        .ai-love-story__title {
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 4px;
+            line-height: 20px;
+            color: white;
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 0.688rem;
+            }
+        }
+    }
+}

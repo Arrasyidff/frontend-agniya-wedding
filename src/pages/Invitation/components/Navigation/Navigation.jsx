@@ -2,7 +2,7 @@ import './navigation.scss'
 import { QrCode } from '../index'
 import { useEffect, useRef, useState } from 'react'
 
-import qrQode from '@assets/qr_code.png'
+// import qrQode from '@assets/qr_code.png'
 import quoteNav from '@assets/nav_quote.png'
 import quoteActiveNav from '@assets/nav_quote_active.png'
 import brideNav from '@assets/nav_bride.png'
@@ -17,18 +17,26 @@ import giftNav from '@assets/nav_gift.png'
 import giftActiveNav from '@assets/nav_gift_active.png'
 import music from '@assets/kita-usahakan-rumah-itu.mp3'
 
-function Navigation({ setOpenGift, isPlayMusic, setIsPlayMusic }) {
+function Navigation({ 
+    setOpenGift,
+    isPlayMusic,
+    setIsPlayMusic
+}) {
     /** data */
     const leftNavigations = [
         { key: 'ai-quote', icon: quoteNav, iconActive: quoteActiveNav },
         { key: 'ai-brides', icon: brideNav, iconActive: brideActiveNav },
         { key: 'ai-detail', icon: dateNav, iconActive: dateActiveNav },
-    ]
-    const rightNavigations = [
+        { key: 'ai-story', icon: (<i className="fas fa-comment-alt" />), iconActive: (<i className="fas fa-comment-alt" />), isIcon: true },
         { key: 'ai-gallery', icon: galleryNav, iconActive: galleryActiveNav },
         { key: 'ai-wish', icon: wishNav, iconActive: wishActiveNav },
         { key: 'ai-gift', icon: giftNav, iconActive: giftActiveNav },
     ]
+    // const rightNavigations = [
+    //     { key: 'ai-gallery', icon: galleryNav, iconActive: galleryActiveNav },
+    //     { key: 'ai-wish', icon: wishNav, iconActive: wishActiveNav },
+    //     { key: 'ai-gift', icon: giftNav, iconActive: giftActiveNav },
+    // ]
     const [openQrCode, setOpenQrCode] = useState(false)
     const audioRef = useRef(null)
     /** end data */
@@ -77,8 +85,11 @@ function Navigation({ setOpenGift, isPlayMusic, setIsPlayMusic }) {
             case 'ai-detail':
                 sectionIntoView = document.querySelector('.ai-detail__container')
                 break
+            case 'ai-story':
+                sectionIntoView = document.getElementById('ai-story')
+                break
             case 'ai-gallery':
-                sectionIntoView = document.querySelector('.ai-gallery__container')
+                sectionIntoView = document.getElementById('ai-gallery')
                 break
             case 'ai-wish':
                 sectionIntoView = document.querySelector('.ai-wish__container')
@@ -110,27 +121,35 @@ function Navigation({ setOpenGift, isPlayMusic, setIsPlayMusic }) {
 
             <div className='ai-navigation__container'>
                 <div className='ai-navigation__sub-container'>
-                    <div className='ai-navigation__left-side'>
+                    <div className='ai-navigation__items'>
                         {leftNavigations.map(nav => (
                             <div key={nav.key} id={nav.key} onClick={() => handleNavigation(nav.key)} className='ai-navigation__icon'>
-                                <img className='ai-navigation__icon--default' src={nav.icon} alt="" />
-                                <img className='ai-navigation__icon--active' src={nav.iconActive} alt="" />
+                                {
+                                    !nav?.isIcon ? (
+                                        <>
+                                            <img className='ai-navigation__icon--default' src={nav.icon} alt="" />
+                                            <img className='ai-navigation__icon--active' src={nav.iconActive} alt="" />
+                                        </>
+                                    ) : (
+                                        nav.icon
+                                    )
+                                }
                             </div>
                         ))}
                     </div>
-                    <div className='ai-navigation__right-side'>
+                    {/* <div className='ai-navigation__right-side'>
                         {rightNavigations.map(nav => (
                             <div key={nav.key} id={nav.key} onClick={() => handleNavigation(nav.key)} className='ai-navigation__icon'>
                                 <img className='ai-navigation__icon--default' src={nav.icon} alt="" />
                                 <img className='ai-navigation__icon--active' src={nav.iconActive} alt="" />
                             </div>
                         ))}
-                    </div>
-                    <div className='ai-navigation__qr-code' onClick={() => setOpenQrCode(!openQrCode)}>
+                    </div> */}
+                    {/* <div className='ai-navigation__qr-code' onClick={() => setOpenQrCode(!openQrCode)}>
                         <div className='ai-navigation__qr-code__sub'>
                             <img src={qrQode} alt="" srcSet="" />
                         </div>
-                    </div>
+                    </div> */}
                     {
                         isPlayMusic ? (
                             <button

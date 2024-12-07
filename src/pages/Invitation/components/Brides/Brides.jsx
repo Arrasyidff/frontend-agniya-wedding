@@ -8,7 +8,7 @@ function Brides() {
         return (
             <>
                 <h1 className='ai-brides__detail--name'>
-                    {type === 'bride' ? 'Agnhniya' : 'IZZUL'}
+                    {type === 'bride' ? 'Agnhniya' : 'Izzul'}
                 </h1>
                 <p className='ai-brides__detail--fullname'>
                     {type === 'bride' ? 'Aghniyarrizqi Iara Fadhilla' : 'Muhammad Dzulfiqar Noor'}

@@ -1,10 +1,8 @@
 import './quote.scss'
-import quoteSymbol from '@assets/quote_symbol.png'
 
 function Quote() {
   return (
     <section id='ai-quote' className='ai-quote__container'>
-        <img className='ai-quote--symbol' src={quoteSymbol} alt='symbol' />
         <p className='ai-quote--dua'>
             Wa min âyâtihî an khalaqa lakum min 
             anfusikum azwâjal litaskunû ilaihâ wa ja‘ala 
