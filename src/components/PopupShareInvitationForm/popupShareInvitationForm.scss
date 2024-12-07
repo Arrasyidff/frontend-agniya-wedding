@@ -1,0 +1,40 @@
+.ai-share-invitation__container {
+    .ai-share-invitation__invitation {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+        border: .5px solid black;
+        &:not(:first-child) {
+            margin-top: 10px;
+        }
+        .ai-share-invitation__invitation-name {
+            font-weight: 400;
+        }
+        .ai-share-invitation__invitation-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            .ai-share-invitation__invitation-btn {
+                height: 30px;
+                width: 30px;
+                border: .5px solid black;
+                color: black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                margin-left: 5px;
+                &.whatsapp {
+                    background: #04a784;
+                    border-color: #04a784;
+                    color: white;
+                }
+                &.delete {
+                    background: #F14645;
+                    border-color: #F14645;
+                    color: white;
+                }
+            }
+        }
+    }
+}

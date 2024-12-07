@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './sendInvitation.scss'
-import { Input } from '@components'
+import { Input, PopupShareInvitationForm, SelectInput } from '@components'
 
 let inititalTemplate = `Kepada Yth.
 Bapak/Ibu/Saudara/i
@@ -27,57 +27,86 @@ Salam Hangat
 🥀 [mempelai] 🥀`
 
 function SendInvitation() {
-    const [form, setForm] = useState({
-        name: '',
-        to: ''
-    })
-
+    const [open, setOpen] = useState(false)
+    const [form, setForm] = useState({name: '', to: '', session: null})
     const [template, setTemplate] = useState(inititalTemplate)
+
+    const getProcessedTo = () => {
+        return [...new Set(
+            form.to
+                .split('\n')
+                .map(item => item.trim())
+                .filter(item => item !== '')
+        )]
+    }
 
     const handleOnChange = (e) => {
         let {name, value} = e.target
         setForm({...form, [name]: value})
     }
 
-    const handleSubmit = () => {
-        let payload = template
-            .replace('*[nama]*', form.to)
-            .replace('[link-undangan]', 'http://localhost:3000/aghniya-izzul/sssf?to=Arrasyid%20Fadel%20Fatonsyah')
-            .replace('[mempelai]', form.name)
-
-        const message = encodeURIComponent(payload)
-        const whatsappLink = `https://api.whatsapp.com/send?text=${message}`;
-        window.open(whatsappLink, "_blank");
+    const handleSelectInput = (val) => {
+        setForm({...form, [val.key]: val})
     }
 
     return (
-        <div className='ai-send-invitation__container'>
-            <div className='ai-send-invitation__container-content'>
-                <div className='ai-send-invitation__form-header'>
-                    <Input
-                        placeholder='Nama'
-                        value={form.name ?? 'Arrasyid Fadel Fatonsyah'}
-                        type='text'
-                        name='name'
-                        setValue={handleOnChange}
-                    />
-                    <Input
-                        placeholder='Nama Tamu ⏎'
-                        value={form.to}
-                        type={'textarea'}
-                        name="to"
-                        setValue={handleOnChange}
-                    />
-                    <Input
-                        value={template}
-                        type={'textarea'}
-                        name="template"
-                        setValue={handleOnChange}
-                    />
+        <>
+            <div className='ai-send-invitation__container'>
+                <div className='ai-send-invitation__container-content'>
+                    <div className='ai-send-invitation__form'>
+                        <Input
+                            placeholder='Nama'
+                            value={form.name ?? 'Arrasyid Fadel Fatonsyah'}
+                            type='text'
+                            name='name'
+                            setValue={handleOnChange}
+                        />
+                        <SelectInput
+                            id='session'
+                            placeholder='Sesi'
+                            options={[
+                                {id: 'dfs', name: 'Selasa, 24 Desember 2024, Pukul 19:00-21:00 WITA'},
+                                {id: 'dsf', name: 'Rabu, 25 Desember 2024, Pukul 16:00-18:00 WITA'},
+                                {id: 'dss', name: 'Rabu, 25 Desember 2024, Pukul 19:00-21:00 WITA'},
+                            ]}
+                            value={form.session}
+                            onChange={handleSelectInput}
+                        />
+                        <Input
+                            placeholder='Nama Tamu ⏎'
+                            value={form.to}
+                            type={'textarea'}
+                            name="to"
+                            setValue={handleOnChange}
+                        />
+
+                        <h1 className='ai-send-invitation__form-template'>Template</h1>
+                        <Input
+                            value={template}
+                            type={'textarea'}
+                            name="template"
+                            setValue={(e) => setTemplate(e.target.va)}
+                        />
+                    </div>
+                    <button
+                        onClick={() => setOpen(true)}
+                        className='ai-send-invitation-submit'
+                        disabled={!form.name || !form.to}
+                    >
+                        Kirim
+                    </button>
                 </div>
-                <button onClick={() => handleSubmit()}>Submit</button>
             </div>
-        </div>
+
+            <PopupShareInvitationForm
+                open={open}
+                owner={form.name}
+                session={form.session?.id}
+                template={template}
+                guests={getProcessedTo()}
+                setOpen={setOpen}
+            />
+        </>
     )
 }
 

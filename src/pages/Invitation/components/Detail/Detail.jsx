@@ -13,26 +13,21 @@ function Detail() {
         let date = ''
         let session = ''
         let time = ''
-        if (code === 'sssf') {
-            day = 'Selasa'
-            date = '24 Desember 2024'
-            session = 1
-            time = '14:50 - 15:50'
-        } else if (code === 'ssss') {
+        if (code === 'dfs') {
             day = 'Selasa'
             date = '24 Desember 2024'
             session = 2
-            time = '15:50 - 16:50'
-        } else if (code === 'rssf') {
+            time = '19:00 - 21:00'
+        } else if (code === 'dsf') {
             day = 'Rabu'
             date = '25 Desember 2024'
             session = 1
-            time = '14:50 - 15:50'
-        } else if (code === 'rsss') {
+            time = '16:00 - 18:00'
+        } else if (code === 'dss') {
             day = 'Selasa'
             date = '25 Desember 2024'
             session = 2
-            time = '15:50 - 16:50'
+            time = '19:00 - 21:00'
         }
 
         if (!session) return ''

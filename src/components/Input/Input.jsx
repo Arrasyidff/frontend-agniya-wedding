@@ -20,7 +20,7 @@ function Input({ title, placeholder, value, type, name, isError, setValue, readO
                     </>
                 ) : (
                     <div className='ai-input__textarea'>
-                        <p>{title}</p>
+                        {title && (<p>{title}</p>)}
                         <textarea
                             id={name}
                             className={isError ? 'isError' : ''}
