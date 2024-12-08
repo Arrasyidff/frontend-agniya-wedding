@@ -1,4 +1,4 @@
-import { Home, Guest, Invitation, Event, EventDetail, SendInvitation } from "@pages"
+import { Home, Guest, Invitation, SendInvitation } from "@pages"
 import ProtectedRoute from "components/ProtectedRoute"
 
 const routes = [

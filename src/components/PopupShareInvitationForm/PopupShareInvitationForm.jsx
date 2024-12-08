@@ -37,7 +37,7 @@ function PopupShareInvitationForm({
 
         let payload = template
             .replace('[nama]', name)
-            .replace('[link-undangan]', `http://localhost:3000/aghniya-izzul/${session}?to=${name}`)
+            .replace('[link-undangan]', `${process.env.REACT_APP_FE_URL}/aghniya-izzul/${session}?to=${name}`)
             .replace('[mempelai]', owner)
 
         return payload
