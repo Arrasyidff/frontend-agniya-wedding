@@ -15,7 +15,7 @@ import wishNav from '@assets/nav_wish.png'
 import wishActiveNav from '@assets/nav_wish_active.png'
 import giftNav from '@assets/nav_gift.png'
 import giftActiveNav from '@assets/nav_gift_active.png'
-import music from '@assets/kita-usahakan-rumah-itu.mp3'
+import music from '@assets/music.mp3'
 
 function Navigation({ 
     setOpenGift,

@@ -41,18 +41,16 @@ function Gallery() {
                         <h1>Gallery</h1>
                         <h2>Our Memories</h2>
                     </div>
-                    <div className='ai-gallery__photos'>
                     <PhotoProvider>
-                        {images.map((image, i) => (
-                            <div key={i} className='ai-gallery__photo'>
-                                <PhotoView src={image}>
-                                    <img src={image} alt="" srcSet="" />
-                                </PhotoView>
-                            </div>
-                        ))}
-                    </PhotoProvider>
-                    </div>
-                    <PhotoProvider>
+                        <div className='ai-gallery__photos'>
+                                {images.map((image, i) => (
+                                    <div key={i} className='ai-gallery__photo'>
+                                        <PhotoView src={image}>
+                                            <img src={image} alt="" srcSet="" />
+                                        </PhotoView>
+                                    </div>
+                                ))}
+                        </div>
                         <div className='ai-gallery__family-photo'>
                             <PhotoView src={galleryFull}>
                                 <img src={galleryFull} alt="" srcSet="" />

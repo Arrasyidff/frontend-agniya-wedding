@@ -8,7 +8,7 @@ function Gift({ openGift, setOpenGift }) {
     const [copyValue, setCopyValue] = useState(null)
     const accounts = [
         {id: 'bsi', no: '7167984937', name: 'Aghniyarrizqi Iara Fadhilla'},
-        {id: 'bca', no: '7167984937-1', name: 'Aghniyarrizqi Iara Fadhilla'},
+        // {id: 'bca', no: '7167984937-1', name: 'Aghniyarrizqi Iara Fadhilla'},
     ]
 
     const handleCopy = async (data) => {

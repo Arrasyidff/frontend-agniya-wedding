@@ -39,7 +39,7 @@ function Detail() {
                     <p>{date}</p>
                 </div>
                 <div className='ai-detail__date'>
-                    <p>Sesi {session}</p>
+                    {code !== 'dfs' && (<p>Sesi {session}</p>)}
                     <p>Pukul {time}</p>
                 </div>
             </>
