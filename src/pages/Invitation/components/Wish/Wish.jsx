@@ -8,7 +8,7 @@ function Wish() {
     const {invitations} = useSelector(state => state.invitation)
 
     useEffect(() => {
-        dispatch(getInvitations())
+        dispatch(getInvitations(null, {key: 'updatedAt', order: 'desc'}))
     }, [dispatch])
 
     const getInitial = (data) => data?.name ? data.name[0] : 'A'
