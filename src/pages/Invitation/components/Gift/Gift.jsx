@@ -1,8 +1,9 @@
 import './gift.scss'
 import { Popup } from '@components'
-import giftBackground from '@assets/gift_background.png'
+import giftBackground from '@assets/gift_background.jpg'
 import microchip from '@assets/microchip.png'
 import { useState } from 'react'
+import { PhotoProvider, PhotoView } from 'react-photo-view'
 
 function Gift({ openGift, setOpenGift }) {
     const [copyValue, setCopyValue] = useState(null)
@@ -34,7 +35,11 @@ function Gift({ openGift, setOpenGift }) {
                 </section>
 
                 <section className='ai-gift__cover'>
-                    <img src={giftBackground} alt="" />
+                    <PhotoProvider>
+                        <PhotoView src={giftBackground}>
+                            <img src={giftBackground} alt="" />
+                        </PhotoView>
+                    </PhotoProvider>
                 </section>
 
                 <section className='ai-gift__footer-section'>

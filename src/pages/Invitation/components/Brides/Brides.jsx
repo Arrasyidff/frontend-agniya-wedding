@@ -1,7 +1,8 @@
 import './brides.scss'
 import brideFlower from '@assets/brides_flower.png'
-import groom from '@assets/groom.png'
-import bride from '@assets/bride.png'
+import groom from '@assets/groom.jpg'
+import bride from '@assets/bride.jpg'
+import { PhotoProvider, PhotoView } from 'react-photo-view'
 
 function Brides() {
     const brideDetailInfo = (type='bride') => {
@@ -36,24 +37,30 @@ function Brides() {
 
     const brideDetail = (type='bride') => {
         return (
-            <div className={`ai-brides__detail ${type} animate`}>
-                {type === 'bride' ? (
-                    <>
-                        <div className='ai-brides__detail-photo'>
-                            <img alt='image-bride' src={bride} />
-                        </div>
-                        {brideDetailInfo(type)}
-                    </>
-                ): (
-                    <>
-                        {brideDetailInfo(type)}
-                        <div className='ai-brides__detail-photo'>
-                            <img alt='image-bride' src={groom} />
-                        </div>
-                    </>
-                )}
-                
-            </div>
+            <PhotoProvider>
+                <div className={`ai-brides__detail ${type} animate`}>
+                    {type === 'bride' ? (
+                        <>
+                            <div className='ai-brides__detail-photo'>
+                                <PhotoView src={bride}>
+                                    <img alt='image-bride' src={bride} />
+                                </PhotoView>
+                            </div>
+                            {brideDetailInfo(type)}
+                        </>
+                    ): (
+                        <>
+                            {brideDetailInfo(type)}
+                            <div className='ai-brides__detail-photo'>
+                                <PhotoView src={groom}>
+                                    <img alt='image-bride' src={groom} />
+                                </PhotoView>
+                            </div>
+                        </>
+                    )}
+                    
+                </div>
+            </PhotoProvider>
         )
     }
     return (

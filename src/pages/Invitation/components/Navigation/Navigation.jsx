@@ -92,7 +92,7 @@ function Navigation({
                 sectionIntoView = document.getElementById('ai-gallery')
                 break
             case 'ai-wish':
-                sectionIntoView = document.querySelector('.ai-wish__container')
+                sectionIntoView = document.getElementById('ai-rsvp')
                 break
             case 'ai-gift':
                 sectionIntoView = document.querySelector('.ai-gift__container')
@@ -117,7 +117,7 @@ function Navigation({
 
     return (
         <>
-            <audio ref={audioRef} src={music} preload="auto" />
+            <audio ref={audioRef} src={music} preload="auto" loop />
 
             <div className='ai-navigation__container'>
                 <div className='ai-navigation__sub-container'>
