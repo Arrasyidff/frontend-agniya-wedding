@@ -24,7 +24,7 @@ function Detail() {
             session = 1
             time = '16:00 - 18:00'
         } else if (code === 'dss') {
-            day = 'Selasa'
+            day = 'Rabu'
             date = '25 Desember 2024'
             session = 2
             time = '19:00 - 21:00'
