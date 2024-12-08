@@ -1,21 +1,22 @@
-import { Home, Guest, Invitation, SendInvitation } from "@pages"
-import ProtectedRoute from "components/ProtectedRoute"
+import { Guest, Home, Invitation, SendInvitation } from "@pages"
+import { Navigate } from "react-router-dom"
 
 const routes = [
     {
         path: '/',
-        element: (
-            <ProtectedRoute>
-                <Home />
-            </ProtectedRoute>
-        ),
+        // element: (
+        //     <ProtectedRoute>
+        //         <Home />
+        //     </ProtectedRoute>
+        // ),
+        element: (<Home />),
         children: [
             {
-                path: "/guests",
+                path: "/guest/list",
                 element: <Guest />,
             },
             {
-                path: "/send_invitation",
+                path: "/guest/share",
                 element: <SendInvitation />,
             }
         ]
@@ -23,6 +24,14 @@ const routes = [
     {
         path: '/aghniya-izzul/:code',
         element: <Invitation />
+    },
+    {
+        path: '/404',
+        element: <h1>Page Not Found</h1>
+    },
+    {
+        path: '*',
+        element: <Navigate to="/404" replace />
     }
 ]
 

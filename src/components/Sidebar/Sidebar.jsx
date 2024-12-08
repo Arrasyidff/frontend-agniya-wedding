@@ -7,8 +7,8 @@ function Sidebar() {
     const { pathname } = useLocation()
 
     const navigations = [
-        {id: 'guests', title: 'Tamu', icon: (<i className="fas fa-users" />)},
-        {id: 'send_invitation', title: 'Kirim Undangan', icon: (<i className="fas fa-envelope" />)}
+        {id: 'guest/list', title: 'Tamu', icon: (<i className="fas fa-users" />)},
+        {id: 'guest/share', title: 'Kirim Undangan', icon: (<i className="fas fa-envelope" />)}
     ]
 
     return (

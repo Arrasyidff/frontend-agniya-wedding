@@ -8,7 +8,7 @@ function Home() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        if (pathname === '/') navigate('/guests')
+        if (pathname === '/') navigate('*')
     }, [pathname, navigate])
 
     const handleTitle = () => {
