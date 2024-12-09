@@ -4,7 +4,7 @@
         justify-content: space-between;
         align-items: center;
         border: .5px solid #464646;
-        height: 2.188rem;
+        min-height: 2.188rem;
         padding: 0 0.313rem;
         &:not(:first-child) {
             margin-top: 0.625rem;
