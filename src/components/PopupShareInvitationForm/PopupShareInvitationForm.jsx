@@ -45,16 +45,15 @@ function PopupShareInvitationForm({
     }
 
     const handleCopy = async (guest) => {
-        if (copyValue) return
         try {
+            if (copyValue) return
+
             await navigator.clipboard.writeText(formatTemplate(guest));
             setCopyValue(guest);
+            setTimeout(() => setCopyValue(null), 500)
         } catch (err) {
             setCopyValue(null);
         }
-        setTimeout(() => {
-            setCopyValue(null)
-        }, 500)
     }
 
     const handleShareWa = (guest) => {

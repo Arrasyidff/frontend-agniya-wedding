@@ -1,8 +1,30 @@
 import React, { useState } from 'react'
 import './sendInvitation.scss'
 import { Input, PopupShareInvitationForm, SelectInput } from '@components'
+import { useEffect } from 'react'
 
-let inititalTemplate = `Kepada Yth.
+function SendInvitation() {
+    const [open, setOpen] = useState(false)
+    const [form, setForm] = useState({
+        name: 'Aghniya - Izzul & Mukhlis Wahyudin - Sri Utami',
+        to: '',
+        session: null
+    })
+    const [template, setTemplate] = useState('')
+
+    const getProcessedTo = () => {
+        return [...new Set(
+            form.to
+                .split('\n')
+                .map(item => item.trim())
+                .filter(item => item !== '')
+        )]
+    }
+
+    useEffect(() => {
+        let dateInvitation = formatTemplateBySession(form.session?.id)
+        let initialTemplate =
+`Kepada Yth.
 Bapak/Ibu/Saudara/i
 *[nama]*
 
@@ -17,27 +39,31 @@ Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk
 
 Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.
 
-Jika berkenan mohon untuk mengisi ucapan dan konfirmasi kehadiran di form RSVP untuk berkenan hadir/tidak, serta datang pada jam yang telah ditentukan.
+Jika berkenan mohon untuk mengisi ucapan dan konfirmasi kehadiran di form RSVP untuk berkenan hadir pada :
+${dateInvitation}
 
 Terima kasih banyak atas perhatiannya
 
 Wassalamu'alaikum wr wb
 
 Salam Hangat
-🥀 [mempelai] 🥀`
+🥀 [mempelai] 🥀
+        `
+        if (form.session !== null) setTemplate(initialTemplate)
 
-function SendInvitation() {
-    const [open, setOpen] = useState(false)
-    const [form, setForm] = useState({name: '', to: '', session: null})
-    const [template, setTemplate] = useState(inititalTemplate)
+        return () => setTemplate('')
+    }, [form.session])
 
-    const getProcessedTo = () => {
-        return [...new Set(
-            form.to
-                .split('\n')
-                .map(item => item.trim())
-                .filter(item => item !== '')
-        )]
+    /** methods */
+    function formatTemplateBySession(session) {
+        if (session === 'dfs') {
+            return `📆 Selasa, 24 Desember 2024\n⏰ 19.00-21.00 WITA`
+        } else if (session === 'dsf') {
+            return `📆 Rabu, 25 Desember 2024\n⏰ 16.00-18.00 WITA`
+        } else if (session === 'dss') {
+            return `📆 Rabu, 25 Desember 2024\n⏰ 19.00-21.00 WITA`
+        }
+        return ''
     }
 
     const handleOnChange = (e) => {
@@ -48,10 +74,11 @@ function SendInvitation() {
     const handleSelectInput = (val) => {
         setForm({...form, [val.key]: val})
     }
+    /** end methods */
 
     return (
         <>
-            <div className='ai-send-invitation__container'>
+            <div className='ai-send-invitation__container layout-padding'>
                 <div className='ai-send-invitation__container-content'>
                     <div className='ai-send-invitation__form'>
                         <Input
@@ -93,7 +120,7 @@ function SendInvitation() {
                         className='ai-send-invitation-submit'
                         disabled={!form.name || !form.to}
                     >
-                        Kirim
+                        <i class="fas fa-plus"></i>
                     </button>
                 </div>
             </div>

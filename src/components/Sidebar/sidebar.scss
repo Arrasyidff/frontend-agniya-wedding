@@ -1,31 +1,32 @@
+.ai-sidebar__container .ai-sidebar__logo,
+.ai-sidebar__container .ai-sidebar__menu .ai-sidebar__item,
+.ai-sidebar__container .ai-sidebar__menu .ai-sidebar__item .ai-sidebar__item-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .ai-sidebar__container {
     width: 15%;
+    left: -15%;
     height: 100vh;
     position: fixed;
     z-index: 1000;
     background: #1C2B56;
-
     h1, p {
         font-family: "Poppins", sans-serif;
     }
-
     .ai-sidebar__logo {
-        height: 70px;
+        height: 4.375rem;
         width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
         img {
             width: 80%;
         }
     }
-
     .ai-sidebar__menu {
         .ai-sidebar__item {
+            justify-content: initial;
             height: 50px;
-            display: flex;
-            align-items: center;
             position: relative;
             transition: .3s;
             cursor: pointer;
@@ -33,9 +34,6 @@
             .ai-sidebar__item-logo {
                 margin-left: 10px;
                 margin-right: 5px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
                 height: 30px;
                 width: 40px;
                 i {
@@ -72,5 +70,11 @@
                 }
             }
         }
+    }
+}
+
+@media (min-width: 1280px) {
+    .ai-sidebar__container {
+        left: 0;
     }
 }

@@ -2,66 +2,48 @@
     h1, p, button {
         font-family: "Poppins", sans-serif;
     }
-
     .ai-layout__content {
         position: relative;
         width: 100%;
-
         .ai-layout__content-navbar {
             position: fixed;
             top: 0;
-            width: 85%;
-            height: 70px;
-            margin-left: 15%;
+            width: 100%;
             background: #1C2B56;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 31px;
-            z-index: 10000;
-
+            padding: 0 0.938rem;
+            height: 3.438rem;
+            z-index: 1000;
             .ai-layout__content-navbar--title {
                 color: white;
-                font-weight: 500;
-                font-size: 15px;
+                font-weight: 300;
+                font-size: 0.938rem;
                 text-transform: capitalize;
-            }
-
-            .ai-layout__content-navbar__account {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                .ai-layout__content-navbar__account--name {
-                    color: white;
-                    font-size: 15px;
-                    font-weight: 100;
-                    margin-right: 10px;
-                    text-transform: uppercase;
-                }
-
-                .ai-layout__content-navbar__account-initial {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    background: #7DDAD8;
-                    border-radius: 50%;
-                    height: 25px;
-                    width: 25px;
-
-                    p {
-                        font-size: 15px;
-                        font-weight: 500;
-                    }
-                }
             }
         }
     }
-
     .ai-layout__content-content {
-        padding-top: 92px;
-        background: #F6F7F9;
+        padding-top: 3.438rem;
         background: white;
         min-height: 100vh;
+    }
+
+    .layout-padding {
+        padding: 0 0.938rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .ai-layout__container {
+        .ai-layout__content {
+            .ai-layout__content-navbar {
+                margin-left: 15%;
+            }
+        }
+        .ai-layout__content-content {
+            margin-left: 15%;
+        }
     }
 }

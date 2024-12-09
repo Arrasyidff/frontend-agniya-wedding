@@ -2,28 +2,33 @@
     .ai-share-invitation__invitation {
         display: flex;
         justify-content: space-between;
-        padding: 10px;
-        border: .5px solid black;
+        align-items: center;
+        border: .5px solid #464646;
+        height: 2.188rem;
+        padding: 0 0.313rem;
         &:not(:first-child) {
-            margin-top: 10px;
+            margin-top: 0.625rem;
         }
         .ai-share-invitation__invitation-name {
             font-weight: 400;
+            font-size: 0.938rem;
+            color: #464646;
         }
         .ai-share-invitation__invitation-actions {
             display: flex;
             justify-content: flex-end;
             align-items: center;
             .ai-share-invitation__invitation-btn {
-                height: 30px;
-                width: 30px;
-                border: .5px solid black;
-                color: black;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                height: 1.563rem;
+                width: 1.563rem;
+                border: .5px solid black;
+                border-radius: 50%;
+                color: black;
                 cursor: pointer;
-                margin-left: 5px;
+                margin-left: 0.313rem;
                 &.whatsapp {
                     background: #04a784;
                     border-color: #04a784;
