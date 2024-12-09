@@ -24,9 +24,8 @@ function Invitation() {
             },
             {
                 root: null,
-                rootMargin: '-70% 0px', // Mulai trigger di tengah viewport
+                threshold: 0.1
             }
-            // { threshold: 0.1 } // Elemen terlihat 10% di viewport
         );
         (sections ?? []).forEach((section) => observer.observe(section));
 
@@ -44,10 +43,6 @@ function Invitation() {
 
             const elements = element.querySelectorAll('.animate');
             elements.forEach((el, index) => {
-                // if (el.classList.contains('ai-brides--content')) {
-                //     el.style.animationDelay = `${index * 1}s`;
-                // } else {
-                // }
                 el.style.animationDelay = `${index * .8}s`;
                     
                 if (el.classList.contains('ai-brides__detail') || el.classList.contains('ai-brides--flower-separator')) {
