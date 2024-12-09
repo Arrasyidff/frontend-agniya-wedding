@@ -35,7 +35,7 @@ function PopupShareInvitationForm({
         let name = guest
         if (match) name = match[0].trim()
 
-        let urlInvitation = (`${process.env.REACT_APP_FE_URL}/aghniya-izzul/${session}?to=${name}`).replace(' ', '%20')
+        let urlInvitation = (`${process.env.REACT_APP_FE_URL}/aghniya-izzul/${session}?to=${name}`).split(' ').join('%20')
         let payload = template
             .replace('[nama]', name)
             .replace('[link-undangan]', urlInvitation)
