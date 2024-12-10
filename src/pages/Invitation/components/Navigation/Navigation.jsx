@@ -52,7 +52,7 @@ function Navigation({
             if ((document.visibilityState === 'hidden') && audioRef?.current) {
                 audioRef?.current.pause();
             } else if ((document.visibilityState === 'visible') && audioRef?.current) {
-                // if (isPlayMusic) audioRef?.current.play();
+                if (isPlayMusic) audioRef?.current.play();
             }
         };
 
@@ -108,7 +108,7 @@ function Navigation({
             audioRef.current.pause()
             setIsPlayMusic(isPlayMusic)
         } else {
-            // audioRef.current.play()
+            audioRef.current.play()
             audioRef.current.volume = .5
             setIsPlayMusic(isPlayMusic)
         }
