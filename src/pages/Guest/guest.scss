@@ -1,7 +1,104 @@
 .ai-guest__container {
-    padding-left: 15%;
-    
+    margin-top: 0.625rem;
     .ai-guest__container-content {
-        padding: 0 31px;
+        position: relative;
+        .ai-guest__card-list {
+            .ai-guest__card {
+                height: auto;
+                overflow-x: auto;
+                width: 100%;
+                border: .5px solid #1c2b56;
+                border-radius: 5px;
+                color: rgb(27, 27, 27);
+                box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+                .ai-guest__card-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 5px 10px;
+                    .ai-guest__card--fullname {
+                        font-size: 15px;
+                        font-weight: 600;
+                        width: 250px;
+                    }
+                    .ai-guest__card--attendance {
+                        height: 30px;
+                        width: 30px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        color: white;
+                        background: #21AE6E;
+                        &.absent {
+                            background-color: #F14645;
+                        }
+                    }
+                }
+                .ai-guest__card-detail {
+                    .ai-guest__card-detail-detail {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        font-size: 15px;
+                        .ai-guest__card-detail-detail--title,
+                        .ai-guest__card-detail-detail--value {
+                            width: 50%;
+                            padding: 5px 10px;
+                        }
+                        .ai-guest__card-detail-detail--title {
+                            // background: red;
+                            font-weight: 400;
+                        }
+                        .ai-guest__card-detail-detail--value {
+                            // background: green;
+                            text-align: right;
+                            font-weight: 700;
+                        }
+                        &.wish {
+                            text-align: center;
+                            .ai-guest__card-detail-detail--title,
+                            .ai-guest__card-detail-detail--value {
+                                width: 100%;
+                                text-align: center;
+                            }
+                            flex-direction: column;
+                            .ai-guest__card-detail-detail--title {
+                                font-weight: 700;
+                                border-bottom: 0.5px solid black;
+                            }
+                            .ai-guest__card-detail-detail--value {
+                                font-weight: 400;
+                            }
+                        }
+                        &:not(:last-child) {
+                            border-bottom: 0.5px solid black;
+                        }
+                    }
+                }
+                &:not(:first-child) {
+                    margin-top: 20px;
+                }
+            }
+        }
+        .ai-guest__tabel-list {
+            display: none;
+            width: 100%;
+        }
+    }
+}
+
+// @media (min-width: 1280px) {
+@media (min-width: 768px) {
+    .ai-guest__container {
+        .ai-guest__container-content {
+            .ai-guest__card-list {
+                display: none;
+            }
+            .ai-guest__tabel-list {
+                display: block;
+                overflow-y: auto;
+            }
+        }
     }
 }

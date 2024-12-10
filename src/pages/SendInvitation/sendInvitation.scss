@@ -13,9 +13,7 @@
                 margin-top: 0.625rem;
             }
             .ai-input__container {
-                &:not(first-child) {
-                    margin-top: 0.625rem;
-                }
+                margin-top: 0.625rem;
                 &:last-child {
                     textarea {
                         height: 500px !important;

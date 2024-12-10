@@ -8,7 +8,7 @@
 
 .ai-sidebar__container {
     width: 15%;
-    left: -15%;
+    display: none;
     height: 100vh;
     position: fixed;
     z-index: 1000;
@@ -75,6 +75,6 @@
 
 @media (min-width: 1280px) {
     .ai-sidebar__container {
-        left: 0;
+        display: block;
     }
 }

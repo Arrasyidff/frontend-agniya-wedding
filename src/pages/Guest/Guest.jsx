@@ -69,17 +69,49 @@ function Guest() {
         <>
             {loading && <Loading is_fullscreen={true} />}
             
-            <div className='ai-guest__container'>
+            <div className='ai-guest__container layout-padding'>
                 <div className='ai-guest__container-content'>
-                    <Table
-                        search={search}
-                        placeholderFind={'Cari Tamu...'}
-                        headerColumns={headerColumns}
-                        bodyData={invitations}
-                        onChangeSearch={setSearch}
-                        handleSortOrder={handleSortOrder}
-                        renderCustomTd={renderCustomTd}
-                    />
+                    <div className='ai-guest__card-list'>
+                        {invitations.map(invitation => (
+                            <div className='ai-guest__card'>
+                                <div className='ai-guest__card-header'>
+                                    <h1 className='ai-guest__card--fullname'>{invitation.name}</h1>
+                                    <div className={`ai-guest__card--attendance ${invitation.attendance === false ? 'absent' : ''}`}>
+                                        {invitation.attendance === false ? (
+                                            <i className="fas fa-times" />
+                                        ) : (
+                                            <i className='far fa-check-circle' />
+                                        )}
+                                    </div>
+                                </div>
+                                <div className='ai-guest__card-detail'>
+                                    <div className='ai-guest__card-detail-detail'>
+                                        <p className='ai-guest__card-detail-detail--title'>HP</p>
+                                        <p className='ai-guest__card-detail-detail--value'>{invitation.phone_number}</p>
+                                    </div>
+                                    <div className='ai-guest__card-detail-detail'>
+                                        <p className='ai-guest__card-detail-detail--title'>Jumlah Tamu</p>
+                                        <p className='ai-guest__card-detail-detail--value'>{invitation.guest_count}</p>
+                                    </div>
+                                    <div className='ai-guest__card-detail-detail wish'>
+                                        <p className='ai-guest__card-detail-detail--title'>Ucapan Harapan</p>
+                                        <p className='ai-guest__card-detail-detail--value'>{invitation.wish}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className='ai-guest__tabel-list'>
+                        <Table
+                            search={search}
+                            placeholderFind={'Cari Tamu...'}
+                            headerColumns={headerColumns}
+                            bodyData={invitations}
+                            onChangeSearch={setSearch}
+                            handleSortOrder={handleSortOrder}
+                            renderCustomTd={renderCustomTd}
+                        />
+                    </div>
                 </div>
             </div>
         </>
